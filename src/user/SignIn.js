@@ -11,7 +11,7 @@ import {signIn, autentificacion, isAutentificacion} from '../autentificacion';
 const SignIn = () => {
     //las variables del useState tienen que ser iguales a las del API
     const [values, setValues] = useState({
-        //todo se eliminica, solo se deja correo y cotra
+        //todo se elimina, solo se deja correo y cotra
         sNombre: "Sele",
         sApellido: "Mendez",
         sContrasena: "",
@@ -45,6 +45,15 @@ const SignIn = () => {
         //una vez guardados estos valores en el state solo se manda al backend
         setValues({...values, error: false, [sNombre]: event.target.value});
     }
+
+    /*
+    esto es lo mismo de arriba
+    function handleChange(name) {
+        return function(event) {
+            setValues({ ...values, error: false, [name]: event.target.value });
+        };
+    }*/
+
 
     const iniciarSession = (event) => {
         //la pagina no se recargue en el click en el boton

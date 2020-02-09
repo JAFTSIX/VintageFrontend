@@ -31,7 +31,7 @@ const SignUp = () => {
     const {sNombre, sApellido, sContrasena, sCorreo, 
         dNacimiento,sPermisos, error, funciona, aFavoritos} = values
 
-    //funciona que returna otra funcion
+    //funciona que retorna otra funcion
     /*cada vez que se cambia algo de los input, 
     se va a guardar en esta funcion y ser guardado en el state*/
     const handleChange = sNombre => event => {
