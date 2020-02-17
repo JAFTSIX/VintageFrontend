@@ -23,6 +23,7 @@ export const crearProducto = (token,producto) => {
         })
 }
 
+
 export const modificarProducto = (token,producto) => {
 
     return fetch(`${API}/Articulo/${producto._id}`, {
