@@ -23,6 +23,11 @@ const SignIn = () => {
         aFavoritos: [
             "string"
         ],
+        aRecetas: [
+            "string"
+          ],
+        oDireccion: {},
+        bActivo: true,
         sPermisos: "1",
         sDireccion: "string"
             });
@@ -31,7 +36,8 @@ const SignIn = () => {
     //destruve el signUp State
     //para ser declarado como nombre en vez de SignUp.values.nombre
     const {sContrasena, sCorreo, 
-        loading, error, redirecionar , dNacimiento, sPermisos, sNombre, sApellido,aRecetas,aFavoritos,sDireccion} = values
+        loading, error, redirecionar , dNacimiento, sPermisos, sNombre, sApellido,aRecetas,aFavoritos,sDireccion,
+        oDireccion, bActivo} = values
     
     //distructive the los datos del local storage
     const {_id} = isAutentificacion();
@@ -62,7 +68,8 @@ const SignIn = () => {
         console.log(sNombre);
         //una vez se hace el click, se realiza esta funcion
         //esta funcion esta localizado en ../autentificacion/index.js
-        signIn({sContrasena, sCorreo, dNacimiento, sPermisos, sNombre, sApellido,aRecetas,aFavoritos,sDireccion})
+        signIn({sContrasena, sCorreo, dNacimiento, sNombre, sApellido,aRecetas,aFavoritos,
+            oDireccion, bActivo})
         //funcion para comprobar si se crea la cuenta con exito
         .then(data =>{
             //si hay error
