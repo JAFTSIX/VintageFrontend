@@ -14,7 +14,7 @@ const RecetaInterfaz = ({receta}) => {
                     <MostrarImagenReceta item={receta}
                     url="Articulo"/>
                     <p><b>Descripcion:</b>  {receta.sTexto}</p>
-                    <Link to="/">
+                    <Link to={`/Receta/Detalle/${receta._id}`}>
                         <button className="btn btn-outline-primary 
                         mt-2 mb-2 agregarPadding mr-2">
                             Ver Receta
