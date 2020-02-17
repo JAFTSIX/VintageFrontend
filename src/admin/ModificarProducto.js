@@ -17,7 +17,7 @@ const ModificarProducto = (props) => {
         bActivo: true,
         categorias: ["Mesa", "Vaso", "Olla"], //por ahora se va a poner manualmente
         sCategoria: "",
-        foto: "",
+        sUrlImagen: "",
         loading: false,
         error : "",
         productoCreado:"",
@@ -41,7 +41,7 @@ const ModificarProducto = (props) => {
         bActivo,
         categorias,
         sCategoria,
-        foto,
+        sUrlImagen,
         loading,
         error,
         productoModificado, //verificar si el producto fue creado o no
@@ -68,7 +68,7 @@ const ModificarProducto = (props) => {
                     iPrecio2: data.iPrecio,
                     sDescripcion: data.sDescripcion,
                     bActivo: data.bActivo,
-                    foto: "1",
+                    sUrlImagen: data.sUrlImagen,
                     loading: false,
                 })
             }
@@ -99,7 +99,7 @@ const ModificarProducto = (props) => {
         event.preventDefault();
         setValor({...valor, error:'', loading:true});
         modificarProducto(token, {_id,sNombre,iCant,iPrecio,
-            sDescripcion,bActivo})
+            sDescripcion,bActivo,sUrlImagen})
         .then(data=>{
             // if(data.error){
             //     setValor({...valor, error:data.error});
@@ -116,11 +116,11 @@ const ModificarProducto = (props) => {
         <form className="mb-3" onSubmit={clickSubmit}>
             <div className="form-group">
                 <label className="text-muted">Ingresar link de la imagen: </label>
-                <input onChange={handleChange('foto')} 
+                <input onChange={handleChange('sUrlImagen')} 
                         type="text" 
                         className="form-control" 
                         required
-                        value={foto} />
+                        value={sUrlImagen} />
             </div>
 
             <div className="form-group">
