@@ -16,6 +16,8 @@ import Receta from './user/Receta';
 import AgregarReceta from './admin/AgregarReceta';
 import ModificarReceta from './admin/ModificarReceta';
 import EliminarReceta from './admin/EliminarReceta';
+import RecetaDetalle from './user/RecetaDetalle';
+
 //props --> parámetro de consulta props se puede 
 //utilizar en varios comandos GET 
 //que devuelven un recurso de instancia única. 
@@ -47,6 +49,8 @@ const Routes = () => {
             exact component={ModificarReceta}/>
             <AdminRoute path="/Eliminar/Receta/:recetaId" 
             exact component={EliminarReceta}/>
+            <PrivateRoute path="/Receta/Detalle/:recetaId" exact
+             component={RecetaDetalle}/>
 
 
         </Switch>
