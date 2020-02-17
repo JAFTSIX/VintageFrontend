@@ -71,7 +71,7 @@ const ModificarReceta = (props) => {
                     sNombre: data.sNombre,
                     aEtiqueta: data.aEtiqueta,
                     sTexto: data.sTexto,
-                    iPrecio: data.iPrecio,
+                    iPrecio2: data.iPrecio,
                     sUrlVideo: data.sUrlVideo,
                     sUrlImagen: data.sUrlImagen,
                     bActivo: data.bActivo,

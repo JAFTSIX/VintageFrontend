@@ -137,3 +137,17 @@ export const getReceta = (recetaId) => {
         })
 }
 
+export const eliminarReceta = (recetaId) => {
+    return fetch(`${API}/Receta/${recetaId}`, {
+            method: "DELETE",
+        })
+                
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            
+            console.log(err);
+        })
+}
+

@@ -33,7 +33,7 @@ const RecetaInterfaz = ({receta}) => {
                             </button>
                         </Link>
 
-                        <Link to={`Eliminar/Articulo/${receta._id}`}>
+                        <Link to={`Eliminar/Receta/${receta._id}`}>
                             <button className="btn btn-outline-primary 
                             mt-2 mb-2 agregarPadding mr-2" data-toggle="modal" data-target="#exampleModal">
                                 Eliminar Receta
