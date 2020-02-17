@@ -89,6 +89,11 @@ const Menu = ({history}) => {
                             PRODUCTO
                         </Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" style={esHover(history, "/receta")} to="/receta">
+                            RECETA
+                        </Link>
+                    </li>
 
             {/*Ocultar esos menus cuando el usuario ya inicio session*/}
             {/* si no existe ningun usuario en el local storage, va a aparecer esos menus */}
