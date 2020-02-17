@@ -14,7 +14,7 @@ const AgregarProducto = () => {
         bActivo: true,
         categorias: ["Mesa", "Vaso", "Olla"], //por ahora se va a poner manualmente
         sCategoria: "",
-        foto: "",
+        sUrlImagen: "",
         loading: false,
         error : "",
         productoCreado:"",
@@ -35,7 +35,7 @@ const AgregarProducto = () => {
         bActivo,
         categorias,
         sCategoria,
-        foto,
+        sUrlImagen,
         loading,
         error,
         productoCreado, //verificar si el producto fue creado o no
@@ -65,7 +65,7 @@ const AgregarProducto = () => {
         event.preventDefault();
         setValor({...valor, error:'', loading:true});
         crearProducto(token, {sNombre,iCant,iPrecio,
-            sDescripcion,bActivo})
+            sDescripcion,sUrlImagen,bActivo})
         .then(data=>{
             if(data.error){
                 setValor({...valor, error:data.error});
@@ -77,7 +77,7 @@ const AgregarProducto = () => {
                     iPrecio: 0,
                     sDescripcion: "",
                     bActivo: true,
-                    foto: "",
+                    sUrlImagen: "",
                     loading: false,
                     productoCreado: data.sNombre,
                 })
@@ -90,11 +90,11 @@ const AgregarProducto = () => {
         <form className="mb-3" onSubmit={clickSubmit}>
             <div className="form-group">
                 <label className="text-muted">Ingresar link de la imagen: </label>
-                <input onChange={handleChange('foto')} 
+                <input onChange={handleChange('sUrlImagen')} 
                         type="text" 
                         className="form-control" 
                         required
-                        value={foto} />
+                        value={sUrlImagen} />
             </div>
 
             <div className="form-group">
