@@ -6,7 +6,13 @@ import {Link} from 'react-router-dom';
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signUp} from '../autentificacion'; 
 
+const regexsNombre_Apellido = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]{1,60}$/
 
+/*La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
+NO puede tener otros símbolos. */
+const regexPassword = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
+
+const regexsCorreo = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
 
 const SignUp = () => {
     //las variables del useState tienen que ser iguales a las del API
@@ -14,36 +20,129 @@ const SignUp = () => {
         sNombre: "",
         sApellido: "",
         sContrasena: "",
+        password: "",
         sCorreo: "",
-        dNacimiento: "2020-02-16T21:57:37.497Z",
-        aFavoritos: [
-        ],
-        aRecetas: [
-          ],
+        dNacimiento: "",
+        aFavoritos: [],
+        aRecetas: [],
         oDireccion: {},
         bActivo: true,
         sPermisos: "",
-        error : '', 
-        funciona : false,
-        });
+        error:false,
+        funciona: false,
+        listo:false,
+        
+    });
+
+//destruve el signUp State
+//para ser declarado como nombre en vez de SignUp.values.nombre
+const {
+    sNombre,
+    sApellido,
+    sContrasena,
+    password,
+    sCorreo,
+    dNacimiento,
+    sPermisos,
+    error,
+    funciona,
+    aFavoritos,
+    oDireccion,
+    bActivo,
+    aRecetas,listo
+} = values
+
+//funciona que retorna otra funcion
+/*cada vez que se cambia algo de los input, 
+se va a guardar en esta funcion y ser guardado en el state*/
+const handleChange = sNombre => event => {
+    //...values --> unirlo con los valores anteriores como ... del arreglo
+    // error: false --> en caso que el usuario escriba algo y lo deja de escribir, para ocultar ese error
+    //[name]: event.target.value --> lo que sea que ingrese el usuario en el input, puede ser nombre, email, etc.
+    //una vez guardados estos valores en el state solo se manda al backend
+
+    event.preventDefault();
+    const {
+        name,
+        value
+    } = event.target;
+    
+   console.log(name,value)
+    let ver
+    switch (name) {
+        case 'sNombre':
+            ver =
+                regexsNombre_Apellido.test(value) ?
+                '' :
+                'Tu Nombre tiene que tener mas de 1 carácter!';
+            setValues({
+                ...values,
+                error: ver,
+                [sNombre]: event.target.value
+            });
+            break;
+        case 'sApellido':
+            ver =
+                regexsNombre_Apellido.test(value) ?
+                '' :
+                'Tu Apellido tiene que tener mas de 1 carácter!';
+            setValues({
+                ...values,
+                error: ver,
+                [sNombre]: event.target.value
+            });
+            break;
+        case 'sCorreo':
+            ver =
+                regexsCorreo.test(value) ? '' : 'El correo no es valido!';
+            setValues({
+                ...values,
+                error: ver,
+                [sNombre]: event.target.value
+            });
+            break;
+        case 'sContrasena':
+           
+
+            ver =  value === password ? '' : 'las 2 contraseñas no coinciden';
+            ver = regexPassword.test(value)  ? '' : 'la contraseña debe tener 1 mayuscula 1 minuscula 1 numero y 8 a 16 carácteres';
             
+       
+            setValues({
+                ...values,
+                error: ver,
+                [sNombre]: event.target.value
+            });
+            break;
 
+            case 'password':
+           
 
-    //destruve el signUp State
-    //para ser declarado como nombre en vez de SignUp.values.nombre
-    const {sNombre, sApellido, sContrasena, sCorreo, 
-        dNacimiento,sPermisos, error, funciona, aFavoritos, oDireccion, bActivo,aRecetas} = values
-
-    //funciona que retorna otra funcion
-    /*cada vez que se cambia algo de los input, 
-    se va a guardar en esta funcion y ser guardado en el state*/
-    const handleChange = sNombre => event => {
-        //...values --> unirlo con los valores anteriores como ... del arreglo
-        // error: false --> en caso que el usuario escriba algo y lo deja de escribir, para ocultar ese error
-        //[name]: event.target.value --> lo que sea que ingrese el usuario en el input, puede ser nombre, email, etc.
-        //una vez guardados estos valores en el state solo se manda al backend
-        setValues({...values, error: false, [sNombre]: event.target.value});
+            
+                ver =  value === password ? '' : 'las 2 contraseñas no coinciden';
+                
+            
+                setValues({
+                    ...values,
+                    error: ver,
+                    [sNombre]: event.target.value
+                });
+                
+                break;
+          
+        default:
+            setValues({
+                ...values,
+                error: false,
+                [sNombre]: event.target.value
+            });
+            break;
     }
+
+
+
+}
+
 
     const crearCuenta = (event) => {
         //la pagina no se recargue en el click en el boton
@@ -51,13 +150,17 @@ const SignUp = () => {
         setValues({...values, error:false});
         //una vez se hace el click, se realiza esta funcion
         //esta funcion esta localizado en ../autentificacion/index.js
+   
         signUp({sNombre, sApellido, sContrasena, sCorreo, 
             dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
         //funcion para comprobar si se crea la cuenta con exito
         .then(data =>{
+
+            console.log(data);
             //si hay error
-            if(data.error){
-                setValues({...values, error: data.error, funciona: false});
+            if('error' in data ){
+                setValues({...values, error:data.error.message, funciona: false});
+                console.log(data.error.message)
             }//si no hay error, se vacia los textbox
             else {
                 setValues({
@@ -67,7 +170,7 @@ const SignUp = () => {
                     sContrasena: '',
                     sCorreo: '',
                     dNacimiento: '',
-                    error: '',
+                    error: false,                
                     funciona: true
                 });
             }
@@ -84,7 +187,9 @@ const SignUp = () => {
         <div className="alert alert-danger" 
         style={{display: error ? '' : 'none'}}>
             {error}
+           
         </div>
+        
     );
         
     
@@ -107,7 +212,7 @@ const SignUp = () => {
                 <label className="text-muted">
                     Nombre
                 </label>
-                <input onChange={handleChange('sNombre')} type="text" className="form-control" 
+                <input name="sNombre" onChange={handleChange('sNombre')} type="text" className="form-control" 
                 value={sNombre}
                 />
             </div>
@@ -116,7 +221,7 @@ const SignUp = () => {
                 <label className="text-muted">
                     Primer Apellido
                 </label>
-                <input onChange={handleChange('sApellido')}  type="text" 
+                <input name="sApellido" onChange={handleChange('sApellido')}  type="text" 
                 className="form-control" value={sApellido}/>
             </div>
 
@@ -124,15 +229,16 @@ const SignUp = () => {
                 <label className="text-muted">
                     Fecha de nacimiento
                 </label>
-                <input onChange={handleChange('dNacimiento')}  type="text" 
-                className="form-control" value={dNacimiento}/>
+                <input name="dNacimiento" onChange={handleChange('dNacimiento')}  type="date" 
+                className="form-control"
+                 value={dNacimiento }/>
             </div>
 
             <div className="form-group">
                 <label className="text-muted">
                     Email
                 </label>
-                <input onChange={handleChange('sCorreo')}  type="email" 
+                <input name="sCorreo" onChange={handleChange('sCorreo')}  type="email" 
                 value={sCorreo} className="form-control" />
             
             </div>
@@ -141,7 +247,7 @@ const SignUp = () => {
                 <label className="text-muted">
                     Contraseña
                 </label>
-                <input onChange={handleChange('sContrasena')}  type="password" 
+                <input name="sContrasena" onChange={handleChange('sContrasena')}  type="password" 
                 value={sContrasena} className="form-control" />
         
             </div>
@@ -150,13 +256,16 @@ const SignUp = () => {
                 <label className="text-muted">
                     Confirmar Contraseña
                 </label>
-                <input onChange={handleChange('password')}  type="password" className="form-control" />
+                <input name="password" value={password}  onChange={handleChange('password')}  type="password" className="form-control" />
             </div>
 
             <div className="btnCentral">
-            <button  onClick={crearCuenta} className="btn btn-outline-primary btnCentral">
+            <button   onClick={crearCuenta}  disabled={!error}  className="btn btn-outline-primary btnCentral">
                 Crear Cuenta
             </button>
+
+       
+            
             </div>
         </form>
     );
@@ -183,3 +292,9 @@ const SignUp = () => {
 
 
 export default SignUp;
+/*     <script>
+             if (document.getElementById("pass1").value==document.getElementById("pass2").value) {
+                document.getElementById("Button").disabled = false
+             }
+                 
+            </script> */

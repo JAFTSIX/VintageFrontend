@@ -1,29 +1,39 @@
 import {API} from '../config'; //aqui se guarda el puerto del api
 //import { response } from 'express';
-
 export const signUp = (user) => {
     //body: JSON.stringify(user) //convierte el objeto en json string
     //console.log(nombre, apellido1, email, password);
     //fetch();
     //console.log(JSON.stringify(user));
+  
+  
     
+ 
+
+    user.dNacimiento=new Date(''.concat(user.dNacimiento.toString(),'T12:00:00'))
+    
+    
+   
     return fetch(`${API}/Cliente`, {
-        method: "POST",
-        headers:{
-            Accept: 'application/json',
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(user) //convierte el objeto en json string
-        
-    })
+            method: "POST",
+            headers: {
+                Accept: 'application/json',
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user) //convierte el objeto en json string
+
+        })
+
+        .then(response => {
             
-    .then(response => {
-        return response.json()
-    })
-    .catch(err => {
-        
-        console.log(EvalError)
-    })
+            return response.json()
+        })
+        .catch(err => {
+
+            console.log(err)
+            //return err
+       
+        })
 };
 
 export const signIn = (user) => {
@@ -31,24 +41,24 @@ export const signIn = (user) => {
     //console.log(nombre, apellido1, email, password);
     //fetch();
     //console.log(JSON.stringify(user));
-    
+
     return fetch(`${API}/Cliente`, {
-        method: "POST",
-        headers:{
-            Accept: 'application/json',
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(user) //convierte el objeto en json string
-        
-    })
-            
-    .then(response => {
-        return response.json()
-    })
-    .catch(err => {
-        
-        console.log(EvalError)
-    })
+            method: "POST",
+            headers: {
+                Accept: 'application/json',
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(user) //convierte el objeto en json string
+
+        })
+
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+             
+            console.log(EvalError)
+        })
 }
 
 //guardar los datos en el local storage
@@ -91,3 +101,23 @@ export const cerrarSesion = (cb) => {
         // .catch(err => console.log(err));
     }
 }
+
+
+
+/*.then(response => {
+            switch (resStatus) {
+                case 201:
+                    console.log('success')
+                    break
+                case 422:
+                    console.log(response)
+                    
+                case 500:
+                    console.log('server error, try again')
+                    break
+                default:
+                    console.log('unhandled')
+                    break
+            }
+            
+        }) */
