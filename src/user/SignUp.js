@@ -16,9 +16,7 @@ const SignUp = () => {
         sContrasena: "",
         sCorreo: "",
         dNacimiento: "2020-02-02T17:01:16.937Z",
-        aFavoritos: [
-            "string"
-        ],
+        aFavoritos: [],
         sPermisos: "0",
         error : '', 
         funciona : false,
@@ -85,7 +83,7 @@ const SignUp = () => {
         
     
 
-    const mostrarFunciona = () => (
+    const mostrarFunciona =  () => (
         <div className="alert alert-info" 
         style={{display: funciona ? '' : 'none'}}>
             Cuenta creada exitosamente. Por favor <Link to="/signin">Iniciar Session</Link>
