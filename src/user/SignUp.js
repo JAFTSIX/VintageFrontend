@@ -15,9 +15,14 @@ const SignUp = () => {
         sApellido: "",
         sContrasena: "",
         sCorreo: "",
-        dNacimiento: "2020-02-02T17:01:16.937Z",
-        aFavoritos: [],
-        sPermisos: "0",
+        dNacimiento: "2020-02-16T21:57:37.497Z",
+        aFavoritos: [
+        ],
+        aRecetas: [
+          ],
+        oDireccion: {},
+        bActivo: true,
+        sPermisos: "",
         error : '', 
         funciona : false,
         });
@@ -27,7 +32,7 @@ const SignUp = () => {
     //destruve el signUp State
     //para ser declarado como nombre en vez de SignUp.values.nombre
     const {sNombre, sApellido, sContrasena, sCorreo, 
-        dNacimiento,sPermisos, error, funciona, aFavoritos} = values
+        dNacimiento,sPermisos, error, funciona, aFavoritos, oDireccion, bActivo,aRecetas} = values
 
     //funciona que retorna otra funcion
     /*cada vez que se cambia algo de los input, 
@@ -46,7 +51,8 @@ const SignUp = () => {
         setValues({...values, error:false});
         //una vez se hace el click, se realiza esta funcion
         //esta funcion esta localizado en ../autentificacion/index.js
-        signUp({sNombre, sApellido, sContrasena, sCorreo, dNacimiento,sPermisos, aFavoritos})
+        signUp({sNombre, sApellido, sContrasena, sCorreo, 
+            dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
         //funcion para comprobar si se crea la cuenta con exito
         .then(data =>{
             //si hay error

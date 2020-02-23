@@ -2,53 +2,51 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
 import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
-import { crearProducto } from './apiAdmin';
-import AgregarCategoria  from './AgregarCategoria';
+import { crearReceta } from './apiAdmin';
 
-const AgregarProducto = () => {
+const AgregarReceta = () => {
     const [valor, setValor] = useState({
-        sNombre: "",
-        iCant2: 0,
+        sNombre : "",
+        aEtiqueta: [
+            "Desayuno",
+            "Almuerzo",
+            "Cena"
+        ],
+        dFechaPublicacion: "2020-02-17T01:50:48.564Z",
+        sTexto : "",
         iPrecio2: 0,
-        sDescripcion: "",
-        bActivo: true,
-        categorias: ["Mesa", "Vaso", "Olla"], //por ahora se va a poner manualmente
-        sCategoria: "",
+        sUrlVideo: "",
         sUrlImagen: "",
+        bActivo: true,
         loading: false,
         error : "",
-        productoCreado:"",
+        recetaCreado:"",
         redirect:false,
         formData:""
     });
 
 
     const {_id, token} = isAutentificacion();
-    const {nombre} = AgregarCategoria();
 
     //destruture
     const {
         sNombre,
-        iCant2,
+        aEtiqueta,
+        dFechaPublicacion,
+        sTexto,
         iPrecio2,
-        sDescripcion,
-        bActivo,
-        categorias,
-        sCategoria,
+        sUrlVideo,
         sUrlImagen,
+        bActivo,
         loading,
         error,
-        productoCreado, //verificar si el producto fue creado o no
+        recetaCreado,
         redirect,
+        formData
        
     } = valor;
 
 
-
-    // Cargar las categorias
-    const cargarCategoria = () => {
-
-    }
 
     //funcion esta retornando otra funcion
     //el sNombre se va a ir cambiando, primero va ser foto, despues nombre, ...
@@ -56,16 +54,14 @@ const AgregarProducto = () => {
         //entonces cuando se agrega, se va a guardar todo en formData
         //formData.set(sNombre, valor);
         setValor({...valor, [sNombre]:  event.target.value});
-        console.log(nombre);
     }
 
     const clickSubmit =(event)=>{
-        const iCant = parseInt(iCant2);
         const iPrecio = parseInt(iPrecio2);
         event.preventDefault();
         setValor({...valor, error:'', loading:true});
-        crearProducto(token, {sNombre,iCant,iPrecio,
-            sDescripcion,sUrlImagen,bActivo})
+        crearReceta(token, {sNombre,aEtiqueta,dFechaPublicacion,
+            sTexto,iPrecio,sUrlVideo,sUrlImagen,bActivo})
         .then(data=>{
             if(data.error){
                 setValor({...valor, error:data.error});
@@ -73,20 +69,20 @@ const AgregarProducto = () => {
                 setValor({
                     ...valor, 
                     sNombre: "",
-                    iCant: 0,
+                    sTexto: "",
                     iPrecio: 0,
-                    sDescripcion: "",
                     bActivo: true,
+                    sUrlVideo: "",
                     sUrlImagen: "",
                     loading: false,
-                    productoCreado: data.sNombre,
+                    recetaCreado: data.sNombre,
                 })
             }
         })
         
     }
 
-    const agregarProductoForm = () => (
+    const agregarRecetaForm = () => (
         <form className="mb-3" onSubmit={clickSubmit}>
             <div className="form-group">
                 <label className="text-muted">Ingresar link de la imagen: </label>
@@ -95,6 +91,14 @@ const AgregarProducto = () => {
                         className="form-control" 
                         required
                         value={sUrlImagen} />
+            </div>
+            <div className="form-group">
+                <label className="text-muted">Ingresar link de la receta: </label>
+                <input onChange={handleChange('sUrlVideo')} 
+                        type="text" 
+                        className="form-control" 
+                        required
+                        value={sUrlVideo} />
             </div>
 
             <div className="form-group">
@@ -107,11 +111,23 @@ const AgregarProducto = () => {
             </div>
 
             <div className="form-group">
+                <label className="text-muted">Categoria </label>
+                <select onChange={handleChange('sCategoria')} 
+                        className="form-control">
+                            <option>Selecciona una categoria</option>
+                            {aEtiqueta && 
+                            aEtiqueta.map((categoria, index) => (
+                                <option key={index} value={index}>{categoria}</option>
+                            ))}
+                </select>
+            </div>
+
+            <div className="form-group">
                 <label className="text-muted">Descripcion </label>
-                <textarea onChange={handleChange('sDescripcion')} 
+                <textarea onChange={handleChange('sTexto')} 
                         className="form-control" 
                         required
-                        value={sDescripcion} />
+                        value={sTexto} />
             </div>
 
             <div className="form-group">
@@ -123,29 +139,9 @@ const AgregarProducto = () => {
                         value={iPrecio2} />
             </div>
 
-            <div className="form-group">
-                <label className="text-muted">Categoria </label>
-                <select onChange={handleChange('sCategoria')} 
-                        className="form-control">
-                            <option>Selecciona una categoria</option>
-                            {categorias && 
-                            categorias.map((categoria, index) => (
-                                <option key={index} value={index}>{categoria}</option>
-                            ))}
-                </select>
-            </div>
-
-            <div className="form-group">
-                <label className="text-muted">Cantidad </label>
-                <input onChange={handleChange('iCant2')} 
-                        type="number" 
-                        className="form-control" 
-                        required
-                        value={iCant2} />
-            </div>
 
             <button className="btn btn-outline-primary">
-                Agregar Producto
+                Agregar Receta
             </button>
         </form>
     );
@@ -158,8 +154,8 @@ const AgregarProducto = () => {
     );
     const mostrarFunciona = () => (
         <div className="alert alert-info" 
-        style={{display: productoCreado ? '':'none'}}>
-            <h4>{`${productoCreado} se ha creado exitosamente `}</h4>
+        style={{display: recetaCreado ? '':'none'}}>
+            <h4>{`${recetaCreado} se ha creado exitosamente `}</h4>
         </div>
     );
     const mostrarLoading = () => (
@@ -170,7 +166,7 @@ const AgregarProducto = () => {
     
 
     return (
-        <Layout titulo="Agregar Producto" 
+        <Layout titulo="Agregar Receta" 
         descripcion="" 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
@@ -181,7 +177,7 @@ const AgregarProducto = () => {
                     {mostrarLoading()}
                     {mostrarError()}
                     {mostrarFunciona()}                  
-                    {agregarProductoForm()}
+                    {agregarRecetaForm()}
                     
                 </div>
             </div>
@@ -191,4 +187,4 @@ const AgregarProducto = () => {
     );
 }
 
-export default AgregarProducto;
+export default AgregarReceta;

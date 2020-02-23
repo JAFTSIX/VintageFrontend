@@ -1,27 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
 import { isAutentificacion } from '../autentificacion';
-import {getProducto} from './apiAdmin';
-import { modificarProducto } from './apiAdmin';
+import {getReceta} from './apiAdmin';
+import { modificarReceta } from './apiAdmin';
 import {Redirect} from 'react-router-dom';
 
 
 
-const ModificarProducto = (props) => {
+const ModificarReceta = (props) => {
     const [valor, setValor] = useState({
         _id: "",
-        sNombre: "",
-        iCant2: 0,
+        sNombre : "",
+        aEtiqueta: [
+            "Desayuno",
+            "Almuerzo",
+            "Cena"
+        ],
+        dFechaPublicacion: "2020-02-17T01:50:48.564Z",
+        sTexto : "",
         iPrecio2: 0,
-        sDescripcion: "",
-        bActivo: true,
-        categorias: ["Mesa", "Vaso", "Olla"], //por ahora se va a poner manualmente
-        sCategoria: "",
+        sUrlVideo: "",
         sUrlImagen: "",
+        bActivo: true,
+        recetaModificado:"",
+        redirect:false,
         loading: false,
         error : "",
-        productoCreado:"",
-        redirect:false,
         formData:""
     });
 
@@ -35,27 +39,28 @@ const ModificarProducto = (props) => {
     const {
         _id,
         sNombre,
-        iCant2,
+        aEtiqueta,
+        dFechaPublicacion,
+        sTexto,
         iPrecio2,
-        sDescripcion,
-        bActivo,
-        categorias,
-        sCategoria,
+        sUrlVideo,
         sUrlImagen,
+        bActivo,
         loading,
         error,
-        productoModificado, //verificar si el producto fue creado o no
+        recetaModificado,
         redirect,
+        formData
        
     } = valor;
 
     //carga al puro principio y cuando sea que se haga cambio va a cargar 
     
 
-    //cargar productos
-    const cargarProductos = productId => {
+    //cargar receta
+    const cargarReceta = recetaId => {
 
-        getProducto(productId)
+        getReceta(recetaId)
         .then(data=>{
             if(data.error){
                 setValor({...valor, error:data.error})
@@ -64,11 +69,12 @@ const ModificarProducto = (props) => {
                     ...valor,
                     _id: data._id, 
                     sNombre: data.sNombre,
-                    iCant2: data.iCant,
+                    aEtiqueta: data.aEtiqueta,
+                    sTexto: data.sTexto,
                     iPrecio2: data.iPrecio,
-                    sDescripcion: data.sDescripcion,
-                    bActivo: data.bActivo,
+                    sUrlVideo: data.sUrlVideo,
                     sUrlImagen: data.sUrlImagen,
+                    bActivo: data.bActivo,
                     loading: false,
                 })
             }
@@ -76,9 +82,9 @@ const ModificarProducto = (props) => {
     }
 
     useEffect(()=>{
-        const productId = props.match.params.productId
-        console.log(productId)
-        cargarProductos(productId)
+        const recetaId = props.match.params.recetaId
+        console.log(recetaId)
+        cargarReceta(recetaId)
         
     }, []);
     
@@ -94,25 +100,24 @@ const ModificarProducto = (props) => {
     }
 
     const clickSubmit =(event)=>{
-        const iCant = parseInt(iCant2);
         const iPrecio = parseInt(iPrecio2);
         event.preventDefault();
         setValor({...valor, error:'', loading:true});
-        modificarProducto(token, {_id,sNombre,iCant,iPrecio,
-            sDescripcion,bActivo,sUrlImagen})
+        modificarReceta(token, {_id,sNombre,aEtiqueta,sTexto,
+            iPrecio,sUrlVideo,sUrlImagen,bActivo,dFechaPublicacion})
         .then(data=>{
             // if(data.error){
             //     setValor({...valor, error:data.error});
             // }
                 setValor({
-                    productoModificado: true,
+                    recetaModificado: true,
                     redirect:true
                 })       
         })
         
     }
 
-    const agregarProductoForm = () => (
+    const agregarRecetaForm = () => (
         <form className="mb-3" onSubmit={clickSubmit}>
             <div className="form-group">
                 <label className="text-muted">Ingresar link de la imagen: </label>
@@ -121,6 +126,14 @@ const ModificarProducto = (props) => {
                         className="form-control" 
                         required
                         value={sUrlImagen} />
+            </div>
+            <div className="form-group">
+                <label className="text-muted">Ingresar link de la receta: </label>
+                <input onChange={handleChange('sUrlVideo')} 
+                        type="text" 
+                        className="form-control" 
+                        required
+                        value={sUrlVideo} />
             </div>
 
             <div className="form-group">
@@ -133,11 +146,23 @@ const ModificarProducto = (props) => {
             </div>
 
             <div className="form-group">
+                <label className="text-muted">Categoria </label>
+                <select onChange={handleChange('sCategoria')} 
+                        className="form-control">
+                            <option>Selecciona una categoria</option>
+                            {aEtiqueta && 
+                            aEtiqueta.map((categoria, index) => (
+                                <option key={index} value={index}>{categoria}</option>
+                            ))}
+                </select>
+            </div>
+
+            <div className="form-group">
                 <label className="text-muted">Descripcion </label>
-                <textarea onChange={handleChange('sDescripcion')} 
+                <textarea onChange={handleChange('sTexto')} 
                         className="form-control" 
                         required
-                        value={sDescripcion} />
+                        value={sTexto} />
             </div>
 
             <div className="form-group">
@@ -149,29 +174,9 @@ const ModificarProducto = (props) => {
                         value={iPrecio2} />
             </div>
 
-            <div className="form-group">
-                <label className="text-muted">Categoria </label>
-                <select onChange={handleChange('sCategoria')} 
-                        className="form-control">
-                            <option>Selecciona una categoria</option>
-                            {categorias && 
-                            categorias.map((categoria, index) => (
-                                <option key={index} value={index}>{categoria}</option>
-                            ))}
-                </select>
-            </div>
-
-            <div className="form-group">
-                <label className="text-muted">Cantidad </label>
-                <input onChange={handleChange('iCant2')} 
-                        type="number" 
-                        className="form-control" 
-                        required
-                        value={iCant2} />
-            </div>
 
             <button className="btn btn-outline-primary">
-                Agregar Producto
+                Modificar Receta
             </button>
         </form>
     );
@@ -184,7 +189,7 @@ const ModificarProducto = (props) => {
     );
     const mostrarFunciona = () => (
         <div className="alert alert-info" 
-        style={{display: productoModificado ? '':'none'}}>
+        style={{display: recetaModificado ? '':'none'}}>
             <h4>{`${sNombre} se ha modificado exitosamente `}</h4>
         </div>
     );
@@ -196,14 +201,14 @@ const ModificarProducto = (props) => {
 
     const redireccionarUsuario = () => {
         if(redirect){
-            return <Redirect to="/Producto"></Redirect>
+            return <Redirect to="/receta"></Redirect>
         }
             
     }
     
 
     return (
-        <Layout titulo="MODIFICAR PRODUCTO" 
+        <Layout titulo="MODIFICAR RECETA" 
         descripcion="" 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
@@ -214,7 +219,7 @@ const ModificarProducto = (props) => {
                     {mostrarLoading()}
                     {mostrarError()}
                     {mostrarFunciona()}                  
-                    {agregarProductoForm()}
+                    {agregarRecetaForm()}
                     {redireccionarUsuario()}
                     
                 </div>
@@ -225,4 +230,4 @@ const ModificarProducto = (props) => {
     );
 }
 
-export default ModificarProducto;
+export default ModificarReceta;

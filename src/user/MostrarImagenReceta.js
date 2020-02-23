@@ -1,15 +1,13 @@
 import React from 'react';
-import {crearProducto} from '../admin/apiAdmin';
 import {API} from '../config';
 
 //item = producto
 //url para hacer request al api
-const MostrarImagen = ({item, url}) => {
+const MostrarImagenReceta = ({item, url}) => {
     
     return(
 
     <div className="productoImagen">
-        {/* para ver cual es el url se va al api  VIDEO 84*/}
         {/* {`${API}/${url}/sUrlImagen/${item._id}`} */}
 
         <img src={`${item.sUrlImagen}`}
@@ -22,4 +20,4 @@ const MostrarImagen = ({item, url}) => {
     
 
 
-export default MostrarImagen;
+export default MostrarImagenReceta;

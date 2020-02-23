@@ -12,6 +12,12 @@ import AgregarProducto from './admin/AgregarProducto';
 import Producto from './user/Producto';
 import ModificarProducto from './admin/ModificarProducto';
 import EliminarProducto from './admin/EliminarProducto';
+import Receta from './user/Receta';
+import AgregarReceta from './admin/AgregarReceta';
+import ModificarReceta from './admin/ModificarReceta';
+import EliminarReceta from './admin/EliminarReceta';
+import RecetaDetalle from './user/RecetaDetalle';
+
 //props --> parámetro de consulta props se puede 
 //utilizar en varios comandos GET 
 //que devuelven un recurso de instancia única. 
@@ -35,6 +41,16 @@ const Routes = () => {
             exact component={ModificarProducto}/>
             <AdminRoute path="/Eliminar/Articulo/:productId" 
             exact component={EliminarProducto}/>
+
+            <Route path="/receta" exact component={Receta}/>
+            <AdminRoute path="/receta/agregar" 
+            exact component={AgregarReceta}/>
+            <AdminRoute path="/Receta/:recetaId/" 
+            exact component={ModificarReceta}/>
+            <AdminRoute path="/Eliminar/Receta/:recetaId" 
+            exact component={EliminarReceta}/>
+            <PrivateRoute path="/Receta/Detalle/:recetaId" exact
+             component={RecetaDetalle}/>
 
 
         </Switch>
