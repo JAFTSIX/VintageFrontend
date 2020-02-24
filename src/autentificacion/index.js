@@ -1,19 +1,14 @@
 import {API} from '../config'; //aqui se guarda el puerto del api
 //import { response } from 'express';
-export const signUp = (user) => {
-    //body: JSON.stringify(user) //convierte el objeto en json string
-    //console.log(nombre, apellido1, email, password);
-    //fetch();
-    //console.log(JSON.stringify(user));
-  
-  
-    
- 
 
+/**Ying 
+ * body: JSON.stringify(user) //convierte el objeto en json string
+ * @param user es el usuario a insertar
+ */
+export const signUp = (user) => {
+  
     user.dNacimiento=new Date(''.concat(user.dNacimiento.toString(),'T12:00:00'))
     
-    
-   
     return fetch(`${API}/Cliente`, {
             method: "POST",
             headers: {
@@ -36,13 +31,14 @@ export const signUp = (user) => {
         })
 };
 
+
 export const signIn = (user) => {
     //body: JSON.stringify(user) //convierte el objeto en json string
     //console.log(nombre, apellido1, email, password);
     //fetch();
     //console.log(JSON.stringify(user));
 
-    return fetch(`${API}/Cliente`, {
+    return fetch(`${API}/login`, {
             method: "POST",
             headers: {
                 Accept: 'application/json',
@@ -53,6 +49,7 @@ export const signIn = (user) => {
         })
 
         .then(response => {
+            console.log(response.json())
             return response.json()
         })
         .catch(err => {
@@ -61,10 +58,17 @@ export const signIn = (user) => {
         })
 }
 
-//guardar los datos en el local storage
+
+
+/**Ying 
+ * guardar los datos en el local storage
+ * el browser tiene un local storage que guarda datos, 
+ * 
+ * @param data 
+ * @param cb 
+ */
 export const autentificacion = (data, cb) => {
-    //el browser tiene un local storage que guarda datos, 
-    //si eso esta vacio, 
+   
     if(typeof window !== 'undefined'){
         localStorage.setItem('jwt', JSON.stringify(data));
         //en el cb se puede redireccionar, limpiar el state, etc
@@ -72,7 +76,12 @@ export const autentificacion = (data, cb) => {
     }
 } 
 
-//si hay datos en el local storage o no
+
+
+
+/** Ying
+ * si hay datos en el local storage o no
+ */
 export const isAutentificacion = () => {
     if(typeof window == 'undefined'){
         return false;
@@ -103,21 +112,4 @@ export const cerrarSesion = (cb) => {
 }
 
 
-
-/*.then(response => {
-            switch (resStatus) {
-                case 201:
-                    console.log('success')
-                    break
-                case 422:
-                    console.log(response)
-                    
-                case 500:
-                    console.log('server error, try again')
-                    break
-                default:
-                    console.log('unhandled')
-                    break
-            }
-            
-        }) */
+ 

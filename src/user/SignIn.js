@@ -11,21 +11,15 @@ import {signIn, autentificacion, isAutentificacion} from '../autentificacion';
 const SignIn = () => {
     //las variables del useState tienen que ser iguales a las del API
     const [values, setValues] = useState({
-        //todo se elimina, solo se deja correo y cotra
-        sNombre: "Sele",
-        sApellido: "Mendez",
+        //todo se elimina, solo se deja correo y contra
+        sNombre: "",
+        sApellido: "",
         sContrasena: "",
         sCorreo: "",
-        dNacimiento: "2020-02-02T16:26:07.182Z",
-        aRecetas: [
-            "string"
-        ],
-        aFavoritos: [
-            "string"
-        ],
-        aRecetas: [
-            "string"
-          ],
+        dNacimiento: "",
+        aRecetas: [],
+        aFavoritos: [],
+        aRecetas: [],
         oDireccion: {},
         bActivo: true,
         sPermisos: "1",
@@ -65,11 +59,9 @@ const SignIn = () => {
         //la pagina no se recargue en el click en el boton
         event.preventDefault(); 
         setValues({...values, error:false, loading:true});
-        console.log(sNombre);
-        //una vez se hace el click, se realiza esta funcion
-        //esta funcion esta localizado en ../autentificacion/index.js
-        signIn({sContrasena, sCorreo, dNacimiento, sNombre, sApellido,aRecetas,aFavoritos,
-            oDireccion, bActivo})
+        
+        
+        signIn({sContrasena, sCorreo})
         //funcion para comprobar si se crea la cuenta con exito
         .then(data =>{
             //si hay error
@@ -89,10 +81,13 @@ const SignIn = () => {
 
     
 
-    //funcion para mostrar error
-    /*error ? '' : 'none' --> si el error del state tiene algo, 
-    se muestra el error, si no, display: none*/
-    //si usa () en vez de {} no hay que poner return();
+    
+    /**Ying
+     * funcion para mostrar error
+     * error ? '' : 'none' --> si el error del state tiene algo, 
+     * se muestra el error, si no, display: none
+     *  si usa () en vez de {} no hay que poner return();
+     */
     const mostrarError = () => (
         <div className="alert alert-danger" 
         style={{display: error ? '' : 'none'}}>

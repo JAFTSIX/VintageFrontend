@@ -3,6 +3,8 @@ import Layout from '../nucleo/Layout';
 import Menu from '../nucleo/Menu';
 import candado from './Img/candado.jpg';
 import {Link} from 'react-router-dom';
+import {resultado,HandleChangeValidation,checking } from './procesos/Validar_Usuario';
+
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signUp} from '../autentificacion'; 
 
@@ -34,8 +36,11 @@ const SignUp = () => {
         
     });
 
-//destruve el signUp State
-//para ser declarado como nombre en vez de SignUp.values.nombre
+
+/**
+ * destruve el signUp State
+ * para ser declarado como nombre en vez de SignUp.values.nombre
+ */
 const {
     sNombre,
     sApellido,
@@ -52,14 +57,18 @@ const {
     aRecetas,listo
 } = values
 
-//funciona que retorna otra funcion
-/*cada vez que se cambia algo de los input, 
-se va a guardar en esta funcion y ser guardado en el state*/
+
+/**Ying
+ *funciona que retorna otra funcion
+ * cada vez que se cambia algo de los input, 
+ * se va a guardar en esta funcion y ser guardado en el state
+ * 
+ * ...values --> unirlo con los valores anteriores como ... del arreglo
+ *  error: false --> en caso que el usuario escriba algo y lo deja de escribir, para ocultar ese error
+ * [name]: event.target.value --> lo que sea que ingrese el usuario en el input, puede ser nombre, email, etc.
+ * una vez guardados estos valores en el state solo se manda al backend
+ */ 
 const handleChange = sNombre => event => {
-    //...values --> unirlo con los valores anteriores como ... del arreglo
-    // error: false --> en caso que el usuario escriba algo y lo deja de escribir, para ocultar ese error
-    //[name]: event.target.value --> lo que sea que ingrese el usuario en el input, puede ser nombre, email, etc.
-    //una vez guardados estos valores en el state solo se manda al backend
 
     event.preventDefault();
     const {
@@ -67,79 +76,19 @@ const handleChange = sNombre => event => {
         value
     } = event.target;
     
-   console.log(name,value)
-    let ver
-    switch (name) {
-        case 'sNombre':
-            ver =
-                regexsNombre_Apellido.test(value) ?
-                '' :
-                'Tu Nombre tiene que tener mas de 1 carácter!';
-            setValues({
-                ...values,
-                error: ver,
-                [sNombre]: event.target.value
-            });
-            break;
-        case 'sApellido':
-            ver =
-                regexsNombre_Apellido.test(value) ?
-                '' :
-                'Tu Apellido tiene que tener mas de 1 carácter!';
-            setValues({
-                ...values,
-                error: ver,
-                [sNombre]: event.target.value
-            });
-            break;
-        case 'sCorreo':
-            ver =
-                regexsCorreo.test(value) ? '' : 'El correo no es valido!';
-            setValues({
-                ...values,
-                error: ver,
-                [sNombre]: event.target.value
-            });
-            break;
-        case 'sContrasena':
-           
+   
+   
+   const resultado=HandleChangeValidation(name,value)
+  
+   if (resultado.valido) {
+        //esta todo bien con el valor
+        setValues({...values,error: false, [sNombre]: event.target.value});
+   }else{
+        //oops
+        setValues({...values,error:resultado.incidente, [sNombre]: event.target.value});
+   }
 
-            ver =  value === password ? '' : 'las 2 contraseñas no coinciden';
-            ver = regexPassword.test(value)  ? '' : 'la contraseña debe tener 1 mayuscula 1 minuscula 1 numero y 8 a 16 carácteres';
-            
-       
-            setValues({
-                ...values,
-                error: ver,
-                [sNombre]: event.target.value
-            });
-            break;
-
-            case 'password':
-           
-
-            
-                ver =  value === password ? '' : 'las 2 contraseñas no coinciden';
-                
-            
-                setValues({
-                    ...values,
-                    error: ver,
-                    [sNombre]: event.target.value
-                });
-                
-                break;
-          
-        default:
-            setValues({
-                ...values,
-                error: false,
-                [sNombre]: event.target.value
-            });
-            break;
-    }
-
-
+    
 
 }
 
@@ -150,7 +99,10 @@ const handleChange = sNombre => event => {
         setValues({...values, error:false});
         //una vez se hace el click, se realiza esta funcion
         //esta funcion esta localizado en ../autentificacion/index.js
-   
+
+    const resultado=checking({sNombre, sApellido, sContrasena, sCorreo, 
+        dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
+    if (resultado.valido&&password===sContrasena) {
         signUp({sNombre, sApellido, sContrasena, sCorreo, 
             dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
         //funcion para comprobar si se crea la cuenta con exito
@@ -175,14 +127,25 @@ const handleChange = sNombre => event => {
                 });
             }
         });
+    } else {
+       //oops
+       setValues({...values,error:''.concat(resultado.incidente,' , Por favor llene correctamente todo el formulario antes de enviar'), [sNombre]: event.target.value});
+    }
+        
+
+
     }
 
     
 
-    //funcion para mostrar error
-    /*error ? '' : 'none' --> si el error del state tiene algo, 
-    se muestra el error, si no, display: none*/
-    //si usa () en vez de {} no hay que poner return();
+    
+
+     /** Ying
+      *      funcion para mostrar error
+      * error ? '' : 'none' --> si el error del state tiene algo, 
+      * se muestra el error, si no, display: none   
+      *   si usa () en vez de {} no hay que poner return();
+      */
     const mostrarError = () => (
         <div className="alert alert-danger" 
         style={{display: error ? '' : 'none'}}>
@@ -260,7 +223,7 @@ const handleChange = sNombre => event => {
             </div>
 
             <div className="btnCentral">
-            <button   onClick={crearCuenta}  disabled={!error}  className="btn btn-outline-primary btnCentral">
+            <button   onClick={crearCuenta}   className="btn btn-outline-primary btnCentral">
                 Crear Cuenta
             </button>
 
