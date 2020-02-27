@@ -12,47 +12,37 @@ const SignIn = () => {
     //las variables del useState tienen que ser iguales a las del API
     const [values, setValues] = useState({
         //todo se elimina, solo se deja correo y contra
-        sNombre: "",
-        sApellido: "",
+        
         sContrasena: "",
         sCorreo: "",
-        dNacimiento: "",
-        aRecetas: [],
-        aFavoritos: [],
-        aRecetas: [],
-        oDireccion: {},
-        bActivo: true,
         sPermisos: "1",
-        sDireccion: "string"
+        loading:false ,
+        redirecionar:false,
+        error:""
             });
 
 
     //destruve el signUp State
     //para ser declarado como nombre en vez de SignUp.values.nombre
     const {sContrasena, sCorreo, 
-        loading, error, redirecionar , dNacimiento, sPermisos, sNombre, sApellido,aRecetas,aFavoritos,sDireccion,
-        oDireccion, bActivo} = values
+        loading, error,redirecionar, sPermisos} = values
     
     //distructive the los datos del local storage
     const {_id} = isAutentificacion();
-    //funciona que returna otra funcion
-    /*cada vez que se cambia algo de los input, 
-    se va a guardar en esta funcion y ser guardado en el state*/
-    const handleChange = sNombre => event => {
-        //...values --> unirlo con los valores anteriores como ... del arreglo
-        // error: false --> en caso que el usuario escriba algo y lo deja de escribir, para ocultar ese error
-        //[name]: event.target.value --> lo que sea que ingrese el usuario en el input, puede ser nombre, email, etc.
-        //una vez guardados estos valores en el state solo se manda al backend
-        setValues({...values, error: false, [sNombre]: event.target.value});
+ 
+    /** Jafet
+     * esto es handlechange
+     * function handleChange(campo) {
+     * return function(event) {
+     *    setValues({ ...values, error: false, [name]: event.target.value });
+     *   };
+     * @params sNombre
+     */
+    const handleChange = campo => event => {
+     
+        setValues({...values, error: false, [campo]: event.target.value});
     }
-
-    /*
-    esto es lo mismo de arriba
-    function handleChange(name) {
-        return function(event) {
-            setValues({ ...values, error: false, [name]: event.target.value });
-        };
-    }*/
+ 
 
 
     const iniciarSession = (event) => {
@@ -97,7 +87,7 @@ const SignIn = () => {
         
     
 
-    const mostrarFunciona = () => (
+    const mostrarLoading = () => (
         loading && (
         <div className="alert alert-info">
             <h2>Loading...</h2>
@@ -154,7 +144,7 @@ const SignIn = () => {
                 height="100" width="100" />
 
                 <div className="espacioV">
-                    {mostrarFunciona()}
+                    {mostrarLoading()}
                     {mostrarError()}
                     {signUpForm()}
                     {redireccionarUsuario()}

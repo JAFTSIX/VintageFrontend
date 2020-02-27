@@ -8,16 +8,11 @@ import {resultado,HandleChangeValidation,checking } from './procesos/Validar_Usu
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signUp} from '../autentificacion'; 
 
-const regexsNombre_Apellido = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]{1,60}$/
 
-/*La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
-NO puede tener otros símbolos. */
-const regexPassword = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
-
-const regexsCorreo = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
 
 const SignUp = () => {
-    //las variables del useState tienen que ser iguales a las del API
+
+
     const [values, setValues] = useState({
         sNombre: "",
         sApellido: "",
@@ -68,7 +63,7 @@ const {
  * [name]: event.target.value --> lo que sea que ingrese el usuario en el input, puede ser nombre, email, etc.
  * una vez guardados estos valores en el state solo se manda al backend
  */ 
-const handleChange = sNombre => event => {
+const handleChange = campo => event => {
 
     event.preventDefault();
     const {
@@ -82,10 +77,10 @@ const handleChange = sNombre => event => {
   
    if (resultado.valido) {
         //esta todo bien con el valor
-        setValues({...values,error: false, [sNombre]: event.target.value});
+        setValues({...values,error: false, [campo]: event.target.value});
    }else{
         //oops
-        setValues({...values,error:resultado.incidente, [sNombre]: event.target.value});
+        setValues({...values,error:resultado.incidente, [campo]: event.target.value});
    }
 
     
