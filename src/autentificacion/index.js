@@ -36,7 +36,7 @@ export const signIn = (user) => {
     //body: JSON.stringify(user) //convierte el objeto en json string
     //console.log(nombre, apellido1, email, password);
     //fetch();
-    //console.log(JSON.stringify(user));
+    
 
     return fetch(`${API}/login`, {
             method: "POST",
@@ -44,12 +44,12 @@ export const signIn = (user) => {
                 Accept: 'application/json',
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(user) //convierte el objeto en json string
+            body: JSON.stringify({ email: user.sCorreo, password: user.sContrasena }) //convierte el objeto en json string
 
         })
 
         .then(response => {
-            console.log(response.json())
+            console.log(response)
             return response.json()
         })
         .catch(err => {

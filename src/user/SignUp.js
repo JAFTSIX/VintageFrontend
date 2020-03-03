@@ -97,6 +97,7 @@ const handleChange = campo => event => {
 
     const resultado=checking({sNombre, sApellido, sContrasena, sCorreo, 
         dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
+        
     if (resultado.valido&&password===sContrasena) {
         signUp({sNombre, sApellido, sContrasena, sCorreo, 
             dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
@@ -124,7 +125,7 @@ const handleChange = campo => event => {
         });
     } else {
        //oops
-       setValues({...values,error:''.concat(resultado.incidente,' , Por favor llene correctamente todo el formulario antes de enviar'), [sNombre]: event.target.value});
+       setValues({...values,error:''.concat(resultado.incidente,' , Por favor llene correctamente todo el formulario antes de enviar'), funciona: false});
     }
         
 

@@ -35,14 +35,14 @@ function No_Vacio(objeto) {
     }
     if (!regexPassword.test(objeto.sContrasena)) {
         //false
-        return respuesta = new resultado(false, ' al menos un dígito, al menos una minúscula y al menos una mayúscula.NO puede tener otros símbolos')
+        return respuesta = new resultado(false, 'Introducir al menos un dígito, al menos una minúscula y al menos una mayúscula. NO puede tener otros símbolos')
     }
     var today = new Date()
     var nacimiento = new Date(objeto.dNacimiento)
 
     if (!(today > nacimiento)) {
         //   alert ("Error!");
-        return new resultado(false, '¿como le haces para haber nacido hoy y registrarte aqui?')
+        return new resultado(false, 'Fecha inválida ')
     }
 
     return respuesta;
@@ -57,30 +57,30 @@ function No_Vacio(objeto) {
         case 'sNombre':
             respuesta =
                 regexsNombre_Apellido.test(value) ?
-                  new resultado(true, 'todo bien') : new resultado(false, 'Tu Nombre tiene que tener mas de 1 carácter!') ;
+                  new resultado(true, 'todo bien') : new resultado(false, '¡Tu Nombre tiene que tener mas de 1 carácter!') ;
             
             break;
         case 'sApellido':
             respuesta =
                 regexsNombre_Apellido.test(value) ?
-                new resultado(true, 'todo bien'): new resultado(false,'Tu Apellido tiene que tener mas de 1 carácter!');
+                new resultado(true, 'todo bien'): new resultado(false,'¡Tu Apellido tiene que tener mas de 1 carácter!');
 
             break;
         case 'sCorreo':
             respuesta =
-                regexsCorreo.test(value) ? new resultado(true, 'todo bien'): new resultado(false,'El correo no es valido!');
+                regexsCorreo.test(value) ? new resultado(true, 'todo bien'): new resultado(false,'¡El correo no es valido!');
 
             break;
         case 'sContrasena':
 
           
-            respuesta = regexPassword.test(value) ? new resultado(true, 'todo bien'): new resultado(false,'al menos un dígito, al menos una minúscula y al menos una mayúscula.NO puede tener otros símbolos');
+            respuesta = regexPassword.test(value) ? new resultado(true, 'todo bien'): new resultado(false,'Introducir al menos un dígito, al menos una minúscula y al menos una mayúscula. NO puede tener otros símbolos');
            
             break;
 
         case 'password':
 
-            respuesta = regexPassword.test(value) ? new resultado(true, 'todo bien'): new resultado(false,'al menos un dígito, al menos una minúscula y al menos una mayúscula.NO puede tener otros símbolos');
+            respuesta = regexPassword.test(value) ? new resultado(true, 'todo bien'): new resultado(false,'Introducir al menos un dígito, al menos una minúscula y al menos una mayúscula. NO puede tener otros símbolos');
 
             break;
 
@@ -124,3 +124,52 @@ export  function HandleChangeValidation(name,value) {
   }
   
   
+export  function checkingLogin(objeto) {
+
+    var respuesta = new resultado(true, 'todo bien')
+  
+    if (!regexsCorreo.test(objeto.sCorreo)) {
+        //false
+      respuesta = new resultado(false, '¡El correo no es válido!')
+    }
+    if (!regexPassword.test(objeto.sContrasena)) {
+        //false
+        respuesta = new resultado(false, '¡La contraseña no es válida!')
+    }
+
+    if (!respuesta.valido) {
+      return respuesta;
+    }
+  
+  
+    return respuesta;
+  }
+  
+  
+  
+export  function HandleChangelogin(name,value) {
+
+    var respuesta = new resultado(true, 'todo bien')
+    switch (name) {
+        case 'sCorreo':
+            respuesta =
+                regexsCorreo.test(value) ? new resultado(true, 'todo bien'): new resultado(false,'El correo no es valido!');
+
+            break;
+        case 'sContrasena':
+
+            respuesta = regexPassword.test(value) ? new resultado(true, 'todo bien'): new resultado(false,'al menos un dígito, al menos una minúscula y al menos una mayúscula.NO puede tener otros símbolos');
+           
+            break;
+        default:
+
+                respuesta = new resultado(true, 'todo bien')
+                break;
+
+    }
+  
+    
+
+  
+    return respuesta;
+  }
