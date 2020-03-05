@@ -100,6 +100,29 @@ export const crearReceta = (token,receta) => {
 
 }
 
+export const crearCategoriaReceta = (token,categoria) => {
+
+    return fetch(`${API}/Categoria`, {
+        method: "POST",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(categoria) //convierte el objeto en json string
+        
+    })
+            
+    .then(response => {
+        return response.json()
+    })
+    .catch(err => {
+        
+        console.log(EvalError)
+    })
+
+}
+
 
 export const modificarReceta = (token,receta) => {
 

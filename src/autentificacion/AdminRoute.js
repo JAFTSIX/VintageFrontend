@@ -11,8 +11,7 @@ const AdminRoute = ({component: Component, ...rest}) => (
     <Route  {...rest} render={props => 
         //solo existe en el local storage, y el correo es rebe y contrase;a 123 se puede ingresar como admin
         isAutentificacion() 
-        && isAutentificacion().sContrasena==="123" 
-        && isAutentificacion().sCorreo==="sele" ? (
+        && isAutentificacion().cliente.bAdmin ? (
         //si sí se loguea:
         <Component {...props}/>
     ) : (

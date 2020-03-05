@@ -32,8 +32,7 @@ const Routes = () => {
             <Route path="/SignUp" exact component={SignUp}/>
             <PrivateRoute path="/Perfil" exact component={Perfil}/>
             <AdminRoute path="/Admin" exact component={AdminD}/>
-            <AdminRoute path="/producto/agregar/categoria" 
-            exact component={AgregarCategoria}/>
+            
             <Route path="/producto" exact component={Producto}/>
             <AdminRoute path="/producto/agregar" 
             exact component={AgregarProducto}/>
@@ -45,6 +44,8 @@ const Routes = () => {
             <Route path="/receta" exact component={Receta}/>
             <AdminRoute path="/receta/agregar" 
             exact component={AgregarReceta}/>
+            <AdminRoute path="/receta/agregar/categoria" 
+            exact component={AgregarCategoria}/>
             <AdminRoute path="/Receta/:recetaId/" 
             exact component={ModificarReceta}/>
             <AdminRoute path="/Eliminar/Receta/:recetaId" 

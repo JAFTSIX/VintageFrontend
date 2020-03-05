@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 const AdminD = () => {
 
-    const {_id, sNombre, sApellido,sCorreo, dNacimiento} = isAutentificacion();
+    const {_id, sNombre, sApellido,sCorreo, dNacimiento} = isAutentificacion().cliente;
 
     
     const linkAdmin = () => {

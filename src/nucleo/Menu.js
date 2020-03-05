@@ -3,7 +3,8 @@ import {Link, withRouter} from 'react-router-dom';
 // link --> es igual <a>link</a>, pero no recarga la pagina
 // withRouter --> acceder al prop history, ej: cada que acceda a otro menu el /home se cambia
 import {cerrarSesion, isAutentificacion} from '../autentificacion';
-import SignIn from '../user/SignIn';
+import signIn from '../user/SignIn';
+
 
 
 
@@ -116,10 +117,17 @@ const Menu = ({history}) => {
             {isAutentificacion() && (
                 <li className="nav-item">
                 <span className="nav-link" 
-                    style={{cursor: 'pointer', color: '#ffffff'}} 
-                    onClick={()=> cerrarSesion(()=>{
-                        history.push('/');
-                    })}>
+                    style = {
+                        {
+                            cursor: 'pointer',
+                            color: '#ffffff'
+                        }
+                    }
+                    onClick = {
+                        () => cerrarSesion(() => {
+                            history.push('/');
+                        })
+                    } >
                         SALIR
                 </span>
             </li>
