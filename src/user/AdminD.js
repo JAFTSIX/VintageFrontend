@@ -12,16 +12,35 @@ const AdminD = () => {
     const linkAdmin = () => {
         return(
             <div className="">               
-                <ul className="list-group">                   
+                <ul className="list-group list-group-flush">   
+
+                <a  className="navbar navbar-light" style={{backgroundColor: "#ffc7e4"}}>
+                    Acciones
+                 </a>
+                
                     <li className="list-group-item">
-                        <Link className="nav-link" to="/perfil/modificar">
+                    
+                    
+                        <Link className="nav-link"  to="/perfil/modificar">
                             Modificar Perfil
                         </Link>
+                        <div className="border-top">          </div> 
+
                     </li>
                     <li className="list-group-item">
+                    
                         <Link className="nav-link" to="/perfil/eliminar">
                             Eliminar Perfil
                         </Link>
+                        <div className="border-top"> </div>              
+                    </li>
+
+                    <li className="list-group-item">
+                    
+                        <Link className="nav-link" to="/receta/agregar/categoria">
+                            Crear Categoria de recetas
+                        </Link>
+                        <div className="border-top"> </div>              
                     </li>
                     
                 </ul>
