@@ -6,6 +6,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { makeStyles } from 'material-ui/styles';
 import './login.css';
+import '../index.css'
 
 
 export class FormDetailUser extends Component {
