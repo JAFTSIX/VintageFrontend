@@ -4,6 +4,7 @@ import { isAutentificacion } from '../autentificacion';
 import {getProducto} from './apiAdmin';
 import { modificarProducto } from './apiAdmin';
 import {Redirect} from 'react-router-dom';
+import '../index.css'
 
 
 
