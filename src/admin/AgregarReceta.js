@@ -3,6 +3,7 @@ import Layout from '../nucleo/Layout';
 import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
 import { crearReceta } from './apiAdmin';
+import '../index.css'
 
 const AgregarReceta = () => {
     const [valor, setValor] = useState({
