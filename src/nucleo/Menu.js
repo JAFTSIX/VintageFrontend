@@ -4,6 +4,8 @@ import {Link, withRouter} from 'react-router-dom';
 // withRouter --> acceder al prop history, ej: cada que acceda a otro menu el /home se cambia
 import {cerrarSesion, isAutentificacion} from '../autentificacion';
 import signIn from '../user/SignIn';
+import './principal.css'
+import '../index.css'
 
 
 
@@ -40,7 +42,7 @@ const Menu = ({history}) => {
     //solo es para definir el rol mientras todavia no existe en la api
 
     return(
-    <div>
+    <div className="menuWrap"> 
         <ul className="nav nav-tabs navbar-custom justify-content-end">
             <li className="nav-item ">
                 <Link className="nav-link" style={esHover(history, "/")} to="/">
