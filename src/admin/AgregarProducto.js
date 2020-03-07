@@ -4,6 +4,7 @@ import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
 import { crearProducto } from './apiAdmin';
 import AgregarCategoria  from './AgregarCategoria';
+import '../index.css'
 
 const AgregarProducto = () => {
     const [valor, setValor] = useState({
