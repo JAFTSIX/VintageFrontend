@@ -4,6 +4,7 @@ import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
 import {getProductoG} from './apiProducto';
 import ProductoInterfaz from './ProductoInterfaz';
+import '../index.css'
 
 
 const Producto = () => {
