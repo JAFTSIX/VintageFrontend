@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../nucleo/Layout';
 import {isAutentificacion} from '../autentificacion';
 import {Link} from 'react-router-dom';
+import '../index.css'
 
 
 const Perfil = () => {
