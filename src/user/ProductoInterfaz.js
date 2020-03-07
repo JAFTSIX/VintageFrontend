@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import MostrarImagen from './MostrarImagen';
 import {isAutentificacion} from '../autentificacion/index';
+import '../index.css'
 
 const ProductoInterfaz = ({producto}) => {
     return(
