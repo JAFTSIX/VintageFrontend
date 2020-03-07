@@ -1,5 +1,6 @@
 import {API} from '../config'; //aqui se guarda el puerto del api
 //import { response } from 'express';
+import '../index.css'
 
 /**Ying 
  * body: JSON.stringify(user) //convierte el objeto en json string
