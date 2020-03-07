@@ -17,6 +17,7 @@ import AgregarReceta from './admin/AgregarReceta';
 import ModificarReceta from './admin/ModificarReceta';
 import EliminarReceta from './admin/EliminarReceta';
 import RecetaDetalle from './user/RecetaDetalle';
+import './index.css'
 
 //props --> parámetro de consulta props se puede 
 //utilizar en varios comandos GET 
