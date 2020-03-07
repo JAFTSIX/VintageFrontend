@@ -4,6 +4,7 @@ import Menu from '../nucleo/Menu';
 import candado from './Img/candado.jpg';
 import {Link} from 'react-router-dom';
 import {resultado,HandleChangeValidation,checking } from './procesos/Validar_Usuario';
+import '../index.css'
 
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signUp} from '../autentificacion'; 
