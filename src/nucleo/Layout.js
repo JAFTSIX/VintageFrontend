@@ -1,6 +1,7 @@
 import React, { Children } from "react";
 import Menu from './Menu';
 import '../css.css';
+import '../index.css'
 
 //todo los parametros del Layout son props
 /*estos props son la estructura de la pagina 
