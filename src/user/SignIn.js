@@ -6,6 +6,7 @@ import { Redirect} from 'react-router-dom';
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signIn, autentificacion, isAutentificacion} from '../autentificacion'; 
 import {checkingLogin,HandleChangelogin } from './procesos/Validar_Usuario';
+import '../index.css'
 
 
 const SignIn = () => {
