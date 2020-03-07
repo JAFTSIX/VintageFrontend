@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
 import {eliminarProducto} from './apiAdmin';
 import {Redirect} from 'react-router-dom';
+import '../index.css'
 
 
 const EliminarProducto = (props) => {
