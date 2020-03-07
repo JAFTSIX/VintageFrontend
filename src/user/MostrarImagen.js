@@ -1,6 +1,7 @@
 import React from 'react';
 import {crearProducto} from '../admin/apiAdmin';
 import {API} from '../config';
+import '../index.css'
 
 //item = producto
 //url para hacer request al api
