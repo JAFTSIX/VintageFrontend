@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import {Route, Redirect} from 'react-router-dom'; //documentacion en google react router dom
 import {isAutentificacion} from './index'; //por ahora todavia no se ha hecho
+import '../index.css'
 
 
 //parametro: component de react y el resto del route
