@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
 import {getReceta} from './apiReceta';
 import RecetaInterfaz from './RecetaInterfaz';
+import '../index.css'
 
 const RecetaDetalle = (props) => {
     const [receta, setReceta] = useState({});
