@@ -4,6 +4,7 @@ import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
 import {getReceta} from './apiReceta';
 import RecetaInterfaz from './RecetaInterfaz';
+import '../index.css'
 
 
 const Receta = () => {
