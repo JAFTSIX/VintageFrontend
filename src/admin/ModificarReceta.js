@@ -4,6 +4,7 @@ import { isAutentificacion } from '../autentificacion';
 import {getReceta} from './apiAdmin';
 import { modificarReceta } from './apiAdmin';
 import {Redirect} from 'react-router-dom';
+import '../index.css'
 
 
 
