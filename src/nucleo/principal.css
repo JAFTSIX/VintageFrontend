@@ -1,0 +1,20 @@
+/* menu  */
+.menuFondo{
+    background-color:#e73c7e;
+    
+}
+.nav-tabs{
+    border-style: none !important; 
+}
+
+.nav{
+    height: 50px;   
+    padding-top: 5px;
+}
+
+/* carrousel  */
+.carousel-item{
+    width: 100%;
+    max-height: 700px;
+}
+
