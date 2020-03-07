@@ -3,6 +3,7 @@ import Layout from '../nucleo/Layout';
 import {isAutentificacion} from '../autentificacion';
 import {Link} from 'react-router-dom';
 import {crearCategoriaReceta} from './apiAdmin';
+import '../index.css'
 
 const AgregarCategoria = () => {
     const [valor, setValor] = useState({ 
