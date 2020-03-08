@@ -8,6 +8,7 @@ import banner2 from "../image/banner2.png";
 import banner3 from "../image/banner3.png";
 import logo from "../image/logo.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Link } from 'react-router-dom';
 
 
 
@@ -105,8 +106,11 @@ const Principal = () => {
 
                 <div class="row">   
                     <div class="col-lg-11 marginBot">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block">Ver mas recetas</button>
+                        <Link to={`/Receta`} className="textDecorationone">
+                            <button type="button" class="btn btn-outline-primary btn-lg btn-block">Ver mas recetas</button>
+                        </Link>
                     </div>
+                    
                 </div>
 
                 {/* carrousel producto  */}
@@ -136,7 +140,11 @@ const Principal = () => {
 
                 <div class="row">   
                     <div class="col-lg-11 marginBot">
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block">Ver mas productos</button>
+                    <Link to={`/Producto`} className="textDecorationone">
+                        <button type="button" class="btn btn-outline-primary btn-lg btn-block">
+                            Ver mas productos   
+                        </button>
+                    </Link> 
                     </div>  
                 </div>
 
