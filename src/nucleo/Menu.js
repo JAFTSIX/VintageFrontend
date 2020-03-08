@@ -42,14 +42,14 @@ const Menu = ({history}) => {
     //solo es para definir el rol mientras todavia no existe en la api
 
     return(
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center fixed-top ml-auto">
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         
     <div className="collapse navbar-collapse" id="navbarSupportedContent"> 
-        <ul className="nav nav-tabs navbar-custom justify-content-end navbar-nav mr-auto">
+        <ul className="nav nav-tabs navbar-custom justify-content-end navbar-nav ml-auto topnav-right">
             <li className="nav-item">
                 <Link className="nav-link" style={esHover(history, "/")} to="/">
                     INICIO
