@@ -1,20 +1,65 @@
 /* menu  */
 .menuFondo{
-    background-color:#e73c7e;
+    background-color:#000000;
     
 }
-.nav-tabs{
+.nav-tabs{  
     border-style: none !important; 
 }
 
 .nav{
-    height: 50px;   
-    padding-top: 5px;
+    height: 60px;   
+    padding-top: 10px;
 }
 
 /* carrousel  */
 .carousel-item{
+    display: flex;
+    justify-content: center;
     width: 100%;
-    max-height: 700px;
+    max-height: 1000px;  
 }
+
+.sizeB{ 
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.carousel-caption{
+    border: 0.5px solid rgba(255, 255, 255, 0.404);
+    padding-bottom: 4%;
+    margin-bottom: 13%;
+}
+
+/* titlo  */
+.container{
+    margin-top: 3% !important;
+}
+
+.titlo{
+    border-top: 0.5px solid rgba(0, 0, 0, 0.377);
+    padding: 5% 0 5% 0;   
+}
+
+.colorR{
+    font-weight: bold;
+    color: #ff00ea; 
+    font-size: 2000px;
+}
+
+/* fotos  */
+.fotoPerfil{
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+}
+
+
+
+
+
+
+
+
+
 
