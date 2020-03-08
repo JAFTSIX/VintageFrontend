@@ -125,6 +125,10 @@
     border-color: #ff00ea !important;
     color: white !important;
   }
+
+  .textDecorationone{
+    text-decoration:none !important;
+  }
   
 
 
