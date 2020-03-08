@@ -54,6 +54,38 @@
     border-radius: 100%;
 }
 
+/*carrousel */ 
+  .card {
+    display: flex;
+    height: 280px;
+    width: 200px;
+  /*   margin-left: -50px; */
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+    border-style: none !important;
+    margin: 4px;
+    height: 252px;
+  }
+  
+
+  .card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+  }
+  
+  .card:hover ~ .card {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+  }
+
+  .marginBot{
+      margin-bottom: 10%;
+  }
+  
+
+
 
 
 
