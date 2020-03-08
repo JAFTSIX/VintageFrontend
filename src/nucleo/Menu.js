@@ -16,7 +16,7 @@ import '../index.css'
 //si los dos coinciden, se le hace hover
 const esHover = (history, ruta) => {
     if(history.location.pathname === ruta){
-        return {color: 'rgb(0, 0, 0)'};
+        return {color: '#ff00ea'};
          //si hace hover aparezca este color
     }else {
         return {color: '#ffffff'};
