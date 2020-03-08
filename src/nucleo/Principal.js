@@ -64,22 +64,22 @@ const Principal = () => {
             
                 {/* quienes somos  */}
                 <div class="row">
-                    <div className="titlo col-lg-12 colorR">
+                    <div class="titlo col-lg-12 colorR">
                         <h1 class="text-center">¿QUIENES SOMOS?</h1>   
                     </div>
                 </div>
                 <div class="row">   
-                    <div className="col-lg-3">
+                    <div class="col-lg-3">
                         <img src="https://image.flaticon.com/icons/png/512/16/16363.png" className="fotoPerfil"/>
                     </div>
-                    <div className="col-lg-8 ml-1 mb-10 pb-5">
+                    <div class="col-lg-8 ml-1 mb-10 pb-5">
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                     </div>
                 </div>
 
                 {/* servicios  */}
                 <div class="row">
-                    <div className="titlo col-lg-12 colorR">
+                    <div class="titlo col-lg-12 colorR">
                         <h1 class="text-center">¿QUE OFRECEMOS?</h1> 
                         <h5 class="text-center">Las mejores recetas gourmet</h5> 
                     </div>
@@ -111,7 +111,7 @@ const Principal = () => {
 
                 {/* carrousel producto  */}
                 <div class="row">
-                    <div className="col-lg-12 colorR">
+                    <div class="col-lg-12 colorR">
                         <h5 class="text-center mb-5">Los mejores productos culinarios</h5> 
                     </div>
                 </div>
@@ -135,20 +135,41 @@ const Principal = () => {
                 </div>
 
                 <div class="row">   
-                    <div className="col-lg-11 marginBot">
+                    <div class="col-lg-11 marginBot">
                         <button type="button" class="btn btn-outline-primary btn-lg btn-block">Ver mas productos</button>
-                    </div>
+                    </div>  
                 </div>
 
-                <div class="row">   
-                    <div className="col-lg-3 text-center">
-                        <img src={logo}  />
-
-                    </div>
-                </div>
+                
 
             </div> 
             {/* div del cointainer  */}
+            <div class="footerBG">
+            <div class="container">
+                <div class="row paddingT5">       
+                    <div class="col-lg-6 text-center">
+                        <h4 class="font-weight-bold text-light mb-5">Redes Sociales</h4>
+                        <img src="https://i.pinimg.com/originals/41/28/2b/41282b58cf85ddaf5d28df96ed91de98.png"
+                            height="100" width="74" class="paddingB5"/>
+                        <img src="https://www.pngkey.com/png/full/283-2831746_insta-icon-instagram.png"
+                            height="86" width="59" class="paddingB5"/>
+                        <img src="https://i.pinimg.com/originals/19/7b/36/197b365922d1ea3aa1a932ff9bbda4a6.png"
+                            height="93" width="87" class="paddingB5"/>
+                    </div>
+                    <div class="col-lg-6 text-center">  
+                        <h4 class="font-weight-bold text-light mb-5">Contactenos</h4>
+                        <p class="text-light">Email: selenia.mendez@gmail.com</p>
+                        <p class="text-light mb-5">Telefono: +506 8594-9483</p>
+                    </div>    
+                </div>
+                <div class="row">   
+                    <div class="col-lg-12 text-center">
+                       <hr/>
+                       <p>©2020 Cocina Vintage. Todos los derechos reservados.</p>
+                    </div>  
+                </div>
+            </div>
+            </div>
                 
 </div>
         
