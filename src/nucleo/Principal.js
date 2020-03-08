@@ -152,7 +152,9 @@ const Principal = () => {
 
             </div> 
             {/* div del cointainer  */}
-            <div class="footerBG">
+
+            {/* footer  */}
+            <div class="bg-dark">
             <div class="container">
                 <div class="row paddingT5">       
                     <div class="col-lg-6 text-center">
