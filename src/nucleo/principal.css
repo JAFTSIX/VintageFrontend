@@ -56,7 +56,9 @@
 
 /*carrousel */ 
   .card {
-    display: flex;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;   
     height: 280px;
     width: 200px;
   /*   margin-left: -50px; */
@@ -82,6 +84,46 @@
 
   .marginBot{
       margin-bottom: 10%;
+  }
+
+  .row{
+      display: flex !important;
+  }
+
+  /* footer  */
+  .logoF{
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 208px;
+  width: 280px;
+  padding: -50px;
+  }
+
+  .footerBG{
+      background-color: #000000;
+  }
+
+  .paddingT5{
+      padding-top: 5%;
+  }
+  .paddingB5{
+    padding-bottom: 5%;
+  }
+
+  /* button  */
+  .btn-outline-primary{
+      color: #ff00ea !important;
+      border-color: #ff00ea !important;
+  }
+
+  .btn-outline-primary:hover{
+    background-color: #ff00ea !important;
+    border-color: #ff00ea !important;
+    color: white !important;
   }
   
 
