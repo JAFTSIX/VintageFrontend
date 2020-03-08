@@ -42,9 +42,15 @@ const Menu = ({history}) => {
     //solo es para definir el rol mientras todavia no existe en la api
 
     return(
-    <div className="menuWrap"> 
-        <ul className="nav nav-tabs navbar-custom justify-content-end">
-            <li className="nav-item ">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+    <div className="collapse navbar-collapse" id="navbarSupportedContent"> 
+        <ul className="nav nav-tabs navbar-custom justify-content-end navbar-nav mr-auto">
+            <li className="nav-item">
                 <Link className="nav-link" style={esHover(history, "/")} to="/">
                     INICIO
                 </Link>
@@ -55,7 +61,7 @@ const Menu = ({history}) => {
            {/* esto no esta funcionando todavia  */}
             {isAutentificacion() && sPermisos==='1' &&(
                 <Fragment>
-                    <li className="nav-item">
+                    <li className="nav-item dropdown">
                         <Link className="nav-link" style={esHover(history, "/Admin")} to="/Admin">
                             PERFIL
                         </Link>
@@ -80,19 +86,19 @@ const Menu = ({history}) => {
                 </Fragment>
             )}
             {isAutentificacion() && sPermisos==='0' &&(
-                <li className="nav-item">
+                <li className="nav-item dropdown ">
                     <Link className="nav-link" style={esHover(history, "/Perfil")} to="/Perfil">
                         PERFIL
                     </Link>
                 </li>
             )}
 
-                    <li className="nav-item">
+                    <li className="nav-item dropdown">
                         <Link className="nav-link" style={esHover(history, "/producto")} to="/producto">
                             PRODUCTO
                         </Link>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item dropdown">
                         <Link className="nav-link" style={esHover(history, "/receta")} to="/receta">
                             RECETA
                         </Link>
@@ -102,12 +108,12 @@ const Menu = ({history}) => {
             {/* si no existe ningun usuario en el local storage, va a aparecer esos menus */}
             {!isAutentificacion() && (
                 <Fragment>
-                    <li className="nav-item">
+                    <li className="nav-item dropdown">
                         <Link className="nav-link" style={esHover(history, "/SignIn")} to="/SignIn">
                             INICIAR SESSION
                         </Link>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item dropdown">
                         <Link className="nav-link" style={esHover(history, "/SignUp")} to="/SignUp">
                             CREAR CUENTA
                         </Link>
@@ -117,7 +123,7 @@ const Menu = ({history}) => {
 
             {/* solo va a mostrar el cerrar sesion cuando el usuario esta loguado */}
             {isAutentificacion() && (
-                <li className="nav-item">
+                <li className="nav-item dropdown">
                 <span className="nav-link" 
                     style = {
                         {
@@ -136,6 +142,7 @@ const Menu = ({history}) => {
             )}
         </ul>
     </div>
+    </nav>
     );
 }
 
