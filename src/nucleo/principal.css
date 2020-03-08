@@ -10,8 +10,12 @@
 .nav{
     height: 60px;   
     padding-top: 10px;
-}
+} 
 
+.topnav-right {
+  float: right;
+  justify-content: right;
+}
 /* carrousel  */
 .carousel-item{
     display: flex;
