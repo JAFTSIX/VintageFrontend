@@ -59,7 +59,7 @@ const Menu = ({history}) => {
            {/* si es usuario admin, se va a ver perfil admin,
            si es usuario cliente se ve perfil cliente */}
            {/* esto no esta funcionando todavia  */}
-            {isAutentificacion() && sPermisos==='1' &&(
+            {isAutentificacion() && isAutentificacion().cliente.bAdmin &&(
                 <Fragment>
                     <li className="nav-item dropdown">
                         <Link className="nav-link" style={esHover(history, "/Admin")} to="/Admin">
@@ -74,7 +74,7 @@ const Menu = ({history}) => {
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/producto/agregar/categoria")}                     
-                                to="/producto/agregar/categoria">
+                                to="/producto/agregar">
                                     PRODUCTO
                             </Link>
                         
@@ -85,7 +85,7 @@ const Menu = ({history}) => {
                     
                 </Fragment>
             )}
-            {isAutentificacion()  &&(
+            {isAutentificacion()&& !isAutentificacion().cliente.bAdmin &&(
                 <li className="nav-item dropdown ">
                     <Link className="nav-link" style={esHover(history, "/Perfil")} to="/Perfil">
                         PERFIL

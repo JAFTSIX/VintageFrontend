@@ -1,5 +1,5 @@
 import {API} from '../config';
-
+import { isAutentificacion } from '../autentificacion/index';
 
 export const crearProducto = (token,producto) => {
 
@@ -174,3 +174,93 @@ export const eliminarReceta = (recetaId) => {
         })
 }
 
+
+
+/**
+ * Aviso estos metodos de abajo seran implementados para realizar operaciones basicas
+ *  insert, delete, update, get
+ * @param body se refiere al objeto que va a enviarse en el body
+ * @param token
+ * @param objeto se refiere al objeto del backend que se va a usar
+ */
+export const  getObjeto= (objeto) => {
+
+    return fetch(`${API}/${objeto}/`, {
+        method: "GET",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${isAutentificacion().token}`
+        },
+        
+    })
+            
+    .then(response => {
+        return response.json()
+    })
+    .catch(err => {
+        
+        console.log(EvalError)
+    })
+}
+
+export const eliminarObjeto = (objeto,productId) => {
+    return fetch(`${API}/${objeto}/${productId}`, {
+            method: "DELETE",
+            headers:{
+                Accept: 'application/json',
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${isAutentificacion().token}`
+            },
+        })
+                
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            
+            console.log(err);
+        })
+}
+
+
+export const modificarObjeto = (objeto,body) => {
+
+    return fetch(`${API}/${objeto}/${body._id}`, {
+        method: "PATCH",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${isAutentificacion().token}`
+        },
+        body: JSON.stringify(body) //convierte el objeto en json string
+        
+    })
+            
+    .then(response => {
+        return response.json()
+    })
+    .catch(err => {
+        
+        console.log(EvalError)
+    })
+}
+
+export const getObjetonyId = (objeto,productId) => {
+    return fetch(`${API}/${objeto}/${productId}`, {
+            method: "GET",
+            headers:{
+                Accept: 'application/json',
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${isAutentificacion().token}`
+            }
+        })
+                
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            
+            console.log(err);
+        })
+}

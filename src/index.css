@@ -5,3 +5,8 @@
 h1 h2{
     letter-spacing:100px;
 }
+
+
+.disabled-link {
+    pointer-events: none;
+  }

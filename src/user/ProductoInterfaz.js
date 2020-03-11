@@ -39,8 +39,7 @@ const ProductoInterfaz = ({producto}) => {
                     
 
                     {isAutentificacion() 
-                        && isAutentificacion().sContrasena==="123" 
-                        && isAutentificacion().sCorreo==="sele" &&(
+                        && isAutentificacion().cliente.bAdmin && (
                         <Fragment>
                         {/* // aqui se pasa el id del producto en el url para actualizar */}
                         <Link to={`/Articulo/${producto._id}/?filter[offset]=0&filter[limit]=100&filter[skip]=0`}>

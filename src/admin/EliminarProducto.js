@@ -51,7 +51,7 @@ const EliminarProducto = (props) => {
             
             <div className="row">
             {mostrarFunciona()}   
-                   {redireccionarUsuario()}
+            {redireccionarUsuario()}
                              
             </div>
         </Layout>

@@ -1,46 +1,48 @@
 import React, {useState, useEffect} from 'react';
-import Layout from '../nucleo/Layout';
-import { isAutentificacion } from '../autentificacion';
+import Layout from '../../../nucleo/Layout';
+import { isAutentificacion } from '../../../autentificacion/index';
 import { Link } from 'react-router-dom';
-import {getProductoG} from './apiProducto';
-import ProductoInterfaz from './ProductoInterfaz';
-import '../index.css'
+import {getObjeto} from '../../apiAdmin';
+import CategoriaInterfaz from './ObjetoInterfaz';
+import '../../../index.css'
 
 
-const Producto = () => {
-    //const [productoVendidos, setProductoVendidos] = useState([]);
-    const [productoDisponibles, setProductoDisponibles] = useState([]);
+
+const Categoria = () => {
+    //const [CategoriaVendidos, setCategoriaVendidos] = useState([]);
+    const [CategoriaDisponibles, setCategoriaDisponibles] = useState([]);
     const [error, setError] = useState(false);
+   
 
-    //cargar productos para visualizar
+    //cargar Categorias para visualizar
     
-    const cargarProductoDisponiles = () => {
-        getProductoG('bActivo')
+    const cargarCategoriaDisponibles = () => {
+        getObjeto('Categoria')
         .then(data=>{
             if(data.error){
                 setError(data.error)
             }else{
-                setProductoDisponibles(data);
-                console.log(data);
+                setCategoriaDisponibles(data);
+                //console.log(data);
             }
         })
     }
 
     //carga al puro principio y cuando sea que se haga cambio va a cargar 
-    useEffect(()=>{
-        cargarProductoDisponiles()
+    useEffect( ()=>{
+        cargarCategoriaDisponibles()
     }, []);
     
 
-    const crudProducto = () => {
+    const crudCategoria = () => {
         return(
             <div className="">               
                 <ul className="list-group">                   
                     <li className="list-group-item">
                         <Link className="nav-link btn btn-outline-primary 
                             mt-2 mb-2 agregarPadding mr-2
-                        " to="/producto/agregar">
-                            Agregar Producto
+                        " to="/Categoria/agregar">
+                            Agregar Categoria
                         </Link>
                     </li>
                 
@@ -55,7 +57,7 @@ const Producto = () => {
         && isAutentificacion().cliente.bAdmin){
             return(
                 <div>
-                    {crudProducto()}
+                    {crudCategoria()}
                 </div>
             );
         }else{
@@ -64,7 +66,7 @@ const Producto = () => {
     }
 
     return (
-        <Layout titulo="PRODUCTOS" 
+        <Layout titulo="CategoriaS" 
         descripcion="Chef Selenia Mendez" 
         className="container-fluid">
             
@@ -76,11 +78,11 @@ const Producto = () => {
             </div>
             
             {/* contenido principal */}
-        
+        <br></br>
             <div className="row">     
                                        
-                {productoDisponibles.map((producto, i)=>(
-                    <ProductoInterfaz key={i} producto={producto}/>
+                {CategoriaDisponibles.map((Categoria, i)=>(
+                    <CategoriaInterfaz key={i} Categoria={Categoria}/>
                 ))}                   
 
             </div>
@@ -92,4 +94,4 @@ const Producto = () => {
     );
 }
 
-export default Producto;
+export default Categoria;

@@ -7,7 +7,15 @@ import PrivateRoute from './autentificacion/PrivadoRoute';
 import Perfil from './user/Perfil';
 import AdminRoute from './autentificacion/AdminRoute';
 import AdminD from './user/AdminD';
+
+
+import categoria from './admin/support/Categorias/listar';
+import EliminarCategoria from './admin/support/Categorias/delete';
+
+import ModificarCategoria from './admin/support/Categorias/update';
+
 import AgregarCategoria from './admin/AgregarCategoria';
+
 import AgregarProducto from './admin/AgregarProducto';
 import Producto from './user/Producto';
 import ModificarProducto from './admin/ModificarProducto';
@@ -53,7 +61,25 @@ const Routes = () => {
             exact component={EliminarReceta}/>
             <PrivateRoute path="/Receta/Detalle/:recetaId" exact
              component={RecetaDetalle}/>
+             
+             <AdminRoute path="/categoria/Support/" 
+            exact component={categoria}/>
+            <AdminRoute path="/categoria/Support/Eliminar/:_Id" 
+            exact component={EliminarCategoria}/>
+            <AdminRoute path="/categoria/Support/actualizar/:_Id/" 
+            exact component={ModificarCategoria}/>
+     {/*       
+            /*<AdminRoute path="/categoria/Support/" 
+            exact component={}/>
+            <AdminRoute path="/categoria/Support/agregar" 
+            exact component={AgregarCategoria}/>
+            <AdminRoute path="/categoria/Support/actualizar/:recetaId/" 
+            exact component={}/>
+            <AdminRoute path="/categoria/Support/Eliminar/:recetaId" 
+            exact component={}/>
+          
 
+     */}
 
         </Switch>
     </BrowserRouter>
