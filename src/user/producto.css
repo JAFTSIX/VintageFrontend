@@ -80,3 +80,14 @@
   }
 
 
+  /* btn  */
+  .btnPink{
+      background-color: #ee9291;
+      border-color: #ee9291;
+  }
+
+  .btnPink:hover{
+    background-color: #a85150;
+    border-color: #a85150;
+  }
+
