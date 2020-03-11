@@ -19,8 +19,11 @@ const Layout = ({
 
         <div className="jumbotron">
         <Menu />
-            <h2 className="pt-5">{titulo}</h2>
-            <p className="lead">{descripcion}</p>
+            <div className="jumbotronContainer">
+                <h2 className="pt-5">{titulo}</h2>
+                <p className="lead">{descripcion}</p>
+            </div>
+            
         </div>
 
         <div className={className}>{children}</div>
