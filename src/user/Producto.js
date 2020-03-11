@@ -66,7 +66,7 @@ const Producto = () => {
 
     return (
         <Layout titulo="PRODUCTOS" 
-        descripcion="Chef Selenia" 
+        descripcion="Chef Selenia Mendez" 
         className="container-fluid">
             
             {/* funciones de admin */}
