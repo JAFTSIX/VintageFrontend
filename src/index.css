@@ -1,3 +1,7 @@
 * {
     font-family: 'Roboto', monospace;
 }   
+
+h1 h2{
+    letter-spacing:100px;
+}
