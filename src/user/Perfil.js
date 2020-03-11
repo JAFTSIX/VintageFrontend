@@ -7,8 +7,12 @@ import '../index.css'
 
 const Perfil = () => {
 
-    const {_id, sNombre, sApellido,sCorreo, dNacimiento} = isAutentificacion();
+    const {_id, sNombre, sApellido,sCorreo,dNacimiento} = isAutentificacion().cliente;
+    const fechaNacimiento = (new Date(dNacimiento).getDate() + "/" + (new Date(dNacimiento).getMonth() + 1) + "/" + new Date(dNacimiento).getFullYear()); 
 
+     
+
+   
     
     const linkUsuario = () => {
         return(
@@ -41,7 +45,7 @@ const Perfil = () => {
                     <li className="list-group-item">Nombre: {sNombre}</li>
                     <li className="list-group-item">Apellidos: {sApellido}</li>
                     <li className="list-group-item">Email: {sCorreo}</li>
-                    <li className="list-group-item">Fecha de Nacimiento: {dNacimiento}</li>
+                    <li className="list-group-item">Fecha de Nacimiento: {fechaNacimiento}</li>
                 </ul>
             </div>
         );
@@ -72,7 +76,8 @@ const Perfil = () => {
             
             <div className="row">
                 {/* los links de los usuarios */}
-                
+               
+
                 <div className="col-9">
                     {datosPersonales()}
                     {historialCompra()}

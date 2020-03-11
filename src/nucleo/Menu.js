@@ -85,7 +85,7 @@ const Menu = ({history}) => {
                     
                 </Fragment>
             )}
-            {isAutentificacion() && sPermisos==='0' &&(
+            {isAutentificacion()  &&(
                 <li className="nav-item dropdown ">
                     <Link className="nav-link" style={esHover(history, "/Perfil")} to="/Perfil">
                         PERFIL
