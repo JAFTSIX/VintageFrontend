@@ -4,7 +4,8 @@ import Menu from '../nucleo/Menu';
 import candado from './Img/candado.jpg';
 import {Link} from 'react-router-dom';
 import {resultado,HandleChangeValidation,checking } from './procesos/Validar_Usuario';
-import '../index.css'
+import '../index.css';
+import './login.css';
 
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signUp} from '../autentificacion'; 
@@ -168,7 +169,7 @@ const handleChange = campo => event => {
     //sirve para debug
     const signUpForm = () =>(
         <form>
-            <div className="form-group">
+            <div className="form-group mt-30">
                 <label className="text-muted">
                     Nombre
                 </label>
@@ -233,11 +234,11 @@ const handleChange = campo => event => {
     return (
         <div className="contenido">
             <Menu />
-            <div className="container col-md-8 offset-md-2">
-                <img src={candado} className="rounded mx-auto d-block img-fluid" alt="..."
+            <div className="container col-md-8 offset-md-2 mt-11">
+                <img src={candado} className="rounded mx-auto d-block img-fluid mt-5 mt-11" alt="..."
                 height="100" width="100" />
 
-                <div className="espacioV">
+                <div className="espacioV .mt-11">
                     {mostrarFunciona()}
                     {mostrarError()}
                     {signUpForm()}
