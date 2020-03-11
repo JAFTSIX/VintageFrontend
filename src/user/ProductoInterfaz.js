@@ -25,7 +25,7 @@ const ProductoInterfaz = ({producto}) => {
 
                         {/* Botones  */}
                         <Link to="/">
-                            <button className="btn btn-primary 
+                            <button className="btn btn-primary btnPink 
                             mt-2 mb-2 agregarPadding mr-2">
                                 Ver Producto
                             </button>
