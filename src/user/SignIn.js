@@ -6,7 +6,8 @@ import { Redirect} from 'react-router-dom';
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signIn, autentificacion, isAutentificacion} from '../autentificacion'; 
 import {checkingLogin,HandleChangelogin } from './procesos/Validar_Usuario';
-import '../index.css'
+import '../index.css';
+import './login.css';
 
 
 const SignIn = () => {
@@ -180,11 +181,11 @@ const SignIn = () => {
     return (
         <div className="contenido">
             <Menu />
-            <div className="container col-md-8 offset-md-2">
-                <img src={candado} className="rounded mx-auto d-block img-fluid" alt="..."
+            <div className="container col-md-8 offset-md-2 mt-10">
+                <img src={candado} className="rounded mx-auto d-block img-fluid mt-10" alt="..."
                 height="100" width="100" />
 
-                <div className="espacioV">
+                <div className="espacioV mb-5">
                     {mostrarLoading()}
                     {mostrarError()}
                     {signUpForm()}
