@@ -35,6 +35,8 @@
     margin-bottom: 13%;
 }
 
+
+
 /* titlo  */
 .container{
     margin-top: 3% !important;
@@ -59,7 +61,7 @@
 }
 
 /*carrousel */ 
-  .card {
+  .cardP {
     display: block;
   margin-left: auto;
   margin-right: auto;   
@@ -75,12 +77,12 @@
   }
   
 
-  .card:hover {
+  .cardP:hover {
     transform: translateY(-20px);
     transition: 0.4s ease-out;
   }
   
-  .card:hover ~ .card {
+  .cardP:hover ~ .card {
     position: relative;
     left: 50px;
     transition: 0.4s ease-out;
