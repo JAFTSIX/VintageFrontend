@@ -2,25 +2,32 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import MostrarImagenReceta from './MostrarImagenReceta';
 import {isAutentificacion} from '../autentificacion/index';
-import '../index.css'
+import '../index.css';
+import './producto.css';
 
 const RecetaInterfaz = ({receta}) => {
     return(
         <div className="col-4 mb-3">
             <div className="card">
-                <div className="card-header tituloCard">
-                    {receta.sNombre}
-                </div>
                 <div className="card-body">
+                    <div className="card-overlay"></div>
+                    {/* imagen  */} 
                     <MostrarImagenReceta item={receta}
                     url="Articulo"/>
-                    <p><b>Descripcion:</b>  {receta.sTexto}</p>
-                    <Link to={`/Receta/Detalle/${receta._id}`}>
-                        <button className="btn btn-outline-primary 
-                        mt-2 mb-2 agregarPadding mr-2">
-                            Ver Receta
-                        </button>
-                    </Link>
+                    
+                    <div className="btnProductos fadeIn-top"> 
+                    {/* titulo  */}
+                        <h1 className="text-capitalize font-weight-bold text-center text-light">{receta.sNombre}</h1>
+                        {/* <p><b>Descripcion:</b>  {receta.sTexto}</p> */}
+
+                        {/* Botones  */}
+                        <Link to={`/Receta/Detalle/${receta._id}`}>
+                            <button className="btn btn-primary btnPink 
+                            mt-2 mb-2 agregarPadding mr-2">
+                                Ver Receta
+                            </button>
+                        </Link>
+                    </div>
 
                     {isAutentificacion() 
                         && isAutentificacion().sContrasena==="123" 
