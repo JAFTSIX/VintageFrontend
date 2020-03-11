@@ -13,15 +13,13 @@ const Layout = ({
     className, 
     children}) => (
         
-    <div>
-        
-        
+    <div>    
 
         <div className="jumbotron">
         <Menu />
             <div className="jumbotronContainer">
-                <h2 className="pt-5">{titulo}</h2>
-                <p className="lead">{descripcion}</p>
+                <h1 className="pt-5">{titulo}</h1>
+                <h4 className="lead">{descripcion}</h4>
             </div>
             
         </div>
