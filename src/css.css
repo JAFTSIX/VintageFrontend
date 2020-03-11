@@ -19,11 +19,11 @@ p{
 
 .jumbotron{
     width: 30wh;    
-    height: 60vh;
+    height: 70vh;
     color: #fff;
-    background-image: url("https://www.maquinariadehosteleria.net/blog/wp-content/uploads/2018/02/cuchillo-1.jpg"),
-                    linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); 
-    background-size: 400% 400%;
+    background-image: url("https://cdn.shopify.com/s/files/1/1856/9027/products/il_fullxfull.1464035132_oar9_530x@2x.jpg?v=1522332447"),
+                    linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);    
+    background-size: 250% 250%;
     -webkit-animation: Gradient 15s ease infinite;      
     -moz-animation: Gradient 15s ease infinite;
     animation: Gradient 15s ease infinite;
@@ -39,9 +39,6 @@ p{
     background-color: #343a406b;
     padding: 1% 4% 3% 4%;
     border-radius: 2%;
-}
-h1 h2{
-    letter-spacing:100px;
 }
 
 @-webkit-keyframes Gradient {
