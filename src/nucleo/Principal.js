@@ -34,7 +34,7 @@ const Principal = () => {
                             <img class="d-block w-100" src={banner1} alt="First slide"/>
                                 <div class="carousel-caption d-none d-md-block">
                                     <h1 className="sizeB">COCINA VINTAGE</h1>
-                                    <h3>Selenia Mendez</h3>
+                                    <h3>Chef Selenia Mendez</h3>
                                 </div>
                     </div>
                     <div class="carousel-item">    
