@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../../../nucleo/Layout';
-import {eliminarObjeto} from '../../apiAdmin';
+import {eliminarObjeto,errorTranslator} from '../../apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../../../index.css'
 
@@ -16,17 +16,15 @@ const EliminarCategoria= (props) => {
     const [valor, setValor] = useState({          
         CategoriaEliminado:"",
         redirect:false,
+        error:false
     });
 
     const [open, setOpen] = React.useState(true);
-    const [seguro, setSeguro] = React.useState(false);
-    const {CategoriaEliminado, redirect} = valor;
+    
+    const {error, redirect} = valor;
 
 
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
+    
 
     const handleClose= seguir=>_evento => {
      
@@ -51,14 +49,21 @@ const EliminarCategoria= (props) => {
     const eliminar = _Id => {
 
        /*AQUI */
-       console.log('sdgasdga')
-
+    
        
         eliminarObjeto('Categoria',_Id)
         .then(data=>{
-            setValor({
-                redirect:true
-            })
+
+          if ('error' in data) {
+            setValor({...valor, error:errorTranslator(data.error.message) });
+            
+        } else{
+
+          setValor({
+            redirect:true
+          })
+        }
+          
             
         })
        
@@ -96,6 +101,16 @@ const EliminarCategoria= (props) => {
         
         </div>
     );
+
+    const mostrarError = () => (
+      <div className="alert alert-danger" 
+      style={{display: error ? '' : 'none'}}>
+          {error}
+         
+      </div>
+      
+  );
+      
 
     return (
         <Layout titulo="ELIMINAR Categoria" 

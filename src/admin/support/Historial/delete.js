@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../../../nucleo/Layout';
-import {eliminarObjeto} from '../../apiAdmin';
+import {eliminarObjeto,errorTranslator} from '../../apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../../../index.css'
 
@@ -56,10 +56,16 @@ const EliminarHistorial= (props) => {
        
         eliminarObjeto('Historial',_Id)
         .then(data=>{
-            setValor({
-                redirect:true
-            })
+
+           if ('error' in data) {
+            setValor({...valor, error:errorTranslator(data.error.message) });
             
+        } else{
+
+          setValor({
+            redirect:true
+          })
+        }
         })
        
         

@@ -215,7 +215,7 @@ export const eliminarObjeto = (objeto,productId) => {
         })
                 
         .then(response => {
-            return response.json()
+            return response
         })
         .catch(err => {
             
@@ -238,11 +238,12 @@ export const modificarObjeto = (objeto,body) => {
     })
             
     .then(response => {
-        return response.json()
+     
+        return response
     })
     .catch(err => {
         
-        console.log(EvalError)
+        console.log(err)
     })
 }
 
@@ -284,8 +285,22 @@ export const insertObject = ( objeto,body) => {
         return response.json()
     })
     .catch(err => {
+        //'Error verifying token: jwt expired'
         
         console.log(EvalError)
     })
+
+}
+
+export const errorTranslator=(untranslated)=>{
+    switch (untranslated) {
+        case 'Error verifying token: jwt expired':
+        
+           return 'su sesión ha expirado, inicie sesión nuevamente'
+            
+    
+        default:
+            return untranslated;
+    }
 
 }

@@ -1,6 +1,8 @@
 //#region Expresiones regulares
 
 
+const regex_texto = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9]+$/
+const regex_numero = /^[0-9]+$/
 const regexsNombre_Apellido = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]{1,60}$/
 
 /*La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
@@ -18,7 +20,7 @@ export class resultado {
       }
 }
 
-function No_Vacio(objeto) {
+function  isClienteValid(objeto) {
     var respuesta = new resultado(true, 'todo bien')
 
     if (!regexsNombre_Apellido.test(objeto.sNombre)) {
@@ -50,7 +52,7 @@ function No_Vacio(objeto) {
 
 
 
- function estavez(name, value) {
+ function SwitchValidaCliente(name, value) {
     let respuesta = new resultado(true, 'todo bien')
     
     switch (name) {
@@ -94,12 +96,12 @@ function No_Vacio(objeto) {
 }
 
 
-export  function checking(objeto) {
+export  function checkingCliente(objeto) {
 
   var respuesta = new resultado(true, 'todo bien')
 
 
-  respuesta = No_Vacio(objeto);
+  respuesta =  isClienteValid(objeto);
   if (!respuesta.valido) {
     return respuesta;
   }
@@ -117,7 +119,7 @@ export  function HandleChangeValidation(name,value) {
     var respuesta = new resultado(true, 'todo bien')
   
   
-    respuesta = estavez(name,value);
+    respuesta = SwitchValidaCliente(name,value);
 
   
     return respuesta;
@@ -173,3 +175,42 @@ export  function HandleChangelogin(name,value) {
   
     return respuesta;
   }
+
+
+export function checkingHistorial(objeto) {
+
+    var respuesta = new resultado(true, 'todo bien')
+
+
+
+    //dFecha: string;
+
+    if (!(new Date() > objeto.dFecha)) {
+        //   alert ("Error!");
+        return new resultado(false, 'Fecha inválida ')
+    }
+    //bMinTest: boolean;
+    //pasa
+    //iDuracion: number;
+    if (!regex_numero.test(objeto.iDuracion)) {
+        //false
+        respuesta = new resultado(false, 'duración invalida')
+    }
+
+    //sCliente: string;
+
+    if (!regex_texto.test(objeto.sCliente)) {
+        //false
+        respuesta = new resultado(false, 'id de cliente invalido')
+    }
+    //sReceta: string;
+
+    if (!regex_texto.test(objeto.sReceta)) {
+        //false
+        respuesta = new resultado(false, 'id de receta invalido')
+    }
+
+
+
+    return respuesta;
+}

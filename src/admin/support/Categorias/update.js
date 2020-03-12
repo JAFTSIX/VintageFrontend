@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../../../nucleo/Layout';
-import {getObjetonyId,modificarObjeto } from '../../apiAdmin';
+import {getObjetonyId,modificarObjeto ,errorTranslator} from '../../apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../../../index.css'
 
@@ -105,12 +105,18 @@ const ModificarCategoria = (props) => {
         setValor({...valor, error:'', loading:true});
         modificarObjeto ('Categoria',{_id,sNombre})
         .then(data=>{
-           
-
+            if ('error' in data) {
+                setValor({...valor, error:errorTranslator(data.error.message) });
+                
+            } else{
+    
                 setValor({
                     CategoriaModificado: true,
                     redirect:true
-                })       
+                })      
+            }
+
+                
         })
         
     }

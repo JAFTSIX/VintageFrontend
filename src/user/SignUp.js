@@ -3,7 +3,7 @@ import Layout from '../nucleo/Layout';
 import Menu from '../nucleo/Menu';
 import candado from './Img/candado.jpg';
 import {Link} from 'react-router-dom';
-import {resultado,HandleChangeValidation,checking } from './procesos/Validar_Usuario';
+import {resultado,HandleChangeValidation,checkingCliente } from './procesos/ValidarDatos';
 import '../index.css';
 import './login.css';
 
@@ -97,7 +97,7 @@ const handleChange = campo => event => {
         //una vez se hace el click, se realiza esta funcion
         //esta funcion esta localizado en ../autentificacion/index.js
 
-    const resultado=checking({sNombre, sApellido, sContrasena, sCorreo, 
+    const resultado=checkingCliente({sNombre, sApellido, sContrasena, sCorreo, 
         dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
         
     if (resultado.valido&&password===sContrasena) {

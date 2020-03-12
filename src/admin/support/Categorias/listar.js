@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../../../nucleo/Layout';
 import { isAutentificacion } from '../../../autentificacion/index';
 import { Link } from 'react-router-dom';
-import {getObjeto} from '../../apiAdmin';
+import {getObjeto,errorTranslator} from '../../apiAdmin';
 import CategoriaInterfaz from './ObjetoInterfaz';
 import '../../../index.css'
 
@@ -19,12 +19,19 @@ const Categoria = () => {
     const cargarCategoriaDisponibles = () => {
         getObjeto('Categoria')
         .then(data=>{
-            if(data.error){
-                setError(data.error)
-            }else{
-                setCategoriaDisponibles(data);
-                //console.log(data);
+            
+            if(data=== undefined){
+                
+                setError('Problemas, intente mas tarde')
+            }  else{
+                if ('error' in data) {
+                    setError(errorTranslator(data.error.message))
+                }else{
+                    setCategoriaDisponibles(data);
+                    //console.log(data);
+                }
             }
+            
         })
     }
 
@@ -64,16 +71,25 @@ const Categoria = () => {
             return("");
         }
     }
-
+    const mostrarError = () => (
+        <div className="alert alert-danger" 
+        style={{display: error ? '' : 'none'}}>
+            {error}
+           
+        </div>
+        
+    );
     return (
         <Layout titulo="Categorias" 
         descripcion="mantenimiento de categorias" 
         className="container-fluid">
-            
+        
             {/* funciones de admin */}
             <div className="row">
                 <div className="col-9">                   
+                {mostrarError()}
                     {mostrarCrud()}
+                    
                 </div>
             </div>
             

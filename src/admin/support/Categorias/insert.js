@@ -2,7 +2,7 @@ import React, {useState, Fragment} from 'react';
 import Layout from '../../../nucleo/Layout';
  
 import {Link} from 'react-router-dom';
-import {insertObject} from '../../apiAdmin';
+import {insertObject,errorTranslator} from '../../apiAdmin';
 import '../../../index.css'
 
 const AgregarCategoria = () => {
@@ -30,28 +30,33 @@ const AgregarCategoria = () => {
          e.preventDefault(); 
          setValor({...valor,error: '', funciona: false});
 
-         console.log(nombre);
-         //hacer request al api para crear categoria
-         insertObject('Categorias',{sNombre:nombre}).then(
-        data=>{
-            if ('error' in data) {
-                setValor({...valor, error:data.error.message, funciona: false});
-                
-            } else {
-
-                console.log(data)
-                setValor({
-                    ...valor,
-                    sNombre: '',
-                    nuevaCategoria: data.sNombre, 
-                    error: false,                
-                    funciona: true
-                });
-            }
-
-            }
-
-         )
+         console.log(nombre); 
+         if (nombre.length>0) {
+             //hacer request al api para crear categoria
+         insertObject('Categoria',{sNombre:nombre}).then(
+            data=>{
+                if ('error' in data) {
+                    setValor({...valor, error:errorTranslator(data.error.message), funciona: false});
+                    
+                } else {
+    
+                    console.log(data)
+                    setValor({
+                        ...valor,
+                        sNombre: '',
+                        nuevaCategoria: data.sNombre, 
+                        error: false,                
+                        funciona: true
+                    });
+                }
+    
+                }
+    
+             )
+         } else {
+            setValor({...valor,error: 'campo vacío', funciona: false});
+         } 
+         
                        
          //setValor({nombre: newNombre});
          console.log(nombre);
@@ -87,7 +92,8 @@ const AgregarCategoria = () => {
                     <label className="text-muetd">Nombre</label>
                     <input type="text" className="form-control"
                     onChange={handleChange('nombre')}
-                    autoFocus required/>
+                    autoFocus 
+                    required/>
                  
                  
 
