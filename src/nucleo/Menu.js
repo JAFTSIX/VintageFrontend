@@ -78,6 +78,19 @@ const Menu = ({history}) => {
                                     PRODUCTO
                             </Link>
                         
+                            <Link className="nav-link" 
+                                style={esHoverDropDown(history, "/categoria/Support/agregar")}                     
+                                to="/categoria/Support/">
+                                    CATEGORIAS
+
+                            </Link>
+
+                            <Link className="nav-link" 
+                                style={esHoverDropDown(history, "/categoria/Support/agregar")}                     
+                                to="/Factura/Support/">
+                                      Factura
+
+                            </Link>
                         </div>
                     </li>
 

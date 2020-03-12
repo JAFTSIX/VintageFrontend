@@ -3,26 +3,26 @@ import Layout from '../../../nucleo/Layout';
 import { isAutentificacion } from '../../../autentificacion/index';
 import { Link } from 'react-router-dom';
 import {getObjeto} from '../../apiAdmin';
-import CategoriaInterfaz from './ObjetoInterfaz';
+import HistorialInterfaz from './ObjetoInterfaz';
 import '../../../index.css'
 
 
 
-const Categoria = () => {
+const Historial = () => {
     
-    const [CategoriaDisponibles, setCategoriaDisponibles] = useState([]);
+    const [HistorialDisponibles, setHistorialDisponibles] = useState([]);
     const [error, setError] = useState(false);
    
 
     
     
-    const cargarCategoriaDisponibles = () => {
-        getObjeto('Categoria')
+    const cargarHistorialDisponibles = () => {
+        getObjeto('Historial')
         .then(data=>{
             if(data.error){
                 setError(data.error)
             }else{
-                setCategoriaDisponibles(data);
+                setHistorialDisponibles(data);
                 //console.log(data);
             }
         })
@@ -30,19 +30,19 @@ const Categoria = () => {
 
     //carga al puro principio y cuando sea que se haga cambio va a cargar 
     useEffect( ()=>{
-        cargarCategoriaDisponibles()
+        cargarHistorialDisponibles()
     }, []);
     
 
-    const crudCategoria = () => {
+    const crudHistorial = () => {
         return(
             <div className="">               
                 <ul className="list-group">                   
                     <li className="list-group-item">
                         <Link className="nav-link btn btn-outline-primary 
                             mt-2 mb-2 agregarPadding mr-2
-                        " to="/categoria/Support/agregar">
-                            Agregar Categoria
+                        " to="/Historial/Support/agregar">
+                            Agregar Historial
                         </Link>
                     </li>
                 
@@ -57,7 +57,7 @@ const Categoria = () => {
         && isAutentificacion().cliente.bAdmin){
             return(
                 <div>
-                    {crudCategoria()}
+                    {crudHistorial()}
                 </div>
             );
         }else{
@@ -66,7 +66,7 @@ const Categoria = () => {
     }
 
     return (
-        <Layout titulo="CategoriaS" 
+        <Layout titulo="HistorialS" 
         descripcion="Chef Selenia Mendez" 
         className="container-fluid">
             
@@ -81,8 +81,8 @@ const Categoria = () => {
         <br></br>
             <div className="row">     
                                        
-                {CategoriaDisponibles.map((Categoria, i)=>(
-                    <CategoriaInterfaz key={i} Categoria={Categoria}/>
+                {HistorialDisponibles.map((Historial, i)=>(
+                    <HistorialInterfaz key={i} Historial={Historial}/>
                 ))}                   
 
             </div>
@@ -94,4 +94,4 @@ const Categoria = () => {
     );
 }
 
-export default Categoria;
+export default Historial;

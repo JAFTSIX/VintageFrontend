@@ -6,11 +6,11 @@ import '../../../index.css'
 
 
 
-const ModificarCategoria = (props) => {
+const ModificarHistorial = (props) => {
     const [valor, setValor] = useState({
         _id: "",
         sNombre : "",
-        CategoriaModificado:"",
+        HistorialModificado:"",
         redirect:false,
         loading: false,
         error : "",
@@ -27,7 +27,7 @@ const ModificarCategoria = (props) => {
         sNombre,
         loading,
         error,
-        CategoriaModificado,
+        HistorialModificado,
         redirect,
         formData
        
@@ -35,9 +35,9 @@ const ModificarCategoria = (props) => {
 
   
    
-    const cargarCategoria = _Id => {
+    const cargarHistorial = _Id => {
 
-        getObjetonyId('Categoria',_Id)
+        getObjetonyId('Historial',_Id)
         .then(data=>{
             if(data.error){
                 setValor({...valor, error:data.error})
@@ -55,7 +55,7 @@ const ModificarCategoria = (props) => {
     useEffect(()=>{
         const _Id = props.match.params._Id
         console.log(_Id)
-        cargarCategoria(_Id)
+        cargarHistorial(_Id)
         
     }, []);
     
@@ -103,19 +103,19 @@ const ModificarCategoria = (props) => {
 
         event.preventDefault();
         setValor({...valor, error:'', loading:true});
-        modificarObjeto ('Categoria',{_id,sNombre})
+        modificarObjeto ('Historial',{_id,sNombre})
         .then(data=>{
            
 
                 setValor({
-                    CategoriaModificado: true,
+                    HistorialModificado: true,
                     redirect:true
                 })       
         })
         
     }
 
-    const agregarCategoriaForm = () => (
+    const agregarHistorialForm = () => (
         <form className="mb-3" onSubmit={clickSubmit}>
             
             <div className="form-group">
@@ -131,7 +131,7 @@ const ModificarCategoria = (props) => {
 
 
             <button className="btn btn-outline-primary">
-                Modificar Categoria
+                Modificar Historial
             </button>
         </form>
     );
@@ -144,7 +144,7 @@ const ModificarCategoria = (props) => {
     );
     const mostrarFunciona = () => (
         <div className="alert alert-info" 
-        style={{display: CategoriaModificado ? '':'none'}}>
+        style={{display: HistorialModificado ? '':'none'}}>
             <h4>{`${sNombre} se ha modificado exitosamente `}</h4>
         </div>
     );
@@ -156,14 +156,14 @@ const ModificarCategoria = (props) => {
 
     const redireccionarUsuario = () => {
         if(redirect){
-            return <Redirect to="/categoria/Support/"></Redirect>
+            return <Redirect to="/Historial/Support/"></Redirect>
         }
             
     }
     
 
     return (
-        <Layout titulo="MODIFICAR Categoria" 
+        <Layout titulo="MODIFICAR Historial" 
         descripcion="" 
         className="container-fluid">
  
@@ -174,7 +174,7 @@ const ModificarCategoria = (props) => {
                     {mostrarLoading()}
                     {mostrarError()}
                     {mostrarFunciona()}                  
-                    {agregarCategoriaForm()}
+                    {agregarHistorialForm()}
                     {redireccionarUsuario()}
                     
                 </div>
@@ -185,4 +185,4 @@ const ModificarCategoria = (props) => {
     );
 }
 
-export default ModificarCategoria;
+export default ModificarHistorial;

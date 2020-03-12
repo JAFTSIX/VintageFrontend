@@ -233,7 +233,7 @@ export const modificarObjeto = (objeto,body) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${isAutentificacion().token}`
         },
-        body: JSON.stringify(body) //convierte el objeto en json string
+        body: JSON.stringify(body) 
         
     })
             
@@ -263,4 +263,29 @@ export const getObjetonyId = (objeto,productId) => {
             
             console.log(err);
         })
+}
+
+
+export const insertObject = ( objeto,body) => {
+
+    return fetch(`${API}/${objeto}`, {
+        method: "POST",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${isAutentificacion().token}`
+        },
+
+        body: JSON.stringify(body)  
+        
+    })           
+    .then(response => {
+
+        return response.json()
+    })
+    .catch(err => {
+        
+        console.log(EvalError)
+    })
+
 }

@@ -11,10 +11,15 @@ import AdminD from './user/AdminD';
 
 import categoria from './admin/support/Categorias/listar';
 import EliminarCategoria from './admin/support/Categorias/delete';
-
 import ModificarCategoria from './admin/support/Categorias/update';
+import AgregarCategoria from './admin/support/Categorias/insert';
 
-import AgregarCategoria from './admin/AgregarCategoria';
+
+import Factura from './admin/support/Facturas/listar';
+import EliminarFactura from './admin/support/Facturas/delete';
+import ModificarFactura from './admin/support/Facturas/update';
+import AgregarFactura from './admin/support/Facturas/insert';
+
 
 import AgregarProducto from './admin/AgregarProducto';
 import Producto from './user/Producto';
@@ -53,21 +58,32 @@ const Routes = () => {
             <Route path="/receta" exact component={Receta}/>
             <AdminRoute path="/receta/agregar" 
             exact component={AgregarReceta}/>
-            <AdminRoute path="/receta/agregar/categoria" 
-            exact component={AgregarCategoria}/>
+            
             <AdminRoute path="/Receta/:recetaId/" 
             exact component={ModificarReceta}/>
             <AdminRoute path="/Eliminar/Receta/:recetaId" 
             exact component={EliminarReceta}/>
             <PrivateRoute path="/Receta/Detalle/:recetaId" exact
              component={RecetaDetalle}/>
+            
              
              <AdminRoute path="/categoria/Support/" 
             exact component={categoria}/>
+            <AdminRoute path="/categoria/Support/agregar" 
+            exact component={AgregarCategoria}/>
             <AdminRoute path="/categoria/Support/Eliminar/:_Id" 
             exact component={EliminarCategoria}/>
             <AdminRoute path="/categoria/Support/actualizar/:_Id/" 
             exact component={ModificarCategoria}/>
+
+            <AdminRoute path="/Factura/Support/" 
+            exact component={Factura}/>
+            <AdminRoute path="/Factura/Support/agregar" 
+            exact component={AgregarFactura}/>
+            <AdminRoute path="/Factura/Support/Eliminar/:_Id" 
+            exact component={EliminarFactura}/>
+            <AdminRoute path="/Factura/Support/actualizar/:_Id/" 
+            exact component={ModificarFactura}/>
      {/*       
             /*<AdminRoute path="/categoria/Support/" 
             exact component={}/>

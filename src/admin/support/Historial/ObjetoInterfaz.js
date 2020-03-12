@@ -9,9 +9,9 @@ import '../../../user/producto.css';
 
 
 
-const CategoriaInterfaz = ({Categoria}) => {
+const HistorialInterfaz = ({Historial}) => {
 
-    
+           //to={`/Historial/Support/Eliminar/${Historial._id}`}
 
     return(
         <div className="col-4 mb-3">
@@ -20,15 +20,15 @@ const CategoriaInterfaz = ({Categoria}) => {
              
 
                     {/* titulo  */}
-                    <h1 className="">{Categoria.sNombre}</h1> 
+                    <h1 className="">{Historial.sNombre}</h1> 
         
                     {isAutentificacion() && isAutentificacion().cliente.bAdmin && (
                         <Fragment>
-                        {/* // aqui se pasa el id del Categoria en el url para actualizar */}
-                        <Link to={`/categoria/Support/actualizar/${Categoria._id}`}>
+                        {/* // aqui se pasa el id del Historial en el url para actualizar */}
+                        <Link to={`/Historial/Support/actualizar/${Historial._id}`}>
                             <button className="btn btn-outline-primary 
                             mt-2 mb-2 agregarPadding mr-2">
-                                Modificar Categoria
+                                Modificar Historial
                             </button>
                         </Link>
 
@@ -36,11 +36,11 @@ const CategoriaInterfaz = ({Categoria}) => {
                     
 
                       
-                      <Link to={`/categoria/Support/Eliminar/${Categoria._id}`} >
+                      <Link to={`/Historial/Support/Eliminar/${Historial._id}`} >
                             <button  className="btn btn-outline-primary 
                             
                             mt-2 mb-2 agregarPadding mr-2" data-toggle="modal" data-target="#exampleModal">
-                                Eliminar Categoria
+                                Eliminar Historial
                             </button>
                             </Link>
                         
@@ -53,4 +53,4 @@ const CategoriaInterfaz = ({Categoria}) => {
     );
 }
 
-export default CategoriaInterfaz;
+export default HistorialInterfaz;

@@ -3,7 +3,7 @@ import Layout from '../nucleo/Layout';
 import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
 import { crearProducto } from './apiAdmin';
-import AgregarCategoria  from './AgregarCategoria';
+import AgregarCategoria  from './support/Categorias/insert';
 import '../index.css'
 
 const AgregarProducto = () => {

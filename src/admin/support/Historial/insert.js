@@ -1,22 +1,21 @@
 import React, {useState, Fragment} from 'react';
-import Layout from '../nucleo/Layout';
-import {isAutentificacion} from '../autentificacion';
+import Layout from '../../../nucleo/Layout';
+ 
 import {Link} from 'react-router-dom';
-import {crearCategoriaReceta} from './apiAdmin';
-import '../index.css'
+import {insertObject} from '../../apiAdmin';
+import '../../../index.css'
 
-const AgregarCategoria = () => {
+const AgregarHistorial = () => {
     const [valor, setValor] = useState({ 
         nombre:"",
-        nuevaCategoria:"",
+        nuevaHistorial:"",
         error: false,
         funciona: false
     });
 
-    //destruture info de local storage
-     const {cliente, token} = isAutentificacion();
+ 
 
-    const {nombre, error, funciona,nuevaCategoria} = valor;
+    const {nombre, error, funciona,nuevaHistorial} = valor;
 
      const handleChange = campo  => event => {
         event.preventDefault();
@@ -32,8 +31,8 @@ const AgregarCategoria = () => {
          setValor({...valor,error: '', funciona: false});
 
          console.log(nombre);
-         //hacer request al api para crear categoria
-         crearCategoriaReceta(token,{sNombre:nombre}).then(
+         //hacer request al api para crear Historial
+         insertObject('Historials',{sNombre:nombre}).then(
         data=>{
             if ('error' in data) {
                 setValor({...valor, error:data.error.message, funciona: false});
@@ -44,7 +43,7 @@ const AgregarCategoria = () => {
                 setValor({
                     ...valor,
                     sNombre: '',
-                    nuevaCategoria: data.sNombre, 
+                    nuevaHistorial: data.sNombre, 
                     error: false,                
                     funciona: true
                 });
@@ -76,11 +75,11 @@ const AgregarCategoria = () => {
     const mostrarFunciona =  () => (
         <div className="alert alert-success" 
         style={{display: funciona ? '' : 'none'}}>
-        Categoria {nuevaCategoria} creada exitosamente.
+        Historial {nuevaHistorial} creada exitosamente.
         </div>
     );
 
-    const nuevaCategoriaForm = () => (
+    const nuevaHistorialForm = () => (
         <form >
 
             <div className="container">
@@ -95,7 +94,7 @@ const AgregarCategoria = () => {
                 </div>
 
                 <button className="btn btn-outline-primary widthCompleto" onClick={clickSubmit}>
-                        Crear Categoria
+                        Crear Historial
                 </button>
             </div>
             
@@ -103,8 +102,8 @@ const AgregarCategoria = () => {
     );
 
     return (
-        <Layout titulo="Categoria de Recetas" 
-        descripcion="Agregar una nueva categoria para las recetas">
+        <Layout titulo="Historial de Recetas" 
+        descripcion="Agregar una nueva Historial para las recetas">
         
             <div className="row">
                 {/* los links de los usuarios */}
@@ -113,7 +112,7 @@ const AgregarCategoria = () => {
                 
                 {mostrarError()}    
                 {mostrarFunciona()}
-                {nuevaCategoriaForm()}
+                {nuevaHistorialForm()}
                 </div>
             </div>
 
@@ -123,4 +122,4 @@ const AgregarCategoria = () => {
 
 }
 
-export default AgregarCategoria;
+export default AgregarHistorial;

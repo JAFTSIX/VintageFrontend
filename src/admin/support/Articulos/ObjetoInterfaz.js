@@ -9,9 +9,9 @@ import '../../../user/producto.css';
 
 
 
-const CategoriaInterfaz = ({Categoria}) => {
+const FacturaInterfaz = ({Factura}) => {
 
-    
+           //to={`/Factura/Support/Eliminar/${Factura._id}`}
 
     return(
         <div className="col-4 mb-3">
@@ -20,15 +20,15 @@ const CategoriaInterfaz = ({Categoria}) => {
              
 
                     {/* titulo  */}
-                    <h1 className="">{Categoria.sNombre}</h1> 
+                    <h1 className="">{Factura.sNombre}</h1> 
         
                     {isAutentificacion() && isAutentificacion().cliente.bAdmin && (
                         <Fragment>
-                        {/* // aqui se pasa el id del Categoria en el url para actualizar */}
-                        <Link to={`/categoria/Support/actualizar/${Categoria._id}`}>
+                        {/* // aqui se pasa el id del Factura en el url para actualizar */}
+                        <Link to={`/Factura/Support/actualizar/${Factura._id}`}>
                             <button className="btn btn-outline-primary 
                             mt-2 mb-2 agregarPadding mr-2">
-                                Modificar Categoria
+                                Modificar Factura
                             </button>
                         </Link>
 
@@ -36,11 +36,11 @@ const CategoriaInterfaz = ({Categoria}) => {
                     
 
                       
-                      <Link to={`/categoria/Support/Eliminar/${Categoria._id}`} >
+                      <Link to={`/Factura/Support/Eliminar/${Factura._id}`} >
                             <button  className="btn btn-outline-primary 
                             
                             mt-2 mb-2 agregarPadding mr-2" data-toggle="modal" data-target="#exampleModal">
-                                Eliminar Categoria
+                                Eliminar Factura
                             </button>
                             </Link>
                         
@@ -53,4 +53,4 @@ const CategoriaInterfaz = ({Categoria}) => {
     );
 }
 
-export default CategoriaInterfaz;
+export default FacturaInterfaz;
