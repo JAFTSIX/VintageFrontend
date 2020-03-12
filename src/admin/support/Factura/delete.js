@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../../../nucleo/Layout';
-import {eliminarObjeto} from '../../apiAdmin';
+import {eliminarObjeto,errorTranslator} from '../../apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../../../index.css'
 
@@ -12,15 +12,15 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-const EliminarFactura= (props) => {
+const EliminarHistorial= (props) => {
     const [valor, setValor] = useState({          
-        FacturaEliminado:"",
+        HistorialEliminado:"",
         redirect:false,
     });
 
     const [open, setOpen] = React.useState(true);
     const [seguro, setSeguro] = React.useState(false);
-    const {FacturaEliminado, redirect} = valor;
+    const {HistorialEliminado, redirect} = valor;
 
 
     const handleClickOpen = () => {
@@ -50,16 +50,20 @@ const EliminarFactura= (props) => {
 
     const eliminar = _Id => {
 
-       /*AQUI */
-       console.log('sdgasdga')
-
+      
        
-        eliminarObjeto('Factura',_Id)
+        eliminarObjeto('Historial',_Id)
         .then(data=>{
-            setValor({
-                redirect:true
-            })
+
+           if ('error' in data) {
+            setValor({...valor, error:errorTranslator(data.error.message) });
             
+        } else{
+
+          setValor({
+            redirect:true
+          })
+        }
         })
        
         
@@ -76,7 +80,7 @@ const EliminarFactura= (props) => {
 
     const redireccionarUsuario = () => {
         if(redirect){
-            return <Redirect to="/Factura/Support/"></Redirect>
+            return <Redirect to="/Historial/Support/"></Redirect>
         }
             
     }
@@ -98,7 +102,7 @@ const EliminarFactura= (props) => {
     );
 
     return (
-        <Layout titulo="ELIMINAR Factura" 
+        <Layout titulo="ELIMINAR Historial" 
         descripcion="" 
         className="container-fluid">
             
@@ -137,4 +141,4 @@ const EliminarFactura= (props) => {
     );
 }
 
-export default EliminarFactura;
+export default EliminarHistorial;

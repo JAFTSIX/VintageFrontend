@@ -73,7 +73,7 @@ const Menu = ({history}) => {
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <Link className="nav-link" 
-                                style={esHoverDropDown(history, "/producto/agregar/categoria")}                     
+                                style={esHoverDropDown(history, "/producto/agregar")}                     
                                 to="/producto/agregar">
                                     PRODUCTO
                             </Link>

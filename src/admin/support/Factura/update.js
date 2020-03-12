@@ -1,16 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../../../nucleo/Layout';
-import {getObjetonyId,modificarObjeto } from '../../apiAdmin';
+import {getObjetonyId,modificarObjeto ,errorTranslator} from '../../apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../../../index.css'
+import DateTimePicker from 'react-datetime-picker';
+import moment from 'moment';
+import { Checkbox } from 'react-input-checkbox';
 
-
-
-const ModificarFactura = (props) => {
+import {checkingHistorial} from '../../../user/procesos/ValidarDatos';
+const ModificarHistorial = (props) => {
     const [valor, setValor] = useState({
-        _id: "",
-        sNombre : "",
-        FacturaModificado:"",
+         
+          
+        dFecha: new Date(),
+        bMinTest:false,
+        iDuracion: 0,
+         sCliente: '',
+        sReceta: '',
+
+        HistorialModificado:"",
         redirect:false,
         loading: false,
         error : "",
@@ -23,11 +31,16 @@ const ModificarFactura = (props) => {
 
     //destruture
     const {
-        _id,
-        sNombre,
+     
+        dFecha,
+        bMinTest,
+        iDuracion,
+         sCliente,
+        sReceta,
+
         loading,
         error,
-        FacturaModificado,
+        HistorialModificado,
         redirect,
         formData
        
@@ -35,17 +48,19 @@ const ModificarFactura = (props) => {
 
   
    
-    const cargarFactura = _Id => {
+    const cargarHistorial = _Id => {
 
-        getObjetonyId('Factura',_Id)
+        getObjetonyId('Historial',_Id)
         .then(data=>{
-            if(data.error){
-                setValor({...valor, error:data.error})
+            if('error' in data){
+                setValor({...valor, error:errorTranslator(data.error.message)})
             }else{
+                
                 setValor({
+
                     ...valor,
-                    _id: data._id, 
-                    sNombre: data.sNombre,
+                     ...data,             
+                     dFecha: moment(data.dFecha).toDate(),
                     loading: false,
                 })
             }
@@ -54,8 +69,8 @@ const ModificarFactura = (props) => {
 
     useEffect(()=>{
         const _Id = props.match.params._Id
-        console.log(_Id)
-        cargarFactura(_Id)
+        //console.log(_Id)
+        cargarHistorial(_Id)
         
     }, []);
     
@@ -63,75 +78,118 @@ const ModificarFactura = (props) => {
 
 
  
-    const handleChange = name => event => {
-        
-        setValor({...valor, [name]:  event.target.value});
+    const handleChange =nombre => event => {
+     console.log(valor)
+     console.log(nombre)
+     if (nombre==='dFecha') {
+        setValor({...valor, [nombre]: event});    
+     } else if (nombre==='iDuracion'){
+        setValor({...valor, [nombre]: parseInt(event.target.value)});    
+     } else if (nombre=== 'bMinTesttrue'){
+        setValor({...valor, bMinTest: false});    
+     }else if (nombre=== 'bMinTestfalse'){
+        setValor({...valor, bMinTest: true});    
+     }else {
+        setValor({...valor, [nombre]: event.target.value});    
+     }
+
+
+     console.log(valor)
     }
 
+    
     const clickSubmit =(event)=>{
-        /*
-          
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        Aqui hay que preguntar y validar 
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          */  
-
         event.preventDefault();
+    const resultado=checkingHistorial({
+        _id:props.match.params._Id    ,
+        dFecha,
+        bMinTest,
+        iDuracion,
+         sCliente,
+        sReceta,
+    })
+     
+    if (resultado.valido) {
         setValor({...valor, error:'', loading:true});
-        modificarObjeto ('Factura',{_id,sNombre})
+        modificarObjeto ('Historial',{
+            _id:props.match.params._Id    ,
+            dFecha,
+            bMinTest,
+            iDuracion,
+             sCliente,
+            sReceta,
+        })
         .then(data=>{
            
-
+            if('error' in data){
+                setValor({...valor, error:errorTranslator(data.error.message)})
+            }else{
+                
                 setValor({
-                    FacturaModificado: true,
+                    HistorialModificado: true,
                     redirect:true
                 })       
+            }
+
+                
         })
         
+    } else {
+        setValor({...valor, error:resultado.incidente})
+        
+        
+    }
+     
+       
     }
 
-    const agregarFacturaForm = () => (
+    const agregarHistorialForm = () => (
         <form className="mb-3" onSubmit={clickSubmit}>
             
             <div className="form-group">
-                <label className="text-muted">Nombre </label>
-                <input onChange={handleChange('sNombre')} 
+                <label className="text-muted">¿cuando pasó? </label>
+                
+                <DateTimePicker
+                        onChange={handleChange('dFecha')}
+                        value={dFecha}
+                        
+                      />
+            </div>
+
+            <div className="form-group">
+            <label className="text-muted">¿permaneció más de 2 minutos? </label>
+                      <Checkbox  onChange={handleChange('bMinTest'+bMinTest)}  value={bMinTest}> </Checkbox>
+
+        </div>
+        <div className="form-group">
+                <label className="text-muted">duración  </label>
+                <input onChange={handleChange('iDuracion')} 
+                        type="number" 
+                        className="form-control" 
+                        required
+                        value={iDuracion } />
+            </div>
+            <div className="form-group">
+                <label className="text-muted">identificador de cliente</label>
+                <input onChange={handleChange('sCliente')} 
                         type="text" 
                         className="form-control" 
                         required
-                        value={sNombre} />
+                        value={sCliente} />
+            </div>
+            <div className="form-group">
+                <label className="text-muted">identificador de Receta </label>
+                <input onChange={handleChange('sReceta')} 
+                        type="text" 
+                        className="form-control" 
+                        required
+                        value={ sReceta} />
             </div>
 
-         
 
 
             <button className="btn btn-outline-primary">
-                Modificar Factura
+                Modificar Historial
             </button>
         </form>
     );
@@ -144,8 +202,8 @@ const ModificarFactura = (props) => {
     );
     const mostrarFunciona = () => (
         <div className="alert alert-info" 
-        style={{display: FacturaModificado ? '':'none'}}>
-            <h4>{`${sNombre} se ha modificado exitosamente `}</h4>
+        style={{display: HistorialModificado ? '':'none'}}>
+            <h4>{`el registro se ha modificado exitosamente `}</h4>
         </div>
     );
     const mostrarLoading = () => (
@@ -156,14 +214,14 @@ const ModificarFactura = (props) => {
 
     const redireccionarUsuario = () => {
         if(redirect){
-            return <Redirect to="/Factura/Support/"></Redirect>
+            return <Redirect to="/Historial/Support/"></Redirect>
         }
             
     }
     
 
     return (
-        <Layout titulo="MODIFICAR Factura" 
+        <Layout titulo="MODIFICAR Historial" 
         descripcion="" 
         className="container-fluid">
  
@@ -174,7 +232,7 @@ const ModificarFactura = (props) => {
                     {mostrarLoading()}
                     {mostrarError()}
                     {mostrarFunciona()}                  
-                    {agregarFacturaForm()}
+                    {agregarHistorialForm()}
                     {redireccionarUsuario()}
                     
                 </div>
@@ -185,4 +243,4 @@ const ModificarFactura = (props) => {
     );
 }
 
-export default ModificarFactura;
+export default ModificarHistorial;
