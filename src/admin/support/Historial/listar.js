@@ -33,31 +33,14 @@ const Historial = () => {
         cargarHistorialDisponibles()
     }, []);
     
-
-    const crudHistorial = () => {
-        return(
-            <div className="">               
-                <ul className="list-group">                   
-                    <li className="list-group-item">
-                        <Link className="nav-link btn btn-outline-primary 
-                            mt-2 mb-2 agregarPadding mr-2
-                        " to="/Historial/Support/agregar">
-                            Agregar Historial
-                        </Link>
-                    </li>
-                
-                    
-                </ul>
-            </div>
-        );
-    };
+ 
 
     const mostrarCrud = () => {
         if(isAutentificacion() 
         && isAutentificacion().cliente.bAdmin){
             return(
                 <div>
-                    {crudHistorial()}
+                
                 </div>
             );
         }else{
@@ -66,7 +49,7 @@ const Historial = () => {
     }
 
     return (
-        <Layout titulo="HistorialS" 
+        <Layout titulo="Historial" 
         descripcion="Chef Selenia Mendez" 
         className="container-fluid">
             
@@ -79,14 +62,16 @@ const Historial = () => {
             
             {/* contenido principal */}
         <br></br>
-            <div className="row">     
+        <div  className="col-9">
+        
+            <div className="table table-borderless">     
                                        
                 {HistorialDisponibles.map((Historial, i)=>(
                     <HistorialInterfaz key={i} Historial={Historial}/>
                 ))}                   
 
             </div>
-                
+            </div>        
             
 
             

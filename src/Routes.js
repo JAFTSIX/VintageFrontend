@@ -15,10 +15,16 @@ import ModificarCategoria from './admin/support/Categorias/update';
 import AgregarCategoria from './admin/support/Categorias/insert';
 
 
-import Factura from './admin/support/Facturas/listar';
-import EliminarFactura from './admin/support/Facturas/delete';
-import ModificarFactura from './admin/support/Facturas/update';
-import AgregarFactura from './admin/support/Facturas/insert';
+import Factura from './admin/support/Factura/listar';
+import EliminarFactura from './admin/support/Factura/delete';
+import ModificarFactura from './admin/support/Factura/update';
+import AgregarFactura from './admin/support/Factura/insert';
+
+
+import Historial from './admin/support/Historial/listar';
+import EliminarHistorial from './admin/support/Historial/delete';
+import ModificarHistorial from './admin/support/Historial/update';
+ 
 
 
 import AgregarProducto from './admin/AgregarProducto';
@@ -84,6 +90,15 @@ const Routes = () => {
             exact component={EliminarFactura}/>
             <AdminRoute path="/Factura/Support/actualizar/:_Id/" 
             exact component={ModificarFactura}/>
+
+
+            <AdminRoute path="/Historial/Support/" 
+            exact component={Historial}/>
+             
+            <AdminRoute path="/Historial/Support/Eliminar/:_Id" 
+            exact component={EliminarHistorial}/>
+            <AdminRoute path="/Historial/Support/actualizar/:_Id/" 
+            exact component={ModificarHistorial}/>
      {/*       
             /*<AdminRoute path="/categoria/Support/" 
             exact component={}/>

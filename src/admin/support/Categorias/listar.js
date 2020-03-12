@@ -66,8 +66,8 @@ const Categoria = () => {
     }
 
     return (
-        <Layout titulo="CategoriaS" 
-        descripcion="Chef Selenia Mendez" 
+        <Layout titulo="Categorias" 
+        descripcion="mantenimiento de categorias" 
         className="container-fluid">
             
             {/* funciones de admin */}
