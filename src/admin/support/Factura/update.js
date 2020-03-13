@@ -151,7 +151,7 @@ const ModificarFactura = (props) => {
     
     const clickSubmit =(event)=>{
         event.preventDefault();
-    /*const resultado=checkingFactura({
+    const resultado=checkingFactura({
         _id:props.match.params._Id    ,
         sCliente,
         dFecha,
@@ -159,9 +159,9 @@ const ModificarFactura = (props) => {
         iSubtotal,
         iTotal,
         oDireccion
-    })*/
+    })
      
-    if (true) {
+    if (resultado.valido) {
         setValor({...valor, error:'', loading:true});
         modificarObjeto ('Factura',{
             _id:props.match.params._Id    ,
@@ -178,7 +178,7 @@ const ModificarFactura = (props) => {
                 setValor({...valor, error:errorTranslator(data.error.message)})
             }else{
                 
-                setValor({
+                setValor({...valor,
                     FacturaModificado: true,
                     redirect:true
                 })       
@@ -188,7 +188,7 @@ const ModificarFactura = (props) => {
         })
         
     } else {
-       // setValor({...valor, error:resultado.incidente})
+       setValor({...valor, error:resultado.incidente})
         
         
     }

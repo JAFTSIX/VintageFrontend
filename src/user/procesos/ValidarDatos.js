@@ -219,6 +219,14 @@ export function checkingHistorial(objeto) {
 
 export function checkingFactura(objeto) {
 
+    /**
+     *  
+        
+        aCompras,
+        iSubtotal,
+        iTotal,
+        oDireccion
+     */
     var respuesta = new resultado(true, 'todo bien')
 
 
@@ -237,11 +245,24 @@ export function checkingFactura(objeto) {
         //false
         respuesta = new resultado(false, 'id de cliente invalido')
     }
-    //sReceta: string;
+ 
 
-   
+    if (!regex_numero.test(objeto.iSubtotal)||objeto.iSubtotal>objeto.iTotal) {
+        //false
+        respuesta = new resultado(false, 'Sub Total invalido')
+    }
+ 
 
+    if (!regex_numero.test(objeto.iTotal)) {
+        //false
+        respuesta = new resultado(false, 'Total invalido')
+    }
 
+    for (const key in objeto.oDireccion) {
+        if (!regex_texto.test(objeto.oDireccion[key])) {            
+            respuesta = new resultado(false, 'Dirección invalida')
+        }  
+    }
 
     return respuesta;
 }
