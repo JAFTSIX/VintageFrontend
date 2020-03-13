@@ -63,8 +63,11 @@ const ModificarReceta = (props) => {
 
         getReceta(recetaId)
         .then(data=>{
-            if(data.error){
-                setValor({...valor, error:data.error})
+        if (data===undefined) {
+            setValor({...valor, error:'Problemas, intente más tarde'})
+        } else {
+            if('error' in data){
+                setValor({...valor, error:data.error.message})
             }else{
                 setValor({
                     ...valor,
@@ -79,6 +82,9 @@ const ModificarReceta = (props) => {
                     loading: false,
                 })
             }
+        }
+
+            
         })
     }
 

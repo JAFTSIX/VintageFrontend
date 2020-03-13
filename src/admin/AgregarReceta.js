@@ -2,17 +2,14 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
 import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
-import { insertObject,errorTranslator,getObjetonyId } from './apiAdmin';
+import { insertObject,errorTranslator, getObjeto} from './apiAdmin';
 import '../index.css'
 import {checkingReceta} from '../user/procesos/ValidarDatos';
 import { Checkbox } from 'react-input-checkbox';
 const AgregarReceta = () => {
     const [valor, setValor] = useState({
         sNombre : "",
-        aEtiqueta: [
-            "Desayuno",
-            "Almuerzo",
-            "Cena"
+        aEtiqueta: [ 
         ],
         dFechaPublicacion: "2020-02-17T01:50:48.564Z",
         sTexto : "",
@@ -24,11 +21,12 @@ const AgregarReceta = () => {
         error : "",
         recetaCreado:"",
         redirect:false,
-        formData:""
+        formData:"",
+        aCargado: [ 
+        ]
     });
 
 
-    const {_id, token} = isAutentificacion();
 
     //destruture
     const {
@@ -44,21 +42,83 @@ const AgregarReceta = () => {
         error,
         recetaCreado,
         redirect,
-        formData
-       
+        formData,
+        aCargado
     } = valor;
 
 
+    useEffect( ()=>{
+        cargarCategoriaDisponibles()
+        console.log(aCargado)
+    }, []);
 
+    const cargarCategoriaDisponibles = () => {
+        getObjeto('Categoria')
+        .then(data=>{
+            
+            if(data=== undefined){
+                
+                
+                setValor({...valor,error:errorTranslator('Problemas, intente mas tarde')});
+            }  else{
+                if ('error' in data) {
+                    setValor({...valor,error:errorTranslator(data.error.message)});
+                    
+                }else{
+                    console.log(data);
+                    data.forEach(element => {
+                        element['add']=false
+                    });
+
+                    setValor({...valor,aCargado:data});
+                    
+                 
+                }
+            }
+            
+        })
+    }
+
+
+
+    const handleArrayChange =(key,item)=> event => {
+    
+        
+        
+        if(item.add){
+            
+             aCargado[key].add=false
+            setValor({...valor, aCargado:aCargado });      
+            
+        }else{
+            aCargado[key].add=true
+            setValor({...valor, aCargado: aCargado});      
+
+        }
+   
+   
+        console.log(aCargado)
+       } 
+
+       const ReturnCategorias=()=>{
+        
+        aCargado.forEach(element => {
+            if (element.add) {
+                aEtiqueta.push(element._id)    
+            }
+            
+            
+        });
+
+
+         setValor({...valor, aEtiqueta:aEtiqueta });  
+       }
     //funcion esta retornando otra funcion
     //el sNombre se va a ir cambiando, primero va ser foto, despues nombre, ...
     const handleChange = name => event => {
         //entonces cuando se agrega, se va a guardar todo en formData
         //formData.set(sNombre, valor);
-
-       
-        
-       
+ 
         if (name=='bActivotrue') {
             setValor({...valor, bActivo:false  });
         } else if(name=='bActivofalse') {
@@ -70,6 +130,7 @@ const AgregarReceta = () => {
     }
 
     const clickSubmit =(event)=>{
+        ReturnCategorias()
         const iPrecio = parseInt(iPrecio2);
         event.preventDefault();
         setValor({...valor, error:'', loading:true});
@@ -145,14 +206,13 @@ const AgregarReceta = () => {
 
             <div className="form-group">
                 <label className="text-muted">Categoria </label>
-                <select onChange={handleChange('sCategoria')} 
-                        className="form-control">
-                            <option>Selecciona una categoria</option>
-                            {aEtiqueta && 
-                            aEtiqueta.map((categoria, index) => (
-                                <option key={index} value={index}>{categoria}</option>
-                            ))}
-                </select>
+                {aCargado.map((item, key) =><div>
+                                    
+                    <Checkbox onChange={handleArrayChange(key,item)}    value={item.add}> {item.sNombre}</Checkbox>
+
+                </div>)
+                }   
+
             </div>
 
             <div className="form-group">

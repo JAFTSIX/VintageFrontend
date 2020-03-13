@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import Layout from '../nucleo/Layout';
 import Menu from '../nucleo/Menu';
 import candado from './Img/candado.jpg';
+
 import { Redirect} from 'react-router-dom';
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signIn, autentificacion, isAutentificacion} from '../autentificacion'; 
 import {checkingLogin,HandleChangelogin } from './procesos/ValidarDatos';
+import {errorTranslator} from '../admin/apiAdmin';
 import '../index.css';
 import './login.css';
 
@@ -73,38 +75,65 @@ const SignIn = () => {
 
     const iniciarSession = (event) => {
         //la pagina no se recargue en el click en el boton
-        event.preventDefault(); 
-        setValues({...values, error:false, loading:true});
-        
-        const resultado=checkingLogin({ sContrasena, sCorreo})
+        event.preventDefault();
+        setValues({
+            ...values,
+            error: false,
+            loading: true
+        });
+
+        const resultado = checkingLogin({
+            sContrasena,
+            sCorreo
+        })
         if (resultado.valido) {
-            signIn({sContrasena, sCorreo})
-            //funcion para comprobar si se crea la cuenta con exito
-            .then(data =>{
-                //si hay error
-                if('error' in data){
-                    
-                    setValues({...values, error: data.error.message, loading: false});
-                }//si no hay error, se redirecciona a la principal
-                else {
+            signIn({
+                    sContrasena,
+                    sCorreo
+                })
+                //funcion para comprobar si se crea la cuenta con exito
+                .then(data => {
 
 
-                     
-                    autentificacion(data, ()=>{
+                    if (data === undefined) {
                         setValues({
                             ...values,
-                            redireccionar: true,
-                            loading: false,
-                            bAdmin:data.cliente.bAdmin
+                            error: 'Problemas, intente más tarde'
                         });
-                    });
-                }
+                    } else {
 
-            });    
+                        //si hay error
+                        if ('error' in data) {
+
+                            setValues({
+                                ...values,
+                                error: errorTranslator(data.error.message),
+                                loading: false
+                            });
+                        } //si no hay error, se redirecciona a la principal
+                        else {
+
+                            autentificacion(data, () => {
+                                setValues({
+                                    ...values,
+                                    redireccionar: true,
+                                    loading: false,
+                                    bAdmin: data.cliente.bAdmin
+                                });
+                            });
+                        }
+
+                    }
+
+
+                });
         } else {
-             //oops
-       setValues({...values,error:''.concat(resultado.incidente,' , Por favor llene correctamente todo el formulario antes de enviar')});
-            
+            //oops
+            setValues({
+                ...values,
+                error: ''.concat(resultado.incidente, ' , Por favor llene correctamente todo el formulario antes de enviar')
+            });
+
         }
         
     }
