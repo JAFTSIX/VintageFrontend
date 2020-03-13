@@ -62,18 +62,28 @@ const ModificarFactura = (props) => {
 
         getObjetonyId('Factura',_Id)
         .then(data=>{
-            if('error' in data){
-                setValor({...valor, error:errorTranslator(data.error.message)})
-            }else{
-                
-                setValor({
 
-                    ...valor,
-                     ...data,             
-                     dFecha: moment(data.dFecha).toDate(),
-                    loading: false,
-                })
-            }
+            if (data === undefined) {
+                setValor({
+                  ...valor,
+                  error:'Problemas, intente más tarde'
+                });
+              } else {
+
+                if('error' in data){
+                    setValor({...valor, error:errorTranslator(data.error.message)})
+                }else{
+                    
+                    setValor({
+    
+                        ...valor,
+                         ...data,             
+                         dFecha: moment(data.dFecha).toDate(),
+                        loading: false,
+                    })
+                }
+              }
+            
         })
     }
 

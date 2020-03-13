@@ -35,24 +35,37 @@ const AgregarCategoria = () => {
              //hacer request al api para crear categoria
          insertObject('Categoria',{sNombre:nombre}).then(
             data=>{
-                if ('error' in data) {
-                    setValor({...valor, error:errorTranslator(data.error.message), funciona: false});
-                    
-                } else {
-    
-                    console.log(data)
+
+                if (data === undefined) {
                     setValor({
-                        ...valor,
-                        sNombre: '',
-                        nuevaCategoria: data.sNombre, 
-                        error: false,                
-                        funciona: true
+                      ...valor,
+                      error:'Problemas, intente más tarde'
                     });
-                }
-    
+                  } else{
+                    if ('error' in data) {
+                        setValor({...valor, error:errorTranslator(data.error.message), funciona: false});
+                        
+                    } else {
+        
+                      
+                        setValor({
+                            ...valor,
+                            sNombre: '',
+                            nuevaCategoria: data.sNombre, 
+                            error: false,                
+                            funciona: true
+                        });
+                    }
+
+                  }
+
+              
+
+                
                 }
     
              )
+
          } else {
             setValor({...valor,error: 'campo vacío', funciona: false});
          } 

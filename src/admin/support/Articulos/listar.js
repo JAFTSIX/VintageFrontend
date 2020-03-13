@@ -19,12 +19,20 @@ const Factura = () => {
     const cargarFacturaDisponibles = () => {
         getObjeto('Factura')
         .then(data=>{
-            if(data.error){
-                setError(data.error)
-            }else{
-                setFacturaDisponibles(data);
-                //console.log(data);
-            }
+            if (data === undefined) {
+                setValor({
+                  ...valor,
+                  error:'Problemas, intente más tarde'
+                });
+              } else{
+                if('error'in data){
+                    setError(errorTranslator(data.error.message) )
+                }else{
+                    setFacturaDisponibles(data);
+                    //console.log(data);
+                }
+              }
+            
         })
     }
 

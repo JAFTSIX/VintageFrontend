@@ -57,15 +57,27 @@ const EliminarHistorial= (props) => {
         eliminarObjeto('Historial',_Id)
         .then(data=>{
 
-           if ('error' in data) {
-            setValor({...valor, error:errorTranslator(data.error.message) });
-            
-        } else{
+          if (data === undefined) {
+            setValor({
+              ...valor,
+              error:'Problemas, intente más tarde'
+            });
+          } else {
+            if ('error' in data) {
+              setValor({
+                ...valor,
+                error: errorTranslator(data.error.message)
+              });
 
-          setValor({
-            redirect:true
-          })
-        }
+            } else {
+
+              setValor({
+                redirect: true
+              })
+            }
+          }
+
+           
         })
        
         

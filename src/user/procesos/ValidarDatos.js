@@ -4,7 +4,7 @@
 const regex_texto = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\0-9]+$/
 const regex_numero = /^[0-9]+$/
 const regexsNombre_Apellido = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]{1,60}$/
-
+const regex_url = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 /*La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula.
 NO puede tener otros símbolos. */
 const regexPassword = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
@@ -201,13 +201,13 @@ export function checkingHistorial(objeto) {
 
     if (!regex_texto.test(objeto.sCliente)) {
         //false
-        respuesta = new resultado(false, 'id de cliente invalido')
+        respuesta = new resultado(false, 'id de cliente inválido')
     }
     //sReceta: string;
 
     if (!regex_texto.test(objeto.sReceta)) {
         //false
-        respuesta = new resultado(false, 'id de receta invalido')
+        respuesta = new resultado(false, 'id de receta inválido')
     }
 
 
@@ -243,19 +243,19 @@ export function checkingFactura(objeto) {
 
     if (!regex_texto.test(objeto.sCliente)) {
         //false
-        respuesta = new resultado(false, 'id de cliente invalido')
+        respuesta = new resultado(false, 'id de cliente inválido')
     }
  
 
     if (!regex_numero.test(objeto.iSubtotal)||objeto.iSubtotal>objeto.iTotal) {
         //false
-        respuesta = new resultado(false, 'Sub Total invalido')
+        respuesta = new resultado(false, 'Sub Total inválido')
     }
  
 
     if (!regex_numero.test(objeto.iTotal)) {
         //false
-        respuesta = new resultado(false, 'Total invalido')
+        respuesta = new resultado(false, 'Total inválido')
     }
 
     for (const key in objeto.oDireccion) {
@@ -263,6 +263,56 @@ export function checkingFactura(objeto) {
             respuesta = new resultado(false, 'Dirección invalida')
         }  
     }
+
+    return respuesta;
+}
+
+
+
+
+export function checkingReceta(objeto) {
+
+
+    var respuesta = new resultado(true, 'todo bien')
+
+
+          /**
+            
+  
+  aEtiqueta: string[];
+  
+  
+ */
+
+ 
+
+    if (!regex_texto.test(objeto.sNombre)) {
+        //false
+        respuesta = new resultado(false, 'nombre de receta inválido')
+    }
+ 
+    if (!objeto.sTexto+''.length>0) {
+        //false
+        respuesta = new resultado(false, 'texto de receta inválido')
+    }
+ 
+
+    if (!regex_numero.test(objeto.iPrecio) ) {
+        //false
+        respuesta = new resultado(false, 'precio inválido')
+    }
+ 
+
+    if (!regex_url.test(objeto. sUrlVideo)) {
+        //false
+        respuesta = new resultado(false, 'url de video inválido')
+    }
+
+    if (!regex_url.test(objeto. sUrlImagen)) {
+        //false
+        respuesta = new resultado(false, 'url de imagen inválido')
+    }
+     
 
     return respuesta;
 }

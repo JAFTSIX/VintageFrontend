@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
 import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
-import { crearReceta } from './apiAdmin';
+import { insertObject,errorTranslator,getObjetonyId } from './apiAdmin';
 import '../index.css'
-
+import {checkingReceta} from '../user/procesos/ValidarDatos';
+import { Checkbox } from 'react-input-checkbox';
 const AgregarReceta = () => {
     const [valor, setValor] = useState({
         sNombre : "",
@@ -51,35 +52,66 @@ const AgregarReceta = () => {
 
     //funcion esta retornando otra funcion
     //el sNombre se va a ir cambiando, primero va ser foto, despues nombre, ...
-    const handleChange = sNombre => event => {
+    const handleChange = name => event => {
         //entonces cuando se agrega, se va a guardar todo en formData
         //formData.set(sNombre, valor);
-        setValor({...valor, [sNombre]:  event.target.value});
+
+       
+        
+       
+        if (name=='bActivotrue') {
+            setValor({...valor, bActivo:false  });
+        } else if(name=='bActivofalse') {
+            setValor({...valor, bActivo:true  });
+        }else{
+            setValor({...valor, [name]:  event.target.value});
+        }
+        
     }
 
     const clickSubmit =(event)=>{
         const iPrecio = parseInt(iPrecio2);
         event.preventDefault();
         setValor({...valor, error:'', loading:true});
-        crearReceta(token, {sNombre,aEtiqueta,dFechaPublicacion,
+
+        const resultado=checkingReceta({sNombre,aEtiqueta,dFechaPublicacion,
             sTexto,iPrecio,sUrlVideo,sUrlImagen,bActivo})
-        .then(data=>{
-            if(data.error){
-                setValor({...valor, error:data.error});
-            }else{
-                setValor({
-                    ...valor, 
-                    sNombre: "",
-                    sTexto: "",
-                    iPrecio: 0,
-                    bActivo: true,
-                    sUrlVideo: "",
-                    sUrlImagen: "",
-                    loading: false,
-                    recetaCreado: data.sNombre,
+        if (resultado.valido) {
+        
+            insertObject('Receta', {sNombre,aEtiqueta,dFechaPublicacion,
+                    sTexto,iPrecio,sUrlVideo,sUrlImagen,bActivo})
+                .then(data=>{
+
+
+                    if (data === undefined) {
+                        setValor({
+                            ...valor,
+                            error: 'Problemas, intente mas tarde'
+                        })
+                    } else{
+                        if('error' in data){
+                        setValor({...valor, error:errorTranslator(data.error.message)});
+                        }else{
+                        setValor({
+                            ...valor, 
+                            sNombre: "",
+                            sTexto: "",
+                            iPrecio: 0,
+                            bActivo: true,
+                            sUrlVideo: "",
+                            sUrlImagen: "",
+                            loading: false,
+                            recetaCreado: data.sNombre,
+                        })
+                    }}
+                    
                 })
+            } else {
+                setValor({...valor, error:resultado.incidente});
             }
-        })
+
+        
+        
         
     }
 
@@ -139,6 +171,12 @@ const AgregarReceta = () => {
                         required
                         value={iPrecio2} />
             </div>
+
+            <div className="form-group">
+            <label className="text-muted">¿Activo? </label>
+                      <Checkbox  onChange={handleChange('bActivo'+bActivo)}  value={bActivo}> </Checkbox>
+
+        </div>
 
 
             <button className="btn btn-outline-primary">

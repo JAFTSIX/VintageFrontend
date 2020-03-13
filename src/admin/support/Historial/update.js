@@ -29,7 +29,7 @@ const ModificarHistorial = (props) => {
  
     
 
-    //destruture
+    
     const {
      
         dFecha,
@@ -50,26 +50,38 @@ const ModificarHistorial = (props) => {
    
     const cargarHistorial = _Id => {
 
-        getObjetonyId('Historial',_Id)
-        .then(data=>{
-            if('error' in data){
-                setValor({...valor, error:errorTranslator(data.error.message)})
-            }else{
-                
-                setValor({
+        getObjetonyId('Historial', _Id)
+            .then(data => {
 
-                    ...valor,
-                     ...data,             
-                     dFecha: moment(data.dFecha).toDate(),
-                    loading: false,
-                })
-            }
-        })
-    }
+                if (data === undefined) {
+                    setValor({
+                        ...valor,
+                        error: 'Problemas, intente mas tarde'
+                    })
+                } else {
+
+                    if ('error' in data) {
+                        setValor({
+                            ...valor,
+                            error: errorTranslator(data.error.message)
+                        })
+                    } else {
+
+                        setValor({
+
+                            ...valor,
+                            ...data,
+                            dFecha: moment(data.dFecha).toDate(),
+                            loading: false,
+                        })
+                    }
+                }
+            })
+        }
 
     useEffect(()=>{
         const _Id = props.match.params._Id
-        //console.log(_Id)
+     
         cargarHistorial(_Id)
         
     }, []);
@@ -161,6 +173,7 @@ const ModificarHistorial = (props) => {
                       <Checkbox  onChange={handleChange('bMinTest'+bMinTest)}  value={bMinTest}> </Checkbox>
 
         </div>
+
         <div className="form-group">
                 <label className="text-muted">duración  </label>
                 <input onChange={handleChange('iDuracion')} 

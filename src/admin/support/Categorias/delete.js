@@ -53,16 +53,23 @@ const EliminarCategoria= (props) => {
        
         eliminarObjeto('Categoria',_Id)
         .then(data=>{
-
-          if ('error' in data) {
-            setValor({...valor, error:errorTranslator(data.error.message) });
-            
-        } else{
-
-          setValor({
-            redirect:true
-          })
-        }
+          if (data === undefined) {
+            setValor({
+              ...valor,
+              error:'Problemas, intente más tarde'
+            });
+          } else{
+            if ('error' in data) {
+              setValor({...valor, error:errorTranslator(data.error.message) });
+              
+          } else{
+  
+            setValor({
+              redirect:true
+            })
+          }
+          }
+         
           
             
         })

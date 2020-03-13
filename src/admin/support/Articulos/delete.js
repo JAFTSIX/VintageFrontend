@@ -56,9 +56,17 @@ const EliminarFactura= (props) => {
        
         eliminarObjeto('Factura',_Id)
         .then(data=>{
+          if (data === undefined) {
             setValor({
-                redirect:true
+              ...valor,
+              FacturaEliminado:'Problemas, intente más tarde'
+            });
+          } else{
+            setValor({
+              redirect:true
             })
+          }
+            
             
         })
        

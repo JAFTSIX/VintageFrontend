@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../../../nucleo/Layout';
-import {getObjetonyId,modificarObjeto } from '../../apiAdmin';
+import {getObjetonyId,modificarObjeto,errorTranslator } from '../../apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../../../index.css'
 
@@ -39,16 +39,28 @@ const ModificarFactura = (props) => {
 
         getObjetonyId('Factura',_Id)
         .then(data=>{
-            if(data.error){
-                setValor({...valor, error:data.error})
-            }else{
+
+            if (data === undefined) {
                 setValor({
-                    ...valor,
-                    _id: data._id, 
-                    sNombre: data.sNombre,
-                    loading: false,
-                })
-            }
+                  ...valor,
+                  error:'Problemas, intente más tarde'
+                });
+              } else{
+                if('error' in data){
+                    setValor({...valor, error:errorTranslator(data.error.message)})
+                }else{
+                    setValor({
+                        ...valor,
+                        _id: data._id, 
+                        sNombre: data.sNombre,
+                        loading: false,
+                    })
+                }
+              }
+
+            
+
+
         })
     }
 
@@ -69,49 +81,28 @@ const ModificarFactura = (props) => {
     }
 
     const clickSubmit =(event)=>{
-        /*
-          
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        Aqui hay que preguntar y validar 
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          */  
+    
 
         event.preventDefault();
+        
         setValor({...valor, error:'', loading:true});
         modificarObjeto ('Factura',{_id,sNombre})
         .then(data=>{
-           
-
+            if (data === undefined) {
+                setValor({
+                  ...valor,
+                  error:'Problemas, intente más tarde'
+                });
+              } else{
+                  
                 setValor({
                     FacturaModificado: true,
                     redirect:true
-                })       
+                })   
+              }
+    
         })
+
         
     }
 

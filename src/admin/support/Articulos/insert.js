@@ -1,62 +1,96 @@
-import React, {useState, Fragment} from 'react';
+import React, {
+    useState,
+   
+} from 'react';
 import Layout from '../../../nucleo/Layout';
+
  
-import {Link} from 'react-router-dom';
-import {insertObject} from '../../apiAdmin';
+import {
+    insertObject
+} from '../../apiAdmin';
 import '../../../index.css'
 
 const AgregarFactura = () => {
-    const [valor, setValor] = useState({ 
-        nombre:"",
-        nuevaFactura:"",
-        error: false,
-        funciona: false
-    });
-
- 
-
-    const {nombre, error, funciona,nuevaFactura} = valor;
-
-     const handleChange = campo  => event => {
-        event.preventDefault();
-      
-        setValor({...valor,error: false, [campo]: event.target.value});
-
-         console.log(nombre);
-     }
+        const [valor, setValor] = useState({
+            nombre: "",
+            nuevaFactura: "",
+            error: false,
+            funciona: false
+        });
 
 
-     const clickSubmit = (e) => {
-         e.preventDefault(); 
-         setValor({...valor,error: '', funciona: false});
 
-         console.log(nombre);
-         //hacer request al api para crear Factura
-         insertObject('Facturas',{sNombre:nombre}).then(
-        data=>{
-            if ('error' in data) {
-                setValor({...valor, error:data.error.message, funciona: false});
-                
-            } else {
+        const {
+            nombre,
+            error,
+            funciona,
+            nuevaFactura
+        } = valor;
 
-                console.log(data)
-                setValor({
-                    ...valor,
-                    sNombre: '',
-                    nuevaFactura: data.sNombre, 
-                    error: false,                
-                    funciona: true
-                });
-            }
+        const handleChange = campo => event => {
+            event.preventDefault();
 
-            }
+            setValor({
+                ...valor,
+                error: false,
+                [campo]: event.target.value
+            });
 
-         )
-                       
-         //setValor({nombre: newNombre});
-         console.log(nombre);
-        
-     }
+            console.log(nombre);
+        }
+
+
+        const clickSubmit = (e) => {
+            e.preventDefault();
+            setValor({
+                ...valor,
+                error: '',
+                funciona: false
+            });
+
+            console.log(nombre);
+            //hacer request al api para crear Factura
+            insertObject('Facturas', {
+                sNombre: nombre
+            }).then(
+                data => {
+
+                    if (data === undefined) {
+                        setValor({
+                            ...valor,
+                            error: 'Problemas, intente más tarde'
+                        });
+                    } else {
+                        if ('error' in data) {
+                            setValor({
+                                ...valor,
+                                error: data.error.message,
+                                funciona: false
+                            });
+
+                        } else {
+
+                            console.log(data)
+                            setValor({
+                                ...valor,
+                                sNombre: '',
+                                nuevaFactura: data.sNombre,
+                                error: false,
+                                funciona: true
+                            });
+                        }
+
+                    }
+
+
+                }
+
+            )
+
+            //setValor({nombre: newNombre});
+            console.log(nombre);
+
+        }
 
  
 

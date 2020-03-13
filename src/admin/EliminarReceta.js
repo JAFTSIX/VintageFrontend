@@ -16,6 +16,7 @@ const EliminarReceta= (props) => {
     const eliminar = recetaId => {
         eliminarReceta(recetaId)
         .then(data=>{
+            
             setValor({
                 redirect:true
             })

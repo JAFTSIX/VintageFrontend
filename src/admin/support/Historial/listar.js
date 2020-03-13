@@ -17,20 +17,20 @@ const Historial = () => {
     
     
     const cargarHistorialDisponibles = () => {
-        getObjeto('Historial')
-            .then(data => {
+            getObjeto('Historial')
+                .then(data => {
 
-                if (data === undefined) {
+                    if (data === undefined) {
 
-                    setError('Problemas, intente mas tarde')
-                } else {
-                    if ('error' in data) {
-                        setError(errorTranslator(data.error.message))
+                        setError('Problemas, intente mas tarde')
                     } else {
-                        setHistorialDisponibles(data);
+                        if ('error' in data) {
+                            setError(errorTranslator(data.error.message))
+                        } else {
+                            setHistorialDisponibles(data);
+                        }
                     }
-                }
-            })
+                })
     }
 
     //carga al puro principio y cuando sea que se haga cambio va a cargar 
