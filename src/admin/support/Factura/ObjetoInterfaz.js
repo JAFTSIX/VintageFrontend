@@ -6,12 +6,12 @@ import '../../../index.css';
 import '../../../user/producto.css';
 import ProductoInterfaz from './ProductoInterfaz';
 
-
+import moment from 'moment';
 
 
 const FacturaInterfaz = ({Factura}) => {
 
-           //to={`/Factura/Support/Eliminar/${Factura._id}`}
+         
 
            const [test,setTest] = React.useState('no');
 
@@ -27,15 +27,8 @@ const FacturaInterfaz = ({Factura}) => {
           }
 
           const convertir_Fecha = ()=>{
-            var visita = new Date(Factura.dFecha);
-            var day = visita.getDate() + "";
-            var month = (visita.getMonth() + 1) + "";
-            var year = visita.getFullYear() + "";
-            var hour = visita.getHours() + "";
-            var minutes = visita.getMinutes() + "";
-            var seconds = visita.getSeconds() + "";
-
-            setFecha(day + "/" + month + "/" + year + " " + hour + ":" + minutes + ":" + seconds)
+         
+            setFecha(moment(Factura.dFecha).format('DD/MM/YYYY, HH:mm:ss'))
           }
         
         
@@ -43,6 +36,7 @@ const FacturaInterfaz = ({Factura}) => {
            si_o_no()
            convertir_Fecha()
         });
+ 
 
     return(
         <div className="mw-100"  style={{ paddingTop: '5%'}}>
@@ -50,7 +44,7 @@ const FacturaInterfaz = ({Factura}) => {
                 <div  className="border-top" >
              
 
-                    {/* titulo  */}
+                   
                     
                     
                     
@@ -89,37 +83,81 @@ const FacturaInterfaz = ({Factura}) => {
 
                       <div  className="">
                       <p>
-                      <a className="btn"   data-toggle="collapse" href={'#columna'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
+                      <a className="btn"   data-toggle="collapse" href={'#compras'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>cosas compradas ▼</h5>  
                       </a>
                     </p>
 
-                   {/*el card body */}
-                    <div className="collapse" id={'columna'+Factura._id}>
+                
+                        <div className="collapse" id={'compras'+Factura._id}>
                
-                    {Factura.aCompras.map((producto, i)=>(
-                        <ProductoInterfaz key={i} producto={producto}/>
-                    ))}  
-                       Aca va toda esa madre
-                     
-                    </div>
-                   
+                        {Factura.aCompras.map((producto, i)=>(
+                            <ProductoInterfaz key={i} producto={producto}/>
+                        ))}  
+                                       
+                        </div>
                     </div>
 
 
-                      {/*
+                  
+                      <div  className="">
+                      <p>
+                      <a className="btn"   data-toggle="collapse" href={'#direccion'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección ▼</h5>  
+                      </a>
+                    </p>
+
+                
+                        <div className="collapse" id={'direccion'+Factura._id}>
+                        
+                      
+                        
+                      <div  class="">
+                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Ciudad:</h4>  
+                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sCiudad} </h3>
+                      </div>
+                      
+                      
+                      <div  class="">
+                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Dirección 1:</h4>  
+                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sDireccion1} </h3>
+                      </div>
+                      
+                      <div  class="">
+                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Dirección 2:</h4>  
+                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sDireccion2} </h3>
+                      </div>
+
 
                       <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>identificador de Receta:</h4>  
-                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.sReceta} </h3>
-                      </div>*/
-                    }
+                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Código postal:</h4>  
+                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.iCodPostal} </h3>
+                      </div>
 
+                      <div  class="">
+                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Teléfono:</h4>  
+                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sTelefono} </h3>
+                      </div>
+
+                      <div  class="">
+                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Nombre:</h4>  
+                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sNombre} </h3>
+                      </div>
+
+                      <div  class="">
+                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Apellido:</h4>  
+                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sApellido} </h3>
+                      </div>
+
+                        </div>
+                    </div>
+
+                
 
         
                     {isAutentificacion() && isAutentificacion().cliente.bAdmin && (
                         <Fragment>
-                        {/* // aqui se pasa el id del Factura en el url para actualizar */}
+                         
                         <Link to={`/Factura/Support/actualizar/${Factura._id}`}>
                             <button className="btn btn-outline-primary 
                             mt-2 mb-2 agregarPadding mr-2">

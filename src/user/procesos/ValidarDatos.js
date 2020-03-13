@@ -214,3 +214,34 @@ export function checkingHistorial(objeto) {
 
     return respuesta;
 }
+
+
+
+export function checkingFactura(objeto) {
+
+    var respuesta = new resultado(true, 'todo bien')
+
+
+
+    //dFecha: string;
+
+    if (!(new Date() > objeto.dFecha)) {
+        //   alert ("Error!");
+        return new resultado(false, 'Fecha inválida ')
+    }
+     
+
+    //sCliente: string;
+
+    if (!regex_texto.test(objeto.sCliente)) {
+        //false
+        respuesta = new resultado(false, 'id de cliente invalido')
+    }
+    //sReceta: string;
+
+   
+
+
+
+    return respuesta;
+}

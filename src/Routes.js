@@ -18,7 +18,7 @@ import AgregarCategoria from './admin/support/Categorias/insert';
 import Factura from './admin/support/Factura/listar';
 import EliminarFactura from './admin/support/Factura/delete';
 import ModificarFactura from './admin/support/Factura/update';
-import AgregarFactura from './admin/support/Factura/insert';
+ 
 
 
 import Historial from './admin/support/Historial/listar';
@@ -84,8 +84,7 @@ const Routes = () => {
 
             <AdminRoute path="/Factura/Support/" 
             exact component={Factura}/>
-            <AdminRoute path="/Factura/Support/agregar" 
-            exact component={AgregarFactura}/>
+        
             <AdminRoute path="/Factura/Support/Eliminar/:_Id" 
             exact component={EliminarFactura}/>
             <AdminRoute path="/Factura/Support/actualizar/:_Id/" 

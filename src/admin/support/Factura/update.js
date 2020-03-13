@@ -7,22 +7,32 @@ import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 import { Checkbox } from 'react-input-checkbox';
 
-import {checkingHistorial} from '../../../user/procesos/ValidarDatos';
-const ModificarHistorial = (props) => {
+import {checkingFactura} from '../../../user/procesos/ValidarDatos';
+
+const ModificarFactura = (props) => {
     const [valor, setValor] = useState({
          
-          
+        sCliente: "",
         dFecha: new Date(),
-        bMinTest:false,
-        iDuracion: 0,
-         sCliente: '',
-        sReceta: '',
+        aCompras: [],
+        iSubtotal: 0,
+        iTotal: 12714,
+        oDireccion: {
+            sCiudad: "",
+            sDireccion1: "",
+            sDireccion2: "",
+            iCodPostal: "",
+            sTelefono: "",
+            sNombre: "",
+            sApellido: ""
+        },
 
-        HistorialModificado:"",
+        
         redirect:false,
         loading: false,
         error : "",
-        formData:""
+        
+        FacturaModificado:false,
     });
 
     
@@ -32,25 +42,25 @@ const ModificarHistorial = (props) => {
     //destruture
     const {
      
+        sCliente,
         dFecha,
-        bMinTest,
-        iDuracion,
-         sCliente,
-        sReceta,
-
+        aCompras,
+        iSubtotal,
+        iTotal,
+        oDireccion,
         loading,
         error,
-        HistorialModificado,
+        FacturaModificado,
         redirect,
-        formData
+       
        
     } = valor;
 
   
    
-    const cargarHistorial = _Id => {
+    const cargarFactura = _Id => {
 
-        getObjetonyId('Historial',_Id)
+        getObjetonyId('Factura',_Id)
         .then(data=>{
             if('error' in data){
                 setValor({...valor, error:errorTranslator(data.error.message)})
@@ -70,7 +80,7 @@ const ModificarHistorial = (props) => {
     useEffect(()=>{
         const _Id = props.match.params._Id
         //console.log(_Id)
-        cargarHistorial(_Id)
+        cargarFactura(_Id)
         
     }, []);
     
@@ -79,45 +89,88 @@ const ModificarHistorial = (props) => {
 
  
     const handleChange =nombre => event => {
-     console.log(valor)
-     console.log(nombre)
+    
      if (nombre==='dFecha') {
         setValor({...valor, [nombre]: event});    
-     } else if (nombre==='iDuracion'){
+     } else if (nombre==='iTotal'){
         setValor({...valor, [nombre]: parseInt(event.target.value)});    
-     } else if (nombre=== 'bMinTesttrue'){
-        setValor({...valor, bMinTest: false});    
-     }else if (nombre=== 'bMinTestfalse'){
-        setValor({...valor, bMinTest: true});    
+
+        
+     }else if (nombre==='iSubtotal'){
+        setValor({...valor, [nombre]: parseInt(event.target.value)});    
+
+        
      }else {
         setValor({...valor, [nombre]: event.target.value});    
      }
 
 
+  
      console.log(valor)
     }
+
+
+
+    const handleArrayChange =(nombre,i) => event => {
+    
+ 
+        if (nombre==='sNombre') {
+            aCompras[i].sNombre =event.target.value 
+           setValor({...valor, aCompras:aCompras });    
+        } else if (nombre==='iPrecio'){
+            aCompras[i].iPrecio =parseInt( event.target.value) 
+            setValor({...valor, aCompras:aCompras });      
+        }else if(nombre==='iCant'){
+            aCompras[i].iCant =parseInt( event.target.value) 
+            setValor({...valor, aCompras:aCompras });      
+        } else if(nombre==='borrar'){
+            delete aCompras[i]
+            setValor({...valor, aCompras:aCompras });      
+        }
+   
+   
+        console.log(valor)
+       }
+
+       const handleDireccionChange =nombre => event => {
+    
+        if(nombre==='sCiudad'){
+            oDireccion.sCiudad   =event.target.value
+        }else{
+        oDireccion[nombre]= event.target.value
+        
+        }
+        setValor({...valor,oDireccion: oDireccion});    
+      
+   
+   
+        console.log(valor)
+       }
+
 
     
     const clickSubmit =(event)=>{
         event.preventDefault();
-    const resultado=checkingHistorial({
+    /*const resultado=checkingFactura({
         _id:props.match.params._Id    ,
+        sCliente,
         dFecha,
-        bMinTest,
-        iDuracion,
-         sCliente,
-        sReceta,
-    })
+        aCompras,
+        iSubtotal,
+        iTotal,
+        oDireccion
+    })*/
      
-    if (resultado.valido) {
+    if (true) {
         setValor({...valor, error:'', loading:true});
-        modificarObjeto ('Historial',{
+        modificarObjeto ('Factura',{
             _id:props.match.params._Id    ,
+            sCliente,
             dFecha,
-            bMinTest,
-            iDuracion,
-             sCliente,
-            sReceta,
+            aCompras,
+            iSubtotal,
+            iTotal,
+            oDireccion
         })
         .then(data=>{
            
@@ -126,7 +179,7 @@ const ModificarHistorial = (props) => {
             }else{
                 
                 setValor({
-                    HistorialModificado: true,
+                    FacturaModificado: true,
                     redirect:true
                 })       
             }
@@ -135,7 +188,7 @@ const ModificarHistorial = (props) => {
         })
         
     } else {
-        setValor({...valor, error:resultado.incidente})
+       // setValor({...valor, error:resultado.incidente})
         
         
     }
@@ -143,9 +196,21 @@ const ModificarHistorial = (props) => {
        
     }
 
-    const agregarHistorialForm = () => (
+
+    const agregarFacturaForm = () => (
         <form className="mb-3" onSubmit={clickSubmit}>
             
+
+        <div className="form-group">
+        <label className="text-muted">identificador de cliente</label>
+        <input onChange={handleChange('sCliente')} 
+                type="text" 
+                className="form-control" 
+                required
+                value={sCliente} />
+        </div>
+     
+
             <div className="form-group">
                 <label className="text-muted">¿cuando pasó? </label>
                 
@@ -156,40 +221,177 @@ const ModificarHistorial = (props) => {
                       />
             </div>
 
-            <div className="form-group">
-            <label className="text-muted">¿permaneció más de 2 minutos? </label>
-                      <Checkbox  onChange={handleChange('bMinTest'+bMinTest)}  value={bMinTest}> </Checkbox>
-
-        </div>
+           
         <div className="form-group">
-                <label className="text-muted">duración  </label>
-                <input onChange={handleChange('iDuracion')} 
+                <label className="text-muted">sub Total  </label>
+                <input onChange={handleChange('iSubtotal')} 
                         type="number" 
                         className="form-control" 
                         required
-                        value={iDuracion } />
-            </div>
-            <div className="form-group">
-                <label className="text-muted">identificador de cliente</label>
-                <input onChange={handleChange('sCliente')} 
-                        type="text" 
-                        className="form-control" 
-                        required
-                        value={sCliente} />
-            </div>
-            <div className="form-group">
-                <label className="text-muted">identificador de Receta </label>
-                <input onChange={handleChange('sReceta')} 
-                        type="text" 
-                        className="form-control" 
-                        required
-                        value={ sReceta} />
+                        value={iSubtotal } />
             </div>
 
+            <div className="form-group">
+                <label className="text-muted">Total  </label>
+                <input onChange={handleChange('iTotal')} 
+                        type="number" 
+                        min="1"
+                        className="form-control" 
+                        required
+                        value={iTotal } />
+            </div>
+
+            <div  className="form-group">
+            <p>
+            <a className="btn"   data-toggle="collapse" href={'#direccion'} role="button" aria-expanded="false" aria-controls="collapseExample">   
+            <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección ▼</h5>  
+            </a>
+          </p>
+
+      
+              <div className="collapse" id={'direccion'}>
+     
+        
+              
+            <div className="form-group">
+            <label className="text-muted">Ciudad  </label>
+            <input onChange={handleDireccionChange('sCiudad')} 
+                    type="text" 
+                    className="form-control" 
+                    required
+                    value={oDireccion.sCiudad}/>
+            </div>
+              
+              
+              
+              
+
+              <div className="form-group">
+            <label className="text-muted">Dirección 1  </label>
+            <input onChange={handleDireccionChange('sDireccion1')} 
+                    type="text" 
+                    className="form-control" 
+                    required
+                    value={oDireccion.sDireccion1} />
+            </div>
+              
+              
+
+              <div className="form-group">
+              <label className="text-muted">Dirección 2  </label>
+              <input onChange={handleDireccionChange('sDireccion2')} 
+                      type="text" 
+                      className="form-control" 
+                      required
+                      value={oDireccion.sDireccion2} />
+              </div>
+
+
+
+              <div className="form-group">
+              <label className="text-muted">Código postal</label>
+              <input onChange={handleDireccionChange('iCodPostal')} 
+                      type="text" 
+                      className="form-control" 
+                      required
+                      value={oDireccion.iCodPostal} />
+              </div>
+
+              <div className="form-group">
+              <label className="text-muted">Teléfono</label>
+              <input onChange={handleDireccionChange('sTelefono')} 
+                      type="text" 
+                      className="form-control" 
+                      required
+                      value={oDireccion.sTelefono} />
+              </div>
+
+
+              <div className="form-group">
+              <label className="text-muted">Nombre</label>
+              <input onChange={handleDireccionChange('sNombre')} 
+                      type="text" 
+                      className="form-control" 
+                      required
+                      value={oDireccion.sNombre} />
+              </div>
+
+              
+
+              <div className="form-group">
+              <label className="text-muted">Apellido</label>
+              <input onChange={handleDireccionChange('sApellido')} 
+                      type="text" 
+                      className="form-control" 
+                      required
+                      value={oDireccion.sApellido} />
+              </div>
+                             
+              </div>
+          </div>
+
+
+          <div  className="form-group">
+          <p>
+          <a className="btn"   data-toggle="collapse" href={'#compras'} role="button" aria-expanded="false" aria-controls="collapseExample">   
+          <h5 className="font-weight-bold" style={{display : 'inline'}}>cosas compradas ▼</h5>  
+          </a>
+        </p>
+
+    
+            <div className="collapse" id={'compras'}>
+   
+            {aCompras.map((item, key) =>
+            <div className="border border-dark">
+            
+            
+            <button type="button" onClick={handleArrayChange('borrar', key)} class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+            <div className="form-group">
+            <label className="text-muted">producto  </label>
+            <input onChange={handleArrayChange('sNombre', key)} 
+                    type="text" 
+                    className="form-control" 
+                    required
+                    value={item.sNombre} />
+           </div>
+
+           <div className="form-group">
+           <label className="text-muted">cantidad  </label>
+           <input onChange={handleArrayChange('iCant', key)} 
+                   type="number" 
+                   className="form-control" 
+                   min="1"
+                   required
+                   value={item.iCant} />
+          </div>
+
+          <div className="form-group">
+          <label className="text-muted">Precio  </label>
+          <input onChange={handleArrayChange('iPrecio', key)} 
+                  type="number" 
+                  className="form-control" 
+                  min="1"
+                  required
+                  value={item.iPrecio} />
+         </div>
+           
+            
+            
+            </div>
+                
+
+
+            )}  
+                           
+            </div>
+        </div>
 
 
             <button className="btn btn-outline-primary">
-                Modificar Historial
+                Modificar Factura
             </button>
         </form>
     );
@@ -202,7 +404,7 @@ const ModificarHistorial = (props) => {
     );
     const mostrarFunciona = () => (
         <div className="alert alert-info" 
-        style={{display: HistorialModificado ? '':'none'}}>
+        style={{display: FacturaModificado ? '':'none'}}>
             <h4>{`el registro se ha modificado exitosamente `}</h4>
         </div>
     );
@@ -214,14 +416,14 @@ const ModificarHistorial = (props) => {
 
     const redireccionarUsuario = () => {
         if(redirect){
-            return <Redirect to="/Historial/Support/"></Redirect>
+            return <Redirect to="/Factura/Support/"></Redirect>
         }
             
     }
     
 
     return (
-        <Layout titulo="MODIFICAR Historial" 
+        <Layout titulo="MODIFICAR Factura" 
         descripcion="" 
         className="container-fluid">
  
@@ -232,7 +434,7 @@ const ModificarHistorial = (props) => {
                     {mostrarLoading()}
                     {mostrarError()}
                     {mostrarFunciona()}                  
-                    {agregarHistorialForm()}
+                    {agregarFacturaForm()}
                     {redireccionarUsuario()}
                     
                 </div>
@@ -243,4 +445,4 @@ const ModificarHistorial = (props) => {
     );
 }
 
-export default ModificarHistorial;
+export default ModificarFactura;

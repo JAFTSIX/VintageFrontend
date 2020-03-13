@@ -40,37 +40,10 @@ const Factura = () => {
     
  
 
-    const crudFactura = () => {
-        return(
-            <div className="">               
-                <ul className="list-group">                   
-                    <li className="list-group-item">
-                        <Link className="nav-link btn btn-outline-primary 
-                            mt-2 mb-2 agregarPadding mr-2
-                        " to="/Factura/Support/agregar">
-                            Agregar Factura
-                        </Link>
-                    </li>
-                
-                    
-                </ul>
-            </div>
-        );
-    };
+  
 
 
-    const mostrarCrud = () => {
-        if(isAutentificacion() 
-        && isAutentificacion().cliente.bAdmin){
-            return(
-                <div>
-                {crudFactura()}
-                </div>
-            );
-        }else{
-            return("");
-        }
-    }
+    
     const mostrarError = () => (
         <div className="alert alert-danger" 
         style={{display: error ? '' : 'none'}}>
@@ -88,7 +61,7 @@ const Factura = () => {
             <div className="row">
                 <div className="col-9">                   
                 {mostrarError()}
-                    {mostrarCrud()}
+               
                 </div>
             </div>
             
@@ -98,9 +71,12 @@ const Factura = () => {
         
             <div className="table table-borderless">     
                                        
-                {FacturaDisponibles.map((Factura, i)=>(
+                {FacturaDisponibles.map(  
+                    (Factura, i)=>(
                     <FacturaInterfaz key={i} Factura={Factura}/>
-                ))}                   
+                    )
+                
+                )}                   
 
             </div>
             </div>        

@@ -6,6 +6,8 @@ import '../../../index.css';
 import '../../../user/producto.css';
 
 
+import moment from 'moment';
+
 
 
 
@@ -27,15 +29,7 @@ const HistorialInterfaz = ({Historial}) => {
           }
 
           const convertir_Fecha = ()=>{
-            var visita = new Date(Historial.dFecha);
-            var day = visita.getDate() + "";
-            var month = (visita.getMonth() + 1) + "";
-            var year = visita.getFullYear() + "";
-            var hour = visita.getHours() + "";
-            var minutes = visita.getMinutes() + "";
-            var seconds = visita.getSeconds() + "";
-
-            setFecha(day + "/" + month + "/" + year + " " + hour + ":" + minutes + ":" + seconds)
+            setFecha(moment(Historial.dFecha).format('DD/MM/YYYY, HH:mm:ss'))
           }
         
         
