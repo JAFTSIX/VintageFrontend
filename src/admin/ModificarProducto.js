@@ -4,7 +4,8 @@ import { isAutentificacion } from '../autentificacion';
 import {getProducto} from './apiAdmin';
 import { modificarProducto } from './apiAdmin';
 import {Redirect} from 'react-router-dom';
-import '../index.css'
+import '../index.css';
+import '../css.css';
 
 
 
@@ -172,7 +173,7 @@ const ModificarProducto = (props) => {
             </div>
 
             <button className="btn btn-outline-primary">
-                Agregar Producto
+                Modificar Producto
             </button>
         </form>
     );
@@ -201,10 +202,10 @@ const ModificarProducto = (props) => {
         }
             
     }
-    
+        
 
     return (
-        <Layout titulo="MODIFICAR PRODUCTO" 
+        <Layout jumbotron="jumboAgregarProducto" titulo="MODIFICAR PRODUCTO" 
         descripcion="" 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
