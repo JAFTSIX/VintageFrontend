@@ -2,7 +2,8 @@ import React from 'react';
 import Layout from '../nucleo/Layout';
 import {isAutentificacion} from '../autentificacion';
 import {Link} from 'react-router-dom';
-import '../index.css'
+import '../index.css';
+import '../css.css';
 
 
 const AdminD = () => {
@@ -71,7 +72,7 @@ const AdminD = () => {
     
 
     return (
-        <Layout titulo="Perfil Administrador" 
+        <Layout jumbotron="jumbotronPerfil" titulo="Perfil Administrador" 
         descripcion={`${sNombre} ${sApellido}`} 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
