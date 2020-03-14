@@ -4,7 +4,8 @@ import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
 import {getReceta} from './apiReceta';
 import RecetaInterfaz from './RecetaInterfaz';
-import '../index.css'
+import '../index.css';
+import '../css.css';
 
 
 const Receta = () => {
@@ -36,7 +37,7 @@ const Receta = () => {
         return(
             <div className="">               
                 <ul className="list-group">                   
-                    <li className="list-group-item border-0 mw-100 p-0 mb-5">
+                    <li className="list-group-item border-0 mw-100 p-0 mb-5 mt-3">
                         <Link className="nav-link btn btn-outline-primary 
                             mt-2 mb-2 agregarPadding mr-2
                         " to="/receta/agregar">
@@ -64,8 +65,8 @@ const Receta = () => {
     }
 
     return (
-        <Layout titulo="RECETA" 
-        descripcion="Chef Selenia Mendez" 
+        <Layout jumbotron="jumbotronReceta" titulo="RECETA" 
+        descripcion="Chef Selenia Mendez"   
         className="container-fluid">
             
             {/* funciones de admin */}
