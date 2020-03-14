@@ -64,6 +64,21 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 
 }
 
+.jumboAgregarProducto{
+    width: 30wh;    
+    height: 70vh;
+    color: #fff;
+    background-image: url("https://enlacocina.telemesa.es/wp-content/uploads/2019/01/shutterstock_208686205-1280x640.jpg");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    border-radius: 0px; 
+    padding-top: 0px;
+    text-align: center;
+    display: flex;
+    margin-bottom: 3%;
+
+}
+
 .jumbotronContainer{
     margin: auto;
     background-color: #343a406b;
