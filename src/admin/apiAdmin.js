@@ -297,8 +297,10 @@ export const errorTranslator=(untranslated)=>{
         case 'Error verifying token: jwt expired':
         
            return 'su sesión ha expirado, inicie sesión nuevamente'
-            
-    
+        
+        case    'The request body is invalid. See error object `details` property for more info.':
+        
+            return 'formulario con datos inválidos'
         default:
             return untranslated;
     }

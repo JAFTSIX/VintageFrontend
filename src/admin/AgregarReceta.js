@@ -210,8 +210,7 @@ const AgregarReceta = () => {
                                     
                     <Checkbox onChange={handleArrayChange(key,item)}    value={item.add}> {item.sNombre}</Checkbox>
 
-                </div>)
-                }   
+                </div>)}   
 
             </div>
 

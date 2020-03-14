@@ -183,7 +183,10 @@ const ModificarFactura = (props) => {
             oDireccion
         })
         .then(data=>{
-           
+           if (data===undefined) {
+            setValor({...valor, error:errorTranslator('Problemas, intente más tarde')})
+           } else {
+               
             if('error' in data){
                 setValor({...valor, error:errorTranslator(data.error.message)})
             }else{
@@ -192,7 +195,8 @@ const ModificarFactura = (props) => {
                     FacturaModificado: true,
                     redirect:true
                 })       
-            }
+            }           }
+
 
                 
         })
