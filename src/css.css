@@ -47,6 +47,8 @@ p{
 
 }
 
+
+
 .jumbotronPerfil{
     width: 30wh;    
     height: 70vh;
@@ -68,7 +70,7 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
     width: 30wh;    
     height: 70vh;
     color: #fff;
-    background-image: url("https://enlacocina.telemesa.es/wp-content/uploads/2019/01/shutterstock_208686205-1280x640.jpg");
+    background-image: url("https://besthqwallpapers.com/Uploads/3-1-2020/118025/strawberry-margarita-cocktail-macro-cocktails-glass-with-drink-margarita-cocktail.jpg");
     background-size: 100% 100%;
     background-attachment: fixed;
     border-radius: 0px; 
@@ -78,6 +80,22 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
     margin-bottom: 3%;
 
 }
+
+.jumboAgregarReceta{
+    width: 30wh;    
+    height: 70vh;
+    color: #fff;
+    background-image: url("https://www.actualidadviajes.com/wp-content/uploads/2019/12/Francia-macarons.jpg");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    border-radius: 0px; 
+    padding-top: 0px;
+    text-align: center;
+    display: flex;
+    margin-bottom: 3%;
+
+}
+
 
 .jumbotronContainer{
     margin: auto;
@@ -123,9 +141,12 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 }
 
 .btn-outline-primary{
+    width: 100%;
     border-color: rgba(247, 112, 218, 1);
     color: rgba(247, 112, 218, 1);
-    padding: 15px 100px;      
+    align-items: center !important;
+    padding: 10px 20% 10px 20% !important;
+    margin-top: 1%;   
 }
 
 .container{
@@ -160,7 +181,7 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 }
 
 .widthCompleto{
-    width: 100%;
+    width: 100%;    
 }
 
 .alert{
@@ -191,7 +212,7 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 .btn, .jumbotron, .nav :hover {
     border-radius: 0px;
 }
-
+    
 /* imagen prodcuto  */
 .productoImagen{
     min-height: 100px;
@@ -200,6 +221,9 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 .modal-dialog{
     background-color: white;
 }
+
+
+
 
 
 
