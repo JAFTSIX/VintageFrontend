@@ -11,11 +11,12 @@ const Layout = ({
     titulo='Titulo', 
     descripcion='', 
     className, 
-    children}) => (
+    children,
+    jumbotron}) => (
         
     <div>    
 
-        <div className="jumbotron">
+        <div className={jumbotron}>
         <Menu />
             <div className="jumbotronContainer">
                 <h1 className="pt-5">{titulo}</h1>
