@@ -36,7 +36,7 @@ const Producto = () => {
         return(
             <div className="">               
                 <ul className="list-group">                   
-                    <li className="list-group-item">
+                    <li className="list-group-item border-0 mw-100 p-0 mb-5">
                         <Link className="nav-link btn btn-outline-primary 
                             mt-2 mb-2 agregarPadding mr-2
                         " to="/producto/agregar">
@@ -70,14 +70,14 @@ const Producto = () => {
             
             {/* funciones de admin */}
             <div className="row">
-                <div className="col-9">                   
+                <div className="col-12">                       
                     {mostrarCrud()}
                 </div>
             </div>
             
             {/* contenido principal */}
         
-            <div className="row">     
+            <div className="row mb-5">     
                                        
                 {productoDisponibles.map((producto, i)=>(
                     <ProductoInterfaz key={i} producto={producto}/>
