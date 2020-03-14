@@ -4,7 +4,8 @@ import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
 import { crearProducto } from './apiAdmin';
 import AgregarCategoria  from './support/Categorias/insert';
-import '../index.css'
+import '../index.css';
+import '../css.css';
 
 const AgregarProducto = () => {
     const [valor, setValor] = useState({
@@ -171,7 +172,7 @@ const AgregarProducto = () => {
     
 
     return (
-        <Layout titulo="Agregar Producto" 
+        <Layout jumbotron="jumboAgregarProducto" titulo="Agregar Producto" 
         descripcion="" 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
