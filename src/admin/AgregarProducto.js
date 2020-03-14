@@ -143,12 +143,17 @@ const AgregarProducto = () => {
                         type="number" 
                         className="form-control" 
                         required
-                        value={iCant2} />
+                        value={iCant2} />   
             </div>
-
-            <button className="btn btn-outline-primary">
-                Agregar Producto
-            </button>
+                                
+            <div className="row">   
+                <div className="col-12">
+                    <button className="btn btn-outline-primary"> 
+                        Agregar Producto
+                    </button>
+                </div>
+            </div>
+            
         </form>
     );
 
