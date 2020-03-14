@@ -15,14 +15,16 @@
     "material-ui": "^0.20.2",
     "moment": "^2.24.0",
     "nodejs": "0.0.0",
-    "react": "^16.12.0",
+    "react": "^16.13.0",
     "react-datetime-picker": "^2.9.0",
-    "react-dom": "^16.12.0",
+    "react-dom": "^16.13.0",
     "react-input-checkbox": "^0.1.6",
     "react-moment": "^0.9.7",
     "react-responsive-carousel": "^3.1.51",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "redux": "^4.0.5",
+    "video-react": "^0.14.1"
   },
   "scripts": {
     "start": "react-scripts start",
