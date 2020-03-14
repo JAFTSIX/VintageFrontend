@@ -2,7 +2,8 @@ import React from 'react';
 import Layout from '../nucleo/Layout';
 import {isAutentificacion} from '../autentificacion';
 import {Link} from 'react-router-dom';
-import '../index.css'
+import '../index.css';  
+import '../css.css';
 
 
 const Perfil = () => {
@@ -69,7 +70,7 @@ const Perfil = () => {
     
 
     return (
-        <Layout titulo="Perfil" 
+        <Layout jumbotron="jumbotronPerfil" titulo="Perfil" 
         descripcion={`${sNombre} ${sApellido}`} 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
