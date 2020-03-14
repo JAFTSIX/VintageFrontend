@@ -19,7 +19,7 @@ const Layout = ({
         <div className={jumbotron}>
         <Menu />
             <div className="jumbotronContainer">
-                <h1 className="pt-5">{titulo}</h1>
+                <h1 className="pt-5 text-uppercase">{titulo}</h1>
                 <h4 className="lead">{descripcion}</h4>
             </div>
             
