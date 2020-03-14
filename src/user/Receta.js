@@ -36,7 +36,7 @@ const Receta = () => {
         return(
             <div className="">               
                 <ul className="list-group">                   
-                    <li className="list-group-item">
+                    <li className="list-group-item border-0 mw-100 p-0 mb-5">
                         <Link className="nav-link btn btn-outline-primary 
                             mt-2 mb-2 agregarPadding mr-2
                         " to="/receta/agregar">
@@ -52,8 +52,7 @@ const Receta = () => {
 
     const mostrarCrud = () => {
         if(isAutentificacion() 
-        && isAutentificacion().sContrasena==="123" 
-        && isAutentificacion().sCorreo==="sele"){
+        && isAutentificacion().cliente.bAdmin){
             return(
                 <div>
                     {crudReceta()}
@@ -71,7 +70,7 @@ const Receta = () => {
             
             {/* funciones de admin */}
             <div className="row">
-                <div className="col-9">                   
+                <div className="col-12">                   
                     {mostrarCrud()}
                 </div>
             </div>
