@@ -15,14 +15,44 @@ p{
     
 }
 
-
-
-.jumbotron{
+.jumbotronReceta{
     width: 30wh;    
     height: 70vh;
     color: #fff;
-    background-image: url("https://cdn.shopify.com/s/files/1/1856/9027/products/il_fullxfull.1464035132_oar9_530x@2x.jpg?v=1522332447"),
-                    linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);    
+    background-image: url("https://www.elsetge.cat/myimg/f/234-2349477_pastel-macarons.jpg");           
+    background-size: 250% 250%;
+    -webkit-animation: Gradient 15s ease infinite;      
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+    border-radius: 0px;
+    padding-top: 0px;
+    text-align: center;
+    display: flex;
+
+}
+
+.jumbotronProducto{
+    width: 30wh;    
+    height: 70vh;
+    color: #fff;
+    background-image: url("https://cdn.shopify.com/s/files/1/1856/9027/products/il_fullxfull.1464035132_oar9_530x@2x.jpg?v=1522332447");           
+    background-size: 250% 250%;
+    -webkit-animation: Gradient 15s ease infinite;      
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+    border-radius: 0px;
+    padding-top: 0px;
+    text-align: center;
+    display: flex;
+
+}
+
+.jumbotronPerfil{
+    width: 30wh;    
+    height: 70vh;
+    color: #fff;
+    background: rgb(63,94,251);
+background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
     background-size: 250% 250%;
     -webkit-animation: Gradient 15s ease infinite;      
     -moz-animation: Gradient 15s ease infinite;
