@@ -4,7 +4,8 @@ import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
 import {getProductoG} from './apiProducto';
 import ProductoInterfaz from './ProductoInterfaz';
-import '../index.css'
+import '../index.css';
+import '../css.css';
 
 
 const Producto = () => {
@@ -36,9 +37,9 @@ const Producto = () => {
         return(
             <div className="">               
                 <ul className="list-group">                   
-                    <li className="list-group-item border-0 mw-100 p-0 mb-5">
+                    <li className="list-group-item border-0 mw-100 p-0 mb-5 mt-3">
                         <Link className="nav-link btn btn-outline-primary 
-                            mt-2 mb-2 agregarPadding mr-2
+                            m-2 agregarPadding 
                         " to="/producto/agregar">
                             Agregar Producto
                         </Link>
@@ -64,8 +65,9 @@ const Producto = () => {
     }
 
     return (
-        <Layout titulo="PRODUCTOS" 
-        descripcion="Chef Selenia Mendez" 
+        
+        <Layout jumbotron="jumbotronProducto" titulo="PRODUCTOS" 
+        descripcion="Chef Selenia Mendez"   
         className="container-fluid">
             
             {/* funciones de admin */}
