@@ -18,6 +18,7 @@ const ProductoInterfaz = ({producto}) => {
                     {/* <p><b>Descripcion:</b>  {producto.sDescripcion}</p>
                     <p><b>Precio:</b>  {producto.iPrecio}</p> */}
                     
+                    {/* hover  */}
                     <div className="btnProductos fadeIn-top"> 
                     {/* titulo  */}
                         <h1 className="text-capitalize font-weight-bold text-center text-light">{producto.sNombre}</h1> 
@@ -35,22 +36,21 @@ const ProductoInterfaz = ({producto}) => {
                                 Añadir a Carrito de Compra
                         </button>
 
-                    </div>
-                    
+                        <br />
 
-                    {isAutentificacion() 
+                        {isAutentificacion() 
                         && isAutentificacion().cliente.bAdmin && (
                         <Fragment>
                         {/* // aqui se pasa el id del producto en el url para actualizar */}
                         <Link to={`/Articulo/${producto._id}/?filter[offset]=0&filter[limit]=100&filter[skip]=0`}>
-                            <button className="btn btn-outline-primary 
+                            <button className="btn btn-primary btnPinkFuerte
                             mt-2 mb-2 agregarPadding mr-2">
                                 Modificar Producto
                             </button>
                         </Link>
 
                         <Link to={`Eliminar/Articulo/${producto._id}`}>
-                            <button className="btn btn-outline-primary 
+                            <button className="btn btn-primary btnPinkFuerte
                             mt-2 mb-2 agregarPadding mr-2" data-toggle="modal" data-target="#exampleModal">
                                 Eliminar Producto
                             </button>
@@ -73,7 +73,9 @@ const ProductoInterfaz = ({producto}) => {
                         </Link>
                         </Fragment>
                     )}
-                    
+
+                    </div>
+
                 </div>
             </div>
         </div>
