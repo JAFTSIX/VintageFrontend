@@ -4,7 +4,8 @@ import Layout from '../nucleo/Layout';
 import {getReceta} from './apiAdmin';
 import { modificarReceta , getObjeto,errorTranslator,modificarObjeto} from './apiAdmin';
 import {Redirect} from 'react-router-dom';
-import '../index.css'
+import '../index.css';
+import '../css.css';
 import {checkingReceta} from '../user/procesos/ValidarDatos';
  
 
@@ -304,7 +305,7 @@ const ModificarReceta = (props) => {
     
 
     return (
-        <Layout titulo="MODIFICAR RECETA" 
+        <Layout jumbotron="jumboAgregarReceta" titulo="MODIFICAR RECETA" 
         descripcion="" 
         className="container-fluid">
           
