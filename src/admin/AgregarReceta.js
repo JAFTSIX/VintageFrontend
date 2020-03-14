@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
-import { isAutentificacion } from '../autentificacion';
-import { Link } from 'react-router-dom';
+ 
+ 
 import { insertObject,errorTranslator, getObjeto} from './apiAdmin';
 import '../index.css'
 import {checkingReceta} from '../user/procesos/ValidarDatos';
