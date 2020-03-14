@@ -71,7 +71,7 @@ const Producto = () => {
         className="container-fluid">
             
             {/* funciones de admin */}
-            <div className="row">
+            <div className="row mt-5">
                 <div className="col-12">                       
                     {mostrarCrud()}
                 </div>
