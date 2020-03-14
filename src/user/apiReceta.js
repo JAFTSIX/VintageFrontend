@@ -17,3 +17,17 @@ export const getReceta = (ordenar) => {
             console.log(err);
         })
 }
+
+export const leerProductoDetalle = (recetaId) => {
+    return fetch(`${API}/Receta/${recetaId}`, {
+        method: "GET",
+    })
+            
+    .then(response => {
+        return response.json()
+    })
+    .catch(err => {
+        
+        console.log(err);
+    })
+}
