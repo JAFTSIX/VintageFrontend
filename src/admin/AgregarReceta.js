@@ -3,9 +3,12 @@ import Layout from '../nucleo/Layout';
  
  
 import { insertObject,errorTranslator, getObjeto} from './apiAdmin';
-import '../index.css'
+import '../index.css';
+import '../css.css';
 import {checkingReceta} from '../user/procesos/ValidarDatos';
 import { Checkbox } from 'react-input-checkbox';
+
+
 const AgregarReceta = () => {
     const [valor, setValor] = useState({
         sNombre : "",
@@ -264,7 +267,7 @@ const AgregarReceta = () => {
     
 
     return (
-        <Layout titulo="Agregar Receta" 
+        <Layout jumbotron="jumboAgregarReceta" titulo="Agregar Receta" 
         descripcion="" 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
