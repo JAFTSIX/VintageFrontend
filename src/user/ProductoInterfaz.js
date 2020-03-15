@@ -25,7 +25,7 @@ const ProductoInterfaz = ({producto}) => {
                         <h3 className="text-light">Precio: ₡{producto.iPrecio}</h3>
 
                         {/* Botones  */}
-                        <Link to="/">
+                        <Link to={`/Articulo/Detalle/${producto._id}`}>
                             <button className="btn btn-primary btnPink 
                             mt-2 mb-2 agregarPadding mr-2">
                                 Ver Producto
