@@ -72,7 +72,8 @@ const AdminD = () => {
     
 
     return (
-        <Layout jumbotron="jumbotronPerfil" titulo="Perfil Administrador" 
+        <Layout jumbotron="jumbotronMovimiento" titulo="Perfil Administrador" 
+        image="https://www.phoneservicecenter.es/wp-content/uploads/2019/02/Fondo-pantalla-1-Samsung-Galaxy-S10.png"
         descripcion={`${sNombre} ${sApellido}`} 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
