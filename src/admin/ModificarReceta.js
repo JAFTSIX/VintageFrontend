@@ -7,6 +7,7 @@ import {Redirect} from 'react-router-dom';
 import '../index.css';
 import '../css.css';
 import {checkingReceta} from '../user/procesos/ValidarDatos';
+import { Link } from 'react-router-dom';
  
 
 
@@ -306,15 +307,24 @@ const ModificarReceta = (props) => {
 
     return (
         <Layout jumbotron="jumboEstatico"
-        image="https://www.actualidadviajes.com/wp-content/uploads/2019/12/Francia-macarons.jpg"
-        titulo="MODIFICAR RECETA" 
-        descripcion="" 
+        image={sUrlImagen}  
+        titulo={`MODIFICAR RECETA : ${sNombre}`}
+        descripcion=""
         className="container-fluid">
           
             
             <div className="row">
  
-                <div className="col-md-8 offset-md-2">                
+                <div className="col-md-8 offset-md-2">     
+
+                    {/* btn regresar a receta general  */}
+                    <Link to={`/Receta`}>
+                            <button className="btn btn-outline-primary
+                                agregarPadding mb-5" data-toggle="modal" data-target="#exampleModal">
+                                    Regresar a Receta General
+                            </button>
+                    </Link>
+                            
                     {mostrarLoading()}
                     {mostrarError()}
                     {mostrarFunciona()}                  
