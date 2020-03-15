@@ -6,6 +6,7 @@ import './videoReceta.css';
 import {isAutentificacion} from '../autentificacion/index';
 import { Link } from 'react-router-dom';
 import Menu from '../nucleo/Menu';
+import EliminarProducto from '../admin/EliminarProducto';
 
 
 const ProductoDetalle = (props) => {
@@ -53,6 +54,7 @@ const ProductoDetalle = (props) => {
                     </Link>
 
                     <Link to={`Eliminar/Articulo/${producto._id}`}>
+                        {/* <EliminarProducto props={props.match.params.productoId}/> */}
                         <button className="btn btn-outline-primary
                             agregarPadding ml-2" data-toggle="modal" data-target="#exampleModal">
                                 Eliminar Producto
