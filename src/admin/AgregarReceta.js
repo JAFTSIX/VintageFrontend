@@ -267,7 +267,9 @@ const AgregarReceta = () => {
     
 
     return (
-        <Layout jumbotron="jumboAgregarReceta" titulo="Agregar Receta" 
+        <Layout jumbotron="jumboEstatico" 
+        image="https://www.actualidadviajes.com/wp-content/uploads/2019/12/Francia-macarons.jpg"
+        titulo="Agregar Receta" 
         descripcion="" 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
