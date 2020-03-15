@@ -330,6 +330,13 @@ const ModificarReceta = (props) => {
                     {mostrarFunciona()}                  
                     {agregarRecetaForm()}
                     {redireccionarUsuario()}
+
+                    <Link to={`../Eliminar/${_id}`}>
+                            <button className="btn btn-outline-primary
+                                agregarPadding mb-5" data-toggle="modal" data-target="#exampleModal">
+                                    Eliminar Receta
+                            </button>
+                    </Link>
                     
                 </div>
             </div>
