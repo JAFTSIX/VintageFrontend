@@ -12,11 +12,13 @@ const Layout = ({
     descripcion='', 
     className, 
     children,
-    jumbotron}) => (
+    jumbotron,
+    image}) => (
         
     <div>    
 
-        <div className={jumbotron}>
+        <div className={jumbotron} 
+        style={{ backgroundImage:`url(${image})` }}>
         <Menu />
             <div className="jumbotronContainer">
                 <h1 className="pt-5 text-uppercase">{titulo}</h1>
