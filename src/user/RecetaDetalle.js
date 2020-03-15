@@ -56,7 +56,7 @@ const RecetaDetalle = (props) => {
                         </button>
                     </Link>
 
-                    <Link to={`Eliminar/Receta/${receta._id}`}>
+                    <Link to={`../Eliminar/${receta._id}`}>
                         <button className="btn btn-outline-primary
                             agregarPadding ml-2" data-toggle="modal" data-target="#exampleModal">
                                 Eliminar Receta
