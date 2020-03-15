@@ -34,9 +34,9 @@
   }
 
 .imgProd{
-    max-height: 100%;
+    max-height: 400px;
     max-width: 100%;
-    min-height: 100%;
+    min-height: 400px;
     min-width: 100%;
     margin: 0px;    
     opacity: 1;
@@ -95,4 +95,6 @@
     background-color: rgb(255, 0, 255);
     border-color: rgb(255, 0, 255);
   }
+
+
 
