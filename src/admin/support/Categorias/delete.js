@@ -103,7 +103,7 @@ const EliminarCategoria= (props) => {
         )}
         {!redirect && (
 
-            <h4>{`no se hizo ninguna acción`}</h4>
+            <h4>{`No se hizo ninguna acción`}</h4>
         )}  
         
         </div>
