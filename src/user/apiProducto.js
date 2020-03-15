@@ -17,3 +17,17 @@ export const getProductoG = (ordenar) => {
             console.log(err);
         })
 }
+
+export const leerProductoDetalle = (productoId) => {
+    return fetch(`${API}/Articulo/${productoId}`, {
+        method: "GET",
+    })
+            
+    .then(response => {
+        return response.json()
+    })
+    .catch(err => {
+        
+        console.log(err);
+    })
+}
