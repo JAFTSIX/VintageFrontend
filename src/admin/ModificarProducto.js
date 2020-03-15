@@ -226,10 +226,18 @@ const ModificarProducto = (props) => {
                     </Link>
 
                     {mostrarLoading()}
-                    {mostrarError()}
+                    {mostrarError()}    
                     {mostrarFunciona()}                  
                     {agregarProductoForm()}
                     {redireccionarUsuario()}
+
+                    {/* btn eliminar producto */}
+                    <Link to={`../Eliminar/${_id}`}>
+                            <button className="btn btn-outline-primary
+                                agregarPadding mb-5" data-toggle="modal" data-target="#exampleModal">
+                                    Eliminar Producto
+                            </button>
+                    </Link>
                     
                 </div>
             </div>
