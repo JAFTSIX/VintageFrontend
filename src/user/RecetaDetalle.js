@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
 import Layout from '../nucleo/Layout';
 import {leerProductoDetalle} from './apiReceta';
 import RecetaInterfaz from './RecetaInterfaz';
 import '../index.css';
 import '../css.css';
+import './videoReceta.css';
 
 
 const RecetaDetalle = (props) => {
@@ -30,20 +31,52 @@ const RecetaDetalle = (props) => {
     }, []);
 
     return(
-        <Layout jumbotron="jumboDetalleReceta"
-            image={receta.sUrlImagen}
+        <div className="mt-5 pt-5">
+        <Layout
             titulo={receta.sNombre}
             descripcion="Detalle de Recetas"        
-            className="container-fluid mx-2"
+            className="container-fluid "
         >
-            <div className="row mt-5">
-            <div className="col-12">     
-                <iframe width="560" height="315" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            {/* imagen  */} 
+            <div className="row">
+                <img src={receta.sUrlImagen} height="110px" width="110px" className="imagenReceta"></img>
             </div>
+
+            {/* contenido  */}
+            <div className="row mt-1 d-flex justify-content-center Content">
+                <div className="col-5 fix">     
+                    <iframe className="video" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>  
+                <div className="col-5 scroll">     
+
+                {/* si el precio es 0  */}
+                {receta.iPrecio === 0 && 
+                    <Fragment>
+                    <h1 className="text-capitalize colorPink">Instrucciones</h1>
+                    <h5 className="mt-4 text-justify">{receta.sTexto}</h5>
+                    </Fragment>
+                }
+                    
+
+                    {/* se va a mostrar precio unicamente si es mayor a 0  */}
+                    {receta.iPrecio > 0 &&
+                        <Fragment>
+                            <h1 className=" text-left colorPink">Precio: ₡ {receta.iPrecio}</h1>
+                            <h5 className="mt-4 text-justify">Receta Premium, Por favor comprar para ver la receta completa</h5>
+                            <button className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
+                        </Fragment>
+                    }   
+
+                </div>  
+
+            
             </div>
+
+
             
         </Layout>
+        </div>
     );
 }
 
-export default RecetaDetalle;
+export default RecetaDetalle;   
