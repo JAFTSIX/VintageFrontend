@@ -1,6 +1,5 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import Layout from '../nucleo/Layout';
-import {leerProductoDetalle} from './apiReceta';
+import {leerRecetaDetalle} from './apiReceta';
 import '../index.css';
 import '../css.css';
 import './videoReceta.css';
@@ -16,7 +15,7 @@ const RecetaDetalle = (props) => {
     // metodo cargar receta del url 
     const cargarDetalleReceta = recetaId => {
         // funcion ubicado en apiReceta 
-        leerProductoDetalle(recetaId).then(data=>{
+        leerRecetaDetalle(recetaId).then(data=>{
             if(data.error){
                 setError(data.error);
             }else{
@@ -36,7 +35,7 @@ const RecetaDetalle = (props) => {
         
         <div className="mt10 mx-5 container-fluid ">
             <Menu />
-            <h1>{receta.sNombre}</h1>
+            <h1 className="text-capitalize">{receta.sNombre}</h1>
             <h4 className="mb-5">Detalle de Receta</h4>
             {/* imagen prodcuto  */} 
             <div className="row">   
@@ -79,14 +78,14 @@ const RecetaDetalle = (props) => {
 
             {/* contenido  */}
             <div className="row mt-1 Content">
-                <div className="col-5 fix">     
+                <div className="col-6 fix">     
                     <iframe className="video" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>  
-                <div className="col-5 scroll">     
+                <div className="col-5 scroll mr-1">     
 
                 {/* si el precio es 0  */}
-                {receta.iPrecio === 0 && 
-                    <Fragment>
+                {receta.iPrecio === 0 &&    
+                    <Fragment className="">
                     <h1 className="text-capitalize colorPink">Instrucciones</h1>
                     <h5 className="mt-4 text-justify">{receta.sTexto}</h5>
                     </Fragment>
@@ -95,7 +94,7 @@ const RecetaDetalle = (props) => {
 
                 {/* se va a mostrar precio unicamente si es mayor a 0  */}
                 {receta.iPrecio > 0 &&
-                        <Fragment className="right">
+                        <Fragment className="">
                             <h1 className=" text-left colorPink">Precio: ₡ {receta.iPrecio}</h1>
                             <h5 className="mt-4 text-justify">Receta Premium, Por favor comprar para ver la receta completa</h5>
                             <button className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
