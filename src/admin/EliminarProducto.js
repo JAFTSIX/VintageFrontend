@@ -2,7 +2,14 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
 import {eliminarProducto} from './apiAdmin';
 import {Redirect} from 'react-router-dom';
-import '../index.css'
+import '../index.css';
+
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 const EliminarProducto = (props) => {
@@ -13,11 +20,24 @@ const EliminarProducto = (props) => {
 
     const {productoEliminado, redirect} = valor;
 
+    const [open, setOpen] = React.useState(true);
+    
+    const handleClose= seguir=>_evento => {
+        console.log(seguir)      
+        if(seguir){
+            eliminar(props.match.params.productId)
+        }else{
+            setValor({redirect:true})       
+        }
+        setOpen(false);
+    };
+
     const eliminar = productId => {
         eliminarProducto(productId)
         .then(data=>{
             setValor({
-                redirect:true
+                redirect:true,
+                productoEliminado:data
             })
             
         })
@@ -26,7 +46,7 @@ const EliminarProducto = (props) => {
     useEffect(()=>{
         const productId = props.match.params.productId
         console.log(productId)
-        eliminar(productId)
+        // eliminar(productId)
         
     }, []);
 
@@ -37,24 +57,38 @@ const EliminarProducto = (props) => {
             
     }
 
-    const mostrarFunciona = () => (
-        <div className="alert alert-info" 
-        style={{display: redirect ? '':''}}>
-            <h4>{`Se ha creado exitosamente`}</h4>
-        </div>
-    );
 
     return (
-        <Layout titulo="ELIMINAR PRODUCTO" 
-        descripcion="" 
-        className="container-fluid">
-            
+
             <div className="row">
-            {mostrarFunciona()}   
-            {redireccionarUsuario()}
+
+            <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description">
+    
+            <DialogTitle id="alert-dialog-title">{`Eliminar`}</DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+               ¿Esta seguro que deseas eliminar este producto?
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose(false)} color="primary">
+                No
+              </Button>
+              <Button onClick={handleClose(true)} color="primary" autoFocus>
+                Seguro
+              </Button>
+            </DialogActions>
+          </Dialog> 
+
+         
+          {redireccionarUsuario()}
                              
             </div>
-        </Layout>
+
     );
 }
 
