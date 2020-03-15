@@ -305,7 +305,9 @@ const ModificarReceta = (props) => {
     
 
     return (
-        <Layout jumbotron="jumboAgregarReceta" titulo="MODIFICAR RECETA" 
+        <Layout jumbotron="jumboEstatico"
+        image="https://www.actualidadviajes.com/wp-content/uploads/2019/12/Francia-macarons.jpg"
+        titulo="MODIFICAR RECETA" 
         descripcion="" 
         className="container-fluid">
           
