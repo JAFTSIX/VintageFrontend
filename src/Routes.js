@@ -36,6 +36,7 @@ import AgregarReceta from './admin/AgregarReceta';
 import ModificarReceta from './admin/ModificarReceta';
 import EliminarReceta from './admin/EliminarReceta';
 import RecetaDetalle from './user/RecetaDetalle';
+import ProductoDetalle from './user/ProductoDetalle';
 import './index.css'
 
 //props --> parámetro de consulta props se puede 
@@ -71,6 +72,8 @@ const Routes = () => {
             exact component={EliminarReceta}/>
             <PrivateRoute path="/Receta/Detalle/:recetaId" exact
              component={RecetaDetalle}/>
+             <PrivateRoute path="/Articulo/Detalle/:productoId" exact
+             component={ProductoDetalle}/>
             
              
              <AdminRoute path="/categoria/Support/" 
