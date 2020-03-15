@@ -288,29 +288,29 @@ export function checkingReceta(objeto) {
 
     if (!regex_texto.test(objeto.sNombre)) {
         //false
-        respuesta = new resultado(false, 'nombre de receta inválido')
+        respuesta = new resultado(false, 'Nombre de receta inválido')
     }
  
     if (!objeto.sTexto+''.length>0) {
         //false
-        respuesta = new resultado(false, 'texto de receta inválido')
+        respuesta = new resultado(false, 'Texto de receta inválido')
     }
  
 
     if (!regex_numero.test(objeto.iPrecio) ) {
         //false
-        respuesta = new resultado(false, 'precio inválido')
+        respuesta = new resultado(false, 'Precio inválido')
     }
  
 
-    if (!regex_url.test(objeto. sUrlVideo)) {
-        //false
-        respuesta = new resultado(false, 'url de video inválido')
-    }
+    // if (!regex_url.test(objeto. sUrlVideo)) {
+    //     //false
+    //     respuesta = new resultado(false, 'url de video inválido')
+    // }
 
     if (!regex_url.test(objeto. sUrlImagen)) {
         //false
-        respuesta = new resultado(false, 'url de imagen inválido')
+        respuesta = new resultado(false, 'Url de imagen inválido')
     }
      
 
