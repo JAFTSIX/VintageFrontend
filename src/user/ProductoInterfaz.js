@@ -7,10 +7,10 @@ import './producto.css';
 
 const ProductoInterfaz = ({producto}) => {
     return(
-        <div className="col-4 mb-3">
+        <div className="col-4 mb-3 ">
             <div className="card">
                 <div className="card-body">
-                <div className="card-overlay"></div>
+                <div className="card-overlay maxheigh"></div>
                     {/* imagen  */}                   
                     <MostrarImagen item={producto}
                     url="Articulo"/>
