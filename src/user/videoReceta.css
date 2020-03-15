@@ -1,0 +1,41 @@
+.video{
+    width: 100%;
+    height: 600px;
+    position: static;
+    left: 3px;
+    margin-bottom: 3%;
+}   
+
+.Content{
+    height: 100px;
+}
+
+.scroll
+{
+    height: 600px;
+    float: right;
+    overflow: auto;
+}
+
+.scroll::-webkit-scrollbar { width: 0 !important }
+.scroll { overflow: -moz-scrollbars-none; }
+.scroll { -ms-overflow-style: none; }
+
+.scrollable { 
+    display: none; 
+    }
+
+.fix
+{
+    float: left;
+    margin-left: 10px;
+}
+
+.imagenReceta{
+    border-radius: 100%;
+    position: fixed;
+    top: 140px;
+    right: 140px;
+}
+
+
