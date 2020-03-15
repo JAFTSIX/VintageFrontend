@@ -49,7 +49,7 @@ const ProductoInterfaz = ({producto}) => {
                             </button>
                         </Link>
 
-                        <Link to={`Eliminar/Articulo/${producto._id}`}>
+                        <Link to={`Articulo/Eliminar/${producto._id}`}>
                             <button className="btn btn-primary btnPinkFuerte
                             mt-2 mb-2 agregarPadding mr-2" data-toggle="modal" data-target="#exampleModal">
                                 Eliminar Producto
