@@ -31,13 +31,15 @@ const RecetaDetalle = (props) => {
 
     return(
         <Layout jumbotron="jumboDetalleReceta"
+            image={receta.sUrlImagen}
             titulo={receta.sNombre}
             descripcion="Detalle de Recetas"        
-            className="container-fluid"
+            className="container-fluid mx-2"
         >
-            <div className="row">
-            <iframe width="560" height="315" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                
+            <div className="row mt-5">
+            <div className="col-12">     
+                <iframe width="560" height="315" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
             </div>
             
         </Layout>
