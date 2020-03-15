@@ -49,7 +49,7 @@ const RecetaInterfaz = ({receta}) => {
                     
                         </Link>
                         </Fragment>
-                    )}
+                        )}
                     </div>
 
                     
