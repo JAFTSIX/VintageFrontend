@@ -39,7 +39,7 @@ const ProductoDetalle = (props) => {
             <h4 className="mb-5">Detalle de Producto</h4>
 
             {/* botones admin  */}
-            <div className="btnAdmin">
+            <div className="btnAdminProducto">
             {isAutentificacion() 
             && isAutentificacion().cliente.bAdmin && (
                 <Fragment>
@@ -52,7 +52,7 @@ const ProductoDetalle = (props) => {
                         </button>
                     </Link>
 
-                    <Link to={`Eliminar/Producto/${producto._id}`}>
+                    <Link to={`Eliminar/Articulo/${producto._id}`}>
                         <button className="btn btn-outline-primary
                             agregarPadding ml-2" data-toggle="modal" data-target="#exampleModal">
                                 Eliminar Producto
@@ -83,11 +83,7 @@ const ProductoDetalle = (props) => {
                     <h3 className="float-right">Precio: ₡ {producto.iPrecio}</h3>
                     <button className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
 
-                 
-
-                </div>  
-
-            
+                </div>             
             </div>
         </div>
     );
