@@ -15,6 +15,8 @@ p{
     
 }
 
+
+
 .jumbotronMovimiento{
     width: 30wh;    
     height: 70vh;
@@ -31,22 +33,6 @@ p{
 }
 
 
-.jumbotronPerfil{
-    width: 30wh;    
-    height: 70vh;
-    color: #fff;
-    background: rgb(63,94,251);
-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-    background-size: 250% 250%;
-    -webkit-animation: Gradient 15s ease infinite;      
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
-    border-radius: 0px;
-    padding-top: 0px;
-    text-align: center;
-    display: flex;
-
-}
 
 .jumboEstatico{
     width: 30wh;    
@@ -65,9 +51,8 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 
 .jumboDetalleReceta{    
     width: 30wh;    
-    height: 70vh;
+    height: 40vh;
     color: #fff;
-    background-image    : url("https://us.emedemujer.com/wp-content/uploads/sites/3/2016/02/iStock-670806260.jpg");
     background-size: 100% 100%;
     background-attachment: fixed;
     border-radius: 0px; 
@@ -81,8 +66,8 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 
 .jumbotronContainer{
     margin: auto;
-    background-color: #343a406b;
-    padding: 1% 6% 3% 6%;
+    background-color: #ffffff00;
+    padding: 1% 10% 3% 10%;
     border-radius: 2%;
 }
 
@@ -160,6 +145,10 @@ background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100
 
 .colorBlack{
     color: black;
+}
+
+.colorPink{
+    color: rgb(255, 0, 200);
 }
 
 .widthCompleto{
