@@ -18,7 +18,7 @@ export const getReceta = (ordenar) => {
         })
 }
 
-export const leerProductoDetalle = (recetaId) => {
+export const leerRecetaDetalle = (recetaId) => {
     return fetch(`${API}/Receta/${recetaId}`, {
         method: "GET",
     })
