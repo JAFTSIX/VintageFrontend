@@ -11,10 +11,11 @@ const MostrarImagenReceta = ({item, url}) => {
     <div className="productoImagen">
         {/* {`${API}/${url}/sUrlImagen/${item._id}`} */}
 
-        <img src={`${item.sUrlImagen}`}
+        <img className="imgProd mb-3" src={`${item.sUrlImagen}`}
          alt={item.sNombre}
-         style={{maxHeight: '100%', maxWidth: '100%'}}
-         className="mb-3" />
+        //  style={{maxHeight: '100%', maxWidth: '100%'}}
+        //  className="mb-3" 
+        />
     </div>
     );
 }
