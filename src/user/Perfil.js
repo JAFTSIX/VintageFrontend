@@ -70,7 +70,9 @@ const Perfil = () => {
     
 
     return (
-        <Layout jumbotron="jumbotronPerfil" titulo="Perfil" 
+        <Layout jumbotron="jumbotronMovimiento"
+        image="https://www.phoneservicecenter.es/wp-content/uploads/2019/02/Fondo-pantalla-1-Samsung-Galaxy-S10.png"
+        titulo="Perfil" 
         descripcion={`${sNombre} ${sApellido}`} 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
