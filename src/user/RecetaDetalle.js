@@ -43,7 +43,7 @@ const RecetaDetalle = (props) => {
             </div>
 
             {/* botones admin  */}
-            <div className="btnAdmin">
+            <div className="btnAdminReceta">
             {isAutentificacion() 
             && isAutentificacion().cliente.bAdmin && (
                 <Fragment>
