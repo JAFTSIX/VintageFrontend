@@ -205,7 +205,9 @@ const ModificarProducto = (props) => {
         
 
     return (
-        <Layout jumbotron="jumboAgregarProducto" titulo="MODIFICAR PRODUCTO" 
+        <Layout jumbotron="jumboEstatico"
+        image="https://besthqwallpapers.com/Uploads/3-1-2020/118025/strawberry-margarita-cocktail-macro-cocktails-glass-with-drink-margarita-cocktail.jpg" 
+        titulo="MODIFICAR PRODUCTO" 
         descripcion="" 
         className="container-fluid">
             {/* <img src="..." class="img-fluid" alt="Responsive image"></img> */}
