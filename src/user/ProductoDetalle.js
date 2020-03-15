@@ -53,7 +53,7 @@ const ProductoDetalle = (props) => {
                         </button>
                     </Link>
 
-                    <Link to={`Eliminar/Articulo/${producto._id}`}>
+                    <Link to={`../Eliminar/${producto._id}`}>
                         {/* <EliminarProducto props={props.match.params.productoId}/> */}
                         <button className="btn btn-outline-primary
                             agregarPadding ml-2" data-toggle="modal" data-target="#exampleModal">
