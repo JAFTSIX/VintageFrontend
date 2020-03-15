@@ -6,6 +6,7 @@ import { modificarProducto } from './apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../index.css';
 import '../css.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -214,7 +215,16 @@ const ModificarProducto = (props) => {
             
             <div className="row">
  
-                <div className="col-md-8 offset-md-2">                
+                <div className="col-md-8 offset-md-2">  
+
+                    {/* btn regresar a receta general  */}
+                    <Link to={`/Producto`}>
+                            <button className="btn btn-outline-primary
+                                agregarPadding mb-5" data-toggle="modal" data-target="#exampleModal">
+                                    Regresar a Producto General
+                            </button>
+                    </Link>
+
                     {mostrarLoading()}
                     {mostrarError()}
                     {mostrarFunciona()}                  
