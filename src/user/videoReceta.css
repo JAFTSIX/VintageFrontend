@@ -40,12 +40,20 @@
     right: 140px;
 }
 
-.btnAdmin{  
+.btnAdminReceta{  
     display: flex;
     flex-direction: row;
     position: fixed;
     top: 162px;
     right: 300px;
+}
+
+.btnAdminProducto{  
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 162px;
+    right: 150px;
 }
 
 .btn{
