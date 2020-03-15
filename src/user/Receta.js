@@ -80,7 +80,7 @@ const Receta = () => {
             
             {/* contenido principal */}
         
-            <div className="row">     
+            <div className="row maxheigh">     
                                        
                 {receta.map((receta, i)=>(
                     <RecetaInterfaz key={i} receta={receta}/>
