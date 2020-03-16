@@ -37,7 +37,9 @@ import ModificarReceta from './admin/ModificarReceta';
 import EliminarReceta from './admin/EliminarReceta';
 import RecetaDetalle from './user/RecetaDetalle';
 import ProductoDetalle from './user/ProductoDetalle';
-import './index.css'
+import './index.css';
+
+import Carrito from './user/CarritoCompra/Carrito';
 
 //props --> parámetro de consulta props se puede 
 //utilizar en varios comandos GET 
@@ -113,6 +115,9 @@ const Routes = () => {
           
 
      */}
+            <PrivateRoute path="/Cart" exact
+             component={Carrito}/>
+
 
         </Switch>
     </BrowserRouter>
