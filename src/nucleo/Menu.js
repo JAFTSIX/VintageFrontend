@@ -4,8 +4,9 @@ import {Link, withRouter} from 'react-router-dom';
 // withRouter --> acceder al prop history, ej: cada que acceda a otro menu el /home se cambia
 import {cerrarSesion, isAutentificacion} from '../autentificacion';
 import signIn from '../user/SignIn';
-import './principal.css'
-import '../index.css'
+import './principal.css';
+import '../index.css';
+import  {productoTotal} from '../user/CarritoCompra/carritoHelper'
 
 
 
@@ -121,6 +122,13 @@ const Menu = ({history}) => {
                     <li className="nav-item dropdown">
                         <Link className="nav-link" style={esHover(history, "/receta")} to="/receta">
                             RECETA
+                        </Link>
+                    </li>
+                    <li className="nav-item dropdown">
+                        <Link className="nav-link" style={esHover(history, "/cart")} to="/cart">
+                            CARRITO DE COMPRA 
+                            {/* cantidad de productos en el carrito de compra  */}
+                            <sup><small className="carritoTotal">{productoTotal()}</small></sup>
                         </Link>
                     </li>
 
