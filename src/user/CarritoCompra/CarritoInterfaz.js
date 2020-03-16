@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../../nucleo/Layout';
 import { Link } from 'react-router-dom';
-import {getProductosLocalStorage, actualizarCantidad} from './carritoHelper';
+import {getProductosLocalStorage, actualizarCantidad, eliminarProductoCarrito} from './carritoHelper';
 import '../../index.css';
 import './carrito.css';
 
@@ -23,6 +23,7 @@ const CarritoInterfaz = ({product}) => {
         }
     }
 
+    // actualizar cantidad 
     const mostrarOpcionActualizar = () => {
         return (
             // input para actualizar la cantidad 
@@ -37,16 +38,41 @@ const CarritoInterfaz = ({product}) => {
         )
     }
 
+    // eliminar producto 
+    const eliminaProductoCarrito = () => {
+        
+        return (
+            <Link to="/cart" refresh="true">
+
+                <button 
+                    onClick={()=>{
+                        eliminarProductoCarrito(product._id);
+                        window.location.reload(); 
+                        }}>
+                    Eliminar Producto
+                </button>
+          </Link>
+            
+ 
+        )
+    }
+
+
     return( 
             <div className="row">
                 <div className="col-5 mb-3">
                     <img height="300px" width="450px" src={product.sUrlImagen} />
-                    <h1 className="d-lg-inline-flex ml-5 text-capitalize mt-5">{product.sNombre}</h1>
+                    <div className="d-lg-inline-flex ml-5 mt-5 ">
+                        <h1 className="text-capitalize">{product.sNombre}</h1>
+                    </div>
+                    
                 </div>
                 <hr />
-                <div className="col-1 text-center d-flex justify-content-center align-items-center"><h3>{mostrarOpcionActualizar()}</h3></div>
-                <div className="col-3 text-center d-flex justify-content-center align-items-center"><h3>₡{product.iPrecio}</h3></div>
+                <div className="col-1 text-center d-flex justify-content-center aslign-items-center"><h3>{mostrarOpcionActualizar()}</h3></div>
+                <div className="col-2 text-center d-flex justify-content-center align-items-center"><h3>₡{product.iPrecio}</h3></div>
                 <div className="col-3 text-center d-flex justify-content-center align-items-center" ><h3>₡Precio final</h3></div>
+                <div className="col-1  text-center d-flex justify-content-center align-items-center">{eliminaProductoCarrito()}</div>
+                 
             </div>
 
     );
