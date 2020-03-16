@@ -19,7 +19,7 @@ const ProductoInterfaz = ({producto}) => {
             setMensaje(true);
         });
 
-        // que desaparezca en 2 seg 
+        // que desaparezca en 2 seg     
         setTimeout(() => {
             setMensaje(false);
           }, 2500);
