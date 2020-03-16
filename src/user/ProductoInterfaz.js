@@ -1,15 +1,35 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment,useState }from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import MostrarImagen from './MostrarImagen';
 import {isAutentificacion} from '../autentificacion/index';
 import '../index.css';
 import './producto.css';
+import {agregarProductoCarrito} from './CarritoCompra/carritoHelper'
+
 
 const ProductoInterfaz = ({producto}) => {
+
+    const [redirect, setRedirect] = useState(false);
+
+    const agregarCarrito = () => {
+        // parametros -> el producto que viene del prop y el cb function 
+        agregarProductoCarrito(producto, ()=>{
+            setRedirect(true);
+        })
+    }
+
+    const redireccionarUsuario = redirect => {
+        if(redirect){
+            return <Redirect to="/cart"/>
+        }
+    }
+
     return(
         <div className="col-4 mb-3 ">
             <div className="card">
                 <div className="card-body">
+                    {/* llamar a la funcion para redireccionar al usuario  */}
+                    {redireccionarUsuario(redirect)}
                 <div className="card-overlay maxheigh"></div>
                     {/* imagen  */}                   
                     <MostrarImagen item={producto}
@@ -31,7 +51,8 @@ const ProductoInterfaz = ({producto}) => {
                                 Ver Producto
                             </button>
                         </Link>
-                        <button className="btn btn-warning mt-2 
+                        {/* llamar otra funcion para llamar al carritoHelper y no llamar directamente  */}
+                        <button onClick={agregarCarrito} className="btn btn-warning mt-2 
                         mb-2 agregarPadding">
                                 Añadir a Carrito de Compra
                         </button>
@@ -54,22 +75,6 @@ const ProductoInterfaz = ({producto}) => {
                             mt-2 mb-2 agregarPadding mr-2" data-toggle="modal" data-target="#exampleModal">
                                 Eliminar Producto
                             </button>
-                            {/* <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div className="modal-dialog" role="document">
-                                    <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" className="btn btn-primary">Save changes</button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div> */}
                         </Link>
                         </Fragment>
                     )}
