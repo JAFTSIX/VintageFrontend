@@ -1,0 +1,32 @@
+#tabla {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #tabla td, #tabla th {
+    padding: 8px;
+
+  }
+  
+  #tabla tr:nth-child(even){background-color: #f2f2f2;}
+
+  
+  #tabla{
+      margin: 0px;
+      width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #ff00ea;
+    color: white;
+  }
+
+  .inputSize{
+      width: 20px !important;
+  }
+
+  .input-group > .form-control, .input-group > .form-control-plaintext, .input-group > .custom-select, .input-group > .custom-file {
+      width: 80px !important;
+      font-size: 25px;
+      text-align: center;
+  }
