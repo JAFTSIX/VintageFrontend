@@ -6,8 +6,11 @@ import {cerrarSesion, isAutentificacion} from '../autentificacion';
 import signIn from '../user/SignIn';
 import './principal.css';
 import '../index.css';
-import  {productoTotal} from '../user/CarritoCompra/carritoHelper'
+import '../css.css';
+import  {productoTotal} from '../user/CarritoCompra/carritoHelper';
 
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 
 
@@ -35,9 +38,35 @@ const esHoverDropDown = (history, ruta) => {
     }
 } 
 
+
+
+
+
 //{history} --> acceder desde el props con la var history
 // para que el sistema sepa que es history
 const Menu = ({history}) => {
+
+    // metodos para salir session 
+    const redirect =()=>{
+        history.push('/');
+    }
+    const close = () => {
+        confirmAlert    ({
+            title: '¿Seguro que desea salir de esta cuenta?',
+            message: <p>Si cierra sesión se eliminará todos los productos del carrito de compras.</p>,
+            buttons: [
+              {
+                label: 'Si',
+                onClick: () =>cerrarSesion(redirect)
+              },
+              {
+                label: 'No',
+              }
+            ]
+          });
+    }
+
+    // -----------salir sesion --------------
 
     const {sPermisos} =isAutentificacion();
     //solo es para definir el rol mientras todavia no existe en la api
@@ -152,6 +181,7 @@ const Menu = ({history}) => {
             {/* solo va a mostrar el cerrar sesion cuando el usuario esta loguado */}
             {isAutentificacion() && (
                 <li className="nav-item dropdown">
+                    
                 <span className="nav-link" 
                     style = {
                         {
@@ -159,10 +189,11 @@ const Menu = ({history}) => {
                             color: '#ffffff'
                         }
                     }
-                    onClick = {
-                        () => cerrarSesion(() => {
-                            history.push('/');
-                        })
+                    onClick = {()=> close()
+                        // () => cerrarSesion(() => {
+                        //     history.push('/');
+                        // })
+                        
                     } >
                         SALIR
                 </span>
