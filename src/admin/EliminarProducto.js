@@ -3,6 +3,7 @@ import Layout from '../nucleo/Layout';
 import {eliminarProducto} from './apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../index.css';
+import '../user/producto.css';
 
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
