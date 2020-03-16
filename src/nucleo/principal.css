@@ -135,7 +135,14 @@
   .textDecorationone{
     text-decoration:none !important;
   }
-  
+
+  /*carrito de compra*/
+  .carritoTotal, .carritoTotal:hover{
+    border-radius: 100%;
+    padding: 4px 7px;
+    font-size: 12px;
+    background: #ff00ea;
+  }
 
 
 
