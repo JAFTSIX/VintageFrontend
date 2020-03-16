@@ -105,6 +105,24 @@
     z-index: 10000;
   }
 
+  /* grid eliminar  */
+  .MuiDialog-paperWidthSm{
+    max-width: 1000px !important;
+    width: 1000px !important;
+  }
+
+  .MuiTypography-h6{
+    font-size: 2.25rem !important;
+  }
+
+  .MuiTypography-body1{
+    font-size: 20px !important;
+  }
+
+  .MuiButton-label{
+    font-size: 20px !important;
+  }
+
 
 
 
