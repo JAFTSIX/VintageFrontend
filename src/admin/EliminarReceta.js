@@ -39,7 +39,7 @@ const EliminarReceta= (props) => {
             
             setValor({
                 redirect:true,
-                productoEliminado:data
+                recetaEliminado:data.sNombre
             })
             
         })
@@ -47,7 +47,7 @@ const EliminarReceta= (props) => {
 
     useEffect(()=>{
         const recetaId = props.match.params.recetaId
-        console.log(recetaId)
+        console.log(recetaEliminado)
         // eliminar(recetaId)
         
     }, []);
@@ -69,7 +69,7 @@ const EliminarReceta= (props) => {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description">
     
-            <DialogTitle id="alert-dialog-title">{`Eliminar`}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{`Eliminar ${recetaEliminado}`}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                ¿Esta seguro que deseas eliminar este producto?
