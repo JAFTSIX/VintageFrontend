@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect } from 'react';
 import Layout from '../../nucleo/Layout';
 import { Link } from 'react-router-dom';
 import {getProductosLocalStorage, actualizarCantidad} from './carritoHelper';
@@ -10,14 +10,14 @@ import CarritoInterfaz from './CarritoInterfaz';
 const Carrito = () => {
     const [producto, setProducto] = useState([]);
 
-
-
-    console.log(producto);
     useEffect(()=>{
+
         //llamar a la funcion ubicado en carritoHelper
-        setProducto(getProductosLocalStorage())
+        setProducto(getProductosLocalStorage());  
     
     }, []);
+
+
 
     // Funcion que muestra todos los productos 
     const mostrarProducto = producto => {
@@ -27,7 +27,7 @@ const Carrito = () => {
 
                     <div className="col-5 pl-5">PRODUCTOS</div>
                     <div className="col-1 text-center">CANTIDAD</div>
-                    <div className="col-3 text-center pl-5">PRECIO / UNIDAD</div>
+                    <div className="col-2 text-center pl-5">PRECIO / UNIDAD</div>
                     <div className="col-3 text-center pl-5">PRECIO TOTAL</div> 
             </div>
 
@@ -50,9 +50,10 @@ const Carrito = () => {
     // Funcion que muestra si no hay productos 
     const noProductoMensaje = () => {
         return(
-            <div>
-                <h2>Su Carrito de Compra esta vacío</h2>
+            <div className="text-center mb-5">
+                <h2>Carrito de Compra esta vacío</h2>
                 <h3><Link to="../producto">Continúa Comprando... </Link></h3>
+                <img height="300px" width="300px" src="https://i.pinimg.com/originals/f1/ad/41/f1ad41a237e46b6fc147be8674ad216f.png"/>
             </div>
         );
     };
@@ -60,7 +61,7 @@ const Carrito = () => {
     
 
     return (    
-        
+         
         <Layout jumbotron="jumbotronMovimiento"
         image="https://www.tastefinewines.co.uk/wp-content/uploads/2018/11/gifts-for-christmas.jpg"
          titulo="CARRITO DE COMPRA" 
@@ -69,6 +70,7 @@ const Carrito = () => {
 
             <div className="row mt-5">
                 <div className="col-12">
+                    
                     {/* if si hay productos en el carrito o no  */}
                     {producto.length > 0 ? mostrarProducto(producto) : noProductoMensaje()}
                 </div>
@@ -77,6 +79,8 @@ const Carrito = () => {
             
         </Layout>
     );
+
+    
 }
 
 export default Carrito;
