@@ -10,25 +10,61 @@ import {agregarProductoCarrito} from './CarritoCompra/carritoHelper'
 const ProductoInterfaz = ({producto}) => {
 
     const [redirect, setRedirect] = useState(false);
+    const [mensaje, setMensaje] = useState(false);
 
     const agregarCarrito = () => {
         // parametros -> el producto que viene del prop y el cb function 
         agregarProductoCarrito(producto, ()=>{
             setRedirect(true);
-        })
+            setMensaje(true);
+        });
+
+        // que desaparezca en 2 seg 
+        setTimeout(() => {
+            setMensaje(false);
+          }, 2500);
     }
 
     const redireccionarUsuario = redirect => {
         if(redirect){
-            return <Redirect to="/cart"/>
+            return <Redirect to="/producto"/>
         }
     }
 
+    const mostrarFunciona = () => {
+        
+        return(
+        <div className="alert alert-info" 
+
+        style={{display: mensaje ? '':'none'}}>
+            <h4>{`${producto.sNombre} se ha añadido al Carrito de Compra`}</h4>
+        </div>
+        );
+
+        
+        
+    };
+
+    // const desaparecerMensaje = () => {
+    //    let msgStatic = document.querySelector(".msgStatic");
+    //    if(msgStatic.style.opacity === 1){
+    //     msgStatic.style.opacity = 0;
+    //    }else{
+    //     msgStatic.style.opacity = 0;
+    //    }
+    // }
+
     return(
+        
         <div className="col-4 mb-3 ">
+            
+            {/* msg se anade correctamente a carrito  */}
+            <div className="msgStatic">{mostrarFunciona()}</div>
+            {/* {desaparecerMensaje()} */}
             <div className="card">
                 <div className="card-body">
                     {/* llamar a la funcion para redireccionar al usuario  */}
+                    
                     {redireccionarUsuario(redirect)}
                 <div className="card-overlay maxheigh"></div>
                     {/* imagen  */}                   
