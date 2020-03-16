@@ -16,6 +16,7 @@
     "moment": "^2.24.0",
     "nodejs": "0.0.0",
     "react": "^16.13.0",
+    "react-confirm-alert": "^2.6.1",
     "react-datetime-picker": "^2.9.0",
     "react-dom": "^16.13.0",
     "react-input-checkbox": "^0.1.6",
