@@ -1,3 +1,5 @@
+import { CardText } from "material-ui";
+
 export const agregarProductoCarrito = (producto, next) => {
     let carrito = []
     if(typeof window !== 'undefined'){
@@ -40,7 +42,7 @@ export const productoTotal = () => {
 
 // get productos del localStorage
 export const getProductosLocalStorage = () => {
-    if(typeof window !== "undefined"){
+    if(typeof window !== 'undefined'){
         if(localStorage.getItem('carrito')){
             console.log(JSON.parse(localStorage.getItem('carrito')));
             return JSON.parse(localStorage.getItem('carrito'));
@@ -71,4 +73,31 @@ export const actualizarCantidad = (productoId, count) => {
         localStorage.setItem('carrito', JSON.stringify(carrito));
 
     }
+}
+
+export const eliminarProductoCarrito = (productoId) => {
+    let carrito = [];
+    if(typeof window !== 'undefined'){
+        if(localStorage.getItem('carrito')){
+            carrito = JSON.parse(localStorage.getItem('carrito'));
+        }
+
+        // recorrer todos los productos de localStorage 
+        carrito.map((producto, i)=>{
+            // comparar el id de los productos del localStorage con el id que pasamos 
+            //por param de Carrito que se seleccion para cambiar la cantidad
+            if(producto._id === productoId){
+                // splice -> elimina 1 elemento del index
+                // elimina producto del array 
+                carrito.splice(i, 1);
+                console.log(carrito);
+            }
+        });
+
+        // cambiar ese valor en el localStorage 
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    }
+
+    return carrito;
 }
