@@ -96,5 +96,15 @@
     border-color: rgb(255, 0, 255);
   }
 
+  /* carrito  */
+  .msgStatic{
+    opacity: 1;
+    position: fixed;
+    top: 1%;
+    right: 40%;
+    z-index: 10000;
+  }
+
+
 
 
