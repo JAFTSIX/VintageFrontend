@@ -1,6 +1,10 @@
 import {API} from '../config'; //aqui se guarda el puerto del api
 //import { response } from 'express';
-import '../index.css'
+import '../index.css';
+
+
+
+
 
 /**Ying 
  * body: JSON.stringify(user) //convierte el objeto en json string
@@ -97,18 +101,12 @@ export const isAutentificacion = () => {
 //cb es para actualizar el state o redireccionar 
 //en este caso se va a redireccionar
 export const cerrarSesion = (cb) => {
-    if(typeof window !== 'undefined'){
+    
+    if(typeof window !== 'undefined'){  
         localStorage.removeItem('jwt');
+        localStorage.removeItem('carrito');
         //en el cb se puede redireccionar, limpiar el state, etc
         cb();
-        //se usa cuando ya exista una funcion en el api de esto
-        // return fetch(`${API}/signOut`, {
-        //     method: "GET",
-        // })
-        // .then(response=>{
-        //     console.log('signOut', response);
-        // })
-        // .catch(err => console.log(err));
     }
 }
 
