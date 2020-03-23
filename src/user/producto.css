@@ -96,6 +96,11 @@
     border-color: rgb(255, 0, 255);
   }
 
+  .customBtn{
+    background-color: rgba(0, 0, 0, 0.473);
+    border-style: none;
+  }
+
   /* carrito  */
   .msgStatic{
     opacity: 1;
