@@ -169,7 +169,10 @@ const ModificarCategoria = (props) => {
     
 
     return (
-        <Layout titulo="MODIFICAR Categoria" 
+        <Layout 
+        jumbotron="jumboEstatico" 
+        image="https://blogthinkbig.com/wp-content/uploads/2019/07/dulce-comida.jpg"
+        titulo="MODIFICAR Categoria" 
         descripcion="" 
         className="container-fluid">
  
