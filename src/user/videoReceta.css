@@ -1,6 +1,6 @@
 .video{
     width: 100%;
-    height: 480px;
+    height: 700px;
     position: static;
     margin-bottom: 3%;
 }   
@@ -11,7 +11,7 @@
 
 .scroll
 {
-    height: 480px;
+    height: 700px;
     float: right;
     overflow: auto;
 }
