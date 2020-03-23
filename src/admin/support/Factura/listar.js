@@ -53,8 +53,11 @@ const Factura = () => {
         
     );
     return (
-        <Layout titulo="Factura" 
-        descripcion="Chef Selenia Mendez" 
+        <Layout 
+        jumbotron="jumboEstatico" 
+        image="https://i.pinimg.com/originals/49/a1/62/49a162c235d8bb299921bfa88d9be931.jpg"
+        titulo="Factura" 
+        descripcion="Chef Selenia Mendez"   
         className="container-fluid">
         
             {/* funciones de admin */}
