@@ -20,7 +20,7 @@ const CategoriaInterfaz = ({Categoria}) => {
              
 
                     {/* titulo  */}
-                    <h1 className="">{Categoria.sNombre}</h1> 
+                    <h1 className="text-center">{Categoria.sNombre}</h1> 
         
                     {isAutentificacion() && isAutentificacion().cliente.bAdmin && (
                         <Fragment>
