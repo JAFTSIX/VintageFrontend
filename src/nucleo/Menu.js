@@ -132,6 +132,8 @@ const Menu = ({history}) => {
                     </li>
 
                     
+
+                    
                     
                 </Fragment>
             )}
@@ -153,13 +155,15 @@ const Menu = ({history}) => {
                             RECETA
                         </Link>
                     </li>
+
                     <li className="nav-item dropdown">
                         <Link className="nav-link" style={esHover(history, "/cart")} to="/cart">
-                            CARRITO DE COMPRA 
+                            CARRITO COMPRAS
                             {/* cantidad de productos en el carrito de compra  */}
                             <sup><small className="carritoTotal">{productoTotal()}</small></sup>
                         </Link>
                     </li>
+                    
 
             {/*Ocultar esos menus cuando el usuario ya inicio session*/}
             {/* si no existe ningun usuario en el local storage, va a aparecer esos menus */}
@@ -177,6 +181,8 @@ const Menu = ({history}) => {
                     </li>
                 </Fragment>
             )}
+
+                    
 
             {/* solo va a mostrar el cerrar sesion cuando el usuario esta loguado */}
             {isAutentificacion() && (
