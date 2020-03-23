@@ -11,6 +11,8 @@ const CarritoInterfaz = ({product}) => {
     
     // contador para definir la cantidad 
     const [count, setCount] = useState(product.count);
+    const [precioUnidad, setPrecioUnidad] = useState(0);
+
 
     // funcion para ver el cambio que se realiza en cantidad 
     const handleChange = productoId => event => {
@@ -44,12 +46,13 @@ const CarritoInterfaz = ({product}) => {
         return (
             <Link to="/cart" refresh="true">
 
-                <button 
+                <button class="customBtnCart"
                     onClick={()=>{
                         eliminarProductoCarrito(product._id);
                         window.location.reload(); 
                         }}>
-                    Eliminar Producto
+                    <img src="https://cdn3.iconfinder.com/data/icons/iconano-text-editor/512/005-X-512.png" height="50px" width="50px"/>
+                    {/* Eliminar Producto */}
                 </button>
           </Link>
             
@@ -57,9 +60,18 @@ const CarritoInterfaz = ({product}) => {
         )
     }
 
+    const calcularPrecioUnidad = () => {
+        let kk = product.iPrecio * count;
+        setPrecioUnidad(kk);
+        
+        
+    }
+
 
     return( 
             <div className="row">
+        
+
                 <div className="col-5 mb-3">
                     <img height="300px" width="450px" src={product.sUrlImagen} />
                     <div className="d-lg-inline-flex ml-5 mt-5 ">
@@ -67,10 +79,11 @@ const CarritoInterfaz = ({product}) => {
                     </div>
                     
                 </div>
+                
                 <hr />
                 <div className="col-1 text-center d-flex justify-content-center aslign-items-center"><h3>{mostrarOpcionActualizar()}</h3></div>
                 <div className="col-2 text-center d-flex justify-content-center align-items-center"><h3>₡{product.iPrecio}</h3></div>
-                <div className="col-3 text-center d-flex justify-content-center align-items-center" ><h3>₡Precio final</h3></div>
+                <div className="col-3 text-center d-flex justify-content-center align-items-center" ><h3>₡{precioUnidad}</h3></div>
                 <div className="col-1  text-center d-flex justify-content-center align-items-center">{eliminaProductoCarrito()}</div>
                  
             </div>
