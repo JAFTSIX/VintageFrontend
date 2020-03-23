@@ -20,20 +20,20 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 //si los dos coinciden, se le hace hover
 const esHover = (history, ruta) => {
     if(history.location.pathname === ruta){
-        return {color: '#ff00ea'};
+        return {color: 'rgb(255, 0, 234)'};
          //si hace hover aparezca este color
     }else {
-        return {color: '#ffffff'};
+        return {color: '#ffffff'};  
         // color default = blanco
     }
 } 
 
 const esHoverDropDown = (history, ruta) => {
     if(history.location.pathname === ruta){
-        return {color: 'rgb(155, 32, 124)'};
+        return {color: 'rgb(255, 0, 234)'};
          //si hace hover aparezca este color
     }else {
-        return {color: '#000000'};
+        return {color: 'rgb(255, 0, 234)'};
         // color default = blanco
     }
 } 
@@ -105,7 +105,12 @@ const Menu = ({history}) => {
                             <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/producto/agregar")}                     
                                 to="/producto/agregar">
-                                    PRODUCTO
+                                    Añadir Producto
+                            </Link>
+                            <Link className="nav-link" 
+                                style={esHoverDropDown(history, "/producto/agregar")}                     
+                                to="/receta/agregar">
+                                    Añadir Receta
                             </Link>
                         
                             <Link className="nav-link" 
