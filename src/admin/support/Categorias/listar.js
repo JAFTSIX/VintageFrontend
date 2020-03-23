@@ -4,7 +4,8 @@ import { isAutentificacion } from '../../../autentificacion/index';
 import { Link } from 'react-router-dom';
 import {getObjeto,errorTranslator} from '../../apiAdmin';
 import CategoriaInterfaz from './ObjetoInterfaz';
-import '../../../index.css'
+import '../../../index.css';
+import '../../../css.css';
 
 
 
@@ -45,9 +46,9 @@ const Categoria = () => {
         return(
             <div className="">               
                 <ul className="list-group">                   
-                    <li className="list-group-item">
+                    <li className="list-group-item border-0 mw-100 p-0 mb-5 mt-3">
                         <Link className="nav-link btn btn-outline-primary 
-                            mt-2 mb-2 agregarPadding mr-2
+                            m-2 agregarPadding
                         " to="/categoria/Support/agregar">
                             Agregar Categoria
                         </Link>
@@ -81,12 +82,14 @@ const Categoria = () => {
     );
     return (
         <Layout titulo="Categorias" 
+        jumbotron="jumboEstatico" 
+        image="https://i.dietdoctor.com/es/wp-content/uploads/2019/09/lowcarb-que-comer.jpg?auto=compress%2Cformat&w=1200&h=675&fit=crop"
         descripcion="mantenimiento de categorias" 
         className="container-fluid">
         
             {/* funciones de admin */}
             <div className="row">
-                <div className="col-9">                   
+                <div className="col-12">                   
                 {mostrarError()}
                     {mostrarCrud()}
                     
