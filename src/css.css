@@ -10,9 +10,21 @@ p{
 
 
 .nav-link:hover{
-    color: rgb(0, 0, 0) !important;
+    color: rgb(255, 0, 234) !important;
     border-style: none !important;
     
+}
+
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active{
+    background-color: #343a40 !important;
+    border-style: none !important;
+    color: white !important;
+}
+
+
+.navbar-expand-lg .navbar-nav .dropdown-menu{
+    background-color: #343a40;
+    border-style: none;
 }
 
 
@@ -223,5 +235,21 @@ textarea.form-control{
 .react-confirm-alert-button-group > button{
     font-size: 21px !important;
     background: #ff00ea !important;
+}
+
+/* perfil */
+.perfilCardHeader{
+    background-color: #ff00ea !important;
+    color: white;
+}
+
+
+.list-group-item{
+    border-style: none !important;
+}
+.perfilCardImg{
+    width: 200px;
+    height: 150px;
+    border-radius: 10%;
 }
 
