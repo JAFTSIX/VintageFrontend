@@ -183,9 +183,10 @@ export const eliminarReceta = (recetaId) => {
  * @param token
  * @param objeto se refiere al objeto del backend que se va a usar
  */
-export const  getObjeto= (objeto) => {
+export const  getObjeto= (objeto,query='') => {
 
-    return fetch(`${API}/${objeto}/`, {
+   
+    return fetch(`${API}/${objeto}${query}`, {
         method: "GET",
         headers:{
             Accept: 'application/json',

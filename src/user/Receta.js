@@ -6,30 +6,135 @@ import {getReceta} from './apiReceta';
 import RecetaInterfaz from './RecetaInterfaz';
 import '../index.css';
 import '../css.css';
-
+import {errorTranslator,getObjeto} from './../admin/apiAdmin'; 
+import { Checkbox } from 'react-input-checkbox';
 
 const Receta = () => {
     //const [productoVendidos, setProductoVendidos] = useState([]);
     const [receta, setReceta] = useState([]);
     const [error, setError] = useState(false);
-
+    const [aCategorias, setaCategorias] = useState([])
+    const [query, setQuery] = useState('')
     //cargar productos para visualizar
     
-    const cargarReceta = () => {
-        getReceta('bActivo')
+    const cargarReceta = (query='') => {
+      
+
+        getObjeto('Receta',query)
         .then(data=>{
-            if(data.error){
-                setError(data.error)
-            }else{
-                setReceta(data);
-                console.log(data);
+            
+            if(data=== undefined){
+
+                setError( errorTranslator('Problemas, intente mas tarde'));
+            } else {
+
+                if ('error' in data) {
+
+                    setError(errorTranslator(data.error.message))
+                    
+                    
+                }else{
+                   
+          
+                    setReceta(data);
+                    console.log(data);
+                    
+                     
+                    
+                }
+                
             }
+            
+        })
+    }
+
+    const Returncheckbox=()=>{
+        return  (<div className="form-group">
+                <label className="text-muted"> Categorias </label>
+                { aCategorias.map((item, key) =><div key=  {key}>
+                    
+                <Checkbox key=  {key}   onChange={handleArrayChange(key,item)}    value={item.add}> {item.sNombre}</Checkbox>
+
+                  </div>)}   
+
+                </div>)
+        
+       }
+    
+       
+    const handleArrayChange =(key,item)=> event => {
+      
+        
+        //console.log(event)
+        if(item.add){
+            
+             aCategorias[key].add=false
+            setaCategorias([...aCategorias]  );      
+            
+        }else{
+            aCategorias[key].add=true
+            setaCategorias([...aCategorias] );      
+
+        }
+        
+        actualizar()
+    }
+    
+    const actualizar = () => {
+   
+        var array = [];
+        for (let index = 0; index < aCategorias.length; index++) {
+
+            if (aCategorias[index].add) {
+                array.push(aCategorias[index]._id)
+            }
+
+        }
+        if (array.length>0) {
+            cargarReceta(''+`?filter={"where":{"aEtiqueta":${JSON.stringify(array)}}}`)
+        }else{
+            cargarReceta('')
+        }
+        
+
+    }
+
+    const cargarCategoriaDisponibles = () => {
+     
+        getObjeto('Categoria',query)
+        .then(data=>{
+            
+            if(data=== undefined){
+
+                setError( errorTranslator('Problemas, intente mas tarde'));
+            } else {
+
+                if ('error' in data) {
+
+                    setError(errorTranslator(data.error.message))
+                    
+                    
+                }else{
+                   
+                    data.value.forEach(element => {            
+                            element['add']=false                           
+                        
+                    });
+
+                    
+                    setaCategorias(data.value);
+                    
+                }
+                
+            }
+            
         })
     }
 
     //carga al puro principio y cuando sea que se haga cambio va a cargar 
     useEffect(()=>{
         cargarReceta()
+        cargarCategoriaDisponibles()
     }, []);
     
 
@@ -39,17 +144,16 @@ const Receta = () => {
                 <ul className="list-group">                   
                     <li className="list-group-item border-0 mw-100 p-0 mb-5 mt-3">
                         <Link className="nav-link btn btn-outline-primary 
-                            mt-2 mb-2 agregarPadding mr-2
-                        " to="/receta/agregar">
+                            mt-2 mb-2 agregarPadding mr-2"
+                             to="/receta/agregar">
                             Agregar Receta
                         </Link>
                     </li>
-                
-                    
+                                    
                 </ul>
             </div>
         );
-    };
+    }
 
     const mostrarCrud = () => {
         if(isAutentificacion() 
@@ -80,6 +184,12 @@ const Receta = () => {
             
             {/* contenido principal */}
         
+
+            <div>
+           
+            {Returncheckbox()}
+
+            </div>
             <div className="row maxheigh">     
                                        
                 {receta.map((receta, i)=>(
@@ -88,9 +198,7 @@ const Receta = () => {
 
             </div>
                 
-            
 
-            
         </Layout>
     );
 }
