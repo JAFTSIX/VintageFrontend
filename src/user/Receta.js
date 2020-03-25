@@ -14,7 +14,7 @@ const Receta = () => {
     const [receta, setReceta] = useState([]);
     const [error, setError] = useState(false);
     const [aCategorias, setaCategorias] = useState([])
-    const [query, setQuery] = useState('')
+    const [snombre, setsNombre] = useState('')
     //cargar productos para visualizar
     
     const cargarReceta = (query='') => {
@@ -81,7 +81,9 @@ const Receta = () => {
     }
     
     const actualizar = () => {
-   
+        const query=snombre;
+        console.log('query->'+query)
+        
         var array = [];
         for (let index = 0; index < aCategorias.length; index++) {
 
@@ -90,10 +92,21 @@ const Receta = () => {
             }
 
         }
-        if (array.length>0) {
+        if (array.length>0&&query!='') {
+            cargarReceta(''+`?filter={"where":{"aEtiqueta":${JSON.stringify(array)}    , "sNombre": "${query}"}}`)
+            console.log('camino 1')
+            console.log(''+`?filter={"where":{"aEtiqueta":${JSON.stringify(array)}    , "sNombre": "${query}"}}`)
+        }else if(array.length>0){
             cargarReceta(''+`?filter={"where":{"aEtiqueta":${JSON.stringify(array)}}}`)
-        }else{
+            console.log('camino 2')
+        }
+        else if( array.length==0&&query!=''){
+            cargarReceta(`?filter={"where":{"sNombre":  {"regexp": "/${query}/i"}}}`)
+            console.log('camino 3')
+        }
+        else{
             cargarReceta('')
+            console.log('camino 4')
         }
         
 
@@ -101,7 +114,7 @@ const Receta = () => {
 
     const cargarCategoriaDisponibles = () => {
      
-        getObjeto('Categoria',query)
+        getObjeto('Categoria')
         .then(data=>{
             
             if(data=== undefined){
@@ -137,6 +150,21 @@ const Receta = () => {
         cargarCategoriaDisponibles()
     }, []);
     
+    const handleChange = campo  => event => {
+        event.preventDefault();
+      
+        setsNombre( event.target.value);
+
+         console.log(snombre);
+     }
+
+
+     const clickSubmit = () => {
+
+        actualizar()
+
+     }
+
 
     const crudReceta = () => {
         return(
@@ -183,8 +211,26 @@ const Receta = () => {
             </div>
             
             {/* contenido principal */}
-        
+            <div className="row">            
+          
+            <div className="col-lg-6">
+              <div className="input-group">
+              <div className="d-inline">       
+                <input type="text" onChange={handleChange('snombre')} className="form-control"/>
+                </div>
+                
+                    <div className="d-inline">
+                    
+                    <span className="input-group-btn">
+            <button className="btn btn-default" onClick={clickSubmit} type="button">Buscar</button>
+                    </span>
+                    </div>
+               
+              </div>
+            </div>
+            </div>
 
+ 
             <div>
            
             {Returncheckbox()}
