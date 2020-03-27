@@ -93,9 +93,9 @@ const Receta = () => {
 
         }
         if (array.length>0&&query!='') {
-            cargarReceta(''+`?filter={"where":{"aEtiqueta":${JSON.stringify(array)}    , "sNombre": "${query}"}}`)
+            cargarReceta(''+`?filter={"where":{"aEtiqueta":${JSON.stringify(array)}    , "sNombre": "/${query}/i"}}`)
             console.log('camino 1')
-            console.log(''+`?filter={"where":{"aEtiqueta":${JSON.stringify(array)}    , "sNombre": "${query}"}}`)
+            console.log(''+`?filter={"where":{"aEtiqueta":${JSON.stringify(array)}    , "sNombre":"/${query}/i"}}`)
         }else if(array.length>0){
             cargarReceta(''+`?filter={"where":{"aEtiqueta":${JSON.stringify(array)}}}`)
             console.log('camino 2')
