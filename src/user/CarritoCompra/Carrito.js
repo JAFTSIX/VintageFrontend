@@ -5,6 +5,7 @@ import {getProductosLocalStorage, actualizarCantidad} from './carritoHelper';
 import '../../index.css';
 import './carrito.css';
 import CarritoInterfaz from './CarritoInterfaz';
+import Checkout from './Checkout';
 
 
 const Carrito = () => {
@@ -36,7 +37,7 @@ const Carrito = () => {
                 ))} 
 
                 <div className="text-right">
-                    <h1>Total de Productos: {producto.length}</h1>
+                    <Checkout products={producto} />
                     <button className="btn btn-outline-primary
                                 agregarPadding mb-5">
                                 <h4>Proceder al Pago</h4> 
