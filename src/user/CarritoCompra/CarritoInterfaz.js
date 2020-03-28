@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
-import Layout from '../../nucleo/Layout';
-import { Link } from 'react-router-dom';
-import {getProductosLocalStorage, actualizarCantidad, eliminarProductoCarrito} from './carritoHelper';
-import '../../index.css';
-import './carrito.css';
+    import React, {useState, useEffect} from 'react';
+    import Layout from '../../nucleo/Layout';
+    import { Link } from 'react-router-dom';
+    import {getProductosLocalStorage, actualizarCantidad, eliminarProductoCarrito} from './carritoHelper';
+    import '../../index.css';
+    import './carrito.css';
 
 
 const CarritoInterfaz = ({product}) => {
@@ -12,6 +12,7 @@ const CarritoInterfaz = ({product}) => {
     // contador para definir la cantidad 
     const [count, setCount] = useState(product.count);
     const [precioUnidad, setPrecioUnidad] = useState(0);
+    const [redirect, setRedirect] = useState(false);
 
 
     // funcion para ver el cambio que se realiza en cantidad 
@@ -23,20 +24,24 @@ const CarritoInterfaz = ({product}) => {
             // funcion de carritoHelper 
             actualizarCantidad(productoId, event.target.value);
         }
+        setRedirect(true);
     }
 
     // actualizar cantidad 
     const mostrarOpcionActualizar = () => {
-        return (
-            // input para actualizar la cantidad 
+        return (   
+                // input para actualizar la cantidad 
             <div className="input-group mb-3">
+                
                 <input type="number" 
                         maxlength="1" size="1"
                         className="form-control inputSize" 
                         value={count} 
                         onChange={handleChange(product._id)} />
-            </div>
- 
+                {refreshCantidad()}
+                
+                
+            </div>  
         )
     }
 
@@ -60,17 +65,25 @@ const CarritoInterfaz = ({product}) => {
         )
     }
 
-    const calcularPrecioUnidad = () => {
-        let kk = product.iPrecio * count;
-        setPrecioUnidad(kk);
-        
-        
+    //refresh cuando se cambia de cantidad
+    const refreshCantidad = () => {
+        if(redirect){
+            console.log('k');
+            window.location.reload();
+        }
     }
 
+    // Calcular precio por unidad 
+    const totalPrecioUnidad = () => {
+        let total = 0;
+        total = product.count * product.iPrecio;
 
-    return( 
+        return total;
+    }
+
+    return(     
             <div className="row">
-        
+                
 
                 <div className="col-5 mb-3">
                     <img height="300px" width="450px" src={product.sUrlImagen} />
@@ -81,9 +94,13 @@ const CarritoInterfaz = ({product}) => {
                 </div>
                 
                 <hr />
+                {/* cantidad  */}
                 <div className="col-1 text-center d-flex justify-content-center aslign-items-center"><h3>{mostrarOpcionActualizar()}</h3></div>
+                {/* precio unidad  */}
                 <div className="col-2 text-center d-flex justify-content-center align-items-center"><h3>₡{product.iPrecio}</h3></div>
-                <div className="col-3 text-center d-flex justify-content-center align-items-center" ><h3>₡{precioUnidad}</h3></div>
+                {/* precio total  */}
+                <div className="col-3 text-center d-flex justify-content-center align-items-center" ><h3>₡{totalPrecioUnidad()}</h3></div>
+                {/* icono eliminar producto  */}
                 <div className="col-1  text-center d-flex justify-content-center align-items-center">{eliminaProductoCarrito()}</div>
                  
             </div>
