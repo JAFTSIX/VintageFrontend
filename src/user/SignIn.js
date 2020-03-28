@@ -102,6 +102,7 @@ const SignIn = () => {
                         });
                     } else {
 
+                        console.log(data)
                         //si hay error
                         if ('error' in data) {
 
@@ -113,12 +114,12 @@ const SignIn = () => {
                         } //si no hay error, se redirecciona a la principal
                         else {
 
-                            autentificacion(data, () => {
+                            autentificacion(data.value, () => {
                                 setValues({
                                     ...values,
                                     redireccionar: true,
                                     loading: false,
-                                    bAdmin: data.cliente.bAdmin
+                                    bAdmin: data.value.cliente.bAdmin
                                 });
                             });
                         }
