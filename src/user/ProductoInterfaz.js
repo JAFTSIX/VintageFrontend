@@ -95,7 +95,7 @@ const ProductoInterfaz = ({producto}) => {
                             {/* llamar otra funcion para llamar al carritoHelper y no llamar directamente  */}
                                 <button onClick={agregarCarrito} className="btn customBtn mt-2 
                                 mb-2 agregarPadding">
-                                    <img src="https://lh3.googleusercontent.com/proxy/JXLzZRQkfmYM4mFYk9kRHwDQcOsME6Eu7JdZSOZzHo3bU5NMegYTZMLP0FeLJdPurwn5iq_CPlBsd0COGU4AyJuJaVpaYMNz1c7eVzEoMHkOdWVMCJKg9KUHRLi1x-ZIML-sIRVzyeRBhEU" height="50px" width="70px"/>
+                                    <img src="https://papyrusltda.com/wp-content/uploads/2019/05/19.-Carrito-de-compras.png" height="50px" width="70px"/>
                                         {/* Añadir a Carrito de Compra */}
                                 </button>
 
@@ -109,7 +109,7 @@ const ProductoInterfaz = ({producto}) => {
                             <Link to={`/SignIn`}>
                                 <button className="btn customBtn btnPink  
                                 mt-2 mb-2 agregarPadding mr-2">
-                                    <img src="https://lh3.googleusercontent.com/proxy/JXLzZRQkfmYM4mFYk9kRHwDQcOsME6Eu7JdZSOZzHo3bU5NMegYTZMLP0FeLJdPurwn5iq_CPlBsd0COGU4AyJuJaVpaYMNz1c7eVzEoMHkOdWVMCJKg9KUHRLi1x-ZIML-sIRVzyeRBhEU" height="50px" width="70px"/>
+                                    <img src="https://papyrusltda.com/wp-content/uploads/2019/05/19.-Carrito-de-compras.png" height="50px" width="70px"/>
                                     {/* Añadir a Carrito de Compra */}
                                 </button>
                             </Link>
