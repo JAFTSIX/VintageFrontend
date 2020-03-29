@@ -1,0 +1,6 @@
+.facturaArticulosComprados{
+    height: 300px;  
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+}
