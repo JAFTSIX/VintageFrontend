@@ -1,4 +1,7 @@
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 p{
     font-size: 120%;
 }
@@ -81,6 +84,11 @@ p{
     background-color: #00000079;
     padding: 1% 10% 3% 10%;
     border-radius: 2%;
+}
+
+/* css para que siga el formato del text area con todos los enters  */
+.textAreaSaltoLinea{
+    white-space: pre-wrap !important;
 }
 
 @-webkit-keyframes Gradient {
