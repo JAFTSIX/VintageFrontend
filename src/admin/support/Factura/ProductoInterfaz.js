@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 import {isAutentificacion} from '../../../autentificacion/index';
 import '../../../index.css';
 import '../../../user/producto.css';
+import '../support.css';
 
 
 const ProductoInterfaz = ({producto}) => {
@@ -17,16 +18,16 @@ const ProductoInterfaz = ({producto}) => {
         <div className="productoImagen">
             
     
-            <img className="imgProd mb-3" src={`${item.sUrlImagen}`}
+            <img className="imgFacturaProducto mb-3" src={`${item.sUrlImagen}`}
              alt={item.sNombre}
            
             />
         </div>
         );
-    }
+    }   
 
     return(
-        <div className="col-4 mb-3">
+        <div className="col-6 mb-3">    
             <div className="card">
                 <div className="card-body">
                 <div className="card-overlay"></div>
@@ -34,8 +35,6 @@ const ProductoInterfaz = ({producto}) => {
                     <ShowImage item={producto}
                     url="Articulo"/>
 
-  
-                    
                     <div className="btnProductos fadeIn-top"> 
                     {/* titulo  */}
                         <h1 className="text-capitalize font-weight-bold text-center text-light">{producto.sNombre}</h1> 
