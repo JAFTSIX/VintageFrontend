@@ -1,14 +1,30 @@
+a{
+    text-decoration: none !important;
+}
+
+/* cuadro de factura de los articulos comprados  */
 .facturaArticulosComprados{
     display: flex;
     flex-direction: row;
-    overflow-y: hidden;
-    
+    overflow-y: hidden;   
 }
-
 .imgFacturaProducto{
     height: 155px;
 }
 
+/* quitar el efecto de btn */
 .btn:focus, .btn.focus{
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0);
+}
+
+
+
+/* borde de cuadro de producto para modificar  */
+.border-dark {
+    border-color: #d7d7d7 !important;
+}
+
+/* cuadro de fecha  */
+.react-datetime-picker__wrapper {
+    border: thin solid #cbcbcb;
 }
