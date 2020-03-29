@@ -12,6 +12,8 @@ import  {productoTotal} from '../user/CarritoCompra/carritoHelper';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
+import logo from '../image/logo.png'
+
 
 
 
@@ -79,13 +81,17 @@ const Menu = ({history}) => {
         </button>
         
     <div className="collapse navbar-collapse" id="navbarSupportedContent"> 
+        <ul className="nav nav-tabs navbar-custom ">
+            <li className="nav-item">
+                <img src={logo} className="logo"/>
+            </li>
+        </ul>
         <ul className="nav nav-tabs navbar-custom justify-content-end navbar-nav ml-auto topnav-right">
             <li className="nav-item">
                 <Link className="nav-link" style={esHover(history, "/")} to="/">
                     INICIO
                 </Link>
             </li>
-           
            {/* si es usuario admin, se va a ver perfil admin,
            si es usuario cliente se ve perfil cliente */}
            {/* esto no esta funcionando todavia  */}
