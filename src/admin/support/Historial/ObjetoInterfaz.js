@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 import {isAutentificacion} from '../../../autentificacion/index';
 import '../../../index.css';
 import '../../../user/producto.css';
+import '../support.css';
 
 
 import moment from 'moment';
@@ -52,11 +53,11 @@ const HistorialInterfaz = ({Historial}) => {
                       <h3 className="font-weight-bold" style={{display : 'inline'}}>Fecha: </h3>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}} > {Fecha}</h5>
 
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>¿Permaneció más de 2 minutos? :</h3>  
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>¿Permaneció más de 2 minutos?</h3>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {test}</h5>
 
                       <h3 className="font-weight-bold" style={{display : 'inline'}}>Duración :</h3>  
-                      <h5 className="font-weight-normal" style={{display : 'inline'}}> {Historial.iDuracion}s </h5>
+                      <h5 className="font-weight-normal" style={{display : 'inline'}}> {Historial.iDuracion} segundos </h5>
    
                       <h3 className="font-weight-bold" style={{display : 'inline'}}>Id Cliente :</h3>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {Historial.sCliente} </h5>
