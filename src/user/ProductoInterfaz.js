@@ -31,18 +31,14 @@ const ProductoInterfaz = ({producto}) => {
         }
     }
 
-    const mostrarFunciona = () => {
-        
+    const mostrarFunciona = () => {       
         return(
         <div className="alert alert-info" 
 
         style={{display: mensaje ? '':'none'}}>
             <h4>{`${producto.sNombre} se ha añadido al Carrito de Compra`}</h4>
         </div>
-        );
-
-        
-        
+        );  
     };
 
     // const desaparecerMensaje = () => {
