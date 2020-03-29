@@ -62,6 +62,8 @@ const Historial = () => {
     );
     return (
         <Layout titulo="Historial" 
+        jumbotron="jumboEstatico" 
+        image="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/p960x960/67816237_3035758673117759_5101590943354585088_o.jpg?_nc_cat=111&_nc_sid=9e2e56&_nc_ohc=G4PV26zKDcYAX-Otv_W&_nc_ht=scontent.fsyq3-1.fna&_nc_tp=6&oh=82da2879ed4e28ce3f551e3262cbd86f&oe=5EA7151C"
         descripcion="Chef Selenia Mendez" 
         className="container-fluid">
         
