@@ -69,7 +69,7 @@ const Historial = () => {
         
             {/* funciones de admin */}
             <div className="row">
-                <div className="col-9">                   
+                <div className="col-12">                   
                 {mostrarError()}
                     {mostrarCrud()}
                 </div>
@@ -77,7 +77,8 @@ const Historial = () => {
             
             {/* contenido principal */}
         <br></br>
-        <div  className="col-9">
+        <div className="row ">
+        <div  className="col-5 mx-auto">
         
             <div className="table table-borderless">     
                                        
@@ -88,7 +89,7 @@ const Historial = () => {
             </div>
             </div>        
             
-
+        </div>
             
         </Layout>
     );
