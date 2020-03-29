@@ -89,7 +89,7 @@ const ProductoInterfaz = ({producto}) => {
                         {isAutentificacion() && (
                             <Fragment>
                             {/* llamar otra funcion para llamar al carritoHelper y no llamar directamente  */}
-                                <button onClick={agregarCarrito} className="btn customBtn mt-2 
+                                <button onClick={agregarCarrito} className="btn customBtn mt-2 btnPink
                                 mb-2 agregarPadding">
                                     <img src="https://papyrusltda.com/wp-content/uploads/2019/05/19.-Carrito-de-compras.png" height="50px" width="70px"/>
                                         {/* Añadir a Carrito de Compra */}
@@ -103,7 +103,7 @@ const ProductoInterfaz = ({producto}) => {
                         {/* si no esta log in el usuario  */}
                         {!isAutentificacion() && (
                             <Link to={`/SignIn`}>
-                                <button className="btn customBtn btnPink  
+                                <button className="btn customBtn btnPink btnPink
                                 mt-2 mb-2 agregarPadding mr-2">
                                     <img src="https://papyrusltda.com/wp-content/uploads/2019/05/19.-Carrito-de-compras.png" height="50px" width="70px"/>
                                     {/* Añadir a Carrito de Compra */}
@@ -118,14 +118,14 @@ const ProductoInterfaz = ({producto}) => {
                         <Fragment>
                         {/* // aqui se pasa el id del producto en el url para actualizar */}
                         <Link to={`/Articulo/${producto._id}/?filter[offset]=0&filter[limit]=100&filter[skip]=0`}>
-                            <button className="btn customBtn btnPinkFuerte text-light
+                            <button className="btn customBtn btnPinkFuerte text-light btnPink
                             mt-2 mb-2 agregarPadding mr-2">
                                 Modificar Producto
                             </button>
                         </Link>
 
                         <Link to={`Articulo/Eliminar/${producto._id}`}>
-                            <button className="btn customBtn btnPinkFuerte text-light
+                            <button className="btn customBtn btnPinkFuerte text-light btnPink
                             mt-2 mb-2 agregarPadding mr-2" data-toggle="modal" data-target="#exampleModal">
                                 Eliminar Producto
                             </button>
