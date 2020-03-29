@@ -13,21 +13,6 @@ const AdminD = () => {
     
     const linkAdmin = () => {
         return(
-            // <div className="">               
-            //     <ul className="list-group">                   
-            //         <li className="list-group-item">
-            //             <Link className="nav-link" to="/perfil/modificar">
-            //                 Modificar Perfil
-            //             </Link>
-            //         </li>
-            //         <li className="list-group-item">
-            //             <Link className="nav-link" to="/perfil/eliminar">
-            //                 Eliminar Perfil
-            //             </Link>
-            //         </li>
-                    
-            //     </ul>
-            // </div>
             <Fragment>
         <div className="row d-flex justify-content-center">
             <div class="col-2">
