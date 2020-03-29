@@ -8,6 +8,7 @@ import '../index.css';
 import '../css.css';
 import {errorTranslator,getObjeto} from './../admin/apiAdmin'; 
 import { Checkbox } from 'react-input-checkbox';
+import './producto.css'
 
 const Receta = () => {
     //const [productoVendidos, setProductoVendidos] = useState([]);
@@ -49,15 +50,20 @@ const Receta = () => {
     }
 
     const Returncheckbox=()=>{
-        return  (<div className="form-group">
-                <label className="text-muted"> Categorias </label>
+        return  (<div>
+                
+                <div className="form-group seleccionarCategoria">
+                
                 { aCategorias.map((item, key) =><div key=  {key}>
                     
-                <Checkbox key=  {key}   onChange={handleArrayChange(key,item)}    value={item.add}> {item.sNombre}</Checkbox>
+                <Checkbox key=  {key}   onChange={handleArrayChange(key,item)}    value={item.add}>
+                     <label className="mr-5 ml-1">{item.sNombre}</label>
+                </Checkbox>
 
                   </div>)}   
 
-                </div>)
+                </div>
+                </div>);
         
        }
     
@@ -171,8 +177,7 @@ const Receta = () => {
             <div className="">               
                 <ul className="list-group">                   
                     <li className="list-group-item border-0 mw-100 p-0 mb-5 mt-3">
-                        <Link className="nav-link btn btn-outline-primary 
-                            mt-2 mb-2 agregarPadding mr-2"
+                        <Link className="nav-link btn btn-outline-primary"
                              to="/receta/agregar">
                             Agregar Receta
                         </Link>
@@ -211,21 +216,17 @@ const Receta = () => {
             </div>
             
             {/* contenido principal */}
-            <div className="row">            
+            <div className="row">               
           
-            <div className="col-lg-6">
-              <div className="input-group">
-              <div className="d-inline">       
-                <input type="text" onChange={handleChange('snombre')} className="form-control"/>
+            <div className="col-lg-12"> 
+              <div className="input-group w-100">
+              <div className="d-inline w-100">     
+              <h1 className="mb-5 text-center colorPink">¡Encuentra una tus recetas!</h1>  
+                <input type="text" placeholder="Buscar Receta" onChange={handleChange('snombre')} className="form-control"/>
+                <button className="btn btn-outline-primary " onClick={clickSubmit} type="button">Buscar</button>
+
                 </div>
-                
-                    <div className="d-inline">
-                    
-                    <span className="input-group-btn">
-            <button className="btn btn-default" onClick={clickSubmit} type="button">Buscar</button>
-                    </span>
-                    </div>
-               
+
               </div>
             </div>
             </div>
