@@ -135,8 +135,15 @@ const ModificarFactura = (props) => {
             aCompras[i].iCant =parseInt( event.target.value) 
             setValor({...valor, aCompras:aCompras });      
         } else if(nombre==='borrar'){
-            delete aCompras[i]
-            setValor({...valor, aCompras:aCompras });      
+             
+            var articulosValidos=[]; 
+            for (let index = 0; index < aCompras.length; index++) {
+                if (index!==i) {
+                    articulosValidos.push(aCompras[i])
+                } 
+                
+            }
+            setValor({...valor, aCompras:articulosValidos });      
         }
    
    
@@ -155,7 +162,7 @@ const ModificarFactura = (props) => {
       
    
    
-        console.log(valor)
+        
        }
 
 
@@ -173,7 +180,13 @@ const ModificarFactura = (props) => {
     })
      
     if (resultado.valido) {
+
+        //console.log(valor)
         setValor({...valor, error:'', loading:true});
+
+        
+        console.log(typeof aCompras)
+        console.log( aCompras)
         modificarObjeto ('Factura',{
             _id:props.match.params._Id    ,
             sCliente,
@@ -184,6 +197,8 @@ const ModificarFactura = (props) => {
             oDireccion
         })
         .then(data=>{
+
+            console.log(data)
            if (data===undefined) {
             setValor({...valor, error:errorTranslator('Problemas, intente más tarde')})
            } else {
@@ -373,6 +388,10 @@ const ModificarFactura = (props) => {
                     value={item.sNombre} />
            </div>
 
+
+           
+          { item.iCant!==undefined && (
+              
            <div className="form-group">
            <label className="text-muted">Cantidad  </label>
            <input onChange={handleArrayChange('iCant', key)} 
@@ -382,16 +401,20 @@ const ModificarFactura = (props) => {
                    required
                    value={item.iCant} />
           </div>
+          )}
 
-          <div className="form-group">
-          <label className="text-muted">Precio  </label>
-          <input onChange={handleArrayChange('iPrecio', key)} 
-                  type="number" 
-                  className="form-control" 
-                  min="1"
-                  required
-                  value={item.iPrecio} />
-         </div>
+          
+
+            <div className="form-group">
+            <label className="text-muted">Precio  </label>
+            <input onChange={handleArrayChange('iPrecio', key)} 
+                    type="number" 
+                    className="form-control" 
+                    min="1"
+                    required
+                    value={item.iPrecio} />
+           </div>    
+        
            
             
             
