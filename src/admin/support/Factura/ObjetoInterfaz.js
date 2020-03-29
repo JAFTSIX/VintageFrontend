@@ -39,68 +39,50 @@ const FacturaInterfaz = ({Factura}) => {
  
 
     return(
-        <div className="mw-100"  style={{ paddingTop: '5%'}}>
+        
+        <div className="mw-100 "  style={{ paddingTop: '3%'}}>
             <div className="row">
-                <div  className="border-top" >
-             
-
-                   
-                    
-                    
-                    
-
-                    <div  class="">
+            {/* //info da factura */}
+                <div  className="border-top col-lg-5" >   
                       
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>id :</h3>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}} >{Factura._id}</h3>
-                    
-                    </div>
-                      
-                      <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>¿cuando pasó? :</h4>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}} > {Fecha}</h3>
-                      </div> 
-                      
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Factura Id: </h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}}>{Factura._id}</h5>
+                    <br/>
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Fecha :</h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}} > {Fecha}</h5>
+                      <br/>
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Id Cliente :</h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}}> {Factura.sCliente} </h5>
+                      <br/>
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Subtotal:</h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}}> {Factura.iSubtotal}$ </h5>
+                      <br/>
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Total:</h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}}> {Factura.iTotal}$ </h5>
 
-                      <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>identificador de cliente :</h4>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}}> {Factura.sCliente} </h3>
-                      </div>
-
- 
-                      <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Subtotal:</h4>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}}> {Factura.iSubtotal}$ </h3>
-                      
-                      </div>
-
-                      <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>total:</h4>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}}> {Factura.iTotal}$ </h3>
-                      
-                      </div>
-
-
-                      <div  className="">
-                      <p>
-                      <a className="btn"   data-toggle="collapse" href={'#compras'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
-                      <h5 className="font-weight-bold" style={{display : 'inline'}}>cosas compradas ▼</h5>  
-                      </a>
-                    </p>
+                </div>
+                {/* info de articulos comprados  */}
+                    <div  className="col-lg-6 f-flex flex-row px-0">
+                     
+                        <a className="btn"   data-toggle="collapse" href={'#compras'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
+                        <h5 className="font-weight-bold" style={{display : 'inline'}}>Articulos Comprados ▼</h5>  
+                        </a>
+                       
 
                 
                         <div className="collapse" id={'compras'+Factura._id}>
-               
-                        {Factura.aCompras.map((producto, i)=>(
-                            <ProductoInterfaz key={i} producto={producto}/>
-                        ))}  
+                            <div className=" facturaArticulosComprados col-lg-12">
+                                {Factura.aCompras.map((producto, i)=>(
+                                    <ProductoInterfaz key={i} producto={producto}/>
+                                ))}  
+                            </div>
                                        
                         </div>
-                    </div>
+                    
 
 
                   
-                      <div  className="">
+      
                       <p>
                       <a className="btn"   data-toggle="collapse" href={'#direccion'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección ▼</h5>  
@@ -115,7 +97,7 @@ const FacturaInterfaz = ({Factura}) => {
                       <div  class="">
                       <h4 className="font-weight-bold" style={{display : 'inline'}}>Ciudad:</h4>  
                       <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sCiudad} </h3>
-                      </div>
+                
                       
                       
                       <div  class="">
@@ -152,7 +134,7 @@ const FacturaInterfaz = ({Factura}) => {
                         </div>
                     </div>
 
-                
+                    </div>
 
         
                     {isAutentificacion() && isAutentificacion().cliente.bAdmin && (
@@ -180,7 +162,7 @@ const FacturaInterfaz = ({Factura}) => {
                         </Fragment>
                     )}
                     
-                </div>
+                
             </div>
         </div>
     );
