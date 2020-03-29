@@ -4,7 +4,8 @@ import { isAutentificacion } from '../../../autentificacion/index';
 import { Link } from 'react-router-dom';
 import {getObjeto,errorTranslator} from '../../apiAdmin';
 import HistorialInterfaz from './ObjetoInterfaz';
-import '../../../index.css'
+import '../../../index.css';
+import '../support.css';
 
 
 
