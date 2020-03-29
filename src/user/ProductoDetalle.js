@@ -122,7 +122,16 @@ const ProductoDetalle = (props) => {
                     <h1 className=" text-left colorPink">Descripcion</h1>  
                     <h5 className="mt-4 mb-4 text-justify">{producto.sDescripcion}</h5>
                     <h3 className="float-right">Precio: ₡ {producto.iPrecio}</h3>
-                    <button onClick={agregarCarrito}  className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
+
+                    {!isAutentificacion() &&(
+                            <Link to={`/signIn`}>
+                                <button className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
+                            </Link>
+                    )}
+
+                    {isAutentificacion() &&(
+                        <button onClick={agregarCarrito} className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
+                    )}
 
                 </div>             
             </div>
