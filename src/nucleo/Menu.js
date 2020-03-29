@@ -103,7 +103,7 @@ const Menu = ({history}) => {
 
                     <li className="nav-item mx-2 dropdown ">
                         <a className="nav-link dropdown-toggle colorBlanco" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        CATEGORIA
+                        ACCIONES ADMINISTRADOR
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <Link className="nav-link" 

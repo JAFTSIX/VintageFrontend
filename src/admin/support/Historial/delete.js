@@ -29,19 +29,13 @@ const EliminarHistorial= (props) => {
   
 
     const handleClose= seguir=>_evento => {
-     
-
-        
-        console.log(seguir)
-        
-        if(seguir){
-
-             
-
+  
+        console.log(seguir)     
+        if(seguir){          
             eliminar(props.match.params._Id)
 
         }else{
-            
+          setValor({redirect:true})  
         }
         setOpen(false);
     };
@@ -116,12 +110,9 @@ const EliminarHistorial= (props) => {
     );
 
     return (
-        <Layout titulo="ELIMINAR Historial" 
-        descripcion="" 
-        className="container-fluid">
-            
+    
             <div className="row">
-            {mostrarFunciona()}  
+       
                
 
 
@@ -131,7 +122,7 @@ const EliminarHistorial= (props) => {
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description">
     
-            <DialogTitle id="alert-dialog-title">{`¿vas a eliminar Este elemento permanentemente ?`}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{`Eliminar`}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                ¿Esta seguro de la acción que está a punto de hacer?
@@ -139,7 +130,7 @@ const EliminarHistorial= (props) => {
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose(false)} color="primary">
-                creo que no
+                No
               </Button>
               <Button onClick={handleClose(true)} color="primary" autoFocus>
                 Seguro
@@ -151,7 +142,7 @@ const EliminarHistorial= (props) => {
           {redireccionarUsuario()}
                              
             </div>
-        </Layout>
+       
     );
 }
 

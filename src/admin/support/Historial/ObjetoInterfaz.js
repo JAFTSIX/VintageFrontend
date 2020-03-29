@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 import {isAutentificacion} from '../../../autentificacion/index';
 import '../../../index.css';
 import '../../../user/producto.css';
+import '../support.css';
 
 
 import moment from 'moment';
@@ -39,48 +40,31 @@ const HistorialInterfaz = ({Historial}) => {
         });
 
     return(
-        <div className="mw-100"  style={{ paddingTop: '5%'}}>
-            <div className="row">
-                <div  className="border-top" >
+        <div className=""  style={{ paddingTop: '2%'}}>
+
+                <div  className="border-top d-flex flex-column" >
              
 
                     {/* titulo  */}
-                    
-                    
-                    
+           
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Id: </h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}} >{Historial._id}</h5>
 
-                    <div  class="">
-                      
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>id :</h3>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}} >{Historial._id}</h3>
-                    
-                    </div>
-                      
-                      <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>¿cuando pasó? :</h4>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}} > {Fecha}</h3>
-                      </div> 
-                      
-                      <div  class=""> 
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>¿permaneció más de 2 minutos? :</h4>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}}> {test}</h3>
-                      </div> 
-                      
-                      <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>duración :</h4>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}}> {Historial.iDuracion}s </h3>
-                      
-                      </div>
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Fecha: </h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}} > {Fecha}</h5>
 
-                      <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>identificador de cliente :</h4>  
-                      <h3 className="font-weight-normal" style={{display : 'inline'}}> {Historial.sCliente} </h3>
-                      </div>
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>¿Permaneció más de 2 minutos?</h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}}> {test}</h5>
 
-                      <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>identificador de Receta :</h4>  
-                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Historial.sReceta} </h3>
-                      </div>
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Duración :</h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}}> {Historial.iDuracion} segundos </h5>
+   
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Id Cliente :</h3>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}}> {Historial.sCliente} </h5>
+   
+                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Id Receta :</h3>  
+                      <h5 className="font-weight-normal"style={{display : 'inline'}}> {Historial.sReceta} </h5>
+
                       
 
 
@@ -111,9 +95,8 @@ const HistorialInterfaz = ({Historial}) => {
                     )}
                     
                 </div>
-            </div>
         </div>
-    );
+    )
 }
 
 export default HistorialInterfaz;

@@ -128,8 +128,16 @@ const RecetaDetalle = (props) => {
                             <h1 className=" text-left colorPink">Precio: ₡ {receta.iPrecio}</h1>
                             <h5 className="mt-4 text-justify">Receta Premium, Por favor comprar para ver la receta completa</h5>
                             
+                            {!isAutentificacion() &&(
+                                <Link to={`/signIn`}>
+                                <button className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
+                                </Link>
+                            )}
 
-                            <button onClick={agregarCarrito} className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
+                            {isAutentificacion() &&(
+                                <button onClick={agregarCarrito} className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
+                            )}
+                            
                         </Fragment>
                  }   
 

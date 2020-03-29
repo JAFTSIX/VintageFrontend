@@ -6,7 +6,7 @@ import '../../../index.css'
 import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 import { Checkbox } from 'react-input-checkbox';
-
+import '../support.css';
 import {checkingHistorial} from '../../../user/procesos/ValidarDatos';
 const ModificarHistorial = (props) => {
     const [valor, setValor] = useState({
@@ -159,7 +159,7 @@ const ModificarHistorial = (props) => {
         <form className="mb-3" onSubmit={clickSubmit}>
             
             <div className="form-group">
-                <label className="text-muted">¿cuando pasó? </label>
+                <label className="text-muted mr-3">Fecha</label>
                 
                 <DateTimePicker
                         onChange={handleChange('dFecha')}
@@ -169,13 +169,13 @@ const ModificarHistorial = (props) => {
             </div>
 
             <div className="form-group">
-            <label className="text-muted">¿permaneció más de 2 minutos? </label>
+            <label className="text-muted mr-2">¿Permaneció más de 2 minutos? </label>
                       <Checkbox  onChange={handleChange('bMinTest'+bMinTest)}  value={bMinTest}> </Checkbox>
 
         </div>
 
         <div className="form-group">
-                <label className="text-muted">duración  </label>
+                <label className="text-muted">Duración  </label>
                 <input onChange={handleChange('iDuracion')} 
                         type="number" 
                         className="form-control" 
@@ -183,7 +183,7 @@ const ModificarHistorial = (props) => {
                         value={iDuracion } />
             </div>
             <div className="form-group">
-                <label className="text-muted">identificador de cliente</label>
+                <label className="text-muted">Id Cliente</label>
                 <input onChange={handleChange('sCliente')} 
                         type="text" 
                         className="form-control" 
@@ -191,7 +191,7 @@ const ModificarHistorial = (props) => {
                         value={sCliente} />
             </div>
             <div className="form-group">
-                <label className="text-muted">identificador de Receta </label>
+                <label className="text-muted">Id Receta </label>
                 <input onChange={handleChange('sReceta')} 
                         type="text" 
                         className="form-control" 
@@ -235,6 +235,8 @@ const ModificarHistorial = (props) => {
 
     return (
         <Layout titulo="MODIFICAR Historial" 
+        jumbotron="jumboEstatico" 
+        image="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/s960x960/66526238_2990154991011461_3807067974771146752_o.jpg?_nc_cat=102&_nc_sid=2d5d41&_nc_ohc=1uSLthZzbM0AX9dBJ0L&_nc_ht=scontent.fsyq3-1.fna&_nc_tp=7&oh=ab14ac3b85f9bea5b24009aed4feb93f&oe=5EA7C51D"
         descripcion="" 
         className="container-fluid">
  
