@@ -1,6 +1,5 @@
 import React, {useState, useEffect,useCallback} from 'react';
 import Layout from '../nucleo/Layout';
- 
 import {getReceta} from './apiAdmin';
 import { modificarReceta , getObjeto,errorTranslator,modificarObjeto} from './apiAdmin';
 import {Redirect} from 'react-router-dom';
@@ -160,7 +159,7 @@ const ModificarReceta = (props) => {
                     
                 }else{
                     console.log(data);
-                    data.forEach(element => {
+                    data.value.forEach(element => {
                    
                             element['add']=false    
                        
@@ -168,7 +167,7 @@ const ModificarReceta = (props) => {
                     });
 
                     
-                    setaCategorias(data);
+                    setaCategorias(data.value);
                     
                  
                 }
