@@ -289,9 +289,18 @@ textarea.form-control{
         flex-direction: row;
         width: 300% !important;
         height: 42px;
-        overflow: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
         white-space: nowrap;
          text-align: center;
+    }
+
+    /* dropdown-menu responsive  */
+    .navbar-expand-lg .navbar-nav .dropdown-menu{
+        position: fixed !important;
+        top: 66px !important;
+        left: 50% !important;
+        padding-left: 20px;
     }
 
     .footerCss{
