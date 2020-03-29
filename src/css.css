@@ -293,4 +293,11 @@ textarea.form-control{
         white-space: nowrap;
          text-align: center;
     }
+
+    .footerCss{
+        height: 400px;
+    }
+    .footerHeightSocialMedia{
+        height: 25px;
+    }
   }
