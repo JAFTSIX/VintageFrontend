@@ -1,17 +1,17 @@
 .video{
     width: 100%;
-    height: 700px;
+    height: 462px;
     position: static;
     margin-bottom: 3%;
 }   
 
 .Content{
-    height: 100px;
+    height: 100%;
 }
 
 .scroll
 {
-    height: 700px;
+    height: 462px;
     float: right;
     overflow: auto;
 }
