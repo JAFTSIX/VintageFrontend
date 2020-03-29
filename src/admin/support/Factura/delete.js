@@ -86,7 +86,7 @@ const EliminarHistorial= (props) => {
 
     const redireccionarUsuario = () => {
         if(redirect){
-            return <Redirect to="/Historial/Support/"></Redirect>
+            return <Redirect to="/Factura/Support/"></Redirect>
         }
             
     }
