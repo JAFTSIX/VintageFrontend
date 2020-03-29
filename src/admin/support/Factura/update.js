@@ -6,6 +6,7 @@ import '../../../index.css'
 import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 import { Checkbox } from 'react-input-checkbox';
+import '../support.css';
 
 import {checkingFactura} from '../../../user/procesos/ValidarDatos';
 
@@ -216,7 +217,7 @@ const ModificarFactura = (props) => {
             
 
         <div className="form-group">
-        <label className="text-muted">identificador de cliente</label>
+        <label className="text-muted">Id Cliente</label>
         <input onChange={handleChange('sCliente')} 
                 type="text" 
                 className="form-control" 
@@ -226,7 +227,7 @@ const ModificarFactura = (props) => {
      
 
             <div className="form-group">
-                <label className="text-muted">¿cuando pasó? </label>
+                <label className="text-muted mr-3">Fecha </label>
                 
                 <DateTimePicker
                         onChange={handleChange('dFecha')}
@@ -237,7 +238,7 @@ const ModificarFactura = (props) => {
 
            
         <div className="form-group">
-                <label className="text-muted">sub Total  </label>
+                <label className="text-muted">Sub Total  </label>
                 <input onChange={handleChange('iSubtotal')} 
                         type="number" 
                         className="form-control" 
@@ -257,8 +258,8 @@ const ModificarFactura = (props) => {
 
             <div  className="form-group">
             <p>
-            <a className="btn"   data-toggle="collapse" href={'#direccion'} role="button" aria-expanded="false" aria-controls="collapseExample">   
-            <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección ▼</h5>  
+            <a className=""   data-toggle="collapse" href={'#direccion'} role="button" aria-expanded="false" aria-controls="collapseExample">   
+            <h5 className="font-weight-bold text-dark" style={{display : 'inline'}}>Dirección ▼</h5>  
             </a>
           </p>
 
@@ -347,8 +348,8 @@ const ModificarFactura = (props) => {
 
           <div  className="form-group">
           <p>
-          <a className="btn"   data-toggle="collapse" href={'#compras'} role="button" aria-expanded="false" aria-controls="collapseExample">   
-          <h5 className="font-weight-bold" style={{display : 'inline'}}>cosas compradas ▼</h5>  
+          <a className=""   data-toggle="collapse" href={'#compras'} role="button" aria-expanded="false" aria-controls="collapseExample">   
+          <h5 className="font-weight-bold text-dark" style={{display : 'inline'}}>Articulos Comprados ▼</h5>  
           </a>
         </p>
 
@@ -356,7 +357,7 @@ const ModificarFactura = (props) => {
             <div className="collapse" id={'compras'}>
    
             {aCompras.map((item, key) =>
-            <div className="border border-dark">
+            <div className="border border-dark p-1 mb-4">
             
             
             <button type="button" onClick={handleArrayChange('borrar', key)} class="close" aria-label="Close">
@@ -364,7 +365,7 @@ const ModificarFactura = (props) => {
           </button>
 
             <div className="form-group">
-            <label className="text-muted">producto  </label>
+            <label className="text-muted">Producto  </label>
             <input onChange={handleArrayChange('sNombre', key)} 
                     type="text" 
                     className="form-control" 
@@ -373,7 +374,7 @@ const ModificarFactura = (props) => {
            </div>
 
            <div className="form-group">
-           <label className="text-muted">cantidad  </label>
+           <label className="text-muted">Cantidad  </label>
            <input onChange={handleArrayChange('iCant', key)} 
                    type="number" 
                    className="form-control" 
@@ -439,6 +440,8 @@ const ModificarFactura = (props) => {
     return (
         <Layout titulo="MODIFICAR Factura" 
         descripcion="" 
+        jumbotron="jumboEstatico"
+        image="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-0/p640x640/69256191_3073905745969718_1245858966190161920_o.jpg?_nc_cat=102&_nc_sid=dd9801&_nc_ohc=q8Os9gW-GQUAX-YXekH&_nc_ht=scontent.fsyq3-1.fna&_nc_tp=6&oh=7922a207e33de43ba516c12034b7b880&oe=5EA5AAFE"
         className="container-fluid">
  
             
