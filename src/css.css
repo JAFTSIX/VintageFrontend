@@ -30,6 +30,15 @@ p{
     border-style: none;
 }
 
+/* logo  */
+.logo{
+    width: 120px;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    top: -8px;
+    left: 36px;
+}
 
 
 .jumbotronMovimiento{
@@ -260,4 +269,8 @@ textarea.form-control{
     height: 150px;
     border-radius: 10%;
 }
+
+.perfilCardImg:hover {
+    transform: translate3D(0,-1px,0) scale(1.20);
+  }
 
