@@ -52,9 +52,11 @@ const EliminarHistorial= (props) => {
 
       
        
-        eliminarObjeto('Historial',_Id)
+        eliminarObjeto('Factura',_Id)
         .then(data=>{
-
+        
+          console.log(data)
+          
           if (data === undefined) {
             setValor({
               ...valor,
