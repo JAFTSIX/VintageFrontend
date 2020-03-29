@@ -15,7 +15,7 @@ const AdminD = () => {
         return(
             <Fragment>
         <div className="row d-flex justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <Link className="nav-link" to="/perfil/modificar">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/14/14853.png" alt="Card image cap" />
@@ -25,7 +25,7 @@ const AdminD = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 
                 <Link className="nav-link" to="/perfil/eliminar">
                 <div class="card">
@@ -36,7 +36,7 @@ const AdminD = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/producto">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/1/1375.png" alt="Card image cap" />
@@ -46,7 +46,7 @@ const AdminD = () => {
                 </div>
                 </Link>
             </div>  
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/producto/agregar">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/15/15417.png" alt="Card image cap" />
@@ -59,7 +59,7 @@ const AdminD = () => {
                
         </div>
         <div className="row d-flex justify-content-center">
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/receta">
                 <div class="card">  
                 <img class="card-img-top perfilCardImg" src="https://pngimage.net/wp-content/uploads/2018/06/pastel-icon-png-2.png" alt="Card image cap" />
@@ -69,7 +69,7 @@ const AdminD = () => {
                 </div>
                 </Link>
             </div>   
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/receta/agregar">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/573/premium/573627.png" alt="Card image cap" />
@@ -79,7 +79,7 @@ const AdminD = () => {
                 </div>
                 </Link>
             </div>  
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/categoria/Support/">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/1077/1077340.png" alt="Card image cap" />
@@ -89,7 +89,7 @@ const AdminD = () => {
                 </div>
                 </Link>
             </div> 
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/categoria/Support/agregar">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/24/24141.png" alt="Card image cap" />
@@ -101,7 +101,7 @@ const AdminD = () => {
             </div> 
         </div>
         <div className="row d-flex justify-content-center">
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/Factura/Support/">    
                 <div class="card">  
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/591/591796.png" alt="Card image cap" />
@@ -111,7 +111,7 @@ const AdminD = () => {
                 </div>
                 </Link>
             </div>   
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/Historial/Support/">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/32/32284.png" alt="Card image cap" />
@@ -158,11 +158,11 @@ const AdminD = () => {
             <div className="row">
                 {/* los links de los usuarios */}
                 
-                <div className="col-3">
+                <div className="col-lg-3 col-md-12">
                     {datosPersonales()}
                 </div>
 
-                <div className="col-9">
+                <div className="col-lg-9 col-md-12">
                     {linkAdmin()}
                 </div>
             </div>
