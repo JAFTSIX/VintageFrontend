@@ -61,7 +61,7 @@ const RecetaDetalle = (props) => {
 
     return(
         
-        <div className="mt10 mx-5 container-fluid Content">
+        <div className="mt10 mx-5 container-fluid   Content">
             <div className="msgStatic">{mostrarFunciona()}</div>
             <Menu />
             <h1 className="text-capitalize">{receta.sNombre}</h1>
