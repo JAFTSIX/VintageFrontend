@@ -72,9 +72,9 @@ const Routes = () => {
             exact component={ModificarReceta}/>
             <AdminRoute path="/Receta/Eliminar/:recetaId" 
             exact component={EliminarReceta}/>
-            <PrivateRoute path="/Receta/Detalle/:recetaId" exact
+            <Route path="/Receta/Detalle/:recetaId" exact
              component={RecetaDetalle}/>
-             <PrivateRoute path="/Articulo/Detalle/:productoId" exact
+             <Route path="/Articulo/Detalle/:productoId" exact
              component={ProductoDetalle}/>
             
              
