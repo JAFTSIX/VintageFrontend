@@ -37,3 +37,12 @@
     background-color: rgba(255, 255, 255, 0);
   }
 
+  .paypal-button.paypal-button-text-color-white{
+    display: none;
+    color: red;
+  }
+
+  .paypal-powered-by{
+    display: none;
+  }
+
