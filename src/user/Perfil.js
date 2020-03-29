@@ -34,7 +34,7 @@ const Perfil = () => {
             // </div>
 
         <div className="row d-flex justify-content-center">
-            <div class="col-2">
+            <div class="col-3">
                 <Link className="nav-link" to="/perfil/modificar">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/14/14853.png" alt="Card image cap" />
@@ -44,7 +44,7 @@ const Perfil = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-2">
+            <div class="col-3">
                 
                 <Link className="nav-link" to="/perfil/eliminar">
                 <div class="card">
@@ -55,7 +55,7 @@ const Perfil = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/producto">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/1/1375.png" alt="Card image cap" />
@@ -65,7 +65,7 @@ const Perfil = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/receta">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/53/53031.png" alt="Card image cap" />
@@ -75,7 +75,7 @@ const Perfil = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-2">              
+            <div class="col-3">              
                 <Link className="nav-link" to="/cart">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/107/107831.png" alt="Card image cap" />
@@ -136,12 +136,12 @@ const Perfil = () => {
                 {/* los links de los usuarios */}
                
 
-                <div className="col-3">
+                <div className="col-lg-3 col-md-12">
                     {datosPersonales()}
                     {/* {historialCompra()} */}
                 </div>
 
-                <div className="col-9">
+                <div className="col-lg-9 col-md-12">
                     {linkUsuario()}
                 </div>
             </div>
