@@ -139,10 +139,7 @@ const Menu = ({history}) => {
                             </Link>
                         </div>
                     </li>
-
-                    
-
-                    
+ 
                     
                 </Fragment>
             )}
