@@ -82,13 +82,13 @@
 
   /* btn  */
   .btnPink{
-      background-color: #ee9291;
-      border-color: #ee9291;
+      background-color: rgb(255, 0, 255);
+      border-color: rgb(255, 0, 255);
   }
 
   .btnPink:hover{
-    background-color: #a85150;
-    border-color: #a85150;
+    background-color: rgb(255, 0, 255);
+    border-color: rgb(255, 0, 255);
   }
 
   .btnPinkFuerte{
