@@ -69,11 +69,11 @@ const AgregarReceta = () => {
                     
                 }else{
                     console.log(data);
-                    data.forEach(element => {
+                    data.value.forEach(element => {
                         element['add']=false
                     });
 
-                    setValor({...valor,aCargado:data});
+                    setValor({...valor,aCargado:data.value});
                     
                  
                 }
