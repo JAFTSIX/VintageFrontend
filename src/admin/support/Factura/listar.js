@@ -4,7 +4,8 @@ import { isAutentificacion } from '../../../autentificacion/index';
 import { Link } from 'react-router-dom';
 import {getObjeto,errorTranslator} from '../../apiAdmin';
 import FacturaInterfaz from './ObjetoInterfaz';
-import '../../../index.css'
+import '../../../index.css';
+import '../support.css';
 
 
 
@@ -55,7 +56,7 @@ const Factura = () => {
     return (
         <Layout 
         jumbotron="jumboEstatico" 
-        image="https://i.pinimg.com/originals/49/a1/62/49a162c235d8bb299921bfa88d9be931.jpg"
+        image="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-0/p640x640/71714792_3167053093321649_966614477665468416_o.jpg?_nc_cat=108&_nc_sid=8024bb&_nc_ohc=VDtLBEQdCG8AX-nxYMn&_nc_ht=scontent.fsyq3-1.fna&_nc_tp=6&oh=9f5b0923fccb9fec875e9bafc6450a3f&oe=5EA865B9"
         titulo="Factura" 
         descripcion="Chef Selenia Mendez"   
         className="container-fluid">
@@ -70,9 +71,9 @@ const Factura = () => {
             
             {/* contenido principal */}
         <br></br>
-        <div  className="col-9">
+        <div  className="col-12">
         
-            <div className="table table-borderless">     
+            <div className="table table-borderless facturaTabla">     
                                        
                 {FacturaDisponibles.map(  
                     (Factura, i)=>(
