@@ -5,7 +5,7 @@ import {isAutentificacion} from '../../../autentificacion/index';
 import '../../../index.css';
 import '../../../user/producto.css';
 import ProductoInterfaz from './ProductoInterfaz';
-
+import '../support.css';
 import moment from 'moment';
 
 
@@ -73,16 +73,12 @@ const FacturaInterfaz = ({Factura}) => {
                         <div className="collapse" id={'compras'+Factura._id}>
                             <div className=" facturaArticulosComprados col-lg-12">
                                 {Factura.aCompras.map((producto, i)=>(
-                                    <ProductoInterfaz key={i} producto={producto}/>
+                                    <ProductoInterfaz class="imgFactura" key={i} producto={producto}/>
                                 ))}  
                             </div>
                                        
                         </div>
                     
-
-
-                  
-      
                       <p>
                       <a className="btn"   data-toggle="collapse" href={'#direccion'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección ▼</h5>  
@@ -94,75 +90,70 @@ const FacturaInterfaz = ({Factura}) => {
                         
                       
                         
-                      <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Ciudad:</h4>  
-                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sCiudad} </h3>
+                      <div  class="pl-5">
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Ciudad:</h5>  
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sCiudad} </p>
                 
                       
                       
                       <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Dirección 1:</h4>  
-                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sDireccion1} </h3>
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección 1:</h5>  
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sDireccion1} </p>
                       </div>
                       
                       <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Dirección 2:</h4>  
-                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sDireccion2} </h3>
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección 2:</h5>  
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sDireccion2} </p>
                       </div>
 
 
                       <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Código postal:</h4>  
-                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.iCodPostal} </h3>
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Código postal:</h5>  
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.iCodPostal} </p>
                       </div>
 
                       <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Teléfono:</h4>  
-                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sTelefono} </h3>
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Teléfono:</h5>  
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sTelefono} </p>
                       </div>
 
                       <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Nombre:</h4>  
-                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sNombre} </h3>
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Nombre:</h5>  
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sNombre} </p>
                       </div>
 
                       <div  class="">
-                      <h4 className="font-weight-bold" style={{display : 'inline'}}>Apellido:</h4>  
-                      <h3 className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sApellido} </h3>
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Apellido:</h5>  
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sApellido} </p>
                       </div>
 
                         </div>
                     </div>
 
                     </div>
-
-        
+            </div>
+            <div class="row">
+                <div class="d-flex flex-row w-100" >
                     {isAutentificacion() && isAutentificacion().cliente.bAdmin && (
                         <Fragment>
-                         
-                        <Link to={`/Factura/Support/actualizar/${Factura._id}`}>
-                            <button className="btn btn-outline-primary 
-                            mt-2 mb-2 agregarPadding mr-2">
-                                Modificar Factura
-                            </button>
-                        </Link>
-
-                     
-                    
-
-                      
-                      <Link to={`/Factura/Support/Eliminar/${Factura._id}`} >
-                            <button  className="btn btn-outline-primary 
-                            
-                            mt-2 mb-2 agregarPadding mr-2" data-toggle="modal" data-target="#exampleModal">
-                                Eliminar Factura
-                            </button>
+                            <div class="col-lg-6">
+                            <Link to={`/Factura/Support/actualizar/${Factura._id}`}>
+                                <button className="btn btn-outline-primary w-100">
+                                    Modificar Factura   
+                                </button>
                             </Link>
-                        
+                            </div>
+                            <div class="col-lg-6">
+                            <Link to={`/Factura/Support/Eliminar/${Factura._id}`} >
+                                <button  className="btn btn-outline-primary w-100" data-toggle="modal" data-target="#exampleModal">
+                                    Eliminar Factura
+                                </button>
+                            </Link>
+                            </div>
+                            
                         </Fragment>
                     )}
-                    
-                
+                </div>
             </div>
         </div>
     );
