@@ -9,6 +9,7 @@ import banner3 from "../image/banner3.png";
 import logo from "../image/logo.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 
 
@@ -109,19 +110,19 @@ const Principal = () => {
                 <div class="row text-center">
                 <Link to={`/Receta`} className="d-flex flex-row">   
                     <div class="cardP ">
-                        <img src="https://okdiario.com/img/recetas/2016/12/29/desayunos-alrededor-del-mundo-2.jpg" className="fotoPerfil"/>
+                        <img src="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/s960x960/86430885_3490555110971444_7543001747703201792_o.jpg?_nc_cat=101&_nc_sid=110474&_nc_ohc=4YJxr_JhAg4AX_S0gS8&_nc_ht=scontent.fsyq3-1.fna&_nc_tp=7&oh=e707255d52fb60c4ffc569647438c18f&oe=5EA4F3F0" className="fotoPerfil"/>
                     </div>
                     <div class="cardP">  
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTj4uFKMmJ1sec1f4k1p68ZZLlfSKrupev4BFK6MqKVoa-wB8Qy" className="fotoPerfil"/>
+                        <img src="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/86190947_3483495768344045_3401118317472120832_n.jpg?_nc_cat=106&_nc_sid=e007fa&_nc_ohc=pTadG410YdoAX_Ru-jt&_nc_ht=scontent.fsyq3-1.fna&oh=38709da0354b1bad5ae88e63d1e91e2b&oe=5EA68BEA" className="fotoPerfil"/>
                     </div>
                     <div class="cardP">
-                        <img src="https://vamosacomerrico.com/wp-content/uploads/2018/02/1300-x-700-23-1-770x540.jpg" className="fotoPerfil"/>
+                        <img src="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/s960x960/77319628_3297281733632117_2827781213278699520_o.jpg?_nc_cat=111&_nc_sid=2d5d41&_nc_ohc=rqxenLJPxzEAX8fLPtl&_nc_ht=scontent.fsyq3-1.fna&_nc_tp=7&oh=b25be86370a9a36bea33581f24b76e03&oe=5EA6EFE8" className="fotoPerfil"/>
                     </div>
                     <div class="cardP">
-                        <img src="https://gourmetdemexico.com.mx/wp-content/uploads/2018/06/platillo-salmon-Gravlax.jpg" className="fotoPerfil"/>
+                        <img src="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/s960x960/72652584_3245406335486324_8756627306459430912_o.jpg?_nc_cat=108&_nc_sid=110474&_nc_ohc=Z4hMWyZKfV8AX8DctGp&_nc_ht=scontent.fsyq3-1.fna&_nc_tp=7&oh=226c89c846dca006958627ac05a88f70&oe=5EA437F4" className="fotoPerfil"/>
                     </div>
                     <div class="cardP">  
-                        <img src="https://gastronomiaycia.republica.com/wp-content/photos/postre_turron_chischoco1.jpg" className="fotoPerfil"/>
+                        <img src="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/86290375_3483495005010788_608858081459175424_n.jpg?_nc_cat=105&_nc_sid=e007fa&_nc_ohc=RWJjTZpC_P0AX-13GeQ&_nc_ht=scontent.fsyq3-1.fna&oh=49222f5638cac82945d1644a6d3e7c97&oe=5EA57BF8" className="fotoPerfil"/>
                     </div>  
                 </Link>
                 </div>
@@ -172,37 +173,11 @@ const Principal = () => {
                     </div>  
                 </div>
 
-                
 
             </div> 
             {/* div del cointainer  */}
 
-            {/* footer  */}
-            <div class="bg-dark">
-            <div class="container">
-                <div class="row paddingT5">       
-                    <div class="col-lg-6 text-center">
-                        <h4 class="font-weight-bold text-light mb-5">Redes Sociales</h4>
-                        <img src="https://i.pinimg.com/originals/41/28/2b/41282b58cf85ddaf5d28df96ed91de98.png"
-                            height="100" width="74" class="paddingB5"/>
-                        <img src="https://www.pngkey.com/png/full/283-2831746_insta-icon-instagram.png"
-                            height="86" width="59" class="paddingB5"/>
-                        <img src="https://i.pinimg.com/originals/19/7b/36/197b365922d1ea3aa1a932ff9bbda4a6.png"
-                            height="93" width="87" class="paddingB5"/>
-                    </div>
-                    <div class="col-lg-6 text-center">  
-                        <h4 class="font-weight-bold text-light mb-5">Contactenos</h4>
-                        <p class="text-light">Email: pasteleriarealezas@hotmail.com</p>
-                    </div>    
-                </div>
-                <div class="row">   
-                    <div class="col-lg-12 text-center">
-                       <hr/>
-                       <p class="text-light">©2020 Cocina Vintage. Todos los derechos reservados.</p>
-                    </div>  
-                </div>
-            </div>
-            </div>
+            <Footer />
                 
 </div>
         
