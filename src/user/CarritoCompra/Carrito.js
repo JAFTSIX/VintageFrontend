@@ -8,8 +8,11 @@ import CarritoInterfaz from './CarritoInterfaz';
 import Checkout from './Checkout';
 
 
+
 const Carrito = () => {
     const [producto, setProducto] = useState([]);
+
+
 
     useEffect(()=>{
 
@@ -42,6 +45,7 @@ const Carrito = () => {
                                 agregarPadding mb-5">
                                 <h4>Proceder al Pago</h4> 
                     </button>
+                    
                 </div>
 
             </div>
