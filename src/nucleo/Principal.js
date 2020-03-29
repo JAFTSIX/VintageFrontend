@@ -69,10 +69,10 @@ const Principal = () => {
                     </div>
                 </div>
                 <div class="row">   
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 col-md-12 d-flex justify-content-center">
                         <img src="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/s960x960/72604741_3187892487904376_6452110419937984512_o.jpg?_nc_cat=103&_nc_sid=85a577&_nc_ohc=qlM8uhSv6EYAX_Xf7tE&_nc_ht=scontent.fsyq3-1.fna&_nc_tp=7&oh=064ddb8f6afda28b9e8f301f2db23e8f&oe=5EA4C342" className="fotoPerfil"/>
                     </div>
-                    <div class="col-lg-8 ml-1 mb-10 pb-5">
+                    <div class="col-lg-8 col-md-12 ml-1 mb-10 pb-5 text-justify">
                         <p>Recetas y consejos de cocina</p>
                         <p>El canal Cristiano Enlace TBN ha sido
                             un punto de partida para esta chef donde muy a menudo hace sus presentaciones además transmite sus recetas a través de la radio).
@@ -91,10 +91,10 @@ const Principal = () => {
                     </div>
                 </div>
                 <div class="row">   
-                    <div class="col-lg-3">
+                    <div class="col-md-12 d-flex justify-content-center">
                         <img src="https://scontent.fsyq2-1.fna.fbcdn.net/v/t31.0-8/28947429_2203744862985815_1109443335455721953_o.jpg?_nc_cat=100&_nc_sid=74df0b&_nc_ohc=OMrPYfEbGy0AX9cLHng&_nc_ht=scontent.fsyq2-1.fna&oh=13855ac172b4f67f3c5e29fcd81bc9c0&oe=5EA3AFDE" className="fotoPerfil"/>
                     </div>
-                    <div class="col-lg-8 ml-1 mb-10 pb-5">
+                    <div class="col-lg-8 col-md-12 ml-1 mb-10 pb-5 text-justify">
                         <p>Para mi cocinar es crear, es una característica dada por Dios al ser humano, siempre se lo recuerdo a quienes siguen mi trabajo, crear trasciende una simple labor, crear es como amar, como sentir, es un placer que Dios disfrutó a plenitud desde el principio, el creo, y vio que era bueno, sintió regocijo al ver su majestuosa palabra convertida en seres vivientes, la inspiración fue tal, que decidió usar sus manos formando seres humanos con cualidades impensables, a los que decidió llamarles hijos, crear da identidad y descubre habilidades que no se ven en nosotros, pero que siempre han estado allí, estoy convencida que nada es igual cuando nos damos la oportunidad de mostrar lo que somos, somos la creación de Dios, y la creación de Él es la imagen de un Dios invisible, que se vuelve visible, cuando nos permitimos crear.</p>
                     </div>
                 </div>
@@ -107,8 +107,8 @@ const Principal = () => {
                     </div>
                 </div>
                 {/* carrousel recetas  */}
-                <div class="row text-center">
-                <Link to={`/Receta`} className="d-flex flex-row">   
+                <div class="row text-center ">
+                <Link to={`/Receta`} className="d-flex flex-row responsiveCarrouselReceta">   
                     <div class="cardP ">
                         <img src="https://scontent.fsyq3-1.fna.fbcdn.net/v/t1.0-9/s960x960/86430885_3490555110971444_7543001747703201792_o.jpg?_nc_cat=101&_nc_sid=110474&_nc_ohc=4YJxr_JhAg4AX_S0gS8&_nc_ht=scontent.fsyq3-1.fna&_nc_tp=7&oh=e707255d52fb60c4ffc569647438c18f&oe=5EA4F3F0" className="fotoPerfil"/>
                     </div>
@@ -144,7 +144,7 @@ const Principal = () => {
                 </div>
                 {/* carrousel recetas  */}
                 <div class="row text-center"> 
-                <Link to={`/Producto`} className="d-flex flex-row">    
+                <Link to={`/Producto`} className="d-flex flex-row responsiveCarrouselReceta">    
                     <div class="cardP ">
                         <img src="https://cdn.shopify.com/s/files/1/0979/9666/products/cuchara-postre-modbaguette_large.jpg?v=1531355541" className="fotoPerfil"/>
                     </div>
