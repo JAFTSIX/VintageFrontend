@@ -1,6 +1,14 @@
 .facturaArticulosComprados{
-    height: 300px;  
     display: flex;
     flex-direction: row;
     overflow-y: hidden;
+    
+}
+
+.imgFacturaProducto{
+    height: 155px;
+}
+
+.btn:focus, .btn.focus{
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0);
 }
