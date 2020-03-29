@@ -38,7 +38,7 @@ const Producto = () => {
             <div className="">               
                 <ul className="list-group">                   
                     <li className="list-group-item border-0 mw-100 p-0 mb-5 mt-3">
-                        <Link className="nav-link btn btn-outline-primary 
+                        <Link className="btn btn-outline-primary 
                             m-2 agregarPadding 
                         " to="/producto/agregar">
                             Agregar Producto
