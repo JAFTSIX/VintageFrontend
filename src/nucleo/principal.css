@@ -120,6 +120,10 @@
     padding-bottom: 5%;
   }
 
+  .footerMarginTop{
+    margin-top: 10%;
+  }
+
   /* button  */
   .btn-outline-primary{
       color: #ff00ea !important;
