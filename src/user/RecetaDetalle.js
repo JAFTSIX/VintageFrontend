@@ -117,7 +117,7 @@ const RecetaDetalle = (props) => {
                 {receta.iPrecio === 0 &&    
                     <Fragment className="">
                     <h1 className="text-capitalize colorPink">Instrucciones</h1>
-                    <h5 className="mt-4 text-justify">{receta.sTexto}</h5>
+                    <h5 className="mt-4 text-justify textAreaSaltoLinea">{receta.sTexto}</h5>
                     </Fragment>
                 }
                     
