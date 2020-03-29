@@ -6,10 +6,10 @@ import '../index.css';
 import banner1 from "../image/banner1.png";
 import banner2 from "../image/banner2.png";
 import banner3 from "../image/banner3.png";
-import logo from "../image/logo.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
+import logo from '../image/logo.png'
 
 
 
