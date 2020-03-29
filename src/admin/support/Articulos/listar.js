@@ -28,7 +28,7 @@ const Factura = () => {
                 if('error'in data){
                     setError(errorTranslator(data.error.message) )
                 }else{
-                    setFacturaDisponibles(data);
+                    setFacturaDisponibles(data.value);
                     //console.log(data);
                 }
               }
