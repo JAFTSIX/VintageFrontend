@@ -153,18 +153,6 @@ const ModificarProducto = (props) => {
             </div>
 
             <div className="form-group">
-                <label className="text-muted">Categoria </label>
-                <select onChange={handleChange('sCategoria')} 
-                        className="form-control">
-                            <option>Selecciona una categoria</option>
-                            {categorias && 
-                            categorias.map((categoria, index) => (
-                                <option key={index} value={index}>{categoria}</option>
-                            ))}
-                </select>
-            </div>
-
-            <div className="form-group">
                 <label className="text-muted">Cantidad </label>
                 <input onChange={handleChange('iCant2')} 
                         type="number" 
