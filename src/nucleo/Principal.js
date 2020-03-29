@@ -91,7 +91,7 @@ const Principal = () => {
                     </div>
                 </div>
                 <div class="row">   
-                    <div class="col-md-12 d-flex justify-content-center">
+                    <div class="col-lg-3 col-md-12 d-flex justify-content-center">
                         <img src="https://scontent.fsyq2-1.fna.fbcdn.net/v/t31.0-8/28947429_2203744862985815_1109443335455721953_o.jpg?_nc_cat=100&_nc_sid=74df0b&_nc_ohc=OMrPYfEbGy0AX9cLHng&_nc_ht=scontent.fsyq2-1.fna&oh=13855ac172b4f67f3c5e29fcd81bc9c0&oe=5EA3AFDE" className="fotoPerfil"/>
                     </div>
                     <div class="col-lg-8 col-md-12 ml-1 mb-10 pb-5 text-justify">
