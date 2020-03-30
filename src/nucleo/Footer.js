@@ -10,7 +10,7 @@ const Footer = () => {
         <div class="bg-dark footerMarginTop ">
         <div class="container">
             <div class="row paddingT5 footerCss">       
-                <div class="col-lg-6 col-md-6 text-center footerHeightSocialMedia">
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center footerHeightSocialMedia">
                     <h4 class="font-weight-bold text-light mb-lg-5 mb-md-2">Redes Sociales</h4>
                     <a href="https://www.facebook.com/ChefSeleniaLive/" target="_blank">
                     <img src="https://i.pinimg.com/originals/41/28/2b/41282b58cf85ddaf5d28df96ed91de98.png"
@@ -25,7 +25,7 @@ const Footer = () => {
                         height="93" width="87" class="paddingB5"/>
                     </a>
                 </div>
-                <div class="col-lg-6 col-md-6 text-center">  
+                <div class="col-lg-6 col-md-6 col-sm-12 text-center">  
                     <h4 class="font-weight-bold text-light mb-lg-5 mb-md-2">Contactenos</h4>
                     <p class="text-light">Email: pasteleriarealezas@hotmail.com</p>
                 </div>    
