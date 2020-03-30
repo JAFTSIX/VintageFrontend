@@ -89,21 +89,22 @@ const Categoria = () => {
         
             {/* funciones de admin */}
             <div className="row">
-                <div className="col-12">                   
+                <div className="col-lg-12">                   
                 {mostrarError()}
                     {mostrarCrud()}
                     
                 </div>
             </div>
             
-            {/* contenido principal */}
-        <br></br>
-            <div className="row">     
+            {/* contenido principal */} 
+        <br></br>   
+            <div className="row">  
+            <div className="col-lg-12  mostrarCategoria">     
                                        
                 {CategoriaDisponibles.map((Categoria, i)=>(
                     <CategoriaInterfaz key={i} Categoria={Categoria}/>
                 ))}                   
-
+            </div>
             </div>
                 
             
