@@ -28,11 +28,11 @@ const Carrito = () => {
         return(
             <div>   
             <div id="tabla" className="mb-3 row px-5" >
-
-                    <div className="col-5 pl-5">PRODUCTOS</div>
-                    <div className="col-1 text-center">CANTIDAD</div>
-                    <div className="col-2 text-center pl-5">PRECIO / UNIDAD</div>
-                    <div className="col-3 text-center pl-5">PRECIO TOTAL</div> 
+            {/* displayNone : en tablet y mobil no va a aparecer esto */}
+                    <div className="col-lg-5 displayNone pl-5">PRODUCTOS</div>
+                    <div className="col-lg-1 text-center displayNone">CANTIDAD</div>
+                    <div className="col-lg-2 text-center pl-5 displayNone">PRECIO / UNIDAD</div>
+                    <div className="col-lg-3 text-center pl-5 displayNone">PRECIO TOTAL</div> 
             </div>
 
             {producto.map((product, i)=>(

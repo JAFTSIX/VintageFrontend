@@ -56,7 +56,7 @@ const CarritoInterfaz = ({product}) => {
                         eliminarProductoCarrito(product._id);
                         window.location.reload(); 
                         }}>
-                    <img src="https://cdn3.iconfinder.com/data/icons/iconano-text-editor/512/005-X-512.png" height="50px" width="50px"/>
+                    <img src="https://cdn3.iconfinder.com/data/icons/iconano-text-editor/512/005-X-512.png" className="iconoEliminarCarrito"/>
                     {/* Eliminar Producto */}
                 </button>
           </Link>
@@ -85,23 +85,23 @@ const CarritoInterfaz = ({product}) => {
             <div className="row">
                 
 
-                <div className="col-5 mb-3">
-                    <img height="300px" width="450px" src={product.sUrlImagen} />
-                    <div className="d-lg-inline-flex ml-5 mt-5 ">
+                <div className="col-lg-5 col-md-3 mb-lg-3">
+                    <div className="d-lg-inline-flex ml-lg-5 ml-md-1 mt-lg-5 mt-md-1 ">
                         <h1 className="text-capitalize">{product.sNombre}</h1>
                     </div>
-                    
-                </div>
+                    <img className="imgCarrito" src={product.sUrlImagen} />
+
+                </div>  
                 
                 <hr />
                 {/* cantidad  */}
-                <div className="col-1 text-center d-flex justify-content-center aslign-items-center"><h3>{mostrarOpcionActualizar()}</h3></div>
+                <div className="col-lg-1 col-md-3 text-center d-flex justify-content-center aslign-items-center"><h3>{mostrarOpcionActualizar()}</h3></div>
                 {/* precio unidad  */}
-                <div className="col-2 text-center d-flex justify-content-center align-items-center"><h3>₡{product.iPrecio}</h3></div>
+                <div className="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center"><h3>₡{product.iPrecio}</h3></div>
                 {/* precio total  */}
-                <div className="col-3 text-center d-flex justify-content-center align-items-center" ><h3>₡{totalPrecioUnidad()}</h3></div>
+                <div className="col-lg-3 col-md-2 text-center d-flex justify-content-center align-items-center" ><h3>₡{totalPrecioUnidad()}</h3></div>
                 {/* icono eliminar producto  */}
-                <div className="col-1  text-center d-flex justify-content-center align-items-center">{eliminaProductoCarrito()}</div>
+                <div className="col-lg-1 col-md-2  text-center d-flex justify-content-center align-items-center">{eliminaProductoCarrito()}</div>
                  
             </div>
 
