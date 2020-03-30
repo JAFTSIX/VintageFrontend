@@ -80,14 +80,14 @@ const Menu = ({history}) => {
         
     <div className="row">   
         <div className="col-lg-12">
-        <ul className="navbar-custom justify-content-end navbar-nav ml-auto topnav-right d-flex flex-row">
-            <div className="col-md-3 col-sm-2">
-            <li className="nav-item">
+        <ul className="navbar-custom justify-content-end navbar-nav topnav-right d-flex flex-row">
+            <div className="col-lg-2 col-md-3 col-sm-2">
+            <li className="nav-item">   
                 <img src={logo} className="logo"/>
             </li>
             </div>  
             <div className="col-lg-12 col-md-9 col-sm-10 responsiveMenu">
-            <li className="nav-item mx-2">
+            <li className="nav-item">
                 <Link className="nav-link" style={esHover(history, "/")} to="/">
                     INICIO
                 </Link>
@@ -104,7 +104,7 @@ const Menu = ({history}) => {
                     </li>
 
                     <li className="nav-item mx-2 dropdown ">
-                        <a className="nav-link dropdown-toggle colorBlanco" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle colorBlanco text-light" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ACCIONES ADMINISTRADOR
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
