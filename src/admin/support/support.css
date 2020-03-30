@@ -28,3 +28,7 @@ a{
 .react-datetime-picker__wrapper {
     border: thin solid #cbcbcb;
 }
+
+.facturaLineHeight{
+    line-height: 2.5;
+}
