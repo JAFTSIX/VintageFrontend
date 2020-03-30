@@ -35,17 +35,12 @@
 
 .imagenReceta{
     border-radius: 100%;
-    position: fixed;
-    top: 140px;
-    right: 140px;
 }
 
 .btnAdminReceta{  
     display: flex;
     flex-direction: row;
-    position: fixed;
-    top: 162px;
-    right: 300px;
+
 }
 
 .btnAdminProducto{  
