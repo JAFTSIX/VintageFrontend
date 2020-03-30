@@ -17,7 +17,7 @@ const RecetaDetalle = (props) => {
     // metodo cargar receta del url 
     const cargarDetalleReceta = recetaId => {
         // funcion ubicado en apiReceta 
-        getObjeto('Receta',recetaId ).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+        getObjeto('Receta','/'+recetaId ).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
 
             
             if ('error' in data) {            
