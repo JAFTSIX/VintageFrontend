@@ -230,13 +230,21 @@ const RecetaDetalle = (props) => {
 
             {/* contenido  */}
             <div className="row mt-1 Content">
-            {receta.iPrecio > 0 &&
+            {(receta.iPrecio > 0 &&ver) &&
                 <div className="col-6 fix">     
+                se puede ver
                     <iframe className="video" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>  
 
             }
 
+            {receta.iPrecio > 0 &&!ver&&
+                <div className="col-6 fix">     
+                no se puede ver
+                    <iframe className="video" src={receta.sUrlVideoTrailer} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>  
+
+            }
                  <div className="col-5 scroll mr-1">     
             
             
