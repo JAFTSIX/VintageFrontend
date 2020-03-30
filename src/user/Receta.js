@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
 import { isAutentificacion } from '../autentificacion';
 import { Link } from 'react-router-dom';
-import {getReceta} from './apiReceta';
+ 
 import RecetaInterfaz from './RecetaInterfaz';
 import '../index.css';
 import '../css.css';

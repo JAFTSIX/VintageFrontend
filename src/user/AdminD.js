@@ -1,15 +1,44 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useEffect,useState } from 'react';
 import Layout from '../nucleo/Layout';
 import {isAutentificacion} from '../autentificacion';
 import {Link} from 'react-router-dom';
 import '../index.css';
 import '../css.css';
 import moment from 'moment';
-
+import {errorTranslator,getObjeto} from './../admin/apiAdmin'; 
+import RecetaInterfaz from './RecetaInterfaz';
 const AdminD = () => {
 
     const {_id, sNombre, sApellido,sCorreo, dNacimiento} = isAutentificacion().cliente;
     const fechaNacimiento =moment(dNacimiento).format('DD/MM/YYYY'); 
+    
+    const [receta, setReceta] = useState([]);
+    const [error, setError] = useState(false);
+
+    const cargarReceta = () => {
+      
+
+        getObjeto('Cliente','/cursos/'+_id)
+        .then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+            
+                if ('error' in data) {
+
+                    setError(errorTranslator(data.error.message))        
+                    
+                }else{
+          
+                    setReceta(data.value);
+                    console.log(data);
+                                                             
+                }
+       
+        })
+    }
+
+    useEffect(()=>{
+        cargarReceta()
+    }, []);
+   
     
     const linkAdmin = () => {
         return(
@@ -135,7 +164,23 @@ const AdminD = () => {
     }
 
 
-
+    const RecetasCompradas = () => {
+        //`?filter={"where":{"sNombre":  {"regexp": "/${query}/i"}}}`
+        return(
+           
+            <div className="card mb-5">
+                <h3 className="card-header">
+                    Recetas de Compradas
+                </h3>
+                <ul className="list-group">
+                    <li className="list-group-item">Recetas</li>
+                    {receta.map((receta, i)=>(
+                        <RecetaInterfaz key={i} receta={receta}/>
+                    ))} 
+                </ul>
+            </div>
+        );
+    }
     
 
     return (
@@ -154,6 +199,9 @@ const AdminD = () => {
 
                 <div className="col-lg-9 col-md-12">
                     {linkAdmin()}
+                </div>
+                <div className="col-lg-9 col-md-12">
+                    {RecetasCompradas()}
                 </div>
             </div>
 

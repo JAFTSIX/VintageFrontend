@@ -114,13 +114,13 @@ const SignIn = () => {
                             });
                         } //si no hay error, se redirecciona a la principal
                         else {
-
+                            
                             autentificacion(data.value, () => {
                                 setValues({
                                     ...values,
                                     redireccionar: true,
                                     loading: false,
-                                    bAdmin: data.value.cliente.bAdmin
+                                    bAdmin: data.value.cliente.bAdmin,
                                 });
                             });
                         }

@@ -250,7 +250,7 @@ const RecetaDetalle = (props) => {
             
 
                 {/* si el precio es 0  */}
-                {receta.iPrecio ===0 &&    
+                {ver &&    
                     <div>
 
                     

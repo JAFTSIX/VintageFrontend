@@ -1,18 +1,43 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useState,useEffect } from 'react';
 import Layout from '../nucleo/Layout';
 import {isAutentificacion} from '../autentificacion';
 import {Link} from 'react-router-dom';
 import '../index.css';  
 import '../css.css';
+import RecetaInterfaz from './RecetaInterfaz';
 import moment from 'moment';
+import {errorTranslator,getObjeto} from './../admin/apiAdmin'; 
 
 const Perfil = () => {
 
     const {_id, sNombre, sApellido,sCorreo,dNacimiento} = isAutentificacion().cliente;
     const fechaNacimiento =moment(dNacimiento).format('DD/MM/YYYY'); 
+    const [receta, setReceta] = useState([]);
+    const [error, setError] = useState(false);
 
-     
+    const cargarReceta = () => {
+      
 
+        getObjeto('Cliente','/cursos/'+_id)
+        .then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+            
+                if ('error' in data) {
+
+                    setError(errorTranslator(data.error.message))        
+                    
+                }else{
+          
+                    setReceta(data.value);
+                    console.log(data);
+                                                             
+                }
+       
+        })
+    }
+
+    useEffect(()=>{
+        cargarReceta()
+    }, []);
    
     
     const linkUsuario = () => {
@@ -98,6 +123,23 @@ const Perfil = () => {
         );
     }
 
+    const RecetasCompradas = () => {
+        //`?filter={"where":{"sNombre":  {"regexp": "/${query}/i"}}}`
+        return(
+           
+            <div className="card mb-5">
+                <h3 className="card-header">
+                    Recetas de Compradas
+                </h3>
+                <ul className="list-group">
+                    <li className="list-group-item">Recetas</li>
+                    {receta.map((receta, i)=>(
+                        <RecetaInterfaz key={i} receta={receta}/>
+                    ))} 
+                </ul>
+            </div>
+        );
+    }
     
 
     return (
@@ -119,6 +161,10 @@ const Perfil = () => {
 
                 <div className="col-lg-9 col-md-12">
                     {linkUsuario()}
+                </div>
+
+                <div className="col-lg-9 col-md-12">
+                    {RecetasCompradas()}
                 </div>
             </div>
 
