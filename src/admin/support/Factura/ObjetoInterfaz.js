@@ -67,8 +67,6 @@ const FacturaInterfaz = ({Factura}) => {
                         <a className="text-dark ml-md-3"   data-toggle="collapse" href={'#compras'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
                         <h5 className="font-weight-bold" style={{display : 'inline'}}>Articulos Comprados ▼</h5>  
                         </a>
-                       
-
                 
                         <div className="collapse" id={'compras'+Factura._id}>
                             <div className=" facturaArticulosComprados col-lg-12">
