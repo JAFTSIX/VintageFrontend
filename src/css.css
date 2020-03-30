@@ -322,7 +322,7 @@ textarea.form-control{
     
 
   }
-  @media only screen and (max-width:379px) {
+  @media only screen and (max-width:414px) {
     h1, .h1 {
         font-size: 1.5rem;
     }
@@ -378,6 +378,10 @@ textarea.form-control{
     /* footer  */
     .footerCss {
         height: 364px;
+    }
+    /* perfil  */
+    .perfilCardImg{
+        margin: auto;
     }
   }
   

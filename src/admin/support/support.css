@@ -32,3 +32,10 @@ a{
 .facturaLineHeight{
     line-height: 2.5;
 }
+
+/* categoria  */
+.mostrarCategoria{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
