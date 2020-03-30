@@ -105,22 +105,22 @@ const RecetaDetalle = (props) => {
             <div className="msgStatic">{mostrarFunciona()}</div>
             <Menu />
             <div className="row">
-                <div className="col-lg-6 d-flex flex-row">
-                    <h1 className="text-capitalize mb-5">{receta.sNombre}</h1>
+                <div className="col-lg-6 col-md-12 recetaDetalleTitulo">
+                    <h1 className="text-capitalize mb-5 mr-5">{receta.sNombre}</h1>
                     {/* imagen prodcuto  */} 
-                    <img src={receta.sUrlImagen} height="110px" width="110px" className="imagenReceta"></img>
+                    <img src={receta.sUrlImagen} height="70px" width="110px" className="imagenReceta"></img>
                 </div>
-                <div className="col-lg-6 d-flex flex-row justify-content-center">
+                <div className="col-lg-6 col-md-12 recetaDetalleBtn">
                     {botones()} 
                 </div>
             </div>
 
             {/* contenido  */}
             <div className="row mt-1 Content">
-                <div className="col-6 fix">     
+                <div className="col-lg-6 col-md-12 fix">     
                     <iframe className="video" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>  
-                <div className="col-5 scroll mr-1">     
+                <div className="col-lg-5 scroll mr-1">     
 
                 {/* si el precio es 0  */}
                 {receta.iPrecio === 0 &&    
