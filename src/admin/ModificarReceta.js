@@ -29,7 +29,8 @@ const ModificarReceta = (props) => {
         redirect:false,
         loading: false,
         error : false,
-        formData:""
+        formData:"",
+        sUrlVideoTrailer:""
     });
 
 
@@ -51,7 +52,8 @@ const ModificarReceta = (props) => {
         error,
         recetaModificado,
         redirect,
-        formData
+        formData,
+        sUrlVideoTrailer
        
     } = valor;
 
@@ -199,7 +201,7 @@ const ModificarReceta = (props) => {
           if (resultado.valido) {
             setValor({...valor, error:'', loading:true});
             modificarObjeto('Receta', {_id,sNombre,aEtiqueta:asd,sTexto,
-                iPrecio,sUrlVideo,sUrlImagen,bActivo,dFechaPublicacion})
+                iPrecio,sUrlVideo,sUrlImagen,bActivo,dFechaPublicacion,sUrlVideoTrailer})
             .then(data=>{
          
                 if (data === undefined) {
@@ -250,7 +252,14 @@ const ModificarReceta = (props) => {
                         value={sUrlVideo} />
             </div>
 
-         
+            <div className="form-group">
+            <label className="text-muted">Ingresar link del trailer de la receta: </label>
+            <input onChange={handleChange('sUrlVideoTrailer')} 
+                    type="text" 
+                    className="form-control" 
+                    required
+                    value={sUrlVideoTrailer} />
+        </div>
            
          {Returncheckbox()}
 
