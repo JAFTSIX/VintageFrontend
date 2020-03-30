@@ -78,13 +78,15 @@ const Menu = ({history}) => {
         
     <nav className="navbar-expand-lg navbar-dark bg-dark text-center fixed-top ml-auto p-3">
         
-    <div className="row"> 
+    <div className="row">   
         <div className="col-lg-12">
         <ul className="navbar-custom justify-content-end navbar-nav ml-auto topnav-right d-flex flex-row">
+            <div className="col-md-3 col-sm-2">
             <li className="nav-item">
                 <img src={logo} className="logo"/>
             </li>
-            <div className="col-lg-12 col-md-9 responsiveMenu">
+            </div>  
+            <div className="col-lg-12 col-md-9 col-sm-10 responsiveMenu">
             <li className="nav-item mx-2">
                 <Link className="nav-link" style={esHover(history, "/")} to="/">
                     INICIO
