@@ -35,14 +35,14 @@ p{
     width: 120px;
     margin: 0px;
     padding: 0px;
-    position: absolute;
-    top: -25px;
+    position: fixed;
+    top: -12px;
     left: 36px;
 }
 
 /* carousel  */
 .carousel-caption{
-    bottom: -64px;
+    bottom: 30px;
 }
 
 .jumbotronMovimiento{
@@ -189,10 +189,7 @@ p{
     width: 100%;    
 }
 
-.alert{
-    background-color: rgba(247, 112, 218, 0.2);
-    border-color: rgba(247, 112, 218, 0.2);
-}
+
 
 .agregarPadding{
     padding: 10px;
@@ -283,24 +280,38 @@ textarea.form-control{
       display: flex;
       flex-direction: row;
       justify-content: end;
+      overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+
   }
 
   .carousel img{
     display: block !important;
     }
 
+    /* tablet pro  */
+    @media only screen and (max-width:1024px) {
+        .logo{
+            display: none;
+        }
+        .navbar-expand-lg .navbar-nav .dropdown-menu{
+            position: fixed !important;
+            top: 60px !important;
+            left: 30% !important;
+            padding-left: 20px;
+        }
+    }
 
+    /* tablet  */
   @media only screen and (max-width:769px) {
     .logo{
-        top: -24px;
+        top: -12px;
     }
     .responsiveMenu{
         flex-direction: row;
         width: 60% !important;
         height: 42px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        white-space: nowrap;
          text-align: center;
     }
 
@@ -319,12 +330,17 @@ textarea.form-control{
         height: 25px;
     }
 
-    
 
   }
+
+  /* mobile  */
   @media only screen and (max-width:414px) {
     h1, .h1 {
         font-size: 1.5rem;
+    }
+
+    .logo{
+        display: none;
     }
 
     /* carousel  */
