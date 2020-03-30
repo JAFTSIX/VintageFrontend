@@ -1,5 +1,6 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import {leerRecetaDetalle} from './apiReceta';
+import {getObjeto,errorTranslator} from './../admin/apiAdmin';
 import '../index.css';
 import '../css.css';
 import './videoReceta.css';
@@ -16,14 +17,22 @@ const RecetaDetalle = (props) => {
     // metodo cargar receta del url 
     const cargarDetalleReceta = recetaId => {
         // funcion ubicado en apiReceta 
-        leerRecetaDetalle(recetaId).then(data=>{
-            if(data.error){
-                setError(data.error);
-            }else{
-                setReceta(data);
+        getObjeto('Receta',recetaId ).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+
+            
+            if ('error' in data) {            
+                //Authorization header value has too many parts. It must follow the pattern: 'Bearer xx.yy.zz' where xx.yy.zz is a valid JWT token.
+                setError(errorTranslator( data.error.message));
+            } else {
+              
+                setVer(data.value);
+                
             }
+            
+
         })
     }
+
     const isVer = (recetaId,ruta) => {
         // funcion ubicado en apiReceta 
         ///Cliente/Ver/{id}
@@ -73,6 +82,13 @@ const RecetaDetalle = (props) => {
           }, 2500);
     }
 
+    const mostrarError = () => (
+        <div className="alert alert-danger" 
+        style={{display: error ? '' : 'none'}}>
+            {error}
+        </div>
+    );
+        
 
     const mostrarFunciona = () => {       
         return(
@@ -127,9 +143,11 @@ const RecetaDetalle = (props) => {
     return(
         
         <div className="mt10 mx-5 container-fluid   Content">
-            <div className="msgStatic">{mostrarFunciona()}</div>
+            <div className="msgStatic"></div>
             <Menu />
             <div className="row">
+
+            {mostrarError ()}{mostrarFunciona()}
                 <div className="col-lg-6 col-md-12 recetaDetalleTitulo">
                     <h1 className="text-capitalize mb-5 mr-5">{receta.sNombre}</h1>
                     {/* imagen prodcuto  */} 
