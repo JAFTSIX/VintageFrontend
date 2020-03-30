@@ -39,7 +39,7 @@ const EliminarCategoria= (props) => {
             eliminar(props.match.params._Id)
 
         }else{
-            
+          setValor({redirect:true})  
         }
         setOpen(false);
     };
@@ -93,49 +93,18 @@ const EliminarCategoria= (props) => {
             
     }
 
-    const mostrarFunciona = () => (
-        <div className="alert alert-info" 
-        style={{display: redirect ? '':''}}>
-           
-        {redirect && (
 
-            <h4>{`Se ha eliminado exitosamente`}</h4>
-        )}
-        {!redirect && (
-
-            <h4>{`No se hizo ninguna acción`}</h4>
-        )}  
-        
-        </div>
-    );
-
-    const mostrarError = () => (
-      <div className="alert alert-danger" 
-      style={{display: error ? '' : 'none'}}>
-          {error}
-         
-      </div>
-      
-  );
       
 
     return (
-        <Layout titulo="ELIMINAR Categoria" 
-        descripcion="" 
-        className="container-fluid">
-            
-            <div className="row">
-            {mostrarFunciona()}  
-               
-
-
+     <div className="row">
             <Dialog
             open={open}
             onClose={handleClose}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description">
     
-            <DialogTitle id="alert-dialog-title">{`¿vas a eliminar Este elemento permanentemente ?`}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{`Eliminar`}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                ¿Esta seguro de la acción que está a punto de hacer?
@@ -143,7 +112,7 @@ const EliminarCategoria= (props) => {
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose(false)} color="primary">
-                creo que no
+                No
               </Button>
               <Button onClick={handleClose(true)} color="primary" autoFocus>
                 Seguro
@@ -154,8 +123,7 @@ const EliminarCategoria= (props) => {
          
           {redireccionarUsuario()}
                              
-            </div>
-        </Layout>
+      </div>
     );
 }
 
