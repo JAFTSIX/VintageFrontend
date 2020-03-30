@@ -22,30 +22,19 @@ const Receta = () => {
       
 
         getObjeto('Receta',query)
-        .then(data=>{
+        .then((data={error:{message:'hay un problema, intente más tarde'}})=>{
             
-            if(data=== undefined){
-
-                setError( errorTranslator('Problemas, intente mas tarde'));
-            } else {
-
                 if ('error' in data) {
 
-                    setError(errorTranslator(data.error.message))
-                    
+                    setError(errorTranslator(data.error.message))        
                     
                 }else{
-                   
           
                     setReceta(data);
                     console.log(data);
-                    
-                     
-                    
+                                                             
                 }
-                
-            }
-            
+       
         })
     }
 
@@ -200,6 +189,14 @@ const Receta = () => {
             return("");
         }
     }
+    const mostrarError = () => (
+        <div className="alert alert-danger" 
+        style={{display: error ? '' : 'none'}}>
+            {error}
+           
+        </div>
+        
+    );
 
     return (
         <Layout jumbotron="jumbotronMovimiento" 
@@ -207,7 +204,7 @@ const Receta = () => {
         titulo="RECETA" 
         descripcion="Chef Selenia Mendez"   
         className="container-fluid">
-            
+            {mostrarError()}
             {/* funciones de admin */}
             <div className="row mt-5">  
                 <div className="col-12">                   

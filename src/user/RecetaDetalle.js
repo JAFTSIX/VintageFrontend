@@ -1,5 +1,6 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import {leerRecetaDetalle} from './apiReceta';
+import {getObjeto, errorTranslator} from './../admin/apiAdmin';
 import '../index.css';
 import '../css.css';
 import './videoReceta.css';
@@ -12,16 +13,35 @@ import {agregarProductoCarrito} from './CarritoCompra/carritoHelper'
 const RecetaDetalle = (props) => {
     const [receta, setReceta] = useState({});
     const [error, setError] = useState(false);
+    const [ver, setVer] = useState(false);
 
     // metodo cargar receta del url 
     const cargarDetalleReceta = recetaId => {
         // funcion ubicado en apiReceta 
-        leerRecetaDetalle(recetaId).then(data=>{
-            if(data.error){
-                setError(data.error);
+        ///Cliente/Ver/{id}
+        leerRecetaDetalle(recetaId).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+            if('error' in data){
+                setError(data.error.message);
             }else{
                 setReceta(data);
             }
+        })
+    }
+    const isVer = recetaId => {
+        // funcion ubicado en apiReceta 
+        ///Cliente/Ver/{id}
+        getObjeto('Cliente',`/Ver/${recetaId}` ).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+
+            console.log('ver',data)
+            if ('error' in data) {            
+                setError(errorTranslator( data.error.message));
+            } else {
+              
+                setVer(data.value);
+                
+            }
+            
+
         })
     }
 
@@ -30,6 +50,7 @@ const RecetaDetalle = (props) => {
         //guardar el id de la receta del url
         const recetaId = props.match.params.recetaId;
         cargarDetalleReceta(recetaId);
+        isVer(recetaId);
     }, []);
 
     //metodos para anadir a carrito de compra
@@ -58,12 +79,23 @@ const RecetaDetalle = (props) => {
         </div>
         );  
     };
+    const mostrarError = () => (
+        <div className="alert alert-danger" 
+        style={{display: error ? '' : 'none'}}>
+            {error}
+           
+        </div>
+        
+    );
+        
 
     return(
         
         <div className="mt10 mx-5 container-fluid   Content">
             <div className="msgStatic">{mostrarFunciona()}</div>
             <Menu />
+
+            {mostrarError() }
             <h1 className="text-capitalize">{receta.sNombre}</h1>
             <h4 className="mb-5">Detalle de Receta</h4>
             {/* imagen prodcuto  */} 
