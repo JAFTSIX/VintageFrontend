@@ -31,22 +31,29 @@ const Principal = () => {
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">    
-                    <div class="carousel-item active">  
+                    <div class="carousel-item active"> 
+                        <div className="overlay"></div> 
+                        <div className="imgCarrousel1"></div> 
                             <img class="d-block w-100" src={banner1} alt="First slide"/>
-                                <div class="carousel-caption d-none d-md-block">
+                                <div class="carousel-caption  d-md-block">
                                     <h1 className="sizeB">COCINA VINTAGE</h1>
                                     <h3>Chef Selenia Mendez</h3>
                                 </div>
                     </div>
-                    <div class="carousel-item">    
+                    <div class="carousel-item">
+                    <div className="overlay"></div>   
+                    <div className="imgCarrousel2"></div> 
+                    
                     <img class="d-block w-100" src={banner2} alt="Second slide"/>
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption  d-md-block">
                             <h1 className="sizeB">MEJORES RECETAS</h1>
                         </div>
                     </div>
                     <div class="carousel-item">
+                    <div className="overlay"></div>
+                    <div className="imgCarrousel3"></div>
                     <img class="d-block w-100" src={banner3} alt="Third slide"/>
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-md-block">
                             <h1 className="sizeB">MEJORES SABORES</h1>
                         </div>
 
