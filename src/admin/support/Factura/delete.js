@@ -35,13 +35,10 @@ const EliminarHistorial= (props) => {
         console.log(seguir)
         
         if(seguir){
-
-             
-
             eliminar(props.match.params._Id)
 
         }else{
-            
+          setValor({redirect:true})  
         }
         setOpen(false);
     };
@@ -93,39 +90,17 @@ const EliminarHistorial= (props) => {
             
     }
 
-    const mostrarFunciona = () => (
-        <div className="alert alert-info" 
-        style={{display: redirect ? '':''}}>
-           
-        {redirect && (
 
-            <h4>{`Se ha eliminado exitosamente`}</h4>
-        )}
-        {!redirect && (
-
-            <h4>{`no se hizo ninguna acción`}</h4>
-        )}  
-        
-        </div>
-    );
-
-    return (
-        <Layout titulo="ELIMINAR Historial" 
-        descripcion="" 
-        className="container-fluid">
-            
-            <div className="row">
-            {mostrarFunciona()}  
-               
-
+    return (      
+      <div className="row">
 
             <Dialog
-            open={open}
+            open={open} 
             onClose={handleClose}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description">
     
-            <DialogTitle id="alert-dialog-title">{`¿vas a eliminar Este elemento permanentemente ?`}</DialogTitle>
+            <DialogTitle id="alert-dialog-title">{`Eliminar`}</DialogTitle>
             <DialogContent>
               <DialogContentText id="alert-dialog-description">
                ¿Esta seguro de la acción que está a punto de hacer?
@@ -133,19 +108,18 @@ const EliminarHistorial= (props) => {
             </DialogContent>
             <DialogActions>
               <Button onClick={handleClose(false)} color="primary">
-                creo que no
+                No
               </Button>
               <Button onClick={handleClose(true)} color="primary" autoFocus>
                 Seguro
               </Button>
             </DialogActions>
-          </Dialog> 
+          </Dialog>
 
          
           {redireccionarUsuario()}
                              
-            </div>
-        </Layout>
+      </div>
     );
 }
 
