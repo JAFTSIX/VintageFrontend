@@ -27,13 +27,14 @@ const RecetaDetalle = (props) => {
             }
         })
     }
-    const isVer = recetaId => {
+    const isVer = (recetaId,ruta) => {
         // funcion ubicado en apiReceta 
         ///Cliente/Ver/{id}
-        getObjeto('Cliente',`/Ver/${recetaId}` ).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+        getObjeto('Cliente',`/${ruta}/${recetaId}` ).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
 
-            console.log('ver',data)
+            
             if ('error' in data) {            
+                //Authorization header value has too many parts. It must follow the pattern: 'Bearer xx.yy.zz' where xx.yy.zz is a valid JWT token.
                 setError(errorTranslator( data.error.message));
             } else {
               
@@ -50,7 +51,13 @@ const RecetaDetalle = (props) => {
         //guardar el id de la receta del url
         const recetaId = props.match.params.recetaId;
         cargarDetalleReceta(recetaId);
-        isVer(recetaId);
+
+        if (isAutentificacion()) {
+            isVer(recetaId,'VerS');    
+        } else {
+            isVer(recetaId,'VerU');    
+        }
+        
     }, []);
 
     //metodos para anadir a carrito de compra
@@ -140,22 +147,42 @@ const RecetaDetalle = (props) => {
 
             {/* contenido  */}
             <div className="row mt-1 Content">
+            {(receta.iPrecio > 0 &&ver) &&  
                 <div className="col-6 fix">     
                     <iframe className="video" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>  
+
+            }
+
+            {(receta.iPrecio > 0&&!ver) &&  
+                <div className="col-6 fix">     
+                    <iframe className="video" src={receta.sUrlVideoTrailer} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>  
+
+            }
                 <div className="col-5 scroll mr-1">     
+            
+            
 
                 {/* si el precio es 0  */}
-                {receta.iPrecio === 0 &&    
+                {ver &&    
+                    <div>
+
+                    
+                    
                     <Fragment className="">
                     <h1 className="text-capitalize colorPink">Instrucciones</h1>
                     <h5 className="mt-4 text-justify textAreaSaltoLinea">{receta.sTexto}</h5>
                     </Fragment>
+                    </div>
+
+                    
+                    
                 }
                     
 
                 {/* se va a mostrar precio unicamente si es mayor a 0  */}
-                {receta.iPrecio > 0 &&
+                {(receta.iPrecio > 0&&!ver) &&
                         <Fragment className="">
                             <h1 className=" text-left colorPink">Precio: ₡ {receta.iPrecio}</h1>
                             <h5 className="mt-4 text-justify">Receta Premium, Por favor comprar para ver la receta completa</h5>
