@@ -41,12 +41,12 @@ const Receta = () => {
     const Returncheckbox=()=>{
         return  (<div>
                 
-                <div className="form-group seleccionarCategoria">
+                <div className="form-group seleccionarCategoria  d-flex flex-row">
                 
                 { aCategorias.map((item, key) =><div key=  {key}>
                     
                 <Checkbox key=  {key}   onChange={handleArrayChange(key,item)}    value={item.add}>
-                     <label className="mr-5 ml-1">{item.sNombre}</label>
+                     <label className="mr-5 ml-1 align-item-center justify-content-center">{item.sNombre}</label>
                 </Checkbox>
 
                   </div>)}   
