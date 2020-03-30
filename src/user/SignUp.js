@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import {resultado,HandleChangeValidation,checkingCliente } from './procesos/ValidarDatos';
 import '../index.css';
 import './login.css';
+import Footer from '../nucleo/Footer';
 
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signUp} from '../autentificacion'; 
@@ -234,7 +235,7 @@ const handleChange = campo => event => {
     return (
         <div className="contenido">
             <Menu />
-            <div className="container col-md-8 offset-md-2 mt-11">
+            <div className="container col-md-8 offset-md-2 mt-5 pt-5">
                 <img src={candado} className="rounded mx-auto d-block img-fluid mt-5 mt-11" alt="..."
                 height="100" width="100" />
 
@@ -247,6 +248,8 @@ const handleChange = campo => event => {
 
                 
             </div>
+
+            <Footer />
         </div>   
     );    
 }
