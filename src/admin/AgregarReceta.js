@@ -19,6 +19,7 @@ const AgregarReceta = () => {
         iPrecio2: 0,
         sUrlVideo: "",
         sUrlImagen: "",
+        sUrlVideoTrailer: "",
         bActivo: true,
         loading: false,
         error : "",
@@ -46,7 +47,8 @@ const AgregarReceta = () => {
         recetaCreado,
         redirect,
         formData,
-        aCargado
+        aCargado,
+        sUrlVideoTrailer
     } = valor;
 
 
@@ -143,19 +145,14 @@ const AgregarReceta = () => {
         if (resultado.valido) {
         
             insertObject('Receta', {sNombre,aEtiqueta,dFechaPublicacion,
-                    sTexto,iPrecio,sUrlVideo,sUrlImagen,bActivo})
-                .then(data=>{
+                    sTexto,iPrecio,sUrlVideo,sUrlVideoTrailer,sUrlImagen,bActivo})
+                .then((data={error:{message:'hay un problema, intente más tarde'}})=>{
 
 
-                    if (data === undefined) {
-                        setValor({
-                            ...valor,
-                            error: 'Problemas, intente mas tarde'
-                        })
-                    } else{
-                        if('error' in data){
+                     
+                     if('error' in data){
                         setValor({...valor, error:errorTranslator(data.error.message)});
-                        }else{
+                    }else{
                         setValor({
                             ...valor, 
                             sNombre: "",
@@ -164,10 +161,11 @@ const AgregarReceta = () => {
                             bActivo: true,
                             sUrlVideo: "",
                             sUrlImagen: "",
+                            sUrlVideoTrailer:"",
                             loading: false,
                             recetaCreado: data.sNombre,
                         })
-                    }}
+                    }
                     
                 })
             } else {
@@ -198,6 +196,14 @@ const AgregarReceta = () => {
                         value={sUrlVideo} />
             </div>
 
+            <div className="form-group">
+            <label className="text-muted">Ingresar link del trailer de la receta: </label>
+            <input onChange={handleChange('sUrlVideoTrailer')} 
+                    type="text" 
+                    className="form-control" 
+                    required
+                    value={sUrlVideoTrailer} />
+        </div>
             <div className="form-group">
                 <label className="text-muted">Nombre </label>
                 <input onChange={handleChange('sNombre')} 

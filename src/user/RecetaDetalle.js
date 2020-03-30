@@ -14,6 +14,24 @@ const RecetaDetalle = (props) => {
     const [receta, setReceta] = useState({});
     const [error, setError] = useState(false);
     const [ver, setVer] = useState(false);
+    
+    
+    //metodos para anadir a carrito de compra
+    const [redirect, setRedirect] = useState(false);
+    const [mensaje, setMensaje] = useState(false);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // metodo cargar receta del url 
     const cargarDetalleReceta = recetaId => {
         // funcion ubicado en apiReceta 
@@ -24,8 +42,10 @@ const RecetaDetalle = (props) => {
                 //Authorization header value has too many parts. It must follow the pattern: 'Bearer xx.yy.zz' where xx.yy.zz is a valid JWT token.
                 setError(errorTranslator( data.error.message));
             } else {
-              
-                setVer(data.value);
+                console.log('Receta/'+recetaId )
+                console.log('sd',data)
+                //PUNER.VALUE
+                setReceta(data);
                 
             }
             
@@ -33,17 +53,31 @@ const RecetaDetalle = (props) => {
         })
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const isVer = (recetaId,ruta) => {
         // funcion ubicado en apiReceta 
         ///Cliente/Ver/{id}
-        getObjeto('Cliente',`/${ruta}/${recetaId}` ).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+        getObjeto('Cliente',`/${ruta}/${recetaId}` ).then( (data={error:{message:'hay un problema, intente más tarde'}})=>{
 
             
             if ('error' in data) {            
                 //Authorization header value has too many parts. It must follow the pattern: 'Bearer xx.yy.zz' where xx.yy.zz is a valid JWT token.
                 setError(errorTranslator( data.error.message));
             } else {
-              
+             console.log('ver',data.value)
                 setVer(data.value);
                 
             }
@@ -52,23 +86,35 @@ const RecetaDetalle = (props) => {
         })
     }
 
+
+
+
+ 
+
     //cargar todo apenas entre a la pagina y cada vez que se cambie el state
     useEffect(() => {
         //guardar el id de la receta del url
         const recetaId = props.match.params.recetaId;
         cargarDetalleReceta(recetaId);
-
-        if (isAutentificacion()) {
+ 
+        if (isAutentificacion()!== undefined) {
             isVer(recetaId,'VerS');    
         } else {
             isVer(recetaId,'VerU');    
         }
-        
+         
     }, []);
 
-    //metodos para anadir a carrito de compra
-    const [redirect, setRedirect] = useState(false);
-    const [mensaje, setMensaje] = useState(false);
+    
+
+
+
+
+
+
+
+
+
 
     const agregarCarrito = () => {
         // parametros -> la receta que viene del prop y el cb function 
@@ -82,6 +128,13 @@ const RecetaDetalle = (props) => {
           }, 2500);
     }
 
+
+
+
+
+
+
+
     const mostrarError = () => (
         <div className="alert alert-danger" 
         style={{display: error ? '' : 'none'}}>
@@ -89,6 +142,10 @@ const RecetaDetalle = (props) => {
         </div>
     );
         
+
+
+
+
 
     const mostrarFunciona = () => {       
         return(
@@ -99,6 +156,12 @@ const RecetaDetalle = (props) => {
         </div>
         );  
     };
+
+
+
+
+
+
 
     const botones = () =>{
         return(
@@ -140,6 +203,13 @@ const RecetaDetalle = (props) => {
         );
     }
 
+
+
+
+
+
+
+
     return(
         
         <div className="mt10 mx-5 container-fluid   Content">
@@ -160,25 +230,19 @@ const RecetaDetalle = (props) => {
 
             {/* contenido  */}
             <div className="row mt-1 Content">
-            {(receta.iPrecio > 0 &&ver) &&  
+            {receta.iPrecio > 0 &&
                 <div className="col-6 fix">     
                     <iframe className="video" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>  
 
             }
 
-            {(receta.iPrecio > 0&&!ver) &&  
-                <div className="col-6 fix">     
-                    <iframe className="video" src={receta.sUrlVideoTrailer} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>  
-
-            }
-                <div className="col-5 scroll mr-1">     
+                 <div className="col-5 scroll mr-1">     
             
             
 
                 {/* si el precio es 0  */}
-                {ver &&    
+                {receta.iPrecio ===0 &&    
                     <div>
 
                     
@@ -191,11 +255,12 @@ const RecetaDetalle = (props) => {
 
                     
                     
-                }
-                    
+
+                }   
+                 
 
                 {/* se va a mostrar precio unicamente si es mayor a 0  */}
-                {(receta.iPrecio > 0&&!ver) &&
+                {receta.iPrecio > 0 &&
                         <Fragment className="">
                             <h1 className=" text-left colorPink">Precio: ₡ {receta.iPrecio}</h1>
                             <h5 className="mt-4 text-justify">Receta Premium, Por favor comprar para ver la receta completa</h5>
@@ -212,6 +277,13 @@ const RecetaDetalle = (props) => {
                             
                         </Fragment>
                  }   
+
+
+
+
+
+
+
 
                 </div>  
 
