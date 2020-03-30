@@ -62,7 +62,8 @@ p{
     width: 30wh;    
     height: 70vh;
     color: #fff;
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
     border-radius: 0px; 
     padding-top: 0px;
@@ -304,7 +305,7 @@ textarea.form-control{
     }
 
     .footerCss{
-        height: 400px;
+        height: 170px;
     }
     .footerHeightSocialMedia{
         height: 25px;
