@@ -7,11 +7,12 @@ import './producto.css';
 
 const RecetaInterfaz = ({receta}) => {
     return(
-        <div className="col-4 mb-3">
-            <div className="card">
-                <div className="card-body">
-                    <div className="card-overlay"></div>
-                    {/* imagen  */} 
+        <div className="col-lg-6 col-md-12 mb-3">
+            <div className="card ">
+                <div className="card-body ">
+                    <div className="card-overlay "></div>
+                    {/* imagen  */}     
+             
                     <MostrarImagenReceta item={receta}
                     url="Articulo"/>
                     

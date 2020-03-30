@@ -40,11 +40,9 @@
     min-width: 100%;
     margin: 0px;    
     opacity: 1;
-    display: block;
+
     transition: .5s ease;
     backface-visibility: hidden;
-    display: block;
- 
 }
 
 
@@ -138,7 +136,16 @@
   margin: 3% 0;
   border-bottom: 5px solid rgba(247, 112, 218, 1);
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: auto;
+}
+
+
+/* tablet version  */
+@media only screen and (max-width:769px) {
+  .imgProd{
+    background-attachment:fixed;
+  }
 }
 
 
