@@ -14,7 +14,7 @@ const CategoriaInterfaz = ({Categoria}) => {
     
 
     return(
-        <div className="col-4 mb-3">
+        <div className="col-lg-4 mb-3">
             <div className="card">
                 <div className="card-body">
              
