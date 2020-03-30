@@ -52,7 +52,7 @@ const ProductoInterfaz = ({producto}) => {
 
     return(
         
-        <div className="col-4 mb-3 ">
+        <div className="col-lg-6 col-md-12 mb-3 ">
             
             {/* msg se anade correctamente a carrito  */}
             <div className="msgStatic">{mostrarFunciona()}</div>

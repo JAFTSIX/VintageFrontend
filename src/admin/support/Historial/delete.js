@@ -93,21 +93,7 @@ const EliminarHistorial= (props) => {
             
     }
 
-    const mostrarFunciona = () => (
-        <div className="alert alert-info" 
-        style={{display: redirect ? '':''}}>
-           
-        {redirect && (
 
-            <h4>{`Se ha eliminado exitosamente`}</h4>
-        )}
-        {!redirect && (
-
-            <h4>{`no se hizo ninguna acción`}</h4>
-        )}  
-        
-        </div>
-    );
 
     return (
     

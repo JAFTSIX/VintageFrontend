@@ -43,32 +43,30 @@ const FacturaInterfaz = ({Factura}) => {
         <div className="mw-100 "  style={{ paddingTop: '3%'}}>
             <div className="row">
             {/* //info da factura */}
-                <div  className="border-top col-lg-5" >   
+                <div  className="border-top col-lg-5 facturaLineHeight" >   
                       
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Factura Id: </h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Factura Id: </h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}>{Factura._id}</h5>
                     <br/>
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Fecha :</h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Fecha :</h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}} > {Fecha}</h5>
                       <br/>
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Id Cliente :</h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Id Cliente :</h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {Factura.sCliente} </h5>
                       <br/>
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Subtotal:</h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Subtotal:</h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {Factura.iSubtotal}$ </h5>
                       <br/>
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Total:</h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Total:</h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {Factura.iTotal}$ </h5>
 
                 </div>
                 {/* info de articulos comprados  */}
-                    <div  className="col-lg-6 f-flex flex-row px-0">
+                    <div  className="col-lg-6 f-flex flex-row px-0 facturaLineHeight">
                      
-                        <a className="btn"   data-toggle="collapse" href={'#compras'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
+                        <a className="text-dark ml-md-3"   data-toggle="collapse" href={'#compras'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
                         <h5 className="font-weight-bold" style={{display : 'inline'}}>Articulos Comprados ▼</h5>  
                         </a>
-                       
-
                 
                         <div className="collapse" id={'compras'+Factura._id}>
                             <div className=" facturaArticulosComprados col-lg-12">
@@ -80,16 +78,13 @@ const FacturaInterfaz = ({Factura}) => {
                         </div>
                     
                       <p>
-                      <a className="btn"   data-toggle="collapse" href={'#direccion'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
+                      <a className="text-dark ml-md-3"   data-toggle="collapse" href={'#direccion'+Factura._id} role="button" aria-expanded="false" aria-controls="collapseExample">   
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección ▼</h5>  
                       </a>
                     </p>
+               
+                    <div className="collapse mb-5" id={'direccion'+Factura._id}>
 
-                
-                        <div className="collapse" id={'direccion'+Factura._id}>
-                        
-                      
-                        
                       <div  class="pl-5">
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Ciudad:</h5>  
                       <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sCiudad} </p>

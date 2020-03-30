@@ -47,22 +47,22 @@ const HistorialInterfaz = ({Historial}) => {
 
                     {/* titulo  */}
            
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Id: </h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Id: </h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}} >{Historial._id}</h5>
 
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Fecha: </h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Fecha: </h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}} > {Fecha}</h5>
 
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>¿Permaneció más de 2 minutos?</h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>¿Permaneció más de 2 minutos?</h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {test}</h5>
 
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Duración :</h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Duración :</h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {Historial.iDuracion} segundos </h5>
    
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Id Cliente :</h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Id Cliente :</h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {Historial.sCliente} </h5>
    
-                      <h3 className="font-weight-bold" style={{display : 'inline'}}>Id Receta :</h3>  
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Id Receta :</h5>  
                       <h5 className="font-weight-normal"style={{display : 'inline'}}> {Historial.sReceta} </h5>
 
                       

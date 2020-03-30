@@ -35,17 +35,12 @@
 
 .imagenReceta{
     border-radius: 100%;
-    position: fixed;
-    top: 140px;
-    right: 140px;
 }
 
 .btnAdminReceta{  
     display: flex;
     flex-direction: row;
-    position: fixed;
-    top: 162px;
-    right: 300px;
+
 }
 
 .btnAdminProducto{  
@@ -58,7 +53,32 @@
 
 .btn{
     padding: 10px 50px 10px 50px !important;
-    
+
+}
+
+/* receta detalle  */
+.borderRadio0{
+    border-radius: 0px;
+}
+
+.recetaDetalleTitulo{
+    display: flex;
+    flex-direction: row;
+}
+
+.recetaDetalleBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+
+@media only screen and (max-width:769px) {
+    .recetaDetalleBtn{
+        justify-content: start;
+        margin: 3% 0;
+    }
+
 }
 
 

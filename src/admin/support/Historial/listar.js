@@ -12,10 +12,7 @@ import '../support.css';
 const Historial = () => {
     
     const [HistorialDisponibles, setHistorialDisponibles] = useState([]);
-    const [error, setError] = useState(false);
-   
-
-    
+    const [error, setError] = useState(false); 
     
     const cargarHistorialDisponibles = () => {
             getObjeto('Historial')
