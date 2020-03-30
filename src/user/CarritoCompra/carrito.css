@@ -46,3 +46,35 @@
     display: none;
   }
 
+  
+  .imgCarrito{
+    height:300px;
+    width:450px;
+  }
+
+  
+  
+
+  @media only screen and (max-width:769px) {
+
+    /* ocultar la barra rosado  */
+    .displayNone{
+      display: none;
+    }
+    /* ocultar la barra rosado  */
+    #tabla{
+      background-color: rgba(255, 255, 240, 0);
+    }
+
+    .imgCarrito {
+      height: 180px;
+      width: 183px;
+    }
+
+    .iconoEliminarCarrito {
+      height: 23px;
+      width: 20px;
+  }
+  }
+  
+
