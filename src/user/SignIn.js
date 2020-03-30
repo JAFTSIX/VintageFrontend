@@ -10,6 +10,7 @@ import {checkingLogin,HandleChangelogin } from './procesos/ValidarDatos';
 import {errorTranslator} from '../admin/apiAdmin';
 import '../index.css';
 import './login.css';
+import Footer from '../nucleo/Footer';
 
 
 const SignIn = () => {
@@ -224,6 +225,7 @@ const SignIn = () => {
 
                 
             </div>
+            <Footer />
         </div>   
     );    
 }
