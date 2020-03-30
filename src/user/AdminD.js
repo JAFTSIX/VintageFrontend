@@ -4,12 +4,12 @@ import {isAutentificacion} from '../autentificacion';
 import {Link} from 'react-router-dom';
 import '../index.css';
 import '../css.css';
-
+import moment from 'moment';
 
 const AdminD = () => {
 
     const {_id, sNombre, sApellido,sCorreo, dNacimiento} = isAutentificacion().cliente;
-    const fechaNacimiento = (new Date(dNacimiento).getDate() + "/" + (new Date(dNacimiento).getMonth() + 1) + "/" + new Date(dNacimiento).getFullYear()); 
+    const fechaNacimiento =moment(dNacimiento).format('DD/MM/YYYY'); 
     
     const linkAdmin = () => {
         return(
@@ -25,17 +25,7 @@ const AdminD = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                
-                <Link className="nav-link" to="/perfil/eliminar">
-                <div class="card">
-                <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/30/30720.png" alt="Card image cap" />
-                <div class="card-body mt-3">
-                    <h3 class="card-title text-center text-dark">Eliminar Perfil</h3>
-                </div>
-                </div>
-                </Link>
-            </div>
+             
             <div class="col-lg-3 col-md-4 col-sm-12">              
                 <Link className="nav-link" to="/producto">
                 <div class="card">

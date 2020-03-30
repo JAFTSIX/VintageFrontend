@@ -72,12 +72,6 @@ const HistorialInterfaz = ({Historial}) => {
                     {isAutentificacion() && isAutentificacion().cliente.bAdmin && (
                         <Fragment>
                         {/* // aqui se pasa el id del Historial en el url para actualizar */}
-                        <Link to={`/Historial/Support/actualizar/${Historial._id}`}>
-                            <button className="btn btn-outline-primary 
-                            mt-2 mb-2 agregarPadding mr-2">
-                                Modificar Historial
-                            </button>
-                        </Link>
 
                      
                     

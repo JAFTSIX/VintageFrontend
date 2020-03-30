@@ -53,7 +53,7 @@ const ModificarReceta = (props) => {
         recetaModificado,
         redirect,
         formData,
-        sUrlVideoTrailer
+        sUrlVideoTrailer,
        
     } = valor;
 
@@ -71,6 +71,9 @@ const ModificarReceta = (props) => {
             if('error' in data){
                 setValor({...valor, error:data.error.message})
             }else{
+
+
+                console.log(data)
                 setValor({
                     ...valor,
                     _id: data._id, 
@@ -81,6 +84,7 @@ const ModificarReceta = (props) => {
                     sUrlVideo: data.sUrlVideo,
                     sUrlImagen: data.sUrlImagen,
                     bActivo: data.bActivo,
+                    sUrlVideoTrailer:data.sUrlVideoTrailer,
                     loading: false,
                 })
             }
@@ -196,7 +200,7 @@ const ModificarReceta = (props) => {
         const asd=ReturnCategorias()
         const iPrecio = parseInt(iPrecio2);
         const resultado=checkingReceta({sNombre,aEtiqueta:asd,dFechaPublicacion,
-            sTexto,iPrecio,sUrlVideo,sUrlImagen,bActivo})
+            sTexto,iPrecio,sUrlVideo,sUrlImagen,bActivo,sUrlVideoTrailer})
 
           if (resultado.valido) {
             setValor({...valor, error:'', loading:true});
@@ -257,7 +261,7 @@ const ModificarReceta = (props) => {
             <input onChange={handleChange('sUrlVideoTrailer')} 
                     type="text" 
                     className="form-control" 
-                    required
+                  
                     value={sUrlVideoTrailer} />
         </div>
            

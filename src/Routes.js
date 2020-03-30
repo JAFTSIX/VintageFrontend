@@ -118,17 +118,10 @@ const Routes = () => {
              
             <AdminRoute path="/Historial/Support/Eliminar/:_Id" 
             exact component={EliminarHistorial}/>
-            <AdminRoute path="/Historial/Support/actualizar/:_Id/" 
-            exact component={ModificarHistorial}/>
+            
      {/*       
-            /*<AdminRoute path="/categoria/Support/" 
-            exact component={}/>
-            <AdminRoute path="/categoria/Support/agregar" 
-            exact component={AgregarCategoria}/>
-            <AdminRoute path="/categoria/Support/actualizar/:recetaId/" 
-            exact component={}/>
-            <AdminRoute path="/categoria/Support/Eliminar/:recetaId" 
-            exact component={}/>
+           <AdminRoute path="/Historial/Support/actualizar/:_Id/" 
+            exact component={ModificarHistorial}/>
           
 
      */}
