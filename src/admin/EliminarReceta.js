@@ -39,7 +39,7 @@ const EliminarReceta= (props) => {
             
             setValor({
                 redirect:true,
-                recetaEliminado:data.sNombre
+                //recetaEliminado:data.sNombre
             })
             
         })

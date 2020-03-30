@@ -29,7 +29,8 @@ const ModificarReceta = (props) => {
         redirect:false,
         loading: false,
         error : false,
-        formData:""
+        formData:"",
+        sUrlVideoTrailer:""
     });
 
 
@@ -51,7 +52,8 @@ const ModificarReceta = (props) => {
         error,
         recetaModificado,
         redirect,
-        formData
+        formData,
+        sUrlVideoTrailer,
        
     } = valor;
 
@@ -69,6 +71,9 @@ const ModificarReceta = (props) => {
             if('error' in data){
                 setValor({...valor, error:data.error.message})
             }else{
+
+
+                console.log(data)
                 setValor({
                     ...valor,
                     _id: data._id, 
@@ -79,6 +84,7 @@ const ModificarReceta = (props) => {
                     sUrlVideo: data.sUrlVideo,
                     sUrlImagen: data.sUrlImagen,
                     bActivo: data.bActivo,
+                    sUrlVideoTrailer:data.sUrlVideoTrailer,
                     loading: false,
                 })
             }
@@ -194,12 +200,12 @@ const ModificarReceta = (props) => {
         const asd=ReturnCategorias()
         const iPrecio = parseInt(iPrecio2);
         const resultado=checkingReceta({sNombre,aEtiqueta:asd,dFechaPublicacion,
-            sTexto,iPrecio,sUrlVideo,sUrlImagen,bActivo})
+            sTexto,iPrecio,sUrlVideo,sUrlImagen,bActivo,sUrlVideoTrailer})
 
           if (resultado.valido) {
             setValor({...valor, error:'', loading:true});
             modificarObjeto('Receta', {_id,sNombre,aEtiqueta:asd,sTexto,
-                iPrecio,sUrlVideo,sUrlImagen,bActivo,dFechaPublicacion})
+                iPrecio,sUrlVideo,sUrlImagen,bActivo,dFechaPublicacion,sUrlVideoTrailer})
             .then(data=>{
          
                 if (data === undefined) {
@@ -250,7 +256,14 @@ const ModificarReceta = (props) => {
                         value={sUrlVideo} />
             </div>
 
-         
+            <div className="form-group">
+            <label className="text-muted">Ingresar link del trailer de la receta: </label>
+            <input onChange={handleChange('sUrlVideoTrailer')} 
+                    type="text" 
+                    className="form-control" 
+                  
+                    value={sUrlVideoTrailer} />
+        </div>
            
          {Returncheckbox()}
 

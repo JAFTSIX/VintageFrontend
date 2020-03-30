@@ -1,37 +1,48 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useState,useEffect } from 'react';
 import Layout from '../nucleo/Layout';
 import {isAutentificacion} from '../autentificacion';
 import {Link} from 'react-router-dom';
 import '../index.css';  
 import '../css.css';
-
+import RecetaInterfaz from './RecetaInterfaz';
+import moment from 'moment';
+import {errorTranslator,getObjeto} from './../admin/apiAdmin'; 
 
 const Perfil = () => {
 
     const {_id, sNombre, sApellido,sCorreo,dNacimiento} = isAutentificacion().cliente;
-    const fechaNacimiento = (new Date(dNacimiento).getDate() + "/" + (new Date(dNacimiento).getMonth() + 1) + "/" + new Date(dNacimiento).getFullYear()); 
+    const fechaNacimiento =moment(dNacimiento).format('DD/MM/YYYY'); 
+    const [receta, setReceta] = useState([]);
+    const [error, setError] = useState(false);
 
-     
+    const cargarReceta = () => {
+      
 
+        getObjeto('Cliente','/cursos/'+_id)
+        .then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+            
+                if ('error' in data) {
+
+                    setError(errorTranslator(data.error.message))        
+                    
+                }else{
+          
+                    setReceta(data.value);
+                    console.log(data);
+                                                             
+                }
+       
+        })
+    }
+
+    useEffect(()=>{
+        cargarReceta()
+    }, []);
    
     
     const linkUsuario = () => {
         return(
-            // <div className="">               
-            //     <ul className="list-group">                   
-            //         <li className="list-group-item">
-            //             <Link className="nav-link" to="/perfil/modificar">
-            //                 Modificar Perfil
-            //             </Link>
-            //         </li>
-            //         <li className="list-group-item">
-            //             <Link className="nav-link" to="/perfil/eliminar">
-            //                 Eliminar Perfil
-            //             </Link>
-            //         </li>
-                    
-            //     </ul>
-            // </div>
+         
 
         <div className="row d-flex justify-content-center">
             <div class="col-3">
@@ -44,17 +55,7 @@ const Perfil = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-3">
-                
-                <Link className="nav-link" to="/perfil/eliminar">
-                <div class="card">
-                <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/30/30720.png" alt="Card image cap" />
-                <div class="card-body mt-3">
-                    <h3 class="card-title text-center text-dark">Eliminar Perfil</h3>
-                </div>
-                </div>
-                </Link>
-            </div>
+             
             <div class="col-3">              
                 <Link className="nav-link" to="/producto">
                 <div class="card">
@@ -122,6 +123,23 @@ const Perfil = () => {
         );
     }
 
+    const RecetasCompradas = () => {
+        //`?filter={"where":{"sNombre":  {"regexp": "/${query}/i"}}}`
+        return(
+           
+            <div className="card mb-5">
+                <h3 className="card-header">
+                    Recetas de Compradas
+                </h3>
+                <ul className="list-group">
+                    <li className="list-group-item">Recetas</li>
+                    {receta.map((receta, i)=>(
+                        <RecetaInterfaz key={i} receta={receta}/>
+                    ))} 
+                </ul>
+            </div>
+        );
+    }
     
 
     return (
@@ -143,6 +161,10 @@ const Perfil = () => {
 
                 <div className="col-lg-9 col-md-12">
                     {linkUsuario()}
+                </div>
+
+                <div className="col-lg-9 col-md-12">
+                    {RecetasCompradas()}
                 </div>
             </div>
 

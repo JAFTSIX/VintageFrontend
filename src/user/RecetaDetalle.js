@@ -250,7 +250,7 @@ const RecetaDetalle = (props) => {
             
 
                 {/* si el precio es 0  */}
-                {receta.iPrecio ===0 &&    
+                {ver &&    
                     <div>
 
                     
@@ -268,7 +268,7 @@ const RecetaDetalle = (props) => {
                  
 
                 {/* se va a mostrar precio unicamente si es mayor a 0  */}
-                {receta.iPrecio > 0 &&
+                {receta.iPrecio > 0&&!ver &&
                         <Fragment className="">
                             <h1 className=" text-left colorPink">Precio: ₡ {receta.iPrecio}</h1>
                             <h5 className="mt-4 text-justify">Receta Premium, Por favor comprar para ver la receta completa</h5>
