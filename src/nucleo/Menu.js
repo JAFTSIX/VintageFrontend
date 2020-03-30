@@ -58,11 +58,11 @@ const Menu = ({history}) => {
             message: <p>Si cierra sesión se eliminará todos los productos del carrito de compras.</p>,
             buttons: [
               {
-                label: 'Si',
-                onClick: () =>cerrarSesion(redirect)
+                label: 'No'
               },
               {
-                label: 'No',
+                label: 'Si',
+                onClick: () =>cerrarSesion(redirect)
               }
             ]
           });
