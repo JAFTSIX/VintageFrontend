@@ -29,7 +29,7 @@
       width: 80px !important;
       font-size: 25px;
       text-align: center;
-      margin-top: 118px;
+      margin-top: 229%;
   }
 
   .customBtnCart{
@@ -53,7 +53,10 @@
   }
 
   
-  
+  .iconoEliminarCarrito{
+    height:50px;
+    width:50px;
+  }
 
   @media only screen and (max-width:769px) {
 
@@ -71,10 +74,15 @@
       width: 183px;
     }
 
-    .iconoEliminarCarrito {
-      height: 23px;
-      width: 20px;
-  }
+    .iconoEliminarCarrito{
+      height:20px;
+      width:20px;
+    }
+
+    /* margin de cantidad  */
+    .input-group > .form-control, .input-group > .form-control-plaintext, .input-group > .custom-select, .input-group > .custom-file{
+      margin-top: 121%;
+    }
   }
   
 
