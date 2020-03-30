@@ -72,30 +72,29 @@ const RecetaDetalle = (props) => {
                      
                      {/* // aqui se pasa el id de la receta en el url para actualizar */}
                      <Link to={`/Receta/${receta._id}/?filter=%7B%0A%20%20%22where%22%3A%20%7B%0A%20%20%20%20%22additionalProp1%22%3A%20%7B%7D%0A%20%20%7D%2C%0A%20%20%22fields%22%3A%20%7B%0A%20%20%20%20%22_id%22%3A%20true%2C%0A%20%20%20%20%22sNombre%22%3A%20true%2C%0A%20%20%20%20%22aEtiqueta%22%3A%20true%2C%0A%20%20%20%20%22dFechaPublicacion%22%3A%20true%2C%0A%20%20%20%20%22sTexto%22%3A%20true%2C%0A%20%20%20%20%22iPrecio%22%3A%20true%2C%0A%20%20%20%20%22sUrlVideo%22%3A%20true%2C%0A%20%20%20%20%22sUrlImagen%22%3A%20true%2C%0A%20%20%20%20%22bActivo%22%3A%20true%0A%20%20%7D%2C%0A%20%20%22offset%22%3A%200%2C%0A%20%20%22limit%22%3A%20100%2C%0A%20%20%22skip%22%3A%200%2C%0A%20%20%22order%22%3A%20%5B%0A%20%20%20%20%22string%22%0A%20%20%5D%0A%7D`}>
-                         <button className="btn btn-outline-primary mr-2">
+                         <button className="btn btn-outline-primary borderRadio0 border-right-0">
                                  Modificar Receta
                          </button>
                      </Link>
  
                      <Link to={`../Eliminar/${receta._id}`}>
-                         <button className="btn btn-outline-primary">
+                         <button className="btn btn-outline-primary borderRadio0 border-right-0">
                                  Eliminar Receta
                          </button>  
-                     
+
                      </Link>
  
                  </Fragment>
              )}
                  {/* btn regresar a receta general  */}
                  <Link to={`/Receta`}>
-                         <button className="btn btn-outline-primary">
+                         <button className="btn btn-outline-primary borderRadio0">
                                  Atras
                          </button>
                      
                  </Link>
               </div>
-              {/* imagen prodcuto  */} 
-              <img src={receta.sUrlImagen} height="110px" width="110px" className="imagenReceta"></img>
+              
               </div>
         );
     }
@@ -106,9 +105,13 @@ const RecetaDetalle = (props) => {
             <div className="msgStatic">{mostrarFunciona()}</div>
             <Menu />
             <div className="row">
-                <h1 className="text-capitalize mb-5 col-lg-5">{receta.sNombre}</h1>
-                <div className="col-lg-7">
-                    {botones()}
+                <div className="col-lg-6 d-flex flex-row">
+                    <h1 className="text-capitalize mb-5">{receta.sNombre}</h1>
+                    {/* imagen prodcuto  */} 
+                    <img src={receta.sUrlImagen} height="110px" width="110px" className="imagenReceta"></img>
+                </div>
+                <div className="col-lg-6 d-flex flex-row justify-content-center">
+                    {botones()} 
                 </div>
             </div>
 
