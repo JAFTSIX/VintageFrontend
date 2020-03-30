@@ -53,7 +53,10 @@
 
 .btn{
     padding: 10px 50px 10px 50px !important;
-    
+
 }
 
+.borderRadio0{
+    border-radius: 0px;
+}
 
