@@ -4,6 +4,7 @@ import SignUp from './user/SignUp';
 import SignIn from './user/SignIn';
 import Principal from './nucleo/Principal';
 import PrivateRoute from './autentificacion/PrivadoRoute';
+import VideoRoute from './autentificacion/VideoRoute';
 import Perfil from './user/Perfil';
 import AdminRoute from './autentificacion/AdminRoute';
 import AdminD from './user/AdminD';
@@ -72,8 +73,24 @@ const Routes = () => {
             exact component={ModificarReceta}/>
             <AdminRoute path="/Receta/Eliminar/:recetaId" 
             exact component={EliminarReceta}/>
+
+            {
+                /**
+                 * Ruta de recetas
+                 * 3 posibilidades
+                 * mostrar receta si tiene precio 0
+                 * mostrar trailer si tiene precio>0 y /Cliente/Ver/{id}==false
+                 * mostrar curso si tiene precio>0 y /Cliente/Ver/{id}==true
+                 */
+
+              
+            }
+
             <Route path="/Receta/Detalle/:recetaId" exact
-             component={RecetaDetalle}/>
+                component={RecetaDetalle}/>
+
+            
+             
              <Route path="/Articulo/Detalle/:productoId" exact
              component={ProductoDetalle}/>
             
