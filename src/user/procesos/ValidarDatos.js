@@ -308,10 +308,10 @@ export function checkingReceta(objeto) {
     //     respuesta = new resultado(false, 'url de video inválido')
     // }
 
-    if (!regex_url.test(objeto. sUrlImagen)) {
-        //false
-        respuesta = new resultado(false, 'Url de imagen inválido')
-    }
+    // if (!regex_url.test(objeto. sUrlImagen)) {
+    //     //false
+    //     respuesta = new resultado(false, 'Url de imagen inválido')
+    // }
      
 
     return respuesta;
