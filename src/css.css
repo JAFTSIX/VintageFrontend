@@ -304,7 +304,7 @@ textarea.form-control{
     .navbar-expand-lg .navbar-nav .dropdown-menu{
         position: fixed !important;
         top: 60px !important;
-        left: 30% !important;
+        left: 50% !important;
         padding-left: 20px;
     }
 
