@@ -14,7 +14,7 @@ const ProductoInterfaz = ({producto}) => {
 
     const agregarCarrito = () => {
         // parametros -> el producto que viene del prop y el cb function 
-        agregarProductoCarrito(producto, ()=>{
+        agregarProductoCarrito(producto,0, ()=>{
             setRedirect(true);
             setMensaje(true);
         });
