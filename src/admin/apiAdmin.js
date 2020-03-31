@@ -302,6 +302,9 @@ export const errorTranslator=(untranslated)=>{
         case    'The request body is invalid. See error object `details` property for more info.':
         
             return 'formulario con datos inválidos'
+        case   'No payment method is available.':
+            return 'método de pago no disponible'
+
         default:
             return untranslated;
     }

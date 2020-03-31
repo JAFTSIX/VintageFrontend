@@ -63,7 +63,7 @@ const Checkout = ({products}) => {
 
         }).catch(error=>{
             console.log('error de verga', error)
-            setError(error);
+            setError(errorTranslator( error.message ));
         })
     }
 
@@ -99,7 +99,7 @@ const Checkout = ({products}) => {
     const  showDropIn=()=>(
 
     
-        <div>
+        <div onBlur={()=>setError(false)}>
         {value.clientToken !==null&& products.length>0 ? (
         <div>
             
@@ -120,7 +120,18 @@ const Checkout = ({products}) => {
         </div>
         );
 
+        const mostrarError = () => (
+            <div className="alert alert-danger" 
+            style={{display: error ? '' : 'none'}}>
+                {error}
+               
+            </div>
+            
+        );
+
     return <div>
+
+    {mostrarError()}
                 {/* calcular total de producto  */}
                 <h1>Total de Productos: {getTotalProductos()}</h1>
                 {/* calcular el total de carrito de compra  */}
