@@ -7,12 +7,11 @@ import '../index.css';
 import '../css.css';
 import {checkingReceta} from '../user/procesos/ValidarDatos';
 import { Link } from 'react-router-dom';
- 
-
-
 import { Checkbox } from 'react-input-checkbox';
+
 const ModificarReceta = (props) => {
-    const [aCategorias, setaCategorias] = useState([])
+    const [aCategorias, setaCategorias] = useState([]);
+    const [bActivo, setBActivo] = useState([]);
     const [valor, setValor] = useState({
         _id: "",
         sNombre : "",
@@ -24,7 +23,7 @@ const ModificarReceta = (props) => {
         iPrecio2: 0,
         sUrlVideo: "",
         sUrlImagen: "",
-        bActivo: true,
+        // bActivo: true,
         recetaModificado:"",
         redirect:false,
         loading: false,
@@ -47,7 +46,7 @@ const ModificarReceta = (props) => {
         iPrecio2,
         sUrlVideo,
         sUrlImagen,
-        bActivo,
+        // bActivo,
         loading,
         error,
         recetaModificado,
@@ -73,7 +72,8 @@ const ModificarReceta = (props) => {
             }else{
 
 
-                console.log('modificar receta' + data)
+                console.log('modificar receta' + data);
+                // console.log('data.bActivo'+data.bActivo)
                 setValor({
                     ...valor,
                     _id: data._id, 
@@ -83,7 +83,7 @@ const ModificarReceta = (props) => {
                     iPrecio2: data.iPrecio,
                     sUrlVideo: data.sUrlVideo,
                     sUrlImagen: data.sUrlImagen,
-                    bActivo: data.bActivo,
+                    // bActivo: data.bActivo,
                     sUrlVideoTrailer:data.sUrlVideoTrailer,
                     loading: false,
                 })
@@ -122,6 +122,16 @@ const ModificarReceta = (props) => {
         console.log(aCategorias)
        } 
 
+    const handleActivoSiChange =(bool)=> event => {
+            setBActivo(true);      
+        console.log('activosi???? '+bActivo)
+       } 
+
+    const handleActivoNoChange =(bool)=> event => {
+                setBActivo(false);      
+            console.log('activono???? '+bActivo)
+        } 
+
     const ReturnCategorias=()=>{
       const etiqueta=[];
         aCategorias.forEach(element => {
@@ -138,13 +148,28 @@ const ModificarReceta = (props) => {
 
        const Returncheckbox=()=>{
         return  (<div className="form-group">
-                <label className="text-muted"> Categoria ▼ </label>
+                <label className="text-muted required"> Categoria ▼ </label>
                 { aCategorias.map((item, key) =><div key=  {key}>
-                      {key}       {''+item.add}
-                <Checkbox key=  {key}   onChange={handleArrayChange(key,item)}    value={item.add}> {item.sNombre}</Checkbox>
+                      {/* {key}       {''+item.add} */}
+                <Checkbox key={key} onChange={handleArrayChange(key,item)} value={item.add}> {item.sNombre}</Checkbox>
 
                   </div>)}   
 
+                </div>)
+        
+       }
+
+    //    cambiar el estado de activo de la receta 
+       const returnActivo=()=>{
+        return  (<div className="form-group d-flex flex-column">
+                <label className="text-muted"> ¿Deseas Activar o Desactivar la receta? </label>
+                <div className="form-group d-flex flex-row radio">
+                    <label className="text-muted mr-2">No</label>
+                    <input type="radio" name="gender" onChange={handleActivoNoChange(bActivo)}/>
+                    <label className="text-muted mx-2">Si</label>
+                    <input type="radio" name="gender" onChange={handleActivoSiChange(bActivo)}/>
+                 
+                </div>
                 </div>)
         
        }
@@ -189,7 +214,8 @@ const ModificarReceta = (props) => {
         //entonces cuando se agrega, se va a guardar todo en formData
         //formData.set(sNombre, valor);
         setValor({...valor, [sNombre]:  event.target.value});
-        console.log(aCategorias,'----',valor)
+        console.log(aCategorias,'----',valor);
+        console.log('activo???'+bActivo)
     }
 
     const clickSubmit =(event)=>{
@@ -227,13 +253,6 @@ const ModificarReceta = (props) => {
         
     }
 
-    const returnActivo = () =>{
-        if (bActivo===true){
-            return <label>Si</label>
-        }else{
-            return <label>No</label>
-        }
-    }
 
     const agregarRecetaForm = () => (
         <form className="mb-3" onSubmit={clickSubmit}>
@@ -291,17 +310,8 @@ const ModificarReceta = (props) => {
                         required
                         value={iPrecio2} />
             </div>
+            {returnActivo()}
 
-            <div className="form-group">
-            <label className="text-muted mr-2">¿Activo Actualmente? {returnActivo()}</label>
-            <br/>
-            <label className="text-muted mr-2">Cambiarlo a: </label>
-            <label className="text-muted mr-2">No</label>
-            <Checkbox onChange={handleChange(true)}> </Checkbox>
-            <label className="text-muted mx-2">Si</label>
-            <Checkbox onChange={handleChange(false)}> </Checkbox>
-             
-            </div>
 
 
             <button className="btn btn-outline-primary">
