@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Layout from '../../../nucleo/Layout';
 import {getObjetonyId,modificarObjeto ,errorTranslator} from '../../apiAdmin';
 import {Redirect} from 'react-router-dom';
-import '../../../index.css'
+import '../../../index.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -123,7 +124,11 @@ const ModificarCategoria = (props) => {
 
     const agregarCategoriaForm = () => (
         <form className="mb-3" onSubmit={clickSubmit}>
-            
+            <Link to={`/Categoria/Support/`}>
+                <button className="btn btn-outline-primary mb-5">
+                    Regresar a Categoria
+                </button>
+            </Link>
             <div className="form-group">
                 <label className="text-muted">Nombre </label>
                 <input onChange={handleChange('sNombre')} 
