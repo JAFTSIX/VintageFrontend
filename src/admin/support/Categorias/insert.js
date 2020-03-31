@@ -121,7 +121,9 @@ const AgregarCategoria = () => {
     );
 
     return (
-        <Layout titulo="Categoria de Recetas" 
+        <Layout titulo="Categoria de Recetas"
+        jumbotron="jumboEstatico" 
+        image="https://i.dietdoctor.com/es/wp-content/uploads/2019/09/lowcarb-que-comer.jpg?auto=compress%2Cformat&w=1200&h=675&fit=crop" 
         descripcion="Agregar una nueva categoria para las recetas">
         
             <div className="row">
