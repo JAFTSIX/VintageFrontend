@@ -6,7 +6,10 @@ import '../index.css';
 import './producto.css';
 
 const RecetaInterfaz = ({receta}) => {
+    
+
     return(
+        
         <div className="col-lg-6 col-md-12 mb-3">
             <div className="card ">
                 <div className="card-body ">
@@ -59,6 +62,7 @@ const RecetaInterfaz = ({receta}) => {
                 </div>
             </div>
         </div>
+        
     );
 }
 
