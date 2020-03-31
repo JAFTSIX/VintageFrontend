@@ -88,7 +88,7 @@ const RecetaDetalle = (props) => {
         const recetaId = props.match.params.recetaId;
         cargarDetalleReceta(recetaId);
  
-        if (isAutentificacion()!== undefined) {
+        if (isAutentificacion()) {
             isVer(recetaId,'VerS');    
         } else {
             isVer(recetaId,'VerU');    
