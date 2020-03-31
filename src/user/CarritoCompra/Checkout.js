@@ -7,9 +7,10 @@ import './carrito.css';
 
 import DropIn from "braintree-web-drop-in-react";
 import { PayPalButton } from "react-paypal-button-v2";
-import {getObjeto,errorTranslator}from './../../admin/apiAdmin'
+import {getObjeto,insertObject,errorTranslator}from './../../admin/apiAdmin'
 
 import { isAutentificacion } from './../../autentificacion/index';
+import moment from 'moment';
 
 const Checkout = ({products}) => {
          
@@ -53,17 +54,47 @@ const Checkout = ({products}) => {
         //send the nonce to your server
         //nonce=data.instance.requestPaymentMethod
         let nonce;
-        let getNonce=value.instance.requestPaymentMethod().then(data=>{
+        let getNonce=value.instance.requestPaymentMethod().then(dataX=>{
 
-            console.log(data)
-            nonce=data.nonce 
+            console.log(dataX)
+            nonce=dataX.nonce 
             //once you have the nonce(card type,car number) send nonce as  'paymentMethodNonce'    
             //and also total to be charged
-            console.log('send nonce and total to process',nonce,getTotal())
+            
 
-        }).catch(error=>{
-            console.log('error de verga', error)
-            setError(errorTranslator( error.message ));
+
+            const aver=insertObject('Factura',{
+                Factura: {
+            sCliente:  isAutentificacion().cliente._id,
+            dFecha: moment().format(),
+            aCompras:products,
+            iSubtotal: 0,
+            iTotal: 0,
+           
+            oDireccion: { sCiudad: "San Jose",
+            sDireccion1: "de la farmacia sucre 200 metros en el reestaurante el pueblo",
+            sDireccion2: "de la farmacia sucre 100 metros en el reestaurante el pollo",
+            iCodPostal: "10101",
+            sTelefono: "88442252",
+            sNombre: "Ignacio",
+            sApellido: "pepe"}
+        }
+        ,
+            paymentMethodNonce:nonce,}).then(dataY=>{
+
+                   console.log('LLEGAMOS',dataY)
+                   if ('error'in dataY) {
+                    setError(errorTranslator( dataY.error.message ));
+                   }
+            }).catch(errorY=>{
+                console.log('error de vergaY', errorY)
+                setError(errorTranslator( errorY.message ));
+            })
+
+
+        }).catch(errorX=>{
+            console.log('error de vergaX', errorX)
+            setError(errorTranslator( errorX.message ));
         })
     }
 
@@ -106,11 +137,11 @@ const Checkout = ({products}) => {
             <div>
                 <DropIn options={{
                     authorization:value.clientToken
-                }} onInstance={instance=>(value.instance=instance) }/>
+                }} onInstance={instance=>(value.instance=instance)  }/>
             </div>  
                 
                 <button onClick={comprar} className="btn btn-outline-primary
-                                agregarPadding mb-5">
+                                agregarPadding mb-5 btn block">
                                 <h4>pagar</h4> 
                     </button>
 

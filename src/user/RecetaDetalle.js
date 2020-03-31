@@ -35,7 +35,7 @@ const RecetaDetalle = (props) => {
             } else {
                 console.log('Receta/'+recetaId )
                 console.log('sd',data)
-                //PUNER.VALUE
+                
                 setReceta(data);
                 
             }
@@ -148,8 +148,11 @@ const RecetaDetalle = (props) => {
         );  
     };
 
+   
 
-
+    const mostrar  = () => {       
+       console.log( ver) 
+    };
 
 
 
@@ -209,6 +212,8 @@ const RecetaDetalle = (props) => {
             <div className="row">
 
             {mostrarError ()}{mostrarFunciona()}
+            
+       
                 <div className="col-lg-6 col-md-12 recetaDetalleTitulo">
                     <h1 className="text-capitalize mb-5 mr-5">{receta.sNombre}</h1>
                     {/* imagen prodcuto  */} 
@@ -221,19 +226,19 @@ const RecetaDetalle = (props) => {
 
             {/* contenido  */}
             <div className="row mt-1 Content">
-            {(receta.iPrecio === 0 &&ver) &&
+            {receta.iPrecio>0 &&ver && 
                 <div className="col-lg-6 col-md-11 fix">     
-           
+                
                     <iframe className="video" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>  
 
             }
 
-            {receta.iPrecio > 0 &&!ver&&
+            {!ver&&(
                 <div className="col-lg-6 col-md-11 fix">     
- 
+                   
                     <iframe className="video" src={receta.sUrlVideoTrailer} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>  
+                </div>  )
 
             }
                  <div className="col-lg-5 col-md-11 scroll mr-1">     
@@ -274,6 +279,8 @@ const RecetaDetalle = (props) => {
                                 <button onClick={agregarCarrito} className="btn btn-outline-primary">Añadir a Carrito de Compra</button>
                             )}
                             
+
+                            
                         </Fragment>
                  }   
 
@@ -281,7 +288,7 @@ const RecetaDetalle = (props) => {
 
 
 
-
+                  
 
 
                 </div>  
