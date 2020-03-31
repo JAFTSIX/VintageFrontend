@@ -1,6 +1,6 @@
 import { CardText } from "material-ui";
 
-export const agregarProductoCarrito = (producto, next) => {
+export const agregarProductoCarrito = (producto,bool, next) => {
     let carrito = []
     if(typeof window !== 'undefined'){
         // localStorage.getItem() get item de localStorage 
@@ -11,7 +11,8 @@ export const agregarProductoCarrito = (producto, next) => {
         }
         carrito.push({
             ...producto, 
-            count:1 //cantidad de productos
+            count:1, //cantidad de productos
+            recetaOProducto:bool, //determinar si es receta 1 o producto 0
         });
 
         // elimina duplicados 
