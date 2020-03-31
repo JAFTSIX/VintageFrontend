@@ -10,7 +10,7 @@ const CarritoInterfaz = ({product}) => {
 
     
     // contador para definir la cantidad 
-    const [count, setCount] = useState(product.count);
+    const [count, setCount] = useState(product.count<=0?1:product.count);
     const [precioUnidad, setPrecioUnidad] = useState(0);
     const [redirect, setRedirect] = useState(false);
 
