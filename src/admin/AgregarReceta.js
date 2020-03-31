@@ -244,7 +244,7 @@ const AgregarReceta = () => {
             <label className="text-muted mr-2">¿Activo? </label>
                       <Checkbox  onChange={handleChange('bActivo'+bActivo)}  value={bActivo}> </Checkbox>
 
-        </div>
+            </div>
 
 
             <button className="btn btn-outline-primary">
