@@ -49,6 +49,24 @@ const Checkout = ({products}) => {
     }
 
 
+    const comprar=()=>{
+        //send the nonce to your server
+        //nonce=data.instance.requestPaymentMethod
+        let nonce;
+        let getNonce=value.instance.requestPaymentMethod().then(data=>{
+
+            console.log(data)
+            nonce=data.nonce 
+            //once you have the nonce(card type,car number) send nonce as  'paymentMethodNonce'    
+            //and also total to be charged
+            console.log('send nonce and total to process',nonce,getTotal())
+
+        }).catch(error=>{
+            console.log('error de verga', error)
+            setError(error);
+        })
+    }
+
     {/* calcular el total de carrito de compra  */}
     const getTotal = () => {
 
@@ -91,9 +109,9 @@ const Checkout = ({products}) => {
                 }} onInstance={instance=>(value.instance=instance) }/>
             </div>  
                 
-                <button className="btn btn-outline-primary
+                <button onClick={comprar} className="btn btn-outline-primary
                                 agregarPadding mb-5">
-                                <h4>Checkout</h4> 
+                                <h4>pagar</h4> 
                     </button>
 
 
