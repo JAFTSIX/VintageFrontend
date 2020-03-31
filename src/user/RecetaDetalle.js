@@ -226,7 +226,7 @@ const RecetaDetalle = (props) => {
 
             {/* contenido  */}
             <div className="row mt-1 Content">
-            {receta.iPrecio>0 &&ver && 
+            {ver && 
                 <div className="col-lg-6 col-md-11 fix">     
                 
                     <iframe className="video" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

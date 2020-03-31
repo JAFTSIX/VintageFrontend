@@ -11,7 +11,7 @@ import { Checkbox } from 'react-input-checkbox';
 
 const ModificarReceta = (props) => {
     const [aCategorias, setaCategorias] = useState([]);
-    const [bActivo, setBActivo] = useState([]);
+    const [bActivo, setBActivo] = useState(false);
     const [valor, setValor] = useState({
         _id: "",
         sNombre : "",
