@@ -241,7 +241,7 @@ const AgregarReceta = () => {
             </div>
 
             <div className="form-group">
-            <label className="text-muted">¿Activo? </label>
+            <label className="text-muted mr-2">¿Activo? </label>
                       <Checkbox  onChange={handleChange('bActivo'+bActivo)}  value={bActivo}> </Checkbox>
 
         </div>
