@@ -94,8 +94,11 @@ const CarritoInterfaz = ({product}) => {
                 </div>  
                 
                 <hr />
-                {/* cantidad  */}
-                <div className="col-lg-1 col-md-3 text-center d-flex justify-content-center aslign-items-center"><h3>{mostrarOpcionActualizar()}</h3></div>
+                {product.recetaOProducto ===0 &&(
+                    // {/* cantidad  */}
+                    <div className="col-lg-1 col-md-3 text-center d-flex justify-content-center aslign-items-center"><h3>{mostrarOpcionActualizar()}</h3></div>
+                )}
+                
                 {/* precio unidad  */}
                 <div className="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center"><h3>₡{product.iPrecio}</h3></div>
                 {/* precio total  */}
