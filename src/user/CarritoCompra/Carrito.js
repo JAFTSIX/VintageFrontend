@@ -8,7 +8,6 @@ import CarritoInterfaz from './CarritoInterfaz';
 import Checkout from './Checkout';
 
 
-
 const Carrito = () => {
     const [producto, setProducto] = useState([]);
 
@@ -41,10 +40,7 @@ const Carrito = () => {
 
                 <div className="text-right">
                     <Checkout products={producto} />
-                    <button className="btn btn-outline-primary
-                                agregarPadding mb-5">
-                                <h4>Proceder al Pago</h4> 
-                    </button>
+                    
                     
                 </div>
 
