@@ -148,10 +148,10 @@ const ModificarReceta = (props) => {
 
        const Returncheckbox=()=>{
         return  (<div className="form-group">
-                <label className="text-muted"> Categoria ▼ </label>
+                <label className="text-muted required"> Categoria ▼ </label>
                 { aCategorias.map((item, key) =><div key=  {key}>
                       {/* {key}       {''+item.add} */}
-                <Checkbox key=  {key} required onChange={handleArrayChange(key,item)}    value={item.add}> {item.sNombre}</Checkbox>
+                <Checkbox key={key} onChange={handleArrayChange(key,item)} value={item.add}> {item.sNombre}</Checkbox>
 
                   </div>)}   
 
