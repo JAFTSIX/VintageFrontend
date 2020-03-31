@@ -5,6 +5,14 @@ html, body {
 p{
     font-size: 120%;
 }
+
+/* hide scroll bar */
+.inner::-webkit-scrollbar {
+    display: none;}
+    
+.inner {
+    -ms-overflow-style: none;  
+    overflow: -moz-scrollbars-none; }
 .navbar-custom {
     background-color: rgba(247, 112, 218, 0);
     border-style: none;
