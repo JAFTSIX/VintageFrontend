@@ -109,7 +109,7 @@ const RecetaDetalle = (props) => {
 
     const agregarCarrito = () => {
         // parametros -> la receta que viene del prop y el cb function 
-        agregarProductoCarrito(receta, ()=>{
+        agregarProductoCarrito(receta,1, ()=>{
             setMensaje(true);
         });
 
