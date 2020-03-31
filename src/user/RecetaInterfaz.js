@@ -23,7 +23,9 @@ const RecetaInterfaz = ({receta}) => {
                     {/* titulo  */}
                         <h1 className="text-capitalize font-weight-bold text-center text-light">{receta.sNombre}</h1>
                         {/* <p><b>Descripcion:</b>  {receta.sTexto}</p> */}
-
+                    
+                    {receta.bActivo === true &&(
+                        <Fragment>
                         {/* Botones  */}
                         <Link to={`/Receta/Detalle/${receta._id}`}>
                             <button className="btn customBtn btnPink 
@@ -32,6 +34,15 @@ const RecetaInterfaz = ({receta}) => {
                                 {/* Ver Receta */}
                             </button>
                         </Link>
+                        </Fragment>
+                    )}
+
+                    {receta.bActivo === false &&(
+                        <Fragment>
+                        <p className="text-light">Nueva Receta, Próximamente...</p>
+                        </Fragment>
+                    )}
+                        
 
                         <br />
 
