@@ -128,17 +128,17 @@ const FacturaInterfaz = ({Factura}) => {
                     </div>
             </div>
             <div class="row">
-                <div class="d-flex flex-row w-100" >
+                <div class="d-flex flex-row w-100 flex-wrap" >
                     {isAutentificacion() && isAutentificacion().cliente.bAdmin && (
                         <Fragment>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-sm-12">
                             <Link to={`/Factura/Support/actualizar/${Factura._id}`}>
                                 <button className="btn btn-outline-primary w-100">
                                     Modificar Factura   
                                 </button>
                             </Link>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-sm-12">
                             <Link to={`/Factura/Support/Eliminar/${Factura._id}`} >
                                 <button  className="btn btn-outline-primary w-100" data-toggle="modal" data-target="#exampleModal">
                                     Eliminar Factura
