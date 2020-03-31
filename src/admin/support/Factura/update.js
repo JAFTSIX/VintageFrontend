@@ -7,6 +7,7 @@ import DateTimePicker from 'react-datetime-picker';
 import moment from 'moment';
 import { Checkbox } from 'react-input-checkbox';
 import '../support.css';
+import { Link } from 'react-router-dom';
 
 import {checkingFactura} from '../../../user/procesos/ValidarDatos';
 
@@ -229,7 +230,11 @@ const ModificarFactura = (props) => {
 
     const agregarFacturaForm = () => (
         <form className="mb-3" onSubmit={clickSubmit}>
-            
+        <Link to={`/Factura/Support/`}>
+                <button className="btn btn-outline-primary mb-5">
+                    Regresar a Factura
+                </button>
+        </Link>
 
         <div className="form-group">
         <label className="text-muted">Id Cliente</label>
