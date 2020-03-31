@@ -42,8 +42,8 @@ const Checkout = ({products}) => {
                     
                 }else{
           
-                    setValue({...value,clientToken:data.value.clientToken       });
-                    console.log(data.value);
+                    setValue({...value,clientToken:data.value.clientToken});
+                    //console.log(data.value);
                                                              
                 }
        
@@ -52,12 +52,13 @@ const Checkout = ({products}) => {
 
 
     const comprar=()=>{
+        console.log('ValueZ',value)
         //send the nonce to your server
         //nonce=data.instance.requestPaymentMethod
         let nonce;
         let getNonce=value.instance.requestPaymentMethod().then(dataX=>{
 
-            console.log(dataX)
+            console.log('dataX',dataX)
             nonce=dataX.nonce 
             //once you have the nonce(card type,car number) send nonce as  'paymentMethodNonce'    
             //and also total to be charged
@@ -84,11 +85,20 @@ const Checkout = ({products}) => {
             paymentMethodNonce:nonce,}).then(dataY=>{
 
                    console.log('LLEGAMOS',dataY)
-                   if ('error'in dataY) {
+                if('error'in dataY){
                     setError(errorTranslator( dataY.error.message ));
-                   }else{
-
+                }else if ('errors'in dataY.value) {
+                    setError(errorTranslator( dataY.value.message ));
+                   }else if( dataY.value.success){
+                        
                         setSuccess(true)
+                        setValue({
+        
+                            clientToken:null,
+                        
+                            instance:{},
+                            address:''
+                        })
                    }
 
 

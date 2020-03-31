@@ -304,7 +304,10 @@ export const errorTranslator=(untranslated)=>{
             return 'formulario con datos inválidos'
         case   'No payment method is available.':
             return 'método de pago no disponible'
+        
 
+        case   'Processor Declined':
+            return 'transacción fallida '
         default:
             return untranslated;
     }

@@ -111,4 +111,12 @@ export const cerrarSesion = (cb) => {
 }
 
 
- 
+export const BorrarCarrito = (cb) => {
+    
+    if(typeof window !== 'undefined'){  
+        localStorage.removeItem('jwt');
+        localStorage.removeItem('carrito');
+        //en el cb se puede redireccionar, limpiar el state, etc
+        cb();
+    }
+}
