@@ -67,9 +67,11 @@ export const actualizarCantidad = (productoId, count) => {
             if(producto._id === productoId){
                 // el valor count del proyecto va ser el count que se ingresa de lo que ingresa el usuario 
                 carrito[i].count = count;
+                carrito[i].iCant=count
+                console.log(carrito)
             }
         });
-
+         
         // cambiar ese valor en el localStorage 
         localStorage.setItem('carrito', JSON.stringify(carrito));
 

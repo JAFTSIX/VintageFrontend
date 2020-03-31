@@ -15,13 +15,14 @@ import moment from 'moment';
 const Checkout = ({products}) => {
          
     const [value,setValue]=useState({
-        success:false,
+        
         clientToken:null,
     
         instance:{},
         address:''
     })
     const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     
     useEffect(()=>{
@@ -62,7 +63,7 @@ const Checkout = ({products}) => {
             //and also total to be charged
             
 
-
+            //comprar
             const aver=insertObject('Factura',{
                 Factura: {
             sCliente:  isAutentificacion().cliente._id,
@@ -85,7 +86,12 @@ const Checkout = ({products}) => {
                    console.log('LLEGAMOS',dataY)
                    if ('error'in dataY) {
                     setError(errorTranslator( dataY.error.message ));
+                   }else{
+
+                        setSuccess(true)
                    }
+
+
             }).catch(errorY=>{
                 console.log('error de vergaY', errorY)
                 setError(errorTranslator( errorY.message ));
@@ -93,7 +99,7 @@ const Checkout = ({products}) => {
 
 
         }).catch(errorX=>{
-            console.log('error de vergaX', errorX)
+            console.log('error de verga X', errorX)
             setError(errorTranslator( errorX.message ));
         })
     }
@@ -160,9 +166,21 @@ const Checkout = ({products}) => {
             
         );
 
+
+        
+        const mostrarExito = () => (
+            <div className="alert alert-info" 
+            style={{display: success ? '' : 'none'}}>
+                Transacción exitosa, ¡Gracias por comprar!
+               
+            </div>
+            
+        );
+
     return <div>
 
     {mostrarError()}
+    {mostrarExito()}
                 {/* calcular total de producto  */}
                 <h1>Total de Productos: {getTotalProductos()}</h1>
                 {/* calcular el total de carrito de compra  */}
