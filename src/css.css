@@ -8,11 +8,15 @@ p{
 
 /* hide scroll bar */
 .inner::-webkit-scrollbar {
-    display: none;}
+    display: none;
+}
     
 .inner {
     -ms-overflow-style: none;  
     overflow: -moz-scrollbars-none; }
+::-webkit-scrollbar { 
+display: none; 
+}
 .navbar-custom {
     background-color: rgba(247, 112, 218, 0);
     border-style: none;
@@ -296,6 +300,12 @@ textarea.form-control{
 
   .carousel img{
     display: block !important;
+    }
+    .navbar-expand-lg .navbar-nav .dropdown-menu{
+        position: fixed !important;
+        top: 60px !important;
+        left: 30% !important;
+        padding-left: 20px;
     }
 
     /* tablet pro  */
