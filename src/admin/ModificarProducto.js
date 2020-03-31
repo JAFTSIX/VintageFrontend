@@ -159,7 +159,7 @@ const ModificarProducto = (props) => {
                         className="form-control" 
                         required
                         value={iCant2} />
-            </div>
+            </div>  
 
             <button className="btn btn-outline-primary">
                 Modificar Producto
