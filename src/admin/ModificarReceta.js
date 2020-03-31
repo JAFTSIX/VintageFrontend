@@ -73,7 +73,7 @@ const ModificarReceta = (props) => {
             }else{
 
 
-                console.log(data)
+                console.log('modificar receta' + data)
                 setValor({
                     ...valor,
                     _id: data._id, 
@@ -227,6 +227,14 @@ const ModificarReceta = (props) => {
         
     }
 
+    const returnActivo = () =>{
+        if (bActivo===true){
+            return <label>Si</label>
+        }else{
+            return <label>No</label>
+        }
+    }
+
     const agregarRecetaForm = () => (
         <form className="mb-3" onSubmit={clickSubmit}>
 
@@ -282,6 +290,17 @@ const ModificarReceta = (props) => {
                         className="form-control" 
                         required
                         value={iPrecio2} />
+            </div>
+
+            <div className="form-group">
+            <label className="text-muted mr-2">¿Activo Actualmente? {returnActivo()}</label>
+            <br/>
+            <label className="text-muted mr-2">Cambiarlo a: </label>
+            <label className="text-muted mr-2">No</label>
+            <Checkbox onChange={handleChange(true)}> </Checkbox>
+            <label className="text-muted mx-2">Si</label>
+            <Checkbox onChange={handleChange(false)}> </Checkbox>
+             
             </div>
 
 
