@@ -35,6 +35,7 @@ const CarritoInterfaz = ({product}) => {
                 
                 <input type="number" 
                         maxlength="1" size="1"
+                        min="1"
                         className="form-control inputSize" 
                         value={count} 
                         onChange={handleChange(product._id)} />

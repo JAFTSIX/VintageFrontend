@@ -52,13 +52,14 @@ const Checkout = ({products}) => {
 
 
     const comprar=()=>{
-        console.log('ValueZ',value)
+       // console.log('ValueZ',products)
+        //console.log('ValueZ',value)
         //send the nonce to your server
         //nonce=data.instance.requestPaymentMethod
         let nonce;
         let getNonce=value.instance.requestPaymentMethod().then(dataX=>{
 
-            console.log('dataX',dataX)
+           // console.log('dataX',dataX)
             nonce=dataX.nonce 
             //once you have the nonce(card type,car number) send nonce as  'paymentMethodNonce'    
             //and also total to be charged
@@ -84,7 +85,7 @@ const Checkout = ({products}) => {
         ,
             paymentMethodNonce:nonce,}).then(dataY=>{
 
-                   console.log('LLEGAMOS',dataY)
+                   //console.log('LLEGAMOS',dataY)
                 if('error'in dataY){
                     setError(errorTranslator( dataY.error.message ));
                 }else if ('errors'in dataY.value) {
@@ -119,7 +120,7 @@ const Checkout = ({products}) => {
 
         let total = 0;
         for (let i = 0; i < products.length; i++) {
-            total = total+products[i].count * products[i].iPrecio;    
+            total= total +(products[i].iCant*products[i].iPrecio);
             
         }
 
@@ -128,9 +129,11 @@ const Checkout = ({products}) => {
 
     {/* calcular total de producto  */}
     const getTotalProductos = () => {
+
         let total = 0;
+        
         for (let i = 0; i < products.length; i++) {
-            total=total+parseInt(products[i].count);
+            total= total +products[i].iCant;
         }
         return total;
     }
@@ -189,8 +192,8 @@ const Checkout = ({products}) => {
 
     return <div>
 
-    {mostrarError()}
-    {mostrarExito()}
+               {mostrarError()}
+                 {mostrarExito()}
                 {/* calcular total de producto  */}
                 <h1>Total de Productos: {getTotalProductos()}</h1>
                 {/* calcular el total de carrito de compra  */}
