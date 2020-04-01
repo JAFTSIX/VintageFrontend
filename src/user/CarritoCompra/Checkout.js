@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect,} from 'react';
 import Layout from '../../nucleo/Layout';
 import { Link } from 'react-router-dom';
 import {getProductosLocalStorage, actualizarCantidad, eliminarProductoCarrito} from './carritoHelper';
 import '../../index.css';
 import './carrito.css';
 
+import { Redirect} from 'react-router-dom';
 import DropIn from "braintree-web-drop-in-react";
 import { PayPalButton } from "react-paypal-button-v2";
 import {getObjeto,insertObject,errorTranslator}from './../../admin/apiAdmin'
@@ -12,7 +13,7 @@ import {getObjeto,insertObject,errorTranslator}from './../../admin/apiAdmin'
 import { isAutentificacion } from './../../autentificacion/index';
 import moment from 'moment';
 
-const Checkout = ({products}) => {
+const Checkout = ({products,Change}) => {
          
     const [value,setValue]=useState({
         
@@ -21,11 +22,13 @@ const Checkout = ({products}) => {
         instance:{},
         address:''
     })
-    const [error, setError] = useState(false);
-    const [success, setSuccess] = useState(false);
+    const [errorCheck, setErrorCheck] = useState(false);
+    const [success, setSuccess] = useState(false);    
+    const [redireccionar, setRedireccionar] = useState(false);
 
     
     useEffect(()=>{
+        console.log('changeeee->',Change)
         getToken()
         
     }, []);
@@ -38,7 +41,7 @@ const Checkout = ({products}) => {
             
                 if ('error' in data) {
 
-                    setError(errorTranslator(data.error.message))        
+                    setErrorCheck(errorTranslator(data.error.message))        
                     
                 }else{
           
@@ -87,12 +90,15 @@ const Checkout = ({products}) => {
 
                    //console.log('LLEGAMOS',dataY)
                 if('error'in dataY){
-                    setError(errorTranslator( dataY.error.message ));
+                    Change(false);
+                    setErrorCheck(errorTranslator( dataY.error.message ));
                 }else if ('errors'in dataY.value) {
-                    setError(errorTranslator( dataY.value.message ));
+                    Change(false);
+                    setErrorCheck(errorTranslator( dataY.value.message ));
                    }else if( dataY.value.success){
                         
                         setSuccess(true)
+                        
                         setValue({
         
                             clientToken:null,
@@ -100,18 +106,25 @@ const Checkout = ({products}) => {
                             instance:{},
                             address:''
                         })
+
+                        
+                        Change(true);
+                   
                    }
 
 
             }).catch(errorY=>{
                 console.log('error de vergaY', errorY)
-                setError(errorTranslator( errorY.message ));
+                setErrorCheck(errorTranslator( errorY.message ));
+                Change(false);
             })
 
 
         }).catch(errorX=>{
             console.log('error de verga X', errorX)
-            setError(errorTranslator( errorX.message ));
+            setErrorCheck(errorTranslator( errorX.message ));
+             
+            Change(false);
         })
     }
 
@@ -149,7 +162,7 @@ const Checkout = ({products}) => {
     const  showDropIn=()=>(
 
     
-        <div onBlur={()=>setError(false)}>
+        <div onBlur={()=>setErrorCheck(false)}>
         {value.clientToken !==null&& products.length>0 ? (
         <div>
             
@@ -172,8 +185,8 @@ const Checkout = ({products}) => {
 
         const mostrarError = () => (
             <div className="alert alert-danger" 
-            style={{display: error ? '' : 'none'}}>
-                {error}
+            style={{display: errorCheck ? '' : 'none'}}>
+                {errorCheck}
                
             </div>
             
@@ -190,6 +203,8 @@ const Checkout = ({products}) => {
             
         );
 
+     
+
     return <div>
 
                {mostrarError()}
@@ -197,7 +212,7 @@ const Checkout = ({products}) => {
                 {/* calcular total de producto  */}
                 <h1>Total de Productos: {getTotalProductos()}</h1>
                 {/* calcular el total de carrito de compra  */}
-                <h1>Total: ₡{getTotal()}</h1>
+                <h1>Total: ${getTotal()}</h1>
                {/*<PayPalButton
 
                         amount={getTotal()}
@@ -218,7 +233,7 @@ const Checkout = ({products}) => {
 
                     {showCheckOut()}
 
- 
+                    
 
         </div>
 }

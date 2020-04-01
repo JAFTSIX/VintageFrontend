@@ -1,7 +1,7 @@
-import React, {useState, useEffect,useReducer, useRef  } from 'react';
+import React, {useState, useEffect,useReducer, parentCallback } from 'react';
 import Layout from '../../nucleo/Layout';
 import { Link } from 'react-router-dom';
-import {getProductosLocalStorage,SetProductosCarrito} from './carritoHelper';
+import {getProductosLocalStorage,SetProductosCarrito,eliminarTodoProductoCarrito} from './carritoHelper';
 import '../../index.css';
 import './carrito.css';
 //import CarritoInterfaz from './CarritoInterfaz';
@@ -13,7 +13,7 @@ const useForceRerender = () => useReducer(state => !state, false)[1];
 const Carrito = () => {
     const [producto, setProducto] = useState([]);
     const forceRerender = useForceRerender();
-
+    const [Success2, setSuccess2] = useState(false);
 
     useEffect(()=>{
 
@@ -108,9 +108,9 @@ const Carrito = () => {
                 )}
                 
                 {/* precio unidad  */}
-                <div className="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center"><h3>₡{producto[index].iPrecio}</h3></div>
+                <div className="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center"><h3>${producto[index].iPrecio}</h3></div>
                 {/* precio total  */}
-                <div className="col-lg-3 col-md-2 text-center d-flex justify-content-center align-items-center" ><h3>₡{ producto[index].iCant * producto[index].iPrecio }</h3></div>
+                <div className="col-lg-3 col-md-2 text-center d-flex justify-content-center align-items-center" ><h3>${ producto[index].iCant * producto[index].iPrecio }</h3></div>
                 {/* icono eliminar producto  */}
                 <div className="col-lg-1 col-md-2  text-center d-flex justify-content-center align-items-center">
                 <button class="customBtnCart"
@@ -118,7 +118,7 @@ const Carrito = () => {
                     <img src="https://cdn3.iconfinder.com/data/icons/iconano-text-editor/512/005-X-512.png" className="iconoEliminarCarrito"/>
                     {/* Eliminar Producto */}
                 </button>
-               
+                 
                 </div>
                  
             </div>
@@ -126,6 +126,15 @@ const Carrito = () => {
     );
     }
 
+    const handleState = (booleano) => {
+       console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAMIPIXXXXXULA',booleano)
+        if(booleano){
+
+            eliminarTodoProductoCarrito();
+            
+            setSuccess2(booleano)
+        }
+    }
 
     // Funcion que muestra todos los productos 
     const mostrarProducto = () => {
@@ -142,13 +151,14 @@ const Carrito = () => {
 
             {
 
-                producto.map((product, i)=>(
+                
+                Success2?(<div></div>):(producto.map((product, i)=>(
                     <CarritoInterfaz key={i} index={i}/>
-                ))
+                )))
             } 
 
                 <div className="text-right">
-                    <Checkout products={producto} />
+                    <Checkout products={producto} Change={handleState} />
                     
                     
                 </div>
@@ -184,6 +194,8 @@ const Carrito = () => {
                     
                     {/* if si hay productos en el carrito o no  */}
                     {producto.length > 0 ? mostrarProducto() : noProductoMensaje()}
+
+
                 </div>
                 
             </div>

@@ -110,6 +110,17 @@ export const eliminarProductoCarrito = (productoId) => {
     return carrito;
 }
 
+export const eliminarTodoProductoCarrito = () => {
+    
+    if(typeof window !== 'undefined'){
+         
+        localStorage.setItem('carrito', JSON.stringify([]));
+
+    }
+
+    
+}
+
 
 export const SetProductosCarrito = (productos ) => {
  

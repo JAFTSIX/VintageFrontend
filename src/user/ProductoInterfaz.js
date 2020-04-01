@@ -74,7 +74,7 @@ const ProductoInterfaz = ({producto}) => {
                     <div className="btnProductos fadeIn-top"> 
                     {/* titulo  */}
                         <h1 className="text-capitalize font-weight-bold text-center text-light">{producto.sNombre}</h1> 
-                        <h3 className="text-light">Precio: ₡{producto.iPrecio}</h3>
+                        <h3 className="text-light">Precio: ${producto.iPrecio}</h3>
 
                         {/* Botones  */}
                         <Link to={`/Articulo/Detalle/${producto._id}`}>
