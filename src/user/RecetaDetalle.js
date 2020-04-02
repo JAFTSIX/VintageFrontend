@@ -1,5 +1,5 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import {leerRecetaDetalle} from './apiReceta';
+
 import {getObjeto,errorTranslator} from './../admin/apiAdmin';
 import '../index.css';
 import '../css.css';

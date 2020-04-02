@@ -2,7 +2,9 @@ import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom' //esto guarda todos los componentes
 import SignUp from './user/SignUp';
 import SignIn from './user/SignIn';
+
 import Principal from './nucleo/Principal';
+
 import PrivateRoute from './autentificacion/PrivadoRoute';
 import VideoRoute from './autentificacion/VideoRoute';
 import Perfil from './user/Perfil';
@@ -51,7 +53,12 @@ const Routes = () => {
     return ( 
     <BrowserRouter> 
         <Switch>
-            <Route path="/" exact component={Principal}/>
+            
+        
+        <Route path="/" exact component={Principal}/>
+
+
+
             <Route path="/SignIn" exact component={SignIn}/>
             <Route path="/SignUp" exact component={SignUp}/>
             <PrivateRoute path="/Perfil" exact component={Perfil}/>

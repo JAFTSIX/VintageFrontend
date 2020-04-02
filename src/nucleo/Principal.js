@@ -186,10 +186,7 @@ const Principal = () => {
 
             <Footer />
                 
-</div>
-        
-        
-        
+</div>       
     );
 }
 

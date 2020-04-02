@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
 import { isAutentificacion } from '../autentificacion';
-import { Link } from 'react-router-dom';
-import {getProductoG} from './apiProducto';
+import { Link } from 'react-router-dom'; 
 import ProductoInterfaz from './ProductoInterfaz';
 import '../index.css';
 import '../css.css';
-
+import {errorTranslator,getObjeto} from './../admin/apiAdmin'; 
 
 const Producto = () => {
     //const [productoVendidos, setProductoVendidos] = useState([]);
@@ -16,19 +15,19 @@ const Producto = () => {
     //cargar productos para visualizar
     
     const cargarProductoDisponiles = () => {
-        getProductoG('bActivo')
-        .then(data=>{
-            if(data.error){
-                setError(data.error)
-            }else{
-                setProductoDisponibles(data);
-                console.log(data);
-            }
+
+        getObjeto('Articulo')
+        .then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+            
+        ('error' in data) ?setError(errorTranslator(data.error.message)): setProductoDisponibles(data);                                                                                     
+       
         })
+      
     }
 
     //carga al puro principio y cuando sea que se haga cambio va a cargar 
     useEffect(()=>{
+        
         cargarProductoDisponiles()
     }, []);
     
@@ -60,7 +59,9 @@ const Producto = () => {
                 </div>
             );
         }else{
-            return("");
+            return( <div>
+                
+            </div>);
         }
     }
 

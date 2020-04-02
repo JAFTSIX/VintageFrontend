@@ -1,10 +1,11 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import {leerProductoDetalle} from './apiProducto';
+
 import '../index.css';
 import '../css.css';
 import './videoReceta.css';
 import {isAutentificacion} from '../autentificacion/index';
 import { Link,Redirect } from 'react-router-dom';
+import { getObjeto} from './../admin/apiAdmin';
 import Menu from '../nucleo/Menu';  
 import EliminarProducto from '../admin/EliminarProducto';
 import {agregarProductoCarrito} from './CarritoCompra/carritoHelper';
@@ -54,12 +55,18 @@ const ProductoDetalle = (props) => {
     // metodo cargar producto del url 
     const cargarDetalleProducto = productoId => {
         // funcion ubicado en apiProducto 
-        leerProductoDetalle(productoId).then(data=>{
-            if(data.error){
-                setError(data.error);
-            }else{
+        getObjeto('Articulo',`/${productoId}`).then(
+            (data={error:{message:'hay un problema, intente más tarde'}}) =>{            
+
+            if ('error' in data) {
+
+                setError(data.error.message);
+            }  
+            else {
+                
                 setProducto(data);
             }
+            
         })
     }
 

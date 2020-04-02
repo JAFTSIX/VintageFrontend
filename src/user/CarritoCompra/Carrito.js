@@ -68,9 +68,7 @@ const Carrito = () => {
 
 
     const CarritoInterfaz=({index})=>{
-
-        console.log(index,'index')
-        console.log(producto[index])
+ 
         
         return(     
             <div className="row">
@@ -127,7 +125,7 @@ const Carrito = () => {
     }
 
     const handleState = (booleano) => {
-       console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAMIPIXXXXXULA',booleano)
+     
         if(booleano){
 
             eliminarTodoProductoCarrito();
