@@ -10,7 +10,7 @@ import {errorTranslator,getObjeto} from './../admin/apiAdmin';
 
 const Perfil = () => {
 
-    const {_id, sNombre, sApellido,sCorreo,dNacimiento} = isAutentificacion().cliente;
+    const {_id, sNombre, sApellido,sCorreo,dNacimiento,oDireccion} = isAutentificacion().cliente;
     const fechaNacimiento =moment(dNacimiento).format('DD/MM/YYYY'); 
     const [receta, setReceta] = useState([]);
     const [error, setError] = useState(false);
@@ -45,7 +45,7 @@ const Perfil = () => {
          
 
         <div className="row d-flex justify-content-center">
-            <div class="col-3">
+            <div class="col-lg-3 col-md-4 col-sm-12">
                 <Link className="nav-link" to="/perfil/modificar">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/14/14853.png" alt="Card image cap" />
@@ -56,7 +56,7 @@ const Perfil = () => {
                 </Link>
             </div>
              
-            <div class="col-3">              
+            <div class="col-lg-3 col-md-4 col-sm-12">              
                 <Link className="nav-link" to="/producto">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/1/1375.png" alt="Card image cap" />
@@ -66,7 +66,7 @@ const Perfil = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-3">              
+            <div class="col-lg-3 col-md-4 col-sm-12">              
                 <Link className="nav-link" to="/receta">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/53/53031.png" alt="Card image cap" />
@@ -76,7 +76,7 @@ const Perfil = () => {
                 </div>
                 </Link>
             </div>
-            <div class="col-3">              
+            <div class="col-lg-3 col-md-4 col-sm-12">              
                 <Link className="nav-link" to="/cart">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/107/107831.png" alt="Card image cap" />
@@ -103,6 +103,12 @@ const Perfil = () => {
                     <li className="list-group-item text-capitalize"><strong>Apellido: </strong>{sApellido}</li>
                     <li className="list-group-item"><strong>Email: </strong>{sCorreo}</li>
                     <li className="list-group-item"><strong>Fecha de Nacimiento: </strong>{fechaNacimiento}</li>
+                    <li className="list-group-item text-capitalize"><strong>Provincia: </strong>{oDireccion.provincia}</li>
+                    <li className="list-group-item text-capitalize"><strong>Cantón: </strong>{oDireccion.canton}</li>
+                    <li className="list-group-item text-capitalize"><strong>Dirección 1: </strong>{oDireccion.direccion1}</li>
+                    <li className="list-group-item text-capitalize"><strong>Dirección 2: </strong>{oDireccion.direccion2}</li>
+                    <li className="list-group-item text-capitalize"><strong>Código Postal: </strong>{oDireccion.codPostal}</li>
+                    <li className="list-group-item text-capitalize"><strong>Teléfono: </strong>{oDireccion.telefono}</li>
                 </ul>
             </div>
         );
