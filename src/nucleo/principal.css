@@ -33,7 +33,7 @@
     border: 0.5px solid rgba(255, 255, 255, 0.404);
     padding-bottom: 4%;
     margin-bottom: 13%;
-    bottom: 0;
+    bottom: 100px !important;
 }
 
 
