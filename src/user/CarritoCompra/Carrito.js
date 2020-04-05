@@ -83,11 +83,16 @@ const Carrito = () => {
                 </div>  
                 
                 <hr />
+                {/* Si es una receta la cantidad siempre va ser 1  */}
+                {producto[index].recetaOProducto === 1 &&(
+                    <div className="col-lg-1 col-md-3 text-center d-flex justify-content-center align-items-center">
+                        <h3><label>{producto[index].iCant=1}</label></h3>
+                    </div>
+                    
+                )}
                 {producto[index].recetaOProducto ===0 &&(
                     // {/* cantidad  */}
-                    <div className="col-lg-1 col-md-3 text-center d-flex justify-content-center aslign-items-center"><h3>
-                    
-                    
+                    <div className="col-lg-1 col-md-3 text-center d-flex justify-content-center align-items-center"><h3>
 
                     <div className="input-group mb-3">
                 
@@ -96,18 +101,17 @@ const Carrito = () => {
                       
                         className="form-control inputSize" 
                         value={producto[index].iCant} 
-                        onChange={handleChange(producto[index]._id,1)} />
-     
+                        onChange={handleChange(producto[index]._id,1)} />    
                 
                     </div>
-
-                    
                     </h3></div>
                 )}
                 
+                
+                
                 {/* precio unidad  */}
                 <div className="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center"><h3>${producto[index].iPrecio}</h3></div>
-                {/* precio total  */}
+                {/* precio total  */}               
                 <div className="col-lg-3 col-md-2 text-center d-flex justify-content-center align-items-center" ><h3>${ producto[index].iCant * producto[index].iPrecio }</h3></div>
                 {/* icono eliminar producto  */}
                 <div className="col-lg-1 col-md-2  text-center d-flex justify-content-center align-items-center">
