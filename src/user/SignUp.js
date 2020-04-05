@@ -25,7 +25,20 @@ const SignUp = () => {
         dNacimiento: "",
         aFavoritos: [],
         aRecetas: [],
-        oDireccion: {},
+        oDireccion: {
+            provincia:"",
+            canton:"",
+            direccion1:"",
+            direccion2:"",
+            codPostal:"",
+            telefono:"",
+        },
+        dProvincia:"",
+        dCanton:"",
+        dDireccion1:"",
+        dDireccion2:"",
+        dCodPostal:"",
+        dTelefono:"",
         bActivo: true,
         sPermisos: "",
         error:false,
@@ -51,6 +64,12 @@ const {
     funciona,
     aFavoritos,
     oDireccion,
+    dProvincia,
+    dCanton,
+    dDireccion1,
+    dDireccion2,
+    dCodPostal,
+    dTelefono,
     bActivo,
     aRecetas,listo
 } = values
@@ -73,8 +92,14 @@ const handleChange = campo => event => {
         name,
         value
     } = event.target;
-    
-   
+
+    //rellenar el objeto oDireccion
+   oDireccion.provincia=dProvincia;
+   oDireccion.canton=dCanton;
+   oDireccion.direccion1=dDireccion1;
+   oDireccion.direccion2=dDireccion2;
+   oDireccion.codPostal=dCodPostal;
+   oDireccion.telefono=dTelefono;
    
    const resultado=HandleChangeValidation(name,value)
   
@@ -86,7 +111,6 @@ const handleChange = campo => event => {
         setValues({...values,error:resultado.incidente, [campo]: event.target.value});
    }
 
-    
 
 }
 
@@ -107,11 +131,12 @@ const handleChange = campo => event => {
         //funcion para comprobar si se crea la cuenta con exito
         .then(data =>{
 
-            console.log(data);
+            
             //si hay error
             if('error' in data ){
                 setValues({...values, error:data.error.message, funciona: false});
-                console.log(data.error.message)
+                console.log(data.error.message);
+                console.log("Usuario Creados"+values);   
             }//si no hay error, se vacia los textbox
             else {
                 setValues({
@@ -120,7 +145,15 @@ const handleChange = campo => event => {
                     sApellido: '',
                     sContrasena: '',
                     sCorreo: '',
+                    oDireccion: '',
+                    dProvincia:'',
+                    dCanton:'',
+                    dDireccion1:'',
+                    dDireccion2:'',
+                    dCodPostal:'',
+                    dTelefono:'',
                     dNacimiento: '',
+                    password:'',
                     error: false,                
                     funciona: true
                 });
@@ -163,72 +196,127 @@ const handleChange = campo => event => {
         </div>
     );
 
-    
+    const direccionForm = () => (
+        <form>
+            <div className="form-group mt-30">
+                <label className="text-muted">
+                    Provincia *
+                </label>
+                <input name="dProvincia" onChange={handleChange('dProvincia')}  type="text" 
+                    className="form-control" value={dProvincia}/>
+            </div>
+            <div className="form-group mt-30">
+                <label className="text-muted">
+                    Cantón *
+                </label>
+                <input name="dCanton" onChange={handleChange('dCanton')}  type="text" 
+                    className="form-control" value={dCanton}/>
+            </div>
+            <div className="form-group mt-30">
+                <label className="text-muted">
+                    Dirección 1 *
+                </label>
+                <input name="dDireccion1" onChange={handleChange('dDireccion1')}  type="text" 
+                    className="form-control" value={dDireccion1}/>
+            </div>
+            <div className="form-group mt-30">
+                <label className="text-muted">
+                    Dirección 2 *
+                </label>
+                <input name="dDireccion2" onChange={handleChange('dDireccion2')}  type="text" 
+                    className="form-control" value={dDireccion2}/>
+            </div>
+            <div className="form-group mt-30">
+                <label className="text-muted">
+                    Código Postal *
+                </label>
+                <input name="dCodPostal" onChange={handleChange('dCodPostal')}  type="text" 
+                    className="form-control" value={dCodPostal}/>
+            </div>
+            <div className="form-group mt-30">
+                <label className="text-muted">
+                    Teléfono *
+                </label>    
+                <input name="dTelefono" onChange={handleChange('dTelefono')}  type="text" 
+                    className="form-control" value={dTelefono}/>
+            </div>
+
+        </form>
+        
+            
+    );
 
 
     //JSON.stringify(values) --> ver los var en string mostrado en pantalla
     //sirve para debug
     const signUpForm = () =>(
         <form>
-            <div className="form-group mt-30">
-                <label className="text-muted">
-                    Nombre
-                </label>
-                <input name="sNombre" onChange={handleChange('sNombre')} type="text" className="form-control" 
-                value={sNombre}
-                />
-            </div>
+            <div className="row">
+            <div className="col-lg-6">
+                <div className="form-group mt-30">
+                    <label className="text-muted">
+                        Nombre *
+                    </label>
+                    <input name="sNombre" onChange={handleChange('sNombre')} type="text" className="form-control" 
+                    value={sNombre}
+                    />
+                </div>
 
-            <div className="form-group">
-                <label className="text-muted">
-                    Primer Apellido
-                </label>
-                <input name="sApellido" onChange={handleChange('sApellido')}  type="text" 
-                className="form-control" value={sApellido}/>
-            </div>
+                <div className="form-group">
+                    <label className="text-muted">
+                        Primer Apellido *
+                    </label>
+                    <input name="sApellido" onChange={handleChange('sApellido')}  type="text" 
+                    className="form-control" value={sApellido}/>
+                </div>
 
-            <div className="form-group">
-                <label className="text-muted">
-                    Fecha de nacimiento
-                </label>
-                <input name="dNacimiento" onChange={handleChange('dNacimiento')}  type="date" 
-                className="form-control"
-                 value={dNacimiento }/>
-            </div>
+                <div className="form-group">
+                    <label className="text-muted">
+                        Fecha de nacimiento *
+                    </label>
+                    <input name="dNacimiento" onChange={handleChange('dNacimiento')}  type="date" 
+                    className="form-control"
+                    value={dNacimiento }/>
+                </div>
 
-            <div className="form-group">
-                <label className="text-muted">
-                    Email
-                </label>
-                <input name="sCorreo" onChange={handleChange('sCorreo')}  type="email" 
-                value={sCorreo} className="form-control" />
+                <div className="form-group">
+                    <label className="text-muted">
+                        Email *
+                    </label>
+                    <input name="sCorreo" onChange={handleChange('sCorreo')}  type="email" 
+                    value={sCorreo} className="form-control" />
+                
+                </div>
+
+                <div className="form-group">
+                    <label className="text-muted">
+                        Contraseña *
+                    </label>
+                    <input name="sContrasena" onChange={handleChange('sContrasena')}  type="password" 
+                    value={sContrasena} className="form-control" />
             
-            </div>
+                </div>
 
-            <div className="form-group">
-                <label className="text-muted">
-                    Contraseña
-                </label>
-                <input name="sContrasena" onChange={handleChange('sContrasena')}  type="password" 
-                value={sContrasena} className="form-control" />
-        
+                <div className="form-group">
+                    <label className="text-muted">
+                        Confirmar Contraseña *
+                    </label>
+                    <input name="password" value={password}  onChange={handleChange('password')}  type="password" className="form-control" />
+                </div>
             </div>
+            <div className="col-lg-6">
+                {direccionForm()}
+            </div>
+            </div>  
 
-            <div className="form-group">
-                <label className="text-muted">
-                    Confirmar Contraseña
-                </label>
-                <input name="password" value={password}  onChange={handleChange('password')}  type="password" className="form-control" />
-            </div>
+            
 
             <div className="btnCentral">
             <button   onClick={crearCuenta}   className="btn btn-outline-primary btnCentral">
                 Crear Cuenta
             </button>
-
-       
-            
             </div>
+            
         </form>
     );
 
