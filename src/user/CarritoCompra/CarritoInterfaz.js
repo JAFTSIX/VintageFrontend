@@ -35,6 +35,7 @@ const CarritoInterfaz = ({product}) => {
                 
                 <input type="number" 
                         maxlength="1" size="1"
+                        min="1"
                         className="form-control inputSize" 
                         value={count} 
                         onChange={handleChange(product._id)} />
@@ -100,9 +101,9 @@ const CarritoInterfaz = ({product}) => {
                 )}
                 
                 {/* precio unidad  */}
-                <div className="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center"><h3>₡{product.iPrecio}</h3></div>
+                <div className="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center"><h3>${product.iPrecio}</h3></div>
                 {/* precio total  */}
-                <div className="col-lg-3 col-md-2 text-center d-flex justify-content-center align-items-center" ><h3>₡{totalPrecioUnidad()}</h3></div>
+                <div className="col-lg-3 col-md-2 text-center d-flex justify-content-center align-items-center" ><h3>${totalPrecioUnidad()}</h3></div>
                 {/* icono eliminar producto  */}
                 <div className="col-lg-1 col-md-2  text-center d-flex justify-content-center align-items-center">{eliminaProductoCarrito()}</div>
                  

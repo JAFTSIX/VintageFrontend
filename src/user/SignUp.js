@@ -7,9 +7,9 @@ import {resultado,HandleChangeValidation,checkingCliente } from './procesos/Vali
 import '../index.css';
 import './login.css';
 import Footer from '../nucleo/Footer';
+import { insertObject} from './../admin/apiAdmin';
 
-//todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
-import {signUp} from '../autentificacion'; 
+
 
 
 
@@ -126,17 +126,16 @@ const handleChange = campo => event => {
         dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
         
     if (resultado.valido&&password===sContrasena) {
-        signUp({sNombre, sApellido, sContrasena, sCorreo, 
-            dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
+        insertObject('Cliente',{sNombre, sApellido, sContrasena, sCorreo, 
+            dNacimiento:new Date(''.concat(dNacimiento.toString(),'T12:00:00')), aFavoritos, oDireccion, bActivo,aRecetas})
         //funcion para comprobar si se crea la cuenta con exito
-        .then(data =>{
+        .then( (data={error:{message:'hay un problema, intente más tarde'}} ) =>{
 
             
             //si hay error
             if('error' in data ){
                 setValues({...values, error:data.error.message, funciona: false});
-                console.log(data.error.message);
-                console.log("Usuario Creados"+values);   
+
             }//si no hay error, se vacia los textbox
             else {
                 setValues({

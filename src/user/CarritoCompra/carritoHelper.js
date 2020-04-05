@@ -9,9 +9,13 @@ export const agregarProductoCarrito = (producto,bool, next) => {
         if(localStorage.getItem('carrito')){
             carrito=JSON.parse(localStorage.getItem('carrito'));
         }
+
+        
+        if (bool==0) {
+        producto.iCant=1;    
+        }
         carrito.push({
-            ...producto, 
-            count:1, //cantidad de productos
+            ...producto,             
             recetaOProducto:bool, //determinar si es receta 1 o producto 0
         });
 
@@ -62,6 +66,7 @@ export const actualizarCantidad = (productoId, count) => {
 
         // recorrer todos los productos de localStorage 
         carrito.map((producto, i)=>{
+            
             // comparar el id de los productos del localStorage con el id que pasamos 
             //por param de Carrito que se seleccion para cambiar la cantidad
             if(producto._id === productoId){
@@ -104,3 +109,28 @@ export const eliminarProductoCarrito = (productoId) => {
 
     return carrito;
 }
+
+export const eliminarTodoProductoCarrito = () => {
+    
+    if(typeof window !== 'undefined'){
+         
+        localStorage.setItem('carrito', JSON.stringify([]));
+
+    }
+
+    
+}
+
+
+export const SetProductosCarrito = (productos ) => {
+ 
+        let carrito = productos
+        if(typeof window !== 'undefined'){
+            
+            console.log('carrito',carrito)
+           
+            
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+      
+        }
+ };

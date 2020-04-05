@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import Layout from '../nucleo/Layout';
 import Menu from '../nucleo/Menu';
 import candado from './Img/candado.jpg';
-
 import { Redirect} from 'react-router-dom';
+import { insertObject} from './../admin/apiAdmin';
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signIn, autentificacion, isAutentificacion} from '../autentificacion'; 
 import {checkingLogin,HandleChangelogin } from './procesos/ValidarDatos';
@@ -18,18 +18,10 @@ const SignIn = () => {
     const [values, setValues] = useState({
         //todo se elimina, solo se deja correo y contra
         
-        sContrasena: "",
-     
-      
-        
+        sContrasena: "",   
         bActivo:true ,
         bAdmin:false ,
-      
-
-        sCorreo: "",
-
-
-        
+        sCorreo: "",    
         loading:false ,
         redireccionar:false,
         error:""
@@ -83,60 +75,31 @@ const SignIn = () => {
             loading: true
         });
 
-        const resultado = checkingLogin({
-            sContrasena,
-            sCorreo
-        })
-        if (resultado.valido) {
-            signIn({
-                    sContrasena,
-                    sCorreo
-                })
-                //funcion para comprobar si se crea la cuenta con exito
-                .then(data => {
+        const resultado = checkingLogin({ sContrasena,sCorreo})
 
 
-                    if (data === undefined) {
-                        setValues({
-                            ...values,
-                            error: 'Problemas, intente más tarde'
-                        });
-                    } else {
+        resultado.valido?
+                     insertObject('login',{password:sContrasena,email:sCorreo}).then(
+                    (data={error:{message:'hay un problema, intente más tarde'}} )  => {
+                      
+                        ('error' in data)?
 
-                        console.log(data)
-                        //si hay error
-                        if ('error' in data) {
-
-                            setValues({
-                                ...values,
-                                error: errorTranslator(data.error.message),
+                            setValues({...values,
+                                 error: errorTranslator(data.error.message),
                                 loading: false
-                            });
-                        } //si no hay error, se redirecciona a la principal
-                        else {
-                            
-                            autentificacion(data.value, () => {
-                                setValues({
-                                    ...values,
+                            })
+                        
+                        : autentificacion(data.value, () => {
+                                setValues({...values,
                                     redireccionar: true,
                                     loading: false,
                                     bAdmin: data.value.cliente.bAdmin,
                                 });
                             });
-                        }
+                    })
+                : setValues({ ...values,  error: ''+resultado.incidente+ ' , Por favor llene correctamente todo el formulario antes de enviar'});
 
-                    }
-
-
-                });
-        } else {
-            //oops
-            setValues({
-                ...values,
-                error: ''.concat(resultado.incidente, ' , Por favor llene correctamente todo el formulario antes de enviar')
-            });
-
-        }
+        
         
     }
 
@@ -153,6 +116,8 @@ const SignIn = () => {
         <div className="alert alert-danger" 
         style={{display: error ? '' : 'none'}}>
             {error}
+
+         
         </div>
     );
         

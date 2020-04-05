@@ -1,10 +1,11 @@
 import React, {useState, useEffect, Fragment} from 'react';
-import {leerProductoDetalle} from './apiProducto';
+
 import '../index.css';
 import '../css.css';
 import './videoReceta.css';
 import {isAutentificacion} from '../autentificacion/index';
 import { Link,Redirect } from 'react-router-dom';
+import { getObjeto} from './../admin/apiAdmin';
 import Menu from '../nucleo/Menu';  
 import EliminarProducto from '../admin/EliminarProducto';
 import {agregarProductoCarrito} from './CarritoCompra/carritoHelper';
@@ -19,6 +20,7 @@ const ProductoDetalle = (props) => {
     const [mensaje, setMensaje] = useState(false);
     const agregarCarrito = () => {
         // parametros -> el producto que viene del prop y el cb function 
+   
         agregarProductoCarrito(producto,0, ()=>{
             setRedirect(true);
             setMensaje(true);
@@ -53,12 +55,18 @@ const ProductoDetalle = (props) => {
     // metodo cargar producto del url 
     const cargarDetalleProducto = productoId => {
         // funcion ubicado en apiProducto 
-        leerProductoDetalle(productoId).then(data=>{
-            if(data.error){
-                setError(data.error);
-            }else{
+        getObjeto('Articulo',`/${productoId}`).then(
+            (data={error:{message:'hay un problema, intente más tarde'}}) =>{            
+
+            if ('error' in data) {
+
+                setError(data.error.message);
+            }  
+            else {
+                
                 setProducto(data);
             }
+            
         })
     }
 
@@ -133,7 +141,7 @@ const ProductoDetalle = (props) => {
                 <div className="col-lg-5 col-md-11 scroll mr-1">   
                     <h1 className=" text-left colorPink">Descripcion</h1>  
                     <h5 className="mt-4 mb-4 text-justify">{producto.sDescripcion}</h5>
-                    <h3 className="float-right">Precio: ₡ {producto.iPrecio}</h3>
+                    <h3 className="float-right">Precio: $ {producto.iPrecio}</h3>
 
                     {!isAutentificacion() &&(
                             <Link to={`/signIn`}>
