@@ -199,42 +199,42 @@ const handleChange = campo => event => {
         <form>
             <div className="form-group mt-30">
                 <label className="text-muted">
-                    Provincia *
+                    Provincia 
                 </label>
                 <input name="dProvincia" onChange={handleChange('dProvincia')}  type="text" 
                     className="form-control" value={dProvincia}/>
             </div>
             <div className="form-group mt-30">
                 <label className="text-muted">
-                    Cantón *
+                    Cantón 
                 </label>
                 <input name="dCanton" onChange={handleChange('dCanton')}  type="text" 
                     className="form-control" value={dCanton}/>
             </div>
             <div className="form-group mt-30">
                 <label className="text-muted">
-                    Dirección 1 *
+                    Dirección 1 
                 </label>
                 <input name="dDireccion1" onChange={handleChange('dDireccion1')}  type="text" 
                     className="form-control" value={dDireccion1}/>
             </div>
             <div className="form-group mt-30">
                 <label className="text-muted">
-                    Dirección 2 *
+                    Dirección 2 
                 </label>
                 <input name="dDireccion2" onChange={handleChange('dDireccion2')}  type="text" 
                     className="form-control" value={dDireccion2}/>
             </div>
             <div className="form-group mt-30">
                 <label className="text-muted">
-                    Código Postal *
+                    Código Postal 
                 </label>
                 <input name="dCodPostal" onChange={handleChange('dCodPostal')}  type="text" 
                     className="form-control" value={dCodPostal}/>
             </div>
             <div className="form-group mt-30">
                 <label className="text-muted">
-                    Teléfono *
+                    Teléfono 
                 </label>    
                 <input name="dTelefono" onChange={handleChange('dTelefono')}  type="text" 
                     className="form-control" value={dTelefono}/>
