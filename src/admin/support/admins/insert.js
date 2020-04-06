@@ -150,7 +150,7 @@ const handleChange = campo => event => {
  
 
     const resultado=checkingCliente({sNombre, sApellido, sContrasena, sCorreo, 
-        dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
+        dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas,aPermisos:getPermisos()})
          
     const spermisos=getPermisos()
 
