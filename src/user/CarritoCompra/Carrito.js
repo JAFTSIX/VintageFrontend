@@ -72,29 +72,23 @@ const Carrito = () => {
         
         return(     
             <div className="row">
+                <img className="imgCarrito " src={producto[index].sUrlImagen} />
+                <h5 className="text-capitalize col-2 carritoFlex">{producto[index].sNombre}</h5>
                 
-
-                <div className="col-lg-5 col-md-3 mb-lg-3">
-                    <div className="d-lg-inline-flex ml-lg-5 ml-md-1 mt-lg-5 mt-md-1 ">
-                        <h1 className="text-capitalize">{producto[index].sNombre}</h1>
-                    </div>
-                    <img className="imgCarrito" src={producto[index].sUrlImagen} />
-
-                </div>  
                 
                 <hr />
                 {/* Si es una receta la cantidad siempre va ser 1  */}
                 {producto[index].recetaOProducto === 1 &&(
-                    <div className="col-lg-1 col-md-3 text-center d-flex justify-content-center align-items-center">
-                        <h3><label>{producto[index].iCant=1}</label></h3>
+                    <div className="carritoFlex">
+                        <h5 className="col-2 carritoFlex"><label>{producto[index].iCant=1}</label></h5>
                     </div>
                     
                 )}
                 {producto[index].recetaOProducto ===0 &&(
                     // {/* cantidad  */}
-                    <div className="col-lg-1 col-md-3 text-center d-flex justify-content-center align-items-center"><h3>
+                    <div className="carritoFlex"><h5>
 
-                    <div className="input-group mb-3">
+                    <div className="input-group  carritoFlex">
                 
                         <input type="number" 
                         maxlength="1" size="1"
@@ -104,17 +98,17 @@ const Carrito = () => {
                         onChange={handleChange(producto[index]._id,1)} />    
                 
                     </div>
-                    </h3></div>
-                )}
+                    </h5></div>
+                )}  
                 
                 
                 
                 {/* precio unidad  */}
-                <div className="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center"><h3>${producto[index].iPrecio}</h3></div>
+                <div className="col-2 mt-lg-2 carritoFlex"><h5>${producto[index].iPrecio}</h5></div>
                 {/* precio total  */}               
-                <div className="col-lg-3 col-md-2 text-center d-flex justify-content-center align-items-center" ><h3>${ producto[index].iCant * producto[index].iPrecio }</h3></div>
+                <div className="col-2 mt-lg-2 carritoFlex" ><h5>${ producto[index].iCant * producto[index].iPrecio }</h5></div>
                 {/* icono eliminar producto  */}
-                <div className="col-lg-1 col-md-2  text-center d-flex justify-content-center align-items-center">
+                <div className="col-1 mt-lg-2 carritoFlex">
                 <button class="customBtnCart"
                     onClick={handleChange(producto[index]._id,2)}>
                     <img src="https://cdn3.iconfinder.com/data/icons/iconano-text-editor/512/005-X-512.png" className="iconoEliminarCarrito"/>
@@ -122,6 +116,7 @@ const Carrito = () => {
                 </button>
                  
                 </div>
+
                  
             </div>
 
@@ -142,30 +137,35 @@ const Carrito = () => {
     const mostrarProducto = () => {
         console.log('averputo');
         return(
-            <div>   
-            <div id="tabla" className="mb-3 row px-5" >
-            {/* displayNone : en tablet y mobil no va a aparecer esto */}
-                    <div className="col-lg-5 displayNone pl-5">PRODUCTOS</div>
-                    <div className="col-lg-1 text-center displayNone">CANTIDAD</div>
-                    <div className="col-lg-2 text-center pl-5 displayNone">PRECIO / UNIDAD</div>
-                    <div className="col-lg-3 text-center pl-5 displayNone">PRECIO TOTAL</div> 
-            </div>
+            <div className="row">  
+            <div className="col-lg-7"> 
+                <div id="tabla" className="mb-3 row px-5" >
+                {/* displayNone : en tablet y mobil no va a aparecer esto */}
+                        <div className="displayNone mx-auto">IMAGEN</div>
+                        <div className="displayNone mx-auto">PRODUCTOS</div>
+                        <div className="displayNone  mx-auto">CANTIDAD</div>
+                        <div className="displayNone  mx-auto">PRECIO / UNIDAD</div>
+                        <div className="displayNone  mx-auto">PRECIO TOTAL</div> 
+                </div>
+            
+
 
             {
-
                 
                 Success2?(<div></div>):(producto.map((product, i)=>(
-                    <CarritoInterfaz key={i} index={i}/>
+                        <CarritoInterfaz key={i} index={i}/>                   
                 )))
             } 
+            </div>
 
-                <div className="text-right">
+                <div className="col-lg-5 text-right">
                     <Checkout products={producto} Change={handleState} />
                     
                     
                 </div>
+                </div>
 
-            </div>
+
         )
     };
 

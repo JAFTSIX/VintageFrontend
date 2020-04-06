@@ -54,6 +54,12 @@ const FacturaInterfaz = ({Factura}) => {
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Id Cliente :</h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {Factura.sCliente} </h5>
                       <br/>
+                      <h5 className="font-weight-bold " style={{display : 'inline'}}>Cliente :</h5>  
+                      <h5 className="font-weight-normal text-capitalize" style={{display : 'inline'}}> {Factura.oDireccion.nombre} {Factura.oDireccion.apellido}</h5>
+                      <br/>
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Correo Electronico :</h5>  
+                      <h5 className="font-weight-normal" style={{display : 'inline'}}> {Factura.oDireccion.correo} </h5>
+                      <br/>
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Subtotal:</h5>  
                       <h5 className="font-weight-normal" style={{display : 'inline'}}> {Factura.iSubtotal}$ </h5>
                       <br/>
@@ -83,46 +89,38 @@ const FacturaInterfaz = ({Factura}) => {
                       </a>
                     </p>
                
-                    <div className="collapse mb-5" id={'direccion'+Factura._id}>
-
-                      <div  class="pl-5">
-                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Ciudad:</h5>  
-                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sCiudad} </p>
-                
-                      
+                    <div className="collapse mb-5 pl-5" id={'direccion'+Factura._id}>
+                        <div  class="">
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Provincia:</h5>  
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.provincia} </p>
+                      </div>
+                      <div  class="">
+                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Canton:</h5>  
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.canton} </p>
+                      </div>                      
                       
                       <div  class="">
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección 1:</h5>  
-                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sDireccion1} </p>
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.direccion1} </p>
                       </div>
                       
                       <div  class="">
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Dirección 2:</h5>  
-                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sDireccion2} </p>
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.direccion2} </p>
                       </div>
 
 
                       <div  class="">
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Código postal:</h5>  
-                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.iCodPostal} </p>
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.codPostal} </p>
                       </div>
 
                       <div  class="">
                       <h5 className="font-weight-bold" style={{display : 'inline'}}>Teléfono:</h5>  
-                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sTelefono} </p>
+                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.telefono} </p>
                       </div>
 
-                      <div  class="">
-                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Nombre:</h5>  
-                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sNombre} </p>
-                      </div>
-
-                      <div  class="">
-                      <h5 className="font-weight-bold" style={{display : 'inline'}}>Apellido:</h5>  
-                      <p className="font-weight-normal"style={{display : 'inline'}}> {Factura.oDireccion.sApellido} </p>
-                      </div>
-
-                        </div>
+                       
                     </div>
 
                     </div>

@@ -83,29 +83,26 @@ const CarritoInterfaz = ({product}) => {
     }
 
     return(     
-            <div className="row">
-                
+            <div className="">
 
-                <div className="col-lg-5 col-md-3 mb-lg-3">
-                    <div className="d-lg-inline-flex ml-lg-5 ml-md-1 mt-lg-5 mt-md-1 ">
-                        <h1 className="text-capitalize">{product.sNombre}</h1>
-                    </div>
+                <div className="mx-auto">
+                    <h3 className="text-capitalize mt-lg-2">{product.sNombre}</h3>
                     <img className="imgCarrito" src={product.sUrlImagen} />
-
+                    <h3 className="text-capitalize">{product.sNombre}</h3>
                 </div>  
                 
                 <hr />
                 {product.recetaOProducto ===0 &&(
                     // {/* cantidad  */}
-                    <div className="col-lg-1 col-md-3 text-center d-flex justify-content-center aslign-items-center"><h3>{mostrarOpcionActualizar()}</h3></div>
+                    <div className="mx-auto"><h3>{mostrarOpcionActualizar()}</h3></div>
                 )}
-                
+
                 {/* precio unidad  */}
-                <div className="col-lg-2 col-md-2 text-center d-flex justify-content-center align-items-center"><h3>${product.iPrecio}</h3></div>
+                <div className="mx-auto"><h3>${product.iPrecio}</h3></div>
                 {/* precio total  */}
-                <div className="col-lg-3 col-md-2 text-center d-flex justify-content-center align-items-center" ><h3>${totalPrecioUnidad()}</h3></div>
+                <div className="mx-auto" ><h3>${totalPrecioUnidad()}</h3></div>
                 {/* icono eliminar producto  */}
-                <div className="col-lg-1 col-md-2  text-center d-flex justify-content-center align-items-center">{eliminaProductoCarrito()}</div>
+                <div className="mx-auto">{eliminaProductoCarrito()}</div>
                  
             </div>
 

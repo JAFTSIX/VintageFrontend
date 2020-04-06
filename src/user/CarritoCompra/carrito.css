@@ -26,8 +26,8 @@
   }
 
   .input-group > .form-control, .input-group > .form-control-plaintext, .input-group > .custom-select, .input-group > .custom-file {
-      width: 80px !important;
-      font-size: 25px;
+      width: 55px !important;
+      font-size: 16px;
       text-align: center;
   }
 
@@ -47,14 +47,42 @@
 
   
   .imgCarrito{
-    height:300px;
-    width:450px;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+  }
+  .carritoFlex{
+    display: flex;
+    align-items: center;  
+    justify-content: center;
   }
 
   
   .iconoEliminarCarrito{
-    height:50px;
-    width:50px;
+    height:25px;
+  }
+
+  .braintree-sheet__content--form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bgCheckout{
+    background-color: rgba(240, 128, 128, 0.075);
+    padding: 4%;
+    border-radius: 2%;
+    -webkit-box-shadow: -25px 9px 37px 0px rgba(90, 90, 90, 0.1);
+-moz-box-shadow: -25px 9px 37px 0px rgba(90, 90, 90, 0.1);
+box-shadow: -25px 9px 37px 0px rgba(90, 90, 90, 0.1);
+
+  }
+  .form-control{  
+    background-color: #fff0;
+    border-style: none;
+    border-bottom: 1px solid #929292;
+    border-radius: 0;
+    
   }
 
   @media only screen and (max-width:769px) {

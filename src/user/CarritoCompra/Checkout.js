@@ -14,7 +14,18 @@ import { isAutentificacion } from './../../autentificacion/index';
 import moment from 'moment';
 
 const Checkout = ({products,Change}) => {
-         
+    
+    const [direccion, setDireccion]=useState({
+        provincia:isAutentificacion().cliente.oDireccion.provincia,
+        canton:isAutentificacion().cliente.oDireccion.canton,
+        direccion1:isAutentificacion().cliente.oDireccion.direccion1,
+        direccion2:isAutentificacion().cliente.oDireccion.direccion2,
+        codPostal:isAutentificacion().cliente.oDireccion.codPostal,
+        telefono:isAutentificacion().cliente.oDireccion.telefono,
+        nombre: isAutentificacion().cliente.sNombre,
+        apellido: isAutentificacion().cliente.sApellido,
+        correo: isAutentificacion().cliente.sCorreo
+    });
     const [value,setValue]=useState({
         
         clientToken:null,
@@ -26,7 +37,19 @@ const Checkout = ({products,Change}) => {
     const [success, setSuccess] = useState(false);    
     const [redireccionar, setRedireccionar] = useState(false);
 
-    
+    // destructive
+    const{
+        provincia,
+        canton,
+        direccion1,
+        direccion2,
+        codPostal,
+        telefono,
+        nombre,
+        apellido,
+        correo
+    }=direccion;
+
     useEffect(()=>{
         console.log('changeeee->',Change)
         getToken()
@@ -47,7 +70,7 @@ const Checkout = ({products,Change}) => {
           
                     setValue({...value,clientToken:data.value.clientToken});
                     //console.log(data.value);
-                                                             
+                     console.log("factura"+value.clientToken)                                            
                 }
        
         })
@@ -70,21 +93,25 @@ const Checkout = ({products,Change}) => {
 
             //comprar
             const aver=insertObject('Factura',{
-                Factura: {
-            sCliente:  isAutentificacion().cliente._id,
-            dFecha: moment().format(),
-            aCompras:products,
-            iSubtotal: 0,
-            iTotal: 0,
-           
-            oDireccion: { sCiudad: "San Jose",
-            sDireccion1: "de la farmacia sucre 200 metros en el reestaurante el pueblo",
-            sDireccion2: "de la farmacia sucre 100 metros en el reestaurante el pollo",
-            iCodPostal: "10101",
-            sTelefono: "88442252",
-            sNombre: "Ignacio",
-            sApellido: "pepe"}
-        }
+            Factura: {
+                sCliente:  isAutentificacion().cliente._id,
+                dFecha: moment().format(),
+                aCompras:products,
+                iSubtotal: 0,
+                iTotal: 0,
+            
+                oDireccion: {
+                    provincia:provincia,
+                    canton:canton,
+                    direccion1:direccion1,
+                    direccion2:direccion2,
+                    codPostal:codPostal,
+                    telefono:telefono,
+                    nombre: nombre,
+                    apellido: apellido,
+                    correo: correo
+                }
+            }
         ,
             paymentMethodNonce:nonce,}).then(dataY=>{
 
@@ -111,6 +138,7 @@ const Checkout = ({products,Change}) => {
                         Change(true);
                    
                    }
+           
 
 
             }).catch(errorY=>{
@@ -174,9 +202,9 @@ const Checkout = ({products,Change}) => {
                 
                 <button onClick={comprar} className="btn btn-outline-primary
                                 agregarPadding mb-5 btn block">
-                                <h4>pagar</h4> 
-                    </button>
-
+                                <h4>Pagar</h4> 
+                </button>
+               
 
         </div>
          ):null }
@@ -203,35 +231,81 @@ const Checkout = ({products,Change}) => {
             
         );
 
+        //cambiar la direccion o poner la direccion antes del pago
+        const handleChange = name => event => {
+            setDireccion({...direccion, [name]:  event.target.value});
+            console.log(direccion)
+        }
+
+        const direccionForm = () => (
+            <form className="text-left">
+                <div className="form-group mt-30 ">
+                    <label className="text-muted">
+                        Provincia 
+                    </label>
+                    <input name="provincia" onChange={handleChange('provincia')}  type="text" 
+                        className="form-control" value={provincia}/>
+                </div>
+                <div className="form-group mt-30">
+                    <label className="text-muted">
+                        Cantón 
+                    </label>
+                    <input name="canton" onChange={handleChange('canton')}  type="text" 
+                        className="form-control" value={canton}/>
+                </div>
+                <div className="form-group mt-30">
+                    <label className="text-muted">
+                        Dirección 1 
+                    </label>
+                    <input name="direccion1" onChange={handleChange('direccion1')}  type="text" 
+                        className="form-control" value={direccion1}/>
+                </div>
+                <div className="form-group mt-30">
+                    <label className="text-muted">
+                        Dirección 2 
+                    </label>
+                    <input name="direccion2" onChange={handleChange('direccion2')}  type="text" 
+                        className="form-control" value={direccion2}/>
+                </div>
+                <div className="form-group mt-30">
+                    <label className="text-muted">
+                        Código Postal 
+                    </label>
+                    <input name="codPostal" onChange={handleChange('codPostal')}  type="text" 
+                        className="form-control" value={codPostal}/>
+                </div>
+                <div className="form-group mt-30">
+                    <label className="text-muted">
+                        Teléfono 
+                    </label>    
+                    <input name="telefono" onChange={handleChange('telefono')}  type="text" 
+                        className="form-control" value={telefono}/>
+                </div>
+    
+            </form>
+            
+                
+        );
+
      
 
-    return <div>
+    return <div className="bgCheckout">    
 
+       
+                {console.log(direccion)}
                {mostrarError()}
                  {mostrarExito()}
-                {/* calcular total de producto  */}
+
+                    {direccionForm()}
+                    <div className="mb-5 text-danger">*Recuerda, si no desea ingresar ingresar los datos de la direccion cada vez que se realiza una compra
+                        puedes registrarlo en el perfil.
+                    </div>
+                    {showCheckOut()}
+
+                    {/* calcular total de producto  */}
                 <h1>Total de Productos: {getTotalProductos()}</h1>
                 {/* calcular el total de carrito de compra  */}
                 <h1>Total: ${getTotal()}</h1>
-               {/*<PayPalButton
-
-                        amount={getTotal()}
-                        // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
-                        onSuccess={(details, data) => {
-                        alert("Transacción Completada");
-                
-                        // OPTIONAL: Call your server to save the transaction
-                        return fetch("/paypal-transaction-complete", {
-                            method: "post",
-                            body: JSON.stringify({
-                            orderID: data.orderID
-                            })
-                        });
-                        }}
-                    />  */}
-
-
-                    {showCheckOut()}
 
                     
 
