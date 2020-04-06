@@ -142,27 +142,34 @@ const Carrito = () => {
     const mostrarProducto = () => {
         console.log('averputo');
         return(
-            <div>   
-            <div id="tabla" className="mb-3 row px-5" >
-            {/* displayNone : en tablet y mobil no va a aparecer esto */}
-                    <div className="col-lg-5 displayNone pl-5">PRODUCTOS</div>
-                    <div className="col-lg-1 text-center displayNone">CANTIDAD</div>
-                    <div className="col-lg-2 text-center pl-5 displayNone">PRECIO / UNIDAD</div>
-                    <div className="col-lg-3 text-center pl-5 displayNone">PRECIO TOTAL</div> 
+            <div className="row">  
+            <div className="col-lg-6"> 
+                <div id="tabla" className="mb-3 row px-5" >
+                {/* displayNone : en tablet y mobil no va a aparecer esto */}
+                        <div className="displayNone mx-auto">PRODUCTOS</div>
+                        <div className="displayNone  mx-auto">CANTIDAD</div>
+                        <div className="displayNone  mx-auto">PRECIO / UNIDAD</div>
+                        <div className="displayNone  mx-auto">PRECIO TOTAL</div> 
+                </div>
             </div>
+            <div className="row">
 
             {
-
                 
                 Success2?(<div></div>):(producto.map((product, i)=>(
-                    <CarritoInterfaz key={i} index={i}/>
+                    
+                    <div className="col-lg-6">
+                        <CarritoInterfaz key={i} index={i}/>
+                    </div>
+                    
                 )))
             } 
 
-                <div className="text-right">
+                <div className="col-lg-6 text-right">
                     <Checkout products={producto} Change={handleState} />
                     
                     
+                </div>
                 </div>
 
             </div>
