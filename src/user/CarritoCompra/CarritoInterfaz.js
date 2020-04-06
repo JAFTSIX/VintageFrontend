@@ -86,9 +86,9 @@ const CarritoInterfaz = ({product}) => {
             <div className="">
 
                 <div className="mx-auto">
-                    <h5 className="text-capitalize">{product.sNombre}</h5>
+                    <h3 className="text-capitalize mt-lg-2">{product.sNombre}</h3>
                     <img className="imgCarrito" src={product.sUrlImagen} />
-
+                    <h3 className="text-capitalize">{product.sNombre}</h3>
                 </div>  
                 
                 <hr />
