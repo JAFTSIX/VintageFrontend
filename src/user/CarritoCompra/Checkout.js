@@ -289,30 +289,17 @@ const Checkout = ({products,Change}) => {
 
      
 
-    return <div>
-        
+    return <div className="bgCheckout">    
+
+       
                 {console.log(direccion)}
                {mostrarError()}
                  {mostrarExito()}
-                
-               {/*<PayPalButton
-
-                        amount={getTotal()}
-                        // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
-                        onSuccess={(details, data) => {
-                        alert("Transacción Completada");
-                
-                        // OPTIONAL: Call your server to save the transaction
-                        return fetch("/paypal-transaction-complete", {
-                            method: "post",
-                            body: JSON.stringify({
-                            orderID: data.orderID
-                            })
-                        });
-                        }}
-                    />  */}
 
                     {direccionForm()}
+                    <div className="mb-5 text-danger">*Recuerda, si no desea ingresar ingresar los datos de la direccion cada vez que se realiza una compra
+                        puedes registrarlo en el perfil.
+                    </div>
                     {showCheckOut()}
 
                     {/* calcular total de producto  */}
