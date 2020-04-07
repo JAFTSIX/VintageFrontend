@@ -295,7 +295,7 @@ const Checkout = ({products,Change}) => {
                 {console.log(direccion)}
                {mostrarError()}
                  {mostrarExito()}
-
+            
                     {direccionForm()}
                     <div className="mb-5 text-danger">*Recuerda, si no desea ingresar ingresar los datos de la direccion cada vez que se realiza una compra
                         puedes registrarlo en el perfil.
