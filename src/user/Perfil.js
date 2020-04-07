@@ -46,7 +46,7 @@ const Perfil = () => {
 
         <div className="row d-flex justify-content-center">
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <Link className="nav-link" to="/perfil/modificar">
+                <Link className="nav-link" to={`/perfil/${_id}`}>
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/14/14853.png" alt="Card image cap" />
                 <div class="card-body mt-3">
