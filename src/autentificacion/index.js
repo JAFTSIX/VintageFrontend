@@ -81,7 +81,7 @@ export const readPerfil = (perfilId, token) => {
         })
 }
 
-export const modificarPerfil = (perfilId,token,perfil) => {
+export const modificarPerfil = (perfilId,token,cliente) => {
 
     return fetch(`${API}/Cliente/${perfilId}`, {
         method: "PUT",
@@ -90,7 +90,7 @@ export const modificarPerfil = (perfilId,token,perfil) => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(perfil) //convierte el objeto en json string
+        body: JSON.stringify(cliente) //convierte el objeto en json string
         
     })
             
@@ -99,17 +99,19 @@ export const modificarPerfil = (perfilId,token,perfil) => {
     })
     .catch(err => {
         
-        console.log(EvalError)
+        console.log(cliente)
     })
 }
 
-export const modificarPerfilLocal = (perfil, next) =>{
+export const modificarPerfilLocal = (cliente, next) =>{
     if(typeof window !== 'undefined'){
         if(localStorage.getItem('jwt')){
-            let auth = localStorage.getItem('jwt');
-            auth.perfil = perfil;
+            let auth = JSON.parse(localStorage.getItem('jwt'));
+            auth.cliente = cliente;
             localStorage.setItem('jwt', JSON.stringify(auth));
+            console.log(cliente);
             next();
+            
         }
     }
 }
