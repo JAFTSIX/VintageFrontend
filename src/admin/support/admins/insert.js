@@ -409,7 +409,7 @@ const handleChange = campo => event => {
             <label className="text-muted">
              facturas
             </label>
-            <Checkbox    onChange={handleArrayChange('createTbArticulo')}    value={aPermisos.findTbFactura}>
+            <Checkbox    onChange={handleArrayChange('findTbFactura')}    value={aPermisos.findTbFactura}>
                 <label className="mr-5 ml-1 align-item-center justify-content-center">ver facturas</label>
             </Checkbox>
             </div>
@@ -418,7 +418,7 @@ const handleChange = campo => event => {
             <label className="text-muted">
              historial
             </label>
-            <Checkbox    onChange={handleArrayChange('createTbArticulo')}    value={aPermisos.findTbHistorial}>
+            <Checkbox    onChange={handleArrayChange('findTbHistorial')}    value={aPermisos.findTbHistorial}>
                 <label className="mr-5 ml-1 align-item-center justify-content-center">ver historial</label>
             </Checkbox>
             </div>

@@ -9,7 +9,7 @@ import '../index.css'
 const PrivateRoute = ({component: Component, ...rest}) => (
     //si es es autentico, retorna el componente con props, 
     //en caso contrario redirecciona a log in
-    <Route  {...rest} render={props => isAutentificacion() ? (
+    <Route  {...rest} render={props => (isAutentificacion()&&!isAutentificacion().cliente.bAdmin) ? (
         //si sí se loguea:
         <Component {...props}/>
     ) : (

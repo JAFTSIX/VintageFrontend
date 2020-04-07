@@ -11,6 +11,7 @@ import Perfil from './user/Perfil';
 import ModificarPerfil from './user/ModificarPerfil';
 import AdminRoute from './autentificacion/AdminRoute';
 import AdminD from './user/AdminD';
+import ModificarPerfilAdmin from './admin/support/admins/ModificarPerfilAdmin';
 
 
 import categoria from './admin/support/Categorias/listar';
@@ -66,7 +67,8 @@ const Routes = () => {
             <PrivateRoute path="/Perfil" exact component={Perfil}/>
             <PrivateRoute path="/Cliente/:perfilId" exact component={ModificarPerfil}/>
             <AdminRoute path="/Admin" exact component={AdminD}/>
-            
+            <AdminRoute path="/Admin/:perfilId" exact component={ModificarPerfilAdmin}/>
+
             <Route path="/producto" exact component={Producto}/>
             <AdminRoute path="/producto/agregar" 
             exact component={AgregarProducto}/>

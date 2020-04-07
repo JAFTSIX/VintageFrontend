@@ -84,7 +84,7 @@ export const readPerfil = (perfilId, token) => {
 export const modificarPerfil = (perfilId,token,cliente) => {
 
     return fetch(`${API}/Cliente/${perfilId}`, {
-        method: "PUT",
+        method: "PATCH",
         headers:{
             Accept: 'application/json',
             "Content-Type": "application/json",

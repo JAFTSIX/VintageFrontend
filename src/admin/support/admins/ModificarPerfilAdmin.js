@@ -1,12 +1,12 @@
 import React, { Fragment,useState,useEffect } from 'react';
-import Layout from '../nucleo/Layout';
-import {readPerfil, modificarPerfil,modificarPerfilLocal, isAutentificacion} from '../autentificacion';
+import Layout from '../../../nucleo/Layout';
+import {readPerfil, modificarPerfil,modificarPerfilLocal, isAutentificacion} from  '../../../autentificacion/index';
 import {Link, Redirect} from 'react-router-dom';
-import '../index.css';  
-import '../css.css';
+import '../../../index.css'
+import '../../../css.css';
  
 
-const ModificarPerfil = ({match}) => {
+const ModificarPerfilAdmin = ({match}) => {
     const [values,setValues] = useState({
         sNombre: "",
         sApellido: "",
@@ -324,4 +324,4 @@ const ModificarPerfil = ({match}) => {
     )
 }
 
-export default ModificarPerfil;
+export default ModificarPerfilAdmin;

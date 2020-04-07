@@ -22,7 +22,7 @@ export class resultado {
 
 function  isClienteValid(objeto) {
     var respuesta = new resultado(true, 'todo bien')
-    if (objeto.aPermisos.length>0) {
+    if (objeto.aPermisos.length<=0) {
         //   alert ("Error!");
         return new resultado(false, 'administrador sin permisos')
     }
