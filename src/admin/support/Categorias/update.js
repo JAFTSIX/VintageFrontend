@@ -39,14 +39,14 @@ const ModificarCategoria = (props) => {
     const cargarCategoria = _Id => {
 
         getObjetonyId('Categoria',_Id)
-        .then(data=>{
-            if(data.error){
-                setValor({...valor, error:data.error})
+        .then((data={error:{message:'Hay un problema intente mas tarde'}} )=>{
+            if ('error' in data) {
+                setValor({...valor, error:errorTranslator(data.error.message) });
             }else{
                 setValor({
                     ...valor,
-                    _id: data._id, 
-                    sNombre: data.sNombre,
+                    _id: data.value._id, 
+                    sNombre: data.value.sNombre,
                     loading: false,
                 })
             }
@@ -105,12 +105,12 @@ const ModificarCategoria = (props) => {
         event.preventDefault();
         setValor({...valor, error:'', loading:true});
         modificarObjeto ('Categoria',{_id,sNombre})
-        .then(data=>{
+        .then((data={error:{message:'Hay un problema intente mas tarde'}} )=>{
             if ('error' in data) {
                 setValor({...valor, error:errorTranslator(data.error.message) });
                 
             } else{
-    
+                console.log(data)   
                 setValor({
                     CategoriaModificado: true,
                     redirect:true
