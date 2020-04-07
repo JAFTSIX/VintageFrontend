@@ -46,7 +46,7 @@ const Perfil = () => {
 
         <div className="row d-flex justify-content-center">
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <Link className="nav-link" to={`/perfil/${_id}`}>
+                <Link className="nav-link" to={`/Cliente/${_id}`}>
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/14/14853.png" alt="Card image cap" />
                 <div class="card-body mt-3">
@@ -98,6 +98,7 @@ const Perfil = () => {
                 <h3 className="card-header perfilCardHeader">
                     Mi Cuenta
                 </h3>
+                {console.log(oDireccion)}
                 <ul className="list-group">
                     <li className="list-group-item text-capitalize"><strong>Nombre: </strong>{sNombre}</li>
                     <li className="list-group-item text-capitalize"><strong>Apellido: </strong>{sApellido}</li>
