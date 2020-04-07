@@ -59,3 +59,59 @@ export const BorrarCarrito =  () => {
     
     }
 }
+
+
+//modificar perfil
+export const readPerfil = (perfilId, token) => {
+    return fetch(`${API}/Cliente/${perfilId}`, {
+            method: "GET",
+            headers:{
+                Accept: 'application/json',
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+        })
+                
+        .then(response => {
+            return response.json()
+        })
+        .catch(err => {
+            
+            console.log(err);
+        })
+}
+
+export const modificarPerfil = (perfilId,token,perfil) => {
+
+    return fetch(`${API}/Cliente/${perfilId}`, {
+        method: "PUT",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(perfil) //convierte el objeto en json string
+        
+    })
+            
+    .then(response => {
+        return response.json()
+    })
+    .catch(err => {
+        
+        console.log(EvalError)
+    })
+}
+
+export const modificarPerfilLocal = (perfil, next) =>{
+    if(typeof window !== 'undefined'){
+        if(localStorage.getItem('jwt')){
+            let auth = localStorage.getItem('jwt');
+            auth.perfil = perfil;
+            localStorage.setItem('jwt', JSON.stringify(auth));
+            next();
+        }
+    }
+}
+
+
