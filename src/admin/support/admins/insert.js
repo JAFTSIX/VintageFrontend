@@ -1,20 +1,47 @@
-import React, {useState} from 'react';
-import Layout from '../nucleo/Layout';
-import Menu from '../nucleo/Menu';
-import candado from './Img/candado.jpg';
+import React, {useState,useEffect} from 'react';
+import Layout from '../../../nucleo/Layout';
+import Menu from '../../../nucleo/Menu';
+import candado from './../../../user/Img/candado.jpg';
 import {Link} from 'react-router-dom';
-import {resultado,HandleChangeValidation,checkingCliente } from './procesos/ValidarDatos';
-import '../index.css';
-import './login.css';
-import Footer from '../nucleo/Footer';
-import { insertObject} from './../admin/apiAdmin';
+import {resultado,HandleChangeValidation,checkingCliente } from './../../../user/procesos/ValidarDatos';
+import '../../../index.css'
+
+import {isAutentificacion} from './../../../autentificacion/index';
+import Footer from '../../../nucleo/Footer';
+import { insertObject,getObjeto}    from '../../apiAdmin';
+
+import { Checkbox } from 'react-input-checkbox';
 
 
 
+const SignUpAdmin = () => {
+ 
+    const [ver, setver] = useState(false)
+    const [aPermisos, setaPermisos] = useState({
+        createTbCategoria:false,
+        deleteTbCategoria:false,
+        updateTbCategoria:false,
 
+       
+        createTbReceta:false,
+        updateTbReceta:false,
 
-const SignUp = () => {
+        findTbHistorial:false,
+        
+        findTbFactura:false,
 
+        createTbArticulo:false,
+        updateTbArticulo:false,
+
+        createTbCliente:false,
+        updateTbCliente:false,
+        
+        manageAdmin:false,
+        manageClientes:false,
+        manageHimself:false,
+
+      
+    } )
 
     const [values, setValues] = useState({
         sNombre: "",
@@ -39,8 +66,7 @@ const SignUp = () => {
         dDireccion2:"",
         dCodPostal:"",
         dTelefono:"",
-        bActivo: true,
-        sPermisos: "",
+        bActivo: true,        
         error:false,
         funciona: false,
         listo:false,
@@ -59,7 +85,7 @@ const {
     password,
     sCorreo,
     dNacimiento,
-    sPermisos,
+ 
     error,
     funciona,
     aFavoritos,
@@ -74,17 +100,19 @@ const {
     aRecetas,listo
 } = values
 
+const getPermisos=()=>{
+    
+        const arrreglo=[];
+        for (const prop in aPermisos) {
+            
 
-/**Ying
- *funciona que retorna otra funcion
- * cada vez que se cambia algo de los input, 
- * se va a guardar en esta funcion y ser guardado en el state
- * 
- * ...values --> unirlo con los valores anteriores como ... del arreglo
- *  error: false --> en caso que el usuario escriba algo y lo deja de escribir, para ocultar ese error
- * [name]: event.target.value --> lo que sea que ingrese el usuario en el input, puede ser nombre, email, etc.
- * una vez guardados estos valores en el state solo se manda al backend
- */ 
+            if (aPermisos[prop]) {
+                arrreglo.push(prop)
+            }
+          }
+    return arrreglo
+}
+ 
 const handleChange = campo => event => {
 
     event.preventDefault();
@@ -104,10 +132,10 @@ const handleChange = campo => event => {
    const resultado=HandleChangeValidation(name,value)
   
    if (resultado.valido) {
-        //esta todo bien con el valor
+  
         setValues({...values,error: false, [campo]: event.target.value});
    }else{
-        //oops
+   
         setValues({...values,error:resultado.incidente, [campo]: event.target.value});
    }
 
@@ -116,17 +144,18 @@ const handleChange = campo => event => {
 
 
     const crearCuenta = (event) => {
-        //la pagina no se recargue en el click en el boton
+   
         event.preventDefault(); 
         setValues({...values, error:false});
-        //una vez se hace el click, se realiza esta funcion
-        //esta funcion esta localizado en ../autentificacion/index.js
+ 
 
     const resultado=checkingCliente({sNombre, sApellido, sContrasena, sCorreo, 
-        dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
-        
+        dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas,aPermisos:getPermisos()})
+         
+    const spermisos=getPermisos()
+
     if (resultado.valido&&password===sContrasena) {
-        insertObject('Cliente',{sNombre, sApellido, sContrasena, sCorreo, 
+        insertObject('Admin',{sNombre, sApellido, sContrasena, sCorreo, aPermisos:getPermisos(),
             dNacimiento:new Date(''.concat(dNacimiento.toString(),'T12:00:00')), aFavoritos, oDireccion, bActivo,aRecetas})
         //funcion para comprobar si se crea la cuenta con exito
         .then( (data={error:{message:'hay un problema, intente más tarde'}} ) =>{
@@ -167,16 +196,14 @@ const handleChange = campo => event => {
 
     }
 
-    
+    const handleArrayChange =(value)=> event => {
+        
+        setaPermisos({...aPermisos, [value]:aPermisos[value]?false:true });
+         
+    }
 
     
-
-     /** Ying
-      *      funcion para mostrar error
-      * error ? '' : 'none' --> si el error del state tiene algo, 
-      * se muestra el error, si no, display: none   
-      *   si usa () en vez de {} no hay que poner return();
-      */
+ 
     const mostrarError = () => (
         <div className="alert alert-danger" 
         style={{display: error ? '' : 'none'}}>
@@ -192,6 +219,12 @@ const handleChange = campo => event => {
         <div className="alert alert-info" 
         style={{display: funciona ? '' : 'none'}}>
             Cuenta creada exitosamente. Por favor <Link to="/signin">Iniciar Session</Link>
+        </div>
+    );
+
+    const mostrarDenegado =  () => (
+        <div className="alert alert-info" >
+            Esta cuenta no hay suficientes permisos <Link to="/signin">Iniciar Session con otra cuenta con más permiosos</Link>
         </div>
     );
 
@@ -239,6 +272,7 @@ const handleChange = campo => event => {
                 <input name="dTelefono" onChange={handleChange('dTelefono')}  type="text" 
                     className="form-control" value={dTelefono}/>
             </div>
+
 
         </form>
         
@@ -307,8 +341,87 @@ const handleChange = campo => event => {
                 {direccionForm()}
             </div>
             </div>  
+       
+            <div className="form-group">
+                    <label className="text-muted">
+                      Articulos
+                    </label>
+               <Checkbox    onChange={handleArrayChange('createTbArticulo')}    value={aPermisos.createTbArticulo}>
+                    <label className="mr-5 ml-1 align-item-center justify-content-center">Agregar</label>
+               </Checkbox>
 
+               <Checkbox    onChange={handleArrayChange('updateTbArticulo')}    value={aPermisos.updateTbArticulo}>
+               <label className="mr-5 ml-1 align-item-center justify-content-center">actualizar</label>
+                </Checkbox>
+            </div>
+       
+            <div className="form-group">
+            <label className="text-muted">
+                Recetas
+            </label>
+            <Checkbox    onChange={handleArrayChange('createTbReceta')}    value={aPermisos.createTbReceta}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">Agregar</label>
+            </Checkbox>
+            <Checkbox    onChange={handleArrayChange('updateTbReceta')}    value={aPermisos.updateTbReceta}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">actualizar</label>
+            </Checkbox>
+            </div>
             
+            <div className="form-group">
+            <label className="text-muted">
+                Catergorias
+            </label>
+            <Checkbox    onChange={handleArrayChange('createTbCategoria')}    value={aPermisos.createTbCategoria}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">Agregar</label>
+            </Checkbox>
+            <Checkbox    onChange={handleArrayChange('updateTbCategoria')}    value={aPermisos.updateTbCategoria}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">actualizar</label>
+            </Checkbox>
+            <Checkbox    onChange={handleArrayChange('deleteTbCategoria')}    value={aPermisos.deleteTbCategoria}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">eliminar</label>
+            </Checkbox>
+            </div>
+            
+            
+            <div className="form-group">
+            <label className="text-muted">
+                Cliente
+            </label>
+            <Checkbox    onChange={handleArrayChange('createTbCliente')}    value={aPermisos.createTbCliente}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">Agregar</label>
+            </Checkbox>
+            <Checkbox    onChange={handleArrayChange('updateTbCliente')}    value={aPermisos.updateTbCliente}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">actualizar</label>
+            </Checkbox>
+            <Checkbox    onChange={handleArrayChange('manageAdmin')}    value={aPermisos.manageAdmin}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">crear o manipular otros administradores</label>
+            </Checkbox>
+            <Checkbox    onChange={handleArrayChange('manageClientes')}    value={aPermisos.manageClientes}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">crear o manipular clientes</label>
+            </Checkbox>
+            <Checkbox    onChange={handleArrayChange('manageHimself')}    value={aPermisos.manageHimself}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">manipular sus propios permisos*ADVERTENCIA* </label>
+            </Checkbox>
+            </div>
+
+
+            <div className="form-group">
+            <label className="text-muted">
+             facturas
+            </label>
+            <Checkbox    onChange={handleArrayChange('createTbArticulo')}    value={aPermisos.findTbFactura}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">ver facturas</label>
+            </Checkbox>
+            </div>
+
+            <div className="form-group">
+            <label className="text-muted">
+             historial
+            </label>
+            <Checkbox    onChange={handleArrayChange('createTbArticulo')}    value={aPermisos.findTbHistorial}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">ver historial</label>
+            </Checkbox>
+            </div>
 
             <div className="btnCentral">
             <button   onClick={crearCuenta}   className="btn btn-outline-primary btnCentral">
@@ -319,6 +432,41 @@ const handleChange = campo => event => {
         </form>
     );
 
+
+    const se_puede=()=>{
+        
+        const user =getObjeto('Cliente','/'+isAutentificacion().cliente._id).then( 
+            (data={error:{message:'hay un problema, intente más tarde'}} ) =>{
+
+            
+                //si hay error
+                if('error' in data ){
+                    setValues({...values, error:data.error.message, funciona: false});
+    
+                }//si no hay error, se vacia los textbox
+                else {
+                    
+                    
+                    if (data.bAdmin &&data.aPermisos !== undefined 
+                    && data.aPermisos.indexOf('manageAdmin') !== -1) {
+                        console.log(data)
+                        setver(true)
+                      }
+                }
+            }
+        )
+    
+    }
+
+    useEffect( ()=>{
+        if (isAutentificacion) {
+             
+            se_puede()    
+
+        }  
+        
+    }, []);
+
     return (
         <div className="contenido">
             <Menu />
@@ -327,10 +475,20 @@ const handleChange = campo => event => {
                 height="100" width="100" />
 
                 <div className="espacioV .mt-11">
+                {ver&&
+                    <e>
                     {mostrarFunciona()}
                     {mostrarError()}
                     {signUpForm()}
+                    </e>                
+                }
                     
+                {!ver&& 
+                    <pollo>
+                    {mostrarError()}
+                    {mostrarDenegado()}
+                    </pollo>
+                }   
                 </div>
 
                 
@@ -342,5 +500,5 @@ const handleChange = campo => event => {
 }
 
 
-export default SignUp;
+export default SignUpAdmin;
  
