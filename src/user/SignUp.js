@@ -123,11 +123,11 @@ const handleChange = campo => event => {
         //esta funcion esta localizado en ../autentificacion/index.js
 
     const resultado=checkingCliente({sNombre, sApellido, sContrasena, sCorreo, 
-        dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas})
+        dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas,aPermisos:['AccessAuthFeature']})
         
     if (resultado.valido&&password===sContrasena) {
         insertObject('Cliente',{sNombre, sApellido, sContrasena, sCorreo, 
-            dNacimiento:new Date(''.concat(dNacimiento.toString(),'T12:00:00')), aFavoritos, oDireccion, bActivo,aRecetas})
+            dNacimiento:new Date(''.concat(dNacimiento.toString(),'T12:00:00')),aPermisos:['AccessAuthFeature'], aFavoritos, oDireccion, bActivo,aRecetas})
         //funcion para comprobar si se crea la cuenta con exito
         .then( (data={error:{message:'hay un problema, intente más tarde'}} ) =>{
 

@@ -22,10 +22,13 @@ export class resultado {
 
 function  isClienteValid(objeto) {
     var respuesta = new resultado(true, 'todo bien')
+
+     
     if (objeto.aPermisos.length<=0) {
         //   alert ("Error!");
         return new resultado(false, 'administrador sin permisos')
     }
+
     if (!regexsNombre_Apellido.test(objeto.sNombre)) {
         //false
         return respuesta = new resultado(false, 'Tu Nombre tiene que tener mas de 1 carácter!')
