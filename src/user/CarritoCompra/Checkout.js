@@ -91,6 +91,7 @@ const Checkout = ({products,Change}) => {
             //and also total to be charged
             
 
+            console.log(products)
             //comprar
             const aver=insertObject('Factura',{
             Factura: {
