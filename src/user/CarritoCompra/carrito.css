@@ -105,5 +105,21 @@ box-shadow: -25px 9px 37px 0px rgba(90, 90, 90, 0.1);
       margin-top: 121%;
     }
   }
+@media only screen and (max-width:414px) {
+  .imgCarrito {
+    height: 69px;
+    width: 77px;
+  } 
+  h5, .h5 {
+    font-size: 16px;
+  }
+  .input-group > .form-control, .input-group > .form-control-plaintext, .input-group > .custom-select, .input-group > .custom-file{
+    margin-top: 0%;
+  }
+  .bgCheckout{
+    margin-top: 6%;
+  }
+}
+  
   
 
