@@ -235,7 +235,7 @@ display: none;
 
 .mt10{ 
     margin-top: 100px !important;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 textarea.form-control{
     width: 100%;
@@ -323,7 +323,11 @@ textarea.form-control{
     /* tablet  */
   @media only screen and (max-width:769px) {
     .logo{
-        top: -12px;
+        display: block;
+        width: 80px;
+        left: 0;
+        margin-top: 10px;
+        padding-top: 7px;
     }
     .responsiveMenu{
         flex-direction: row;
@@ -356,7 +360,7 @@ textarea.form-control{
         font-size: 1.5rem;
     }
 
-    /* carousel  */
+    /* carousel  */ 
       /* desaparecerlo para meter otra img en mobil  */
     .carousel img{
         display: none !important;
@@ -412,5 +416,7 @@ textarea.form-control{
     .perfilCardImg{
         margin: auto;
     }
+
+    
   }
   
