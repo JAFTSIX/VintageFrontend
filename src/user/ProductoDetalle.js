@@ -119,7 +119,7 @@ const ProductoDetalle = (props) => {
 
     return(
         
-        <div className="mt10 mx-5 container-fluid ">
+        <div className="mt10 container-fluid Content">
             <div className="msgStatic">{mostrarFunciona()}</div>
             {redireccionarUsuario(redirect)}
             <Menu />
