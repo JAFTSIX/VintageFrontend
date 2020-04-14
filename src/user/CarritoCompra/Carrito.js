@@ -138,7 +138,7 @@ const Carrito = () => {
         console.log('averputo');
         return(
             <div className="row">  
-            <div className="col-lg-7"> 
+            <div className="col-lg-7 col-12"> 
                 <div id="tabla" className="mb-3 row px-5" >
                 {/* displayNone : en tablet y mobil no va a aparecer esto */}
                         <div className="displayNone mx-auto">IMAGEN</div>
@@ -191,7 +191,7 @@ const Carrito = () => {
         descripcion="Chef Selenia Mendez"   
         className="container-fluid">
 
-            <div className="row mt-5">
+            <div className="row mt-lg-5">
                 <div className="col-12">
                     
                     {/* if si hay productos en el carrito o no  */}
