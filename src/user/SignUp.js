@@ -128,6 +128,7 @@ const handleChange = campo => event => {
         dNacimiento, aFavoritos, oDireccion, bActivo,aRecetas,aPermisos:['AccessAuthFeature']})
         
     if (resultado.valido&&password===sContrasena) {
+        
         insertObject('Cliente',{sNombre, sApellido, sContrasena, sCorreo, 
             dNacimiento:new Date(''.concat(dNacimiento.toString(),'T12:00:00')),aPermisos:['AccessAuthFeature'], aFavoritos, oDireccion, bActivo,aRecetas})
         //funcion para comprobar si se crea la cuenta con exito
@@ -162,6 +163,8 @@ const handleChange = campo => event => {
         });
     } else {
        //oops
+       console.log(oDireccion.codPostal.length);
+       
        setValues({...values,error:''.concat(resultado.incidente,' , Por favor llene correctamente todo el formulario antes de enviar'), funciona: false});
     }
         
