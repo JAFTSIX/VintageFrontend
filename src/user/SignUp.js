@@ -8,6 +8,8 @@ import '../index.css';
 import './login.css';
 import Footer from '../nucleo/Footer';
 import { insertObject} from './../admin/apiAdmin';
+import InputMask from 'react-input-mask';
+import MaterialInput from '@material-ui/core/Input';
 
 
 
@@ -229,15 +231,21 @@ const handleChange = campo => event => {
                 <label className="text-muted">
                     Código Postal 
                 </label>
-                <input name="dCodPostal" onChange={handleChange('dCodPostal')}  type="text" 
-                    className="form-control" value={dCodPostal}/>
+                {/* <input name="dCodPostal" onChange={handleChange('dCodPostal')}  type="text" 
+                    className="form-control" value={dCodPostal}/> */}
+                <InputMask name="dCodPostal" mask="9999" value={dCodPostal} onChange={handleChange('dCodPostal')}>
+                    {(inputProps) => <MaterialInput {...inputProps} type="tel" className="form-control" disableUnderline />}
+                </InputMask>
             </div>
             <div className="form-group mt-30">
                 <label className="text-muted">
                     Teléfono 
                 </label>    
-                <input name="dTelefono" onChange={handleChange('dTelefono')}  type="text" 
-                    className="form-control" value={dTelefono}/>
+                {/* <input name="dTelefono" onChange={handleChange('dTelefono')}  type="text" 
+                    className="form-control" value={dTelefono}/> */}
+                <InputMask name="dTelefono" mask="(506)9999-9999" value={dTelefono} onChange={handleChange('dTelefono')}>
+                    {(inputProps) => <MaterialInput {...inputProps} type="tel" className="form-control" disableUnderline />}
+                </InputMask>
             </div>
 
         </form>
@@ -306,6 +314,9 @@ const handleChange = campo => event => {
             <div className="col-lg-6">
                 {direccionForm()}
             </div>
+            <label className="text-danger">
+                    *Actualmente la aplicación solo realiza entregas en Costa Rica 
+            </label>  
             </div>  
 
             
@@ -330,6 +341,7 @@ const handleChange = campo => event => {
                     {mostrarFunciona()}
                     {mostrarError()}
                     {signUpForm()}
+                    
                     
                 </div>
 
