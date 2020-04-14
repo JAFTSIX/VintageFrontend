@@ -21,7 +21,7 @@ export class resultado {
 }
 
 function  isClienteValid(objeto) {
-    var respuesta = new resultado(true, 'todo bien')
+    var respuesta = new resultado(true, 'Error')
 
      
     if (objeto.aPermisos.length<=0) {
