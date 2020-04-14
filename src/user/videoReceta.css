@@ -6,7 +6,8 @@
 }   
 
 .Content{
-    height: 100%;
+    margin: auto;
+    width: 100%;
 }
 
 .scroll
@@ -69,16 +70,35 @@
 .recetaDetalleBtn{
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: center;
 }
 
 
 @media only screen and (max-width:769px) {
     .recetaDetalleBtn{
-        justify-content: start;
+        justify-content: center;
         margin: 3% 0;
     }
 
 }
+/* mobile  */
+@media only screen and (max-width:414px) {
+    .mt10{ 
+        margin-top: 100px;
+        padding-top: 0;
+    }
+    .btnAdminReceta{  
+        flex-direction: column;    
+    }
+    .imagenReceta {
+        width: 69px;
+        height: 50px;
+    }
+    .recetaDetalleTitulo{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
 
 
