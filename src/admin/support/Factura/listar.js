@@ -28,6 +28,12 @@ const Factura = () => {
                     if ('error' in data) {
                         setError(errorTranslator(data.error.message))
                     } else {
+
+                        console.log(data);
+                        for (let index = 0; index < data.length; index++) {
+                            console.log( typeof data[index].aCompras,'->',data[index].aCompras);
+                            
+                        }
                         setFacturaDisponibles(data);
                     }
                 }

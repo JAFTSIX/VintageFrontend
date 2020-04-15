@@ -92,7 +92,7 @@ const Carrito = () => {
                 
                         <input type="number" 
                         maxlength="1" size="1"
-                      
+                       min="1"
                         className="form-control inputSize" 
                         value={producto[index].iCant} 
                         onChange={handleChange(producto[index]._id,1)} />    
