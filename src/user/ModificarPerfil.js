@@ -8,6 +8,7 @@ import '../css.css';
 
 const ModificarPerfil = ({match}) => {
     const [values,setValues] = useState({
+        _id:"",
         sNombre: "",
         sApellido: "",
         sContrasena: "",
@@ -31,6 +32,8 @@ const ModificarPerfil = ({match}) => {
         dCodPostal:"",
         dTelefono:"",
         bActivo: true,
+        bAdmin: false,
+
         aPermisos: [],
         error:false,
         funciona: false
@@ -38,6 +41,7 @@ const ModificarPerfil = ({match}) => {
     });
 
     const {
+        _id,
         sNombre,
         sApellido,
         sContrasena,
@@ -56,6 +60,7 @@ const ModificarPerfil = ({match}) => {
         dCodPostal,
         dTelefono,
         bActivo,
+        bAdmin,
         aRecetas,listo
     } = values;
 
@@ -70,6 +75,7 @@ const ModificarPerfil = ({match}) => {
             }else{
                 setValues({
                     ...values,
+                    _id:data._id,
                     sNombre: data.sNombre,
                     sApellido: data.sApellido,
                     sContrasena: data.sContrasena,
@@ -77,6 +83,7 @@ const ModificarPerfil = ({match}) => {
                     sCorreo: data.sCorreo,
                     dNacimiento: data.dNacimiento,
                     aPermisos:data.aPermisos,
+                    bAdmin:data.bAdmin,
                     oDireccion: {
                         provincia:dProvincia,
                         canton:data.dCanton,
@@ -92,6 +99,9 @@ const ModificarPerfil = ({match}) => {
                     dCodPostal:data.oDireccion.codPostal,
                     dTelefono:data.oDireccion.telefono,
                 })
+
+
+                console.log( 'data admin HEEEEEY', data.bAdmin)
             }
         });
     }
@@ -128,12 +138,15 @@ const ModificarPerfil = ({match}) => {
  
         e.preventDefault();
         modificarPerfil(match.params.perfilId, token, {
+            _id,
             sNombre,
             sApellido,
             sContrasena,
             sCorreo,
             dNacimiento,
-            oDireccion,aPermisos
+            oDireccion,
+            aPermisos,
+            bAdmin
         }).then((data={error:{message:'Hay un problema intente mas tarde'}} ) =>{
            
             if('error' in data ){
@@ -155,6 +168,7 @@ const ModificarPerfil = ({match}) => {
                         aRecetas: data.aRecetas,
                         aFavoritos: data.aFavoritos,    
                         bActivo: data.bActivo,
+                        bAdmin: data.bAdmin,
                         funciona:true
                     })
                 });
@@ -173,9 +187,12 @@ const ModificarPerfil = ({match}) => {
     );
 
     const redireccionarUsuario = (funciona) =>{
-        if(funciona){
+        // /Admin
+        if(funciona ){
+            
             return <Redirect to="/perfil"/>
-        }
+
+        } 
     }
 
     const modificarPerfilForm = (
@@ -185,6 +202,7 @@ const ModificarPerfil = ({match}) => {
         password,
         sCorreo,
         dNacimiento,
+        
         dProvincia,
         dCanton,
         dDireccion1,

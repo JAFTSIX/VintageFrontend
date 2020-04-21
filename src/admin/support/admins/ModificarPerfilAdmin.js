@@ -16,6 +16,8 @@ const ModificarPerfilAdmin = ({match}) => {
         dNacimiento: "",
         aFavoritos: [],
         aRecetas: [],
+        bAdmin:true,
+        
         oDireccion: {
             provincia:"",
             canton:"",
@@ -56,6 +58,7 @@ const ModificarPerfilAdmin = ({match}) => {
         dCodPostal,
         dTelefono,
         bActivo,
+        bAdmin,
         aRecetas,listo
     } = values;
 
@@ -70,6 +73,7 @@ const ModificarPerfilAdmin = ({match}) => {
             }else{
                 setValues({
                     ...values,
+                    _id:data._id,
                     sNombre: data.sNombre,
                     sApellido: data.sApellido,
                     sContrasena: data.sContrasena,
@@ -77,6 +81,7 @@ const ModificarPerfilAdmin = ({match}) => {
                     sCorreo: data.sCorreo,
                     dNacimiento: data.dNacimiento,
                     aPermisos:data.aPermisos,
+                    bAdmin:data.bAdmin,
                     oDireccion: {
                         provincia:dProvincia,
                         canton:data.dCanton,
@@ -128,12 +133,15 @@ const ModificarPerfilAdmin = ({match}) => {
  
         e.preventDefault();
         modificarPerfil(match.params.perfilId, token, {
+            _id:match.params.perfilId,
             sNombre,
             sApellido,
             sContrasena,
             sCorreo,
             dNacimiento,
-            oDireccion,aPermisos
+            oDireccion,
+            aPermisos,
+            bAdmin,
         }).then((data={error:{message:'Hay un problema intente mas tarde'}} ) =>{
            
             if('error' in data ){
@@ -155,6 +163,7 @@ const ModificarPerfilAdmin = ({match}) => {
                         aRecetas: data.aRecetas,
                         aFavoritos: data.aFavoritos,    
                         bActivo: data.bActivo,
+                        bAdmin:data.bAdmin,
                         funciona:true
                     })
                 });
@@ -174,7 +183,7 @@ const ModificarPerfilAdmin = ({match}) => {
 
     const redireccionarUsuario = (funciona) =>{
         if(funciona){
-            return <Redirect to="/perfil"/>
+            return <Redirect to="/Admin"/>
         }
     }
 
