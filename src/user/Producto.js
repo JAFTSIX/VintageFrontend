@@ -81,8 +81,10 @@ const Producto = () => {
             </div>
             
             {/* contenido principal */}
-        
-            <div className="row mb-5">     
+            <div className="mb-5 text-danger">*Costo de envio e IVA viene en el precio del producto individualmente
+                    </div>    
+            <div className="row mb-5"> 
+            
                                        
                 {productoDisponibles.map((producto, i)=>(
                     <ProductoInterfaz key={i} producto={producto}/>
