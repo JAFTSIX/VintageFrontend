@@ -245,7 +245,7 @@ const Checkout = ({products,Change}) => {
                         Provincia 
                     </label>
                     <input name="provincia" onChange={handleChange('provincia')}  type="text" 
-                        className="form-control" value={provincia}/>
+                        className="form-control" value={provincia} required/>
                 </div>
                 <div className="form-group mt-30">
                     <label className="text-muted">
@@ -298,8 +298,10 @@ const Checkout = ({products,Change}) => {
                  {mostrarExito()}
             
                     {direccionForm()}
-                    <div className="mb-5 text-danger">*Recuerda, si no desea ingresar ingresar los datos de la direccion cada vez que se realiza una compra
+                    <div className="mb-5 text-danger">*Recuerda, si no desea ingresar los datos de la direccion cada vez que se realiza una compra
                         puedes registrarlo en el perfil.
+                    </div>
+                    <div className="mb-5 text-danger">*Solo se realiza envios a Costa Rica
                     </div>
                     {showCheckOut()}
 
