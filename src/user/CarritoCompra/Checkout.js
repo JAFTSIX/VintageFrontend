@@ -12,6 +12,8 @@ import {getObjeto,insertObject,errorTranslator}from './../../admin/apiAdmin'
 
 import { isAutentificacion } from './../../autentificacion/index';
 import moment from 'moment';
+import InputMask from 'react-input-mask';
+import MaterialInput from '@material-ui/core/Input';
 
 const Checkout = ({products,Change}) => {
     
@@ -93,60 +95,65 @@ const Checkout = ({products,Change}) => {
 
             console.log(products)
             //comprar
-            const aver=insertObject('Factura',{
-            Factura: {
-                sCliente:  isAutentificacion().cliente._id,
-                dFecha: moment().format(),
-                aCompras:products,
-                iSubtotal: 0,
-                iTotal: 0,
-            
-                oDireccion: {
-                    provincia:provincia,
-                    canton:canton,
-                    direccion1:direccion1,
-                    direccion2:direccion2,
-                    codPostal:codPostal,
-                    telefono:telefono,
-                    nombre: nombre,
-                    apellido: apellido,
-                    correo: correo
-                }
-            }
-        ,
-            paymentMethodNonce:nonce,}).then(dataY=>{
-
-                   //console.log('LLEGAMOS',dataY)
-                if('error'in dataY){
-                    Change(false);
-                    setErrorCheck(errorTranslator( dataY.error.message ));
-                }else if ('errors'in dataY.value) {
-                    Change(false);
-                    setErrorCheck(errorTranslator( dataY.value.message ));
-                   }else if( dataY.value.success){
-                        
-                        setSuccess(true)
-                        
-                        setValue({
+            if(provincia !== "" &&canton !== "" &&direccion1 !== "" &&direccion2 !== "" &&codPostal !== "" &&telefono !== ""){
+                const aver=insertObject('Factura',{
+                    Factura: {
+                        sCliente:  isAutentificacion().cliente._id,
+                        dFecha: moment().format(),
+                        aCompras:products,
+                        iSubtotal: 0,
+                        iTotal: 0,
+                    
+                        oDireccion: {
+                            provincia:provincia,
+                            canton:canton,
+                            direccion1:direccion1,
+                            direccion2:direccion2,
+                            codPostal:codPostal,
+                            telefono:telefono,
+                            nombre: nombre,
+                            apellido: apellido,
+                            correo: correo
+                        }
+                    }
+                ,
+                    paymentMethodNonce:nonce,}).then(dataY=>{
         
-                            clientToken:null,
-                        
-                            instance:{},
-                            address:''
-                        })
-
-                        
-                        Change(true);
+                           //console.log('LLEGAMOS',dataY)
+                        if('error'in dataY){
+                            Change(false);
+                            setErrorCheck(errorTranslator( dataY.error.message ));
+                        }else if ('errors'in dataY.value) {
+                            Change(false);
+                            setErrorCheck(errorTranslator( dataY.value.message ));
+                           }else if( dataY.value.success){
+                                
+                                setSuccess(true)
+                                
+                                setValue({
+                
+                                    clientToken:null,
+                                
+                                    instance:{},
+                                    address:''
+                                })
+        
+                                
+                                Change(true);
+                           
+                           }
                    
-                   }
-           
-
-
-            }).catch(errorY=>{
-                console.log('error de vergaY', errorY)
-                setErrorCheck(errorTranslator( errorY.message ));
-                Change(false);
-            })
+        
+        
+                    }).catch(errorY=>{
+                        console.log('error de vergaY', errorY)
+                        setErrorCheck(errorTranslator( errorY.message ));
+                        Change(false);
+                    })
+            }else{
+                alert("Por Favor llenar todos los campos");
+            }
+            
 
 
         }).catch(errorX=>{
@@ -242,45 +249,47 @@ const Checkout = ({products,Change}) => {
             <form className="text-left">
                 <div className="form-group mt-30 ">
                     <label className="text-muted">
-                        Provincia 
+                        Provincia *
                     </label>
                     <input name="provincia" onChange={handleChange('provincia')}  type="text" 
                         className="form-control" value={provincia} required/>
                 </div>
                 <div className="form-group mt-30">
                     <label className="text-muted">
-                        Cantón 
+                        Cantón *
                     </label>
                     <input name="canton" onChange={handleChange('canton')}  type="text" 
                         className="form-control" value={canton}/>
                 </div>
                 <div className="form-group mt-30">
                     <label className="text-muted">
-                        Dirección 1 
+                        Dirección 1 *
                     </label>
                     <input name="direccion1" onChange={handleChange('direccion1')}  type="text" 
                         className="form-control" value={direccion1}/>
                 </div>
                 <div className="form-group mt-30">
                     <label className="text-muted">
-                        Dirección 2 
+                        Dirección 2 *
                     </label>
                     <input name="direccion2" onChange={handleChange('direccion2')}  type="text" 
                         className="form-control" value={direccion2}/>
                 </div>
                 <div className="form-group mt-30">
                     <label className="text-muted">
-                        Código Postal 
+                        Código Postal *
                     </label>
-                    <input name="codPostal" onChange={handleChange('codPostal')}  type="text" 
-                        className="form-control" value={codPostal}/>
+                    <InputMask name="codPostal" mask="9999" value={codPostal} onChange={handleChange('codPostal')}>
+                        {(inputProps) => <MaterialInput {...inputProps} type="tel" className="form-control" disableUnderline />}
+                    </InputMask>            
                 </div>
-                <div className="form-group mt-30">
+                <div className="form-group mt-30"> 
                     <label className="text-muted">
-                        Teléfono 
+                        Teléfono *
                     </label>    
-                    <input name="telefono" onChange={handleChange('telefono')}  type="text" 
-                        className="form-control" value={telefono}/>
+                    <InputMask name="telefono" mask="(506)9999-9999" value={telefono} onChange={handleChange('telefono')}>
+                        {(inputProps) => <MaterialInput {...inputProps} type="tel" className="form-control" disableUnderline />}
+                    </InputMask>
                 </div>
     
             </form>
