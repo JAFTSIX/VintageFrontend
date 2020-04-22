@@ -342,7 +342,7 @@ const handleChange = campo => event => {
             </div>
             </div>  
        
-            <div className="form-group">
+            {/* <div className="form-group">
                     <label className="text-muted">
                       Articulos
                     </label>
@@ -381,9 +381,9 @@ const handleChange = campo => event => {
                 <label className="mr-5 ml-1 align-item-center justify-content-center">eliminar</label>
             </Checkbox>
             </div>
+             */}
             
-            
-            <div className="form-group">
+            {/* <div className="form-group">
             <label className="text-muted">
                 Cliente
             </label>
@@ -392,20 +392,23 @@ const handleChange = campo => event => {
             </Checkbox>
             <Checkbox    onChange={handleArrayChange('updateTbCliente')}    value={aPermisos.updateTbCliente}>
                 <label className="mr-5 ml-1 align-item-center justify-content-center">actualizar</label>
-            </Checkbox>
+            </Checkbox> */}
             <Checkbox    onChange={handleArrayChange('manageAdmin')}    value={aPermisos.manageAdmin}>
-                <label className="mr-5 ml-1 align-item-center justify-content-center">crear o manipular otros administradores</label>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">Crear o manipular otros administradores</label>
+            </Checkbox>
+            <Checkbox onChange={handleArrayChange('manageClientes')}    value={aPermisos.manageClientes}>
+                <label className="mr-5 ml-1 align-item-center justify-content-center">No Crear o manipular otros administradores</label>
             </Checkbox>
             {/* <Checkbox    onChange={handleArrayChange('manageClientes')}    value={aPermisos.manageClientes}>
                 <label className="mr-5 ml-1 align-item-center justify-content-center">crear o manipular clientes</label>
-            </Checkbox> */}
-            {/* <Checkbox    onChange={handleArrayChange('manageHimself')}    value={aPermisos.manageHimself}>
+            </Checkbox>
+            <Checkbox    onChange={handleArrayChange('manageHimself')}    value={aPermisos.manageHimself}>
                 <label className="mr-5 ml-1 align-item-center justify-content-center">manipular sus propios permisos*ADVERTENCIA* </label>
-            </Checkbox> */}
-            </div>
+            </Checkbox>
+            </div> */}
 
 
-            <div className="form-group">
+            {/* <div className="form-group">
             <label className="text-muted">
              facturas
             </label>
@@ -421,7 +424,7 @@ const handleChange = campo => event => {
             <Checkbox    onChange={handleArrayChange('findTbHistorial')}    value={aPermisos.findTbHistorial}>
                 <label className="mr-5 ml-1 align-item-center justify-content-center">ver historial</label>
             </Checkbox>
-            </div>
+            </div> */}
 
             <div className="btnCentral">
             <button   onClick={crearCuenta}   className="btn btn-outline-primary btnCentral">
