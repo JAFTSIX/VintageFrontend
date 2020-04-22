@@ -396,12 +396,12 @@ const handleChange = campo => event => {
             <Checkbox    onChange={handleArrayChange('manageAdmin')}    value={aPermisos.manageAdmin}>
                 <label className="mr-5 ml-1 align-item-center justify-content-center">crear o manipular otros administradores</label>
             </Checkbox>
-            <Checkbox    onChange={handleArrayChange('manageClientes')}    value={aPermisos.manageClientes}>
+            {/* <Checkbox    onChange={handleArrayChange('manageClientes')}    value={aPermisos.manageClientes}>
                 <label className="mr-5 ml-1 align-item-center justify-content-center">crear o manipular clientes</label>
-            </Checkbox>
-            <Checkbox    onChange={handleArrayChange('manageHimself')}    value={aPermisos.manageHimself}>
+            </Checkbox> */}
+            {/* <Checkbox    onChange={handleArrayChange('manageHimself')}    value={aPermisos.manageHimself}>
                 <label className="mr-5 ml-1 align-item-center justify-content-center">manipular sus propios permisos*ADVERTENCIA* </label>
-            </Checkbox>
+            </Checkbox> */}
             </div>
 
 
