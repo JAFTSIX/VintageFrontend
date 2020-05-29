@@ -1,7 +1,7 @@
 import {API} from '../config'; //aqui se guarda el puerto del api
 //import { response } from 'express';
 import '../index.css';
- 
+import{ getObjeto} from '../admin/apiAdmin' ;
  
 
 /**Ying 
@@ -42,8 +42,11 @@ export const isAutentificacion = () => {
 export const cerrarSesion = (cb) => {
     
     if(typeof window !== 'undefined'){  
+        getObjeto('logout');
         localStorage.removeItem('jwt');
         localStorage.removeItem('carrito');
+
+
         //en el cb se puede redireccionar, limpiar el state, etc
         cb();
     }
