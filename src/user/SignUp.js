@@ -196,7 +196,7 @@ const handleChange = campo => event => {
     const mostrarFunciona =  () => (
         <div className="alert alert-info" 
         style={{display: funciona ? '' : 'none'}}>
-            Cuenta creada exitosamente. Por favor <Link to="/signin">Iniciar Session</Link>
+            Cuenta creada exitosamente. para Activarla porfavos accesa al link que te enviamos
         </div>
     );
 

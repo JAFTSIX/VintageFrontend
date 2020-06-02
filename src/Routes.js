@@ -13,6 +13,7 @@ import AdminRoute from './autentificacion/AdminRoute';
 import AdminD from './user/AdminD';
 import ModificarPerfilAdmin from './admin/support/admins/ModificarPerfilAdmin';
 
+import Activar from './user/procesos/Activar';
 
 import categoria from './admin/support/Categorias/listar';
 import EliminarCategoria from './admin/support/Categorias/delete';
@@ -131,11 +132,12 @@ const Routes = () => {
             <AdminRoute path="/Historial/Support/Eliminar/:_Id" 
             exact component={EliminarHistorial}/>
             
+            
+            <Route path="/activar/token/:token" exact
+              component={Activar}/>
      {/*       
-           <AdminRoute path="/Historial/Support/actualizar/:_Id/" 
-            exact component={ModificarHistorial}/>
-          
-SignUpAdmin
+            <Route path="/activar/token/:token" exact
+              component={RecetaDetalle}/>
      */}
             <PrivateRoute path="/Cart" exact
              component={Carrito}/>
