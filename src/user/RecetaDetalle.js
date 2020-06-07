@@ -26,7 +26,8 @@ const RecetaDetalle = (props) => {
     // metodo cargar receta del url 
     const cargarDetalleReceta = recetaId => {
         // funcion ubicado en apiReceta 
-        getObjeto('Receta','/'+recetaId ).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+        console.log('Receta/'+recetaId )
+        getObjeto('Receta/',recetaId ).then((data={error:{message:'hay un problema, intente más tarde'}})=>{
 
             
             if ('error' in data) {            
@@ -34,9 +35,9 @@ const RecetaDetalle = (props) => {
                 setError(errorTranslator( data.error.message));
             } else {
                 console.log('Receta/'+recetaId )
-                console.log('sd',data)
-                
-                setReceta(data);
+                console.log('objeto receta',data)
+                //data=data.value;
+                setReceta(data.value);
                 
             }
             
@@ -76,6 +77,7 @@ const RecetaDetalle = (props) => {
     useEffect(() => {
         //guardar el id de la receta del url
         const recetaId = props.match.params.recetaId;
+        
         cargarDetalleReceta(recetaId);
  
         if (isAutentificacion()) {
@@ -219,7 +221,7 @@ const RecetaDetalle = (props) => {
             {ver && 
                 <div className="col-lg-6 col-md-12 fix">     
                 
-                    <iframe className="video" src={receta.sUrlVideo} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe className="video" src={receta.sUrlVideo} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>  
 
             }
@@ -227,7 +229,7 @@ const RecetaDetalle = (props) => {
             {!ver&&(
                 <div className="col-lg-6 col-md-12 fix">     
                    
-                    <iframe className="video" src={receta.sUrlVideoTrailer} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe className="video" src={receta.sUrlVideoTrailer} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>  )
 
             }
