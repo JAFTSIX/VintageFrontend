@@ -163,8 +163,11 @@ display: none;
 }
 
 .btnCentral{
-    margin-top: 15px;
+    margin-top: 50px;
     text-align: center;
+}
+.btnCentral button{
+    margin-bottom: 15px;
 }
 
 .btn-outline-primary:hover{

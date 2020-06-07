@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Layout from '../nucleo/Layout';
 import Menu from '../nucleo/Menu';
 import candado from './Img/candado.jpg';
-import { Redirect} from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 import { insertObject} from './../admin/apiAdmin';
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signIn, autentificacion, isAutentificacion} from '../autentificacion'; 
@@ -166,10 +166,13 @@ const SignIn = () => {
             </div>
 
 
-            <div className="btnCentral">
-            <button  onClick={iniciarSession} className="btn btn-outline-primary btnCentral">
-                Iniciar Session.
-            </button>
+            <div className="btnCentral">      
+                <button  onClick={iniciarSession} className="btn btn-outline-primary">
+                    Iniciar Session
+                </button>
+                <Link to={`/Password`}>
+                    <a>¿Has olvidado tu contraseña?</a>
+                </Link>
             </div>
         </form>
     );
