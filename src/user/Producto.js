@@ -18,7 +18,7 @@ const Producto = () => {
 
         getObjeto('Articulo')
         .then((data={error:{message:'hay un problema, intente más tarde'}})=>{
-            
+            console.log(data);
         ('error' in data) ?setError(errorTranslator(data.error.message)): setProductoDisponibles(data);                                                                                     
        
         })

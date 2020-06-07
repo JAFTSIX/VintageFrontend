@@ -29,7 +29,7 @@ const Receta = () => {
                     setError(errorTranslator(data.error.message))        
                     
                 }else{
-          
+                    data=data.value;
                     setReceta(data);
                     console.log(data);
                                                              
