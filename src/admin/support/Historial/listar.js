@@ -25,6 +25,7 @@ const Historial = () => {
                         if ('error' in data) {
                             setError(errorTranslator(data.error.message))
                         } else {
+                            data=data.value;
                             setHistorialDisponibles(data);
                         }
                     }
