@@ -225,8 +225,37 @@ export const eliminarObjeto = (objeto,productId) => {
 }
 
 
+
+export const recoverPass = (objeto,body) => {
+
+
+
+    console.log({pass:body})
+    var pass=body
+    return fetch(`${API}/${objeto}`, {
+        method: "PATCH",
+        headers:{
+            Accept: 'application/json',
+            "Content-Type": "application/json",            
+        },
+        body: JSON.stringify(pass) 
+        
+    })
+            
+    .then(response => {
+     
+        return response
+    })
+    .catch(err => {
+        
+        console.log(err)
+    })
+}
+
+
 export const modificarObjeto = (objeto,body) => {
 
+    
     return fetch(`${API}/${objeto}/${body._id}`, {
         method: "PATCH",
         headers:{

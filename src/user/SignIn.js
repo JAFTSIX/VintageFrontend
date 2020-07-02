@@ -3,7 +3,7 @@ import Layout from '../nucleo/Layout';
 import Menu from '../nucleo/Menu';
 import candado from './Img/candado.jpg';
 import { Link, Redirect} from 'react-router-dom';
-import { insertObject} from './../admin/apiAdmin';
+import { insertObject,getObjeto} from './../admin/apiAdmin';
 //todo el codigo de api se va a lozalizar en el ../autentificacion/index.js
 import {signIn, autentificacion, isAutentificacion} from '../autentificacion'; 
 import {checkingLogin,HandleChangelogin } from './procesos/ValidarDatos';
@@ -23,6 +23,7 @@ const SignIn = () => {
         bAdmin:false ,
         sCorreo: "",    
         loading:false ,
+        funciona:false ,
         redireccionar:false,
         error:""
             });
@@ -30,7 +31,7 @@ const SignIn = () => {
 
     //destruve el signUp State
     //para ser declarado como nombre en vez de SignUp.values.nombre
-        const {sContrasena, sCorreo, 
+        const {sContrasena, sCorreo, funciona,
             loading, error,redireccionar, bAdmin} = values
     
     //distructive the los datos del local storage
@@ -105,7 +106,37 @@ const SignIn = () => {
 
     
 
-    
+    const RequestRecover = (event) => {
+        event.preventDefault();
+        const regexsCorreo = /^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/;
+
+        regexsCorreo.test(sCorreo)?
+                     
+                getObjeto('/Recuperar/solicitar/correo/'+sCorreo).then(
+                    (data={error:{message:'hay un problema, intente más tarde'}} )  => {
+                      
+                        if('error' in data){
+
+                            setValues({...values,
+                                 error: errorTranslator(data.error.message),
+                                loading: false
+                            })
+                        
+                        }else{
+                            /*enviar mensaje de todo ok */
+                             setValues({...values,                                    
+                                    funciona: true,                                    
+                                });
+                            
+                        } 
+                })
+                : setValues({ ...values,  error: 'correo incorrecto , Por favor llene correctamente el formulario bien antes de enviar'});
+
+        
+        
+    }
+
+
     /**Ying
      * funcion para mostrar error
      * error ? '' : 'none' --> si el error del state tiene algo, 
@@ -121,7 +152,12 @@ const SignIn = () => {
         </div>
     );
         
-    
+    const mostrarFunciona =  () => (
+        <div className="alert alert-info" 
+        style={{display: funciona ? '' : 'none'}}>
+            Su solicitud de cambio de contraseña ha sido exitosa. Revise su correo para cambiarla en menos 24 horas
+        </div>
+    );
 
     const mostrarLoading = () => (
         loading && (
@@ -170,9 +206,10 @@ const SignIn = () => {
                 <button  onClick={iniciarSession} className="btn btn-outline-primary">
                     Iniciar Session
                 </button>
-                <Link to={`/Password`}>
-                    <a>¿Has olvidado tu contraseña?</a>
-                </Link>
+                
+                <button  onClick={RequestRecover} className="btn btn-outline-primary">
+                <a>¿Has olvidado tu contraseña?</a>
+                </button>
             </div>
         </form>
     );
@@ -186,6 +223,7 @@ const SignIn = () => {
 
                 <div className="espacioV mb-5">
                     {mostrarLoading()}
+                    {mostrarFunciona()}
                     {mostrarError()}
                     {signUpForm()}
                     {redireccionarUsuario()}

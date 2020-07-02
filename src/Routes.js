@@ -7,7 +7,7 @@ import Password from './user/Password';
 import Principal from './nucleo/Principal';
 
 import PrivateRoute from './autentificacion/PrivadoRoute';
-import VideoRoute from './autentificacion/VideoRoute';
+
 import Perfil from './user/Perfil';
 import ModificarPerfil from './user/ModificarPerfil';
 import AdminRoute from './autentificacion/AdminRoute';
@@ -15,6 +15,7 @@ import AdminD from './user/AdminD';
 import ModificarPerfilAdmin from './admin/support/admins/ModificarPerfilAdmin';
 
 import Activar from './user/procesos/Activar';
+import password from './user/Password';
 
 import categoria from './admin/support/Categorias/listar';
 import EliminarCategoria from './admin/support/Categorias/delete';
@@ -32,7 +33,7 @@ import ModificarFactura from './admin/support/Factura/update';
 
 import Historial from './admin/support/Historial/listar';
 import EliminarHistorial from './admin/support/Historial/delete';
-import ModificarHistorial from './admin/support/Historial/update';
+
  
 
 import AgregarProducto from './admin/AgregarProducto';
@@ -66,7 +67,7 @@ const Routes = () => {
 
             <Route path="/SignIn" exact component={SignIn}/>
             <Route path="/SignUp" exact component={SignUp}/>
-            <Route path="/Password" exact component={Password}/>
+            
             <PrivateRoute path="/Perfil" exact component={Perfil}/>
             <PrivateRoute path="/Cliente/:perfilId" exact component={ModificarPerfil}/>
             <AdminRoute path="/Admin" exact component={AdminD}/>
@@ -137,10 +138,10 @@ const Routes = () => {
             
             <Route path="/activar/token/:token" exact
               component={Activar}/>
-     {/*       
-            <Route path="/activar/token/:token" exact
-              component={RecetaDetalle}/>
-     */}
+              
+              <Route path="/Recuperar/token/:token" exact
+              component={password}/>
+     
             <PrivateRoute path="/Cart" exact
              component={Carrito}/>
 
