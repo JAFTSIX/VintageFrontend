@@ -144,13 +144,13 @@ const Principal = () => {
                 </div>
 
                 {/* carrousel producto  */}
-                <div class="row">
+                {/* <div class="row">
                     <div class="col-lg-12 colorR">
                         <h5 class="text-center mb-5">Los mejores productos culinarios</h5> 
                     </div>
-                </div>
+                </div> */}
                 {/* carrousel recetas  */}
-                <div class="row text-center"> 
+                {/* <div class="row text-center"> 
                 <Link to={`/Producto`} className="d-flex flex-row responsiveCarrouselReceta">    
                     <div class="cardP ">
                         <img src="https://cdn.shopify.com/s/files/1/0979/9666/products/cuchara-postre-modbaguette_large.jpg?v=1531355541" className="fotoPerfil"/>
@@ -178,7 +178,7 @@ const Principal = () => {
                         </button>
                     </Link> 
                     </div>  
-                </div>
+                </div> */}
 
 
             </div> 
