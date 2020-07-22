@@ -218,7 +218,7 @@ const Receta = () => {
             <div className="col-lg-12"> 
               <div className="input-group w-100">
               <div className="d-inline w-100">     
-              <h1 className="mb-5 text-center colorPink">¡Encuentra una tus recetas!</h1>  
+              <h1 className="mb-5 text-center colorPink">¡Encuentra tus recetas!</h1>  
                 <input type="text" placeholder="Buscar Receta" onChange={handleChange('snombre')} className="form-control"/>
                 <button className="btn btn-outline-primary " onClick={clickSubmit} type="button">Buscar</button>
 
