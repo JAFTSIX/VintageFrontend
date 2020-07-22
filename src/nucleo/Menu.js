@@ -113,11 +113,11 @@ const Menu = ({history}) => {
                                 to="/producto/agregar">
                                     Añadir Producto
                             </Link>
-                            <Link className="nav-link" 
+                            {/* <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/producto/agregar")}                     
                                 to="/receta/agregar">
                                     Añadir Receta
-                            </Link>
+                            </Link> */}
                         
                             <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/categoria/Support/")}                     
@@ -157,11 +157,11 @@ const Menu = ({history}) => {
                             RECETA
                         </Link>
                     </li>
-                    <li className="nav-item dropdown mx-2">
+                    {/* <li className="nav-item dropdown mx-2">
                         <Link className="nav-link" style={esHover(history, "/producto")} to="/producto">
                             PRODUCTO
                         </Link>
-                    </li>
+                    </li> */}
                     
 
                     <li className="nav-item dropdown mx-2">
