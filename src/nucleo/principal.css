@@ -161,6 +161,9 @@
          text-align: center;
          display: inline-block;
     }
+    .carousel-caption{
+      bottom: 0 !important;
+    }
   }
 
 
