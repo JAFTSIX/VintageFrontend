@@ -66,20 +66,14 @@ const Routes = () => {
 
 
             <Route path="/SignIn" exact component={SignIn}/>
-            <Route path="/SignUp" exact component={SignUp}/>
+            
             
             <PrivateRoute path="/Perfil" exact component={Perfil}/>
             <PrivateRoute path="/Cliente/:perfilId" exact component={ModificarPerfil}/>
             <AdminRoute path="/Admin" exact component={AdminD}/>
             <AdminRoute path="/Admin/:perfilId" exact component={ModificarPerfilAdmin}/>
 
-            <Route path="/producto" exact component={Producto}/>
-            <AdminRoute path="/producto/agregar" 
-            exact component={AgregarProducto}/>
-            <AdminRoute path="/Articulo/:productId/" 
-            exact component={ModificarProducto}/>
-            <AdminRoute path="/Articulo/Eliminar/:productId" 
-            exact component={EliminarProducto}/>
+           
 
             <Route path="/receta" exact component={Receta}/>
             <AdminRoute path="/receta/agregar" 
@@ -91,15 +85,34 @@ const Routes = () => {
             exact component={EliminarReceta}/>
 
             {
-                /**
-                 * Ruta de recetas
-                 * 3 posibilidades
-                 * mostrar receta si tiene precio 0
-                 * mostrar trailer si tiene precio>0 y /Cliente/Ver/{id}==false
-                 * mostrar curso si tiene precio>0 y /Cliente/Ver/{id}==true
-                 */
-
               
+              
+             /*
+
+             <Route path="/SignUp" exact component={SignUp}/>
+              <Route path="/producto" exact component={Producto}/>
+            <AdminRoute path="/producto/agregar" 
+            exact component={AgregarProducto}/>
+            <AdminRoute path="/Articulo/:productId/" 
+            exact component={ModificarProducto}/>
+            <AdminRoute path="/Articulo/Eliminar/:productId" 
+            exact component={EliminarProducto}/>
+             <Route path="/Articulo/Detalle/:productoId" exact
+             component={ProductoDetalle}/>
+
+             
+            <AdminRoute path="/Factura/Support/" 
+            exact component={Factura}/>
+        
+            <AdminRoute path="/Factura/Support/Eliminar/:_Id" 
+            exact component={EliminarFactura}/>
+                  <AdminRoute path="/Historial/Support/Eliminar/:_Id" 
+            exact component={EliminarHistorial}/>
+             <PrivateRoute path="/Cart" exact
+             component={Carrito}/>
+
+
+            */
             }
 
             <Route path="/Receta/Detalle/:recetaId" exact
@@ -107,9 +120,6 @@ const Routes = () => {
 
             
              
-             <Route path="/Articulo/Detalle/:productoId" exact
-             component={ProductoDetalle}/>
-            
              
              <AdminRoute path="/categoria/Support/" 
             exact component={categoria}/>
@@ -120,21 +130,11 @@ const Routes = () => {
             <AdminRoute path="/categoria/Support/actualizar/:_Id/" 
             exact component={ModificarCategoria}/>
 
-            <AdminRoute path="/Factura/Support/" 
-            exact component={Factura}/>
-        
-            <AdminRoute path="/Factura/Support/Eliminar/:_Id" 
-            exact component={EliminarFactura}/>
-            <AdminRoute path="/Factura/Support/actualizar/:_Id/" 
-            exact component={ModificarFactura}/>
-
 
             <AdminRoute path="/Historial/Support/" 
             exact component={Historial}/>
              
-            <AdminRoute path="/Historial/Support/Eliminar/:_Id" 
-            exact component={EliminarHistorial}/>
-            
+
             
             <Route path="/activar/token/:token" exact
               component={Activar}/>
@@ -142,9 +142,7 @@ const Routes = () => {
               <Route path="/Recuperar/token/:token" exact
               component={password}/>
      
-            <PrivateRoute path="/Cart" exact
-             component={Carrito}/>
-
+        
 
              <AdminRoute path="/admin/Support/insert" 
              exact component={SignUpAdmin}/>

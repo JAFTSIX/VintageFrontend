@@ -1,7 +1,7 @@
 import React, {useState, useEffect,useCallback} from 'react';
 import Layout from '../nucleo/Layout';
 import {getReceta} from './apiAdmin';
-import { modificarReceta , getObjeto,errorTranslator,modificarObjeto} from './apiAdmin';
+import {  getObjeto,errorTranslator,modificarObjeto} from './apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../index.css';
 import '../css.css';
@@ -62,17 +62,21 @@ const ModificarReceta = (props) => {
     //cargar receta
     const cargarReceta = recetaId => {
 
-        getReceta(recetaId)
+        console.log('a ver',recetaId)
+        getObjeto("/Receta/",recetaId)
         .then(data=>{
         if (data===undefined) {
             setValor({...valor, error:'Problemas, intente más tarde'})
         } else {
+            data=data.value
+            
+
             if('error' in data){
                 setValor({...valor, error:data.error.message})
             }else{
 
 
-                console.log('modificar receta' + data);
+
                 // console.log('data.bActivo'+data.bActivo)
                 setValor({
                     ...valor,

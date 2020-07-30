@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Layout from '../nucleo/Layout';
-import {eliminarReceta} from './apiAdmin';
+import {eliminarReceta, eliminarObjeto} from './apiAdmin';
 import {Redirect} from 'react-router-dom';
 import '../index.css'
 
@@ -23,7 +23,7 @@ const EliminarReceta= (props) => {
     const [open, setOpen] = React.useState(true);
 
     const handleClose= seguir=>_evento => {
-        console.log(seguir)      
+        console.log('handle',seguir)      
         if(seguir){
             eliminar(props.match.params.recetaId)
         }else{
@@ -34,7 +34,7 @@ const EliminarReceta= (props) => {
 
     // llamar al api en admin api 
     const eliminar = recetaId => {
-        eliminarReceta(recetaId)
+        eliminarObjeto('Receta',recetaId)
         .then(data=>{
             
             setValor({

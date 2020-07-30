@@ -1,6 +1,6 @@
 import React, {useState, useEffect, Fragment} from 'react';
 
-import {getObjeto,errorTranslator} from './../admin/apiAdmin';
+import {getObjeto,errorTranslator,insertObject} from './../admin/apiAdmin';
 import '../index.css';
 import '../css.css';
 import './videoReceta.css';
@@ -8,6 +8,7 @@ import {isAutentificacion} from '../autentificacion/index';
 import { Link, Redirect } from 'react-router-dom';
 import Menu from '../nucleo/Menu';
 import {agregarProductoCarrito} from './CarritoCompra/carritoHelper'
+import Historial from '../admin/support/Historial/listar';
 
 
 const RecetaDetalle = (props) => {
@@ -59,7 +60,7 @@ const RecetaDetalle = (props) => {
                 //Authorization header value has too many parts. It must follow the pattern: 'Bearer xx.yy.zz' where xx.yy.zz is a valid JWT token.
                 setError(errorTranslator( data.error.message));
             } else {
-             console.log('ver',data.value)
+                console.log('ver',data.value)
                 setVer(data.value);
                 
             }
@@ -81,11 +82,15 @@ const RecetaDetalle = (props) => {
         cargarDetalleReceta(recetaId);
  
         if (isAutentificacion()) {
+            
             isVer(recetaId,'VerS');    
         } else {
+            
             isVer(recetaId,'VerU');    
+
         }
-         
+         Historial()
+    
     }, []);
 
     
@@ -93,7 +98,14 @@ const RecetaDetalle = (props) => {
 
 
 
+    const Historial = () => {
 
+        insertObject('Historial', {dFecha:new Date(),sReceta:props.match.params.recetaId})
+        .then((data={error:{message:'hay un problema, intente más tarde'}})=>{
+       
+        })
+   
+    }
 
 
 
@@ -161,7 +173,7 @@ const RecetaDetalle = (props) => {
                  <Fragment>
                      
                      {/* // aqui se pasa el id de la receta en el url para actualizar */}
-                     <Link to={`/Receta/${receta._id}/?filter=%7B%0A%20%20%22where%22%3A%20%7B%0A%20%20%20%20%22additionalProp1%22%3A%20%7B%7D%0A%20%20%7D%2C%0A%20%20%22fields%22%3A%20%7B%0A%20%20%20%20%22_id%22%3A%20true%2C%0A%20%20%20%20%22sNombre%22%3A%20true%2C%0A%20%20%20%20%22aEtiqueta%22%3A%20true%2C%0A%20%20%20%20%22dFechaPublicacion%22%3A%20true%2C%0A%20%20%20%20%22sTexto%22%3A%20true%2C%0A%20%20%20%20%22iPrecio%22%3A%20true%2C%0A%20%20%20%20%22sUrlVideo%22%3A%20true%2C%0A%20%20%20%20%22sUrlImagen%22%3A%20true%2C%0A%20%20%20%20%22bActivo%22%3A%20true%0A%20%20%7D%2C%0A%20%20%22offset%22%3A%200%2C%0A%20%20%22limit%22%3A%20100%2C%0A%20%20%22skip%22%3A%200%2C%0A%20%20%22order%22%3A%20%5B%0A%20%20%20%20%22string%22%0A%20%20%5D%0A%7D`}>
+                     <Link to={`/Receta/${receta._id}`}>
                          <button className="btn btn-outline-primary borderRadio0">
                                  Modificar Receta
                          </button>

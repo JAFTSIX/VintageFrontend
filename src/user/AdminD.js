@@ -68,6 +68,7 @@ const AdminD = () => {
                 </Link>
             </div>
 
+            {/*
           
             <div class="col-lg-3 col-md-4 col-sm-12">              
                 <Link className="nav-link" to="/producto">
@@ -78,8 +79,8 @@ const AdminD = () => {
                 </div>
                 </div>
                 </Link>
-            </div>  
-            <div class="col-lg-3 col-md-4 col-sm-12">              
+            </div> 
+              <div class="col-lg-3 col-md-4 col-sm-12">              
                 <Link className="nav-link" to="/producto/agregar">
                 <div class="card">
                 <img class="card-img-top perfilCardImg" src="https://image.flaticon.com/icons/png/512/15/15417.png" alt="Card image cap" />
@@ -89,6 +90,8 @@ const AdminD = () => {
                 </div>
                 </Link>
             </div>  
+            */}
+          
                
         </div>
         <div className="row d-flex justify-content-center">
@@ -134,6 +137,7 @@ const AdminD = () => {
             </div> 
         </div>
         <div className="row d-flex justify-content-center">
+            {/*
             <div class="col-lg-3 col-md-4 col-sm-12">              
                 <Link className="nav-link" to="/Factura/Support/">    
                 <div class="card d-flex justify-content-center">  
@@ -143,7 +147,9 @@ const AdminD = () => {
                 </div>
                 </div>
                 </Link>
-            </div>   
+            </div>    
+            */}
+            
             <div class="col-lg-3 col-md-4 col-sm-12">              
                 <Link className="nav-link" to="/Historial/Support/">
                 <div class="card">
@@ -171,12 +177,12 @@ const AdminD = () => {
                     <li className="list-group-item text-capitalize"><strong>Nombre: </strong>{sNombre}</li>
                     <li className="list-group-item text-capitalize"><strong>Apellido: </strong>{sApellido}</li>
                     <li className="list-group-item"><strong>Email: </strong>{sCorreo}</li>
-                    <li className="list-group-item"><strong>Fecha de Nacimiento: </strong>{fechaNacimiento}</li>
+                   {/* <li className="list-group-item"><strong>Fecha de Nacimiento: </strong>{fechaNacimiento}</li>
                     <li className="list-group-item text-capitalize"><strong>Provincia: </strong>{oDireccion.provincia}</li>
                     <li className="list-group-item text-capitalize"><strong>Cantón: </strong>{oDireccion.canton}</li>
                     <li className="list-group-item text-capitalize"><strong>Dirección 1: </strong>{oDireccion.direccion1}</li>
                     <li className="list-group-item text-capitalize"><strong>Dirección 2: </strong>{oDireccion.direccion2}</li>
-                    <li className="list-group-item text-capitalize"><strong>Código Postal: </strong>{oDireccion.codPostal}</li>
+                    <li className="list-group-item text-capitalize"><strong>Código Postal: </strong>{oDireccion.codPostal}</li>*/}
                     <li className="list-group-item text-capitalize"><strong>Teléfono: </strong>{oDireccion.telefono}</li>
                 </ul>
             </div>
@@ -189,7 +195,7 @@ const AdminD = () => {
         return(
            
             <div className="card mb-5">
-                <h3 className="card-header">
+             {/*<h3 className="card-header">
                     Recetas de Compradas
                 </h3>
                 <ul className="list-group">
@@ -197,7 +203,8 @@ const AdminD = () => {
                     {receta.map((receta, i)=>(
                         <RecetaInterfaz key={i} receta={receta}/>
                     ))} 
-                </ul>
+                </ul> */}
+                
             </div>
         );
     }

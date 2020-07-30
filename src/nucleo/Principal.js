@@ -110,7 +110,7 @@ const Principal = () => {
                 <div class="row">
                     <div class="titlo col-lg-12 colorR">
                         <h1 class="text-center">¿QUE OFRECEMOS?</h1> 
-                        <h5 class="text-center">Las mejores recetas gourmet</h5> 
+                        <h5 class="text-center">Deliciosas recetas</h5> 
                     </div>
                 </div>
                 {/* carrousel recetas  */}

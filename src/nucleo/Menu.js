@@ -108,17 +108,18 @@ const Menu = ({history}) => {
                         ACCIONES ADMINISTRADOR
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <Link className="nav-link" 
+                            
+                            {/* <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/producto/agregar")}                     
                                 to="/producto/agregar">
                                     Añadir Producto
-                            </Link>
-                            {/* <Link className="nav-link" 
+                            </Link>*/}
+                        
+                            <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/producto/agregar")}                     
                                 to="/receta/agregar">
                                     Añadir Receta
-                            </Link> */}
-                        
+                            </Link>
                             <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/categoria/Support/")}                     
                                 to="/categoria/Support/">
@@ -126,12 +127,12 @@ const Menu = ({history}) => {
 
                             </Link>
 
-                            <Link className="nav-link" 
+                            {/*<Link className="nav-link" 
                                 style={esHoverDropDown(history, "/Factura/Support/")}                     
                                 to="/Factura/Support/">
                                       Factura
 
-                            </Link>
+                        </Link>*/}
 
                             <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/Historial/Support/")}                     
@@ -154,30 +155,34 @@ const Menu = ({history}) => {
             )}
                     <li className="nav-item dropdown mx-2">
                         <Link className="nav-link" style={esHover(history, "/receta")} to="/receta">
-                            RECETA
+                            RECETAS
                         </Link>
                     </li>
                     {/* <li className="nav-item dropdown mx-2">
                         <Link className="nav-link" style={esHover(history, "/producto")} to="/producto">
                             PRODUCTO
                         </Link>
-                    </li> */}
+                    </li>
                     
-
+                    
                     <li className="nav-item dropdown mx-2">
                         <Link className="nav-link" style={esHover(history, "/cart")} to="/cart">
                             CARRITO COMPRAS
-                            {/* cantidad de productos en el carrito de compra  */}
+                          
                             <sup><small className="carritoTotal">{productoTotal()}</small></sup>
                         </Link>
                     </li>
+                    
+                    */}
+                    
+
                     
 
             {/*Ocultar esos menus cuando el usuario ya inicio session*/}
             {/* si no existe ningun usuario en el local storage, va a aparecer esos menus */}
             {!isAutentificacion() && (
                 <Fragment>
-                    <li className="nav-item dropdown mx-2">
+                    {/*<li className="nav-item dropdown mx-2">
                         <Link className="nav-link" style={esHover(history, "/SignIn")} to="/SignIn">
                             INICIAR SESSION
                         </Link>
@@ -186,7 +191,7 @@ const Menu = ({history}) => {
                         <Link className="nav-link" style={esHover(history, "/SignUp")} to="/SignUp">
                             CREAR CUENTA
                         </Link>
-                    </li>
+                    </li>*/}
                 </Fragment>
             )}
 

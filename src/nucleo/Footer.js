@@ -33,7 +33,7 @@ const Footer = () => {
             <div class="row">   
                 <div class="col-lg-12 text-center">
                    <hr/>
-                   <p class="text-light">©2020 Cocina Vintage. Todos los derechos reservados.</p>
+                   {/*<p class="text-light">©2020 Cocina Vintage. Todos los derechos reservados.</p>*/}
                 </div>  
             </div>
         </div>

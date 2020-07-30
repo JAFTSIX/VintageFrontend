@@ -195,7 +195,6 @@ export const  getObjeto= (objeto,query='') => {
         },
         
     })
-            
     .then(response => {
         return response.json()
     })
