@@ -108,16 +108,16 @@ const Menu = ({history}) => {
                         ACCIONES ADMINISTRADOR
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <Link className="nav-link" 
+                            {/* <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/producto/agregar")}                     
                                 to="/producto/agregar">
                                     Añadir Producto
-                            </Link>
-                            {/* <Link className="nav-link" 
+                            </Link> */}
+                            <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/producto/agregar")}                     
                                 to="/receta/agregar">
                                     Añadir Receta
-                            </Link> */}
+                            </Link>
                         
                             <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/categoria/Support/")}                     
