@@ -77,7 +77,7 @@ const Principal = () => {
                 </div>
                 <div class="row">   
                     <div class="col-lg-3 col-md-12 d-flex justify-content-center">
-                        <img src="https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/72604741_3187892487904376_6452110419937984512_o.jpg?_nc_cat=1&_nc_sid=09cbfe&_nc_ohc=CYFARtVMbSsAX9rO7t4&_nc_ht=scontent.fsyq2-1.fna&oh=59453faaafe7f7232385151ab938c862&oe=5EFE4727" className="fotoPerfil"/>
+                        <img src="https://i.imgur.com/GJTyd2v.jpg" className="fotoPerfil"/>
                     </div>
                     <div class="col-lg-8 col-md-12 ml-1 mb-10 pb-5 text-justify">
                         <p>Recetas y consejos de cocina</p>
@@ -99,7 +99,7 @@ const Principal = () => {
                 </div>
                 <div class="row">   
                     <div class="col-lg-3 col-md-12 d-flex justify-content-center">
-                        <img src="https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/100615817_3736344093059210_2361854008433311744_n.jpg?_nc_cat=107&_nc_sid=8bfeb9&_nc_ohc=8jrEG-iLyCQAX_gKuxq&_nc_ht=scontent.fsyq2-1.fna&oh=5017821b3b25295c8f2ee1367b7abfef&oe=5EFB5192" className="fotoPerfil"/>
+                        <img src="https://i.imgur.com/ctis5Af.jpg" className="fotoPerfil"/>
                     </div>
                     <div class="col-lg-8 col-md-12 ml-1 mb-10 pb-5 text-justify">
                         <p>Para mi cocinar es crear, es una característica dada por Dios al ser humano, siempre se lo recuerdo a quienes siguen mi trabajo, crear trasciende una simple labor, crear es como amar, como sentir, es un placer que Dios disfrutó a plenitud desde el principio, el creo, y vio que era bueno, sintió regocijo al ver su majestuosa palabra convertida en seres vivientes, la inspiración fue tal, que decidió usar sus manos formando seres humanos con cualidades impensables, a los que decidió llamarles hijos, crear da identidad y descubre habilidades que no se ven en nosotros, pero que siempre han estado allí, estoy convencida que nada es igual cuando nos damos la oportunidad de mostrar lo que somos, somos la creación de Dios, y la creación de Él es la imagen de un Dios invisible, que se vuelve visible, cuando nos permitimos crear.</p>
@@ -117,19 +117,19 @@ const Principal = () => {
                 <div class="row text-center ">
                 <Link to={`/Receta`} className="d-flex flex-row responsiveCarrouselReceta">   
                     <div class="cardP ">
-                        <img src="https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/98081114_3716017481758538_6242543649712766976_o.jpg?_nc_cat=109&_nc_sid=8bfeb9&_nc_ohc=bb4umoZJFxAAX-Jmiju&_nc_ht=scontent.fsyq2-1.fna&oh=7310d84ac05b12bea4e75b968e366962&oe=5EFD91BC" className="fotoPerfil"/>
+                        <img src="https://i.imgur.com/xkz93xf.jpg" className="fotoPerfil"/>
                     </div>
-                    <div class="cardP">  
-                        <img src="https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/96867509_3697293516964268_8058763990660022272_o.jpg?_nc_cat=108&_nc_sid=8bfeb9&_nc_ohc=RlJMkoIYQYAAX-YzIy0&_nc_ht=scontent.fsyq2-1.fna&oh=9fa8564ab4e78920f7410d82b84639d8&oe=5EFAA4E7" className="fotoPerfil"/>
-                    </div>
-                    <div class="cardP">
-                        <img src="https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/96582950_3696839730342980_2590128745666838528_o.jpg?_nc_cat=101&_nc_sid=8bfeb9&_nc_ohc=h7OlMIEl1X4AX-jZQ32&_nc_ht=scontent.fsyq2-1.fna&oh=6452ffb3e4582ee9e866862c56f74a57&oe=5EFC152F" className="fotoPerfil"/>
+                    <div class="cardP"> 
+                        <img src="https://i.imgur.com/jQ93wPR.jpg" className="fotoPerfil"/>
                     </div>
                     <div class="cardP">
-                        <img src="https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/95581343_3677272965632990_229642327835017216_o.jpg?_nc_cat=103&_nc_sid=8bfeb9&_nc_ohc=_bb8jigo0LAAX8X_bdO&_nc_ht=scontent.fsyq2-1.fna&oh=152743e8409f854ab7226103dc36166c&oe=5EFD4D3F" className="fotoPerfil"/>
+                        <img src="https://i.imgur.com/UoQF1bE.jpg" className="fotoPerfil"/>
+                    </div>
+                    <div class="cardP">
+                        <img src="https://i.imgur.com/kNMf9mk.jpg" className="fotoPerfil"/>
                     </div>
                     <div class="cardP">  
-                        <img src="https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/95491916_3673110509382569_4871708273444651008_o.jpg?_nc_cat=103&_nc_sid=8bfeb9&_nc_ohc=XpgMlOYQlHkAX853SbE&_nc_ht=scontent.fsyq2-1.fna&oh=175dbb2bdfecec7424d438f7b0dbe65c&oe=5EFCDB21" className="fotoPerfil"/>
+                        <img src="https://i.imgur.com/05G0X1X.jpg" className="fotoPerfil"/>
                     </div>  
                 </Link>
                 </div>

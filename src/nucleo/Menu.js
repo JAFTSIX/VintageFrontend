@@ -113,13 +113,13 @@ const Menu = ({history}) => {
                                 style={esHoverDropDown(history, "/producto/agregar")}                     
                                 to="/producto/agregar">
                                     Añadir Producto
-                            </Link>*/}
-                        
+                            </Link> */}
                             <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/producto/agregar")}                     
                                 to="/receta/agregar">
                                     Añadir Receta
                             </Link>
+                        
                             <Link className="nav-link" 
                                 style={esHoverDropDown(history, "/categoria/Support/")}                     
                                 to="/categoria/Support/">

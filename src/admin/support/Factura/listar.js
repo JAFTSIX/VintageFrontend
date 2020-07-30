@@ -62,7 +62,7 @@ const Factura = () => {
     return (
         <Layout 
         jumbotron="jumboEstatico" 
-        image="https://scontent.fsyq2-1.fna.fbcdn.net/v/t1.0-9/92047481_3604033562956931_180879863316480000_o.jpg?_nc_cat=100&_nc_sid=730e14&_nc_ohc=eJvUlM1qlwcAX9_YO1o&_nc_ht=scontent.fsyq2-1.fna&oh=33b10941a2fe69513fcda19346da6dba&oe=5F05B2BC"
+        image="https://i.imgur.com/jQ93wPR.jpg"
         titulo="Factura" 
         descripcion="Chef Selenia Mendez"   
         className="container-fluid">

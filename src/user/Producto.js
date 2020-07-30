@@ -67,7 +67,7 @@ const Producto = () => {
 
     return (
         
-        <Layout jumbotron="jumbotronMovimiento"
+        <Layout jumbotron="jumboEstatico"
         image="https://cdn.shopify.com/s/files/1/1856/9027/products/il_fullxfull.1464035132_oar9_530x@2x.jpg?v=1522332447"
          titulo="PRODUCTOS" 
         descripcion="Chef Selenia Mendez"   
