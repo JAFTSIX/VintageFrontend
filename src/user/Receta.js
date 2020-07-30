@@ -199,8 +199,8 @@ const Receta = () => {
     );
 
     return (
-        <Layout jumbotron="jumbotronMovimiento" 
-        image="https://www.elsetge.cat/myimg/f/234-2349477_pastel-macarons.jpg"
+        <Layout jumbotron="jumboEstatico" 
+        image="https://i.imgur.com/yUa61xA.jpg"
         titulo="RECETA" 
         descripcion="Chef Selenia Mendez"   
         className="container-fluid">
